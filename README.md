@@ -27,3 +27,15 @@ Referentes:
     UCollective: https://ucollective.com.ar/
     Nos interesa el efecto parallax como el que muestra el sitio al ingresar, aplicado a su portada. El sitio es sencillo y agradable a la vista, fácil de entender y de amigable navegación. Nos pareció interesante la sección de "Términos y condiciones" para también añadir al proyecto.
 
+
+
+Tipografía logo: Nourd, bold.
+
+Tipografías texto y encabezados: Myriad Pro, Calibri, Lato.
+
+Paleta de colores para el sitio:
+
+● #EE3EC9 MAGENTA 
+● #00E9F8 CYAN
+● #EEC73E AMARILLO
+

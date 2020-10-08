@@ -33,3 +33,9 @@ Referentes:
     Nos interesa el efecto parallax como el que muestra el sitio al ingresar, aplicado a su portada. El sitio es sencillo y agradable a la vista, fácil de entender y de amigable navegación. Nos pareció interesante la sección de "Términos y condiciones" para también añadir al proyecto.
 
 
+TABLERO TRELLO RECKLESS:
+
+https://trello.com/b/KlEX9cxj
+
+
+

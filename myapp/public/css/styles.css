@@ -37,6 +37,11 @@ a{
     color: rgb(0, 0, 0);
     
 }
+
+a:hover{
+    opacity: 0.7;
+}
+
 a:link{
     text-decoration: none;
 }
@@ -75,6 +80,95 @@ a:visited{
 }
 #nav-bar1 li:nth-child(4){
     margin: auto 0px;
+}
+
+.myaccount-prelog{
+    display: none;
+    position: relative;
+   
+   
+}
+
+
+#my-account:hover .myaccount-prelog{
+    display: flex;
+    position: absolute;
+    right: 55px;
+    width: 300px;
+    flex-direction: column;
+    padding: 20px;
+    margin-top: 5px;
+    border: 1px solid black;
+    background-color: rgba(255, 255, 255, 0.897);
+   
+    
+    
+      
+}
+
+.myaccount-prelog .title-prelog{
+    margin-bottom: 20px;
+    margin-left: 2px;
+}
+
+.prelog-container{
+    width: 100%;
+}
+
+.myaccount-prelog input{
+    border-radius: 2px;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 7px;
+    border: 1px solid black;
+}
+
+.prelog-container input:focus{
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.562);
+    border: 1px solid #EE3EC9; 
+    outline: 0;
+
+}
+
+.prelog-container p{
+    margin: 10px 2px;
+}
+.prelog-container .forget-pass:hover{
+    text-decoration:underline;
+    opacity: 0.8;
+}
+
+
+.btn-log-in{
+    color: white;
+    background-color: black;
+    width: 80%;
+    padding: 7px;
+    border-radius: 2px;
+    border: none;
+}
+
+.btn-log-in:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.btn-register{
+    margin-top: 10px;
+    padding: 7px;
+    border-radius: 2px;
+    background-color: black;
+    width: 80%;
+    text-align: center;
+}
+
+.btn-register a{
+    font-size: 13px;
+    color: white;
+}
+
+.btn-register:hover{
+    opacity: 0.8;
 }
 
 
@@ -178,6 +272,21 @@ footer i{
     text-shadow: 2px 2px 2px rgb(54, 54, 54);
     font-size: 30px;
 }
+
+.button-shop{
+    position: fixed;
+    right: 15px;
+    top: 50%;
+    z-index: 10;
+    border: 1px solid black;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.705);
+    background-color: rgba(255, 255, 255, 0.801);
+    font-size: 15px;
+}
+
+
 
 
 

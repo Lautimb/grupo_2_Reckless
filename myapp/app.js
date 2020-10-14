@@ -33,5 +33,17 @@ app.get('/register',(req,res) => {
     res.sendFile(__dirname + '/views/register.html')
 })
 
+app.get('/lookbook',(req,res) => {
+    res.sendFile(__dirname + '/views/lookbook.html')
+})
+
+app.get('/social',(req,res) => {
+    res.sendFile(__dirname + '/views/social.html')
+})
+
+app.get('/contact',(req,res) => {
+    res.sendFile(__dirname + '/views/contact.html')
+})
+
 
 

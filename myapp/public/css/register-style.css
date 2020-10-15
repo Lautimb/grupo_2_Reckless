@@ -7,12 +7,9 @@
 header{
     display: flex;
     flex-direction: column;
-    color: rgb(0, 0, 0);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 2px 5px 0px #EEC73E6e;
-    
+    color: #222;
+    border-bottom: 0.5px solid #ede6e0;
 }
-
 
 
 ul{
@@ -30,7 +27,7 @@ ul li{
 }
 
 a{
-    color: rgb(0, 0, 0);
+    color: #222;
     
 }
 
@@ -190,7 +187,16 @@ a:visited{
     font-weight: bold;
 }
 
+/* --------------------- MAIN -------------------------*/
+
+main {
+    background-color: #ede6e034;
+    height: 1000px;
+}
+
 h1{
     padding: 20px 0px 50px 200px;
 }
+
+
 

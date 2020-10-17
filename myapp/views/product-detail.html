@@ -1,11 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>product-detail</h1>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"/>
+        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/register-style.css">
+        <link rel="stylesheet" href="css/product-detail-style.css">
+        <title>Reckless</title>
+    </head>
+    <body>
+    
+        <header>
+            <section id="promotions">
+                <h6>PROMOTIONS</h6>
+            </section>
+            <nav>
+               
+                <ul id="nav-bar1">
+                    <li class="search"><i class="fas fa-search"></i></li>          
+                    <li id="my-account"><a href="">MY ACCOUNT</a>
+                        <div class="myaccount-prelog">
+                            <div class="prelog-container">
+                                <h3 class="title-prelog">WELCOME</h3>
+                                <form action="/" method="GET">
+                                    <input type="text" placeholder="USERNAME" name="log-in">
+                                    <input type="password" placeholder="PASSWORD" name="log-in">
+                                    <button type="submit" class="btn-log-in" name="log-in">LOG IN</button>
+                                    <p>If you have an account with us, log in using your email address and password. </p>
+                                    <a class="forget-pass" href="">Did you forget your password?</a>
+                                    <div class="btn-register">
+                                        <a href="/register">REGISTER NOW</a>
+                                    </div>
+                                </form>
+    
+                            </div>    
+                            
+                        </div>
+                    </li>     
+                    <li><a href="/wishlist">WISHLIST</a></li>
+                    <li><a href="/cart"><i class="fas fa-shopping-cart"></i></a></li>
+                    <li>EN | ES</li>
+                </ul>
+                
+                <div class="container-logo">
+                    <img class="logo" src="imgs/logoreckless.png"  alt="">
+                </div>  
+    
+                <ul id="nav-bar2">
+                    <li><a href="/">HOME</a></li>
+                    <li><a href="/shop">SHOP</a></li>
+                    <li><a href="/lookbook">LOOKBOOK</a></li>
+                    <li><a href="/social">SOCIAL</a></li>
+                    <li><a href="/contact">CONTACT</a></li>
+                </ul>
+               
+            </nav>
+        </header>
+        <main>
+            <section>
+                <h1>PRODUCT NAME</h1>
+                <div class= "product-detail-photo">
+                    <img class="product-photo-1" src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80" alt="" width= "200px"/>
+                    <img class="product-photo-2" src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80" alt="" width= "200px"/>
+                    <img class="product-photo-3" src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80" alt="" width= "200px"/>
+                    <img class="product-photo-4" src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80" alt="" width= "200px"/>
+                    <img class="product-photo-5" src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80" alt="" width= "200px"/>
+                </div>
+                <span>$PRICE</span>
+                
+
+            
+                
+            </section>
+            
+        </main>
+    
+    
+    </body>
 </html>

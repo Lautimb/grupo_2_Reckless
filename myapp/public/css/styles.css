@@ -87,8 +87,6 @@ a:visited{
 .myaccount-prelog{
     display: none;
     position: relative;
-   
-   
 }
 
 
@@ -102,10 +100,6 @@ a:visited{
     margin-top: 5px;
     border: 1px solid black;
     background-color: rgba(255, 255, 255, 0.897);
-   
-    
-    
-      
 }
 
 .myaccount-prelog .title-prelog{

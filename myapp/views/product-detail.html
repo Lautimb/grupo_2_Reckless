@@ -1,11 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>product-detail</h1>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"/>
+        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/product-detail-style.css">
+        <link rel="stylesheet" href="css/footer.css">
+        
+        <title>Reckless</title>
+    </head>
+    <body>
+    
+        <header>
+            <section id="promotions">
+                <h6>PROMOTIONS</h6>
+            </section>
+            <nav>
+               
+                <ul id="nav-bar1">
+                    <li class="search"><i class="fas fa-search"></i></li>          
+                    <li id="my-account"><a href="">MY ACCOUNT</a>
+                        <div class="myaccount-prelog">
+                            <div class="prelog-container">
+                                <h3 class="title-prelog">WELCOME</h3>
+                                <form action="/" method="GET">
+                                    <input type="text" placeholder="USERNAME" name="log-in">
+                                    <input type="password" placeholder="PASSWORD" name="log-in">
+                                    <button type="submit" class="btn-log-in" name="log-in">LOG IN</button>
+                                    <p>If you have an account with us, log in using your email address and password. </p>
+                                    <a class="forget-pass" href="">Did you forget your password?</a>
+                                    <div class="btn-register">
+                                        <a href="/register">REGISTER NOW</a>
+                                    </div>
+                                </form>
+    
+                            </div>    
+                            
+                        </div>
+                    </li>     
+                    <li><a href="/wishlist">WISHLIST</a></li>
+                    <li><a href="/cart"><i class="fas fa-shopping-cart"></i></a></li>
+                    <li>EN | ES</li>
+                </ul>
+                
+                <div class="container-logo">
+                    <img class="logo" src="imgs/logoreckless.png"  alt="">
+                </div>  
+    
+                <ul id="nav-bar2">
+                    <li><a href="/">HOME</a></li>
+                    <li><a href="/shop">SHOP</a></li>
+                    <li><a href="/lookbook">LOOKBOOK</a></li>
+                    <li><a href="/social">SOCIAL</a></li>
+                    <li><a href="/contact">CONTACT</a></li>
+                </ul>
+               
+            </nav>
+        </header>
+
+        <main>
+            <section>
+
+                <div id="product-detail">
+                    <div class="product-detail-imgs">
+                        <div class= "thumbnail-img-container">
+
+                            <a href=""><img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80" alt="" class="thumbnail-img" ></a>
+                            <a href=""><img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80" alt="" class="thumbnail-img"></a>
+                            <a href=""><img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80" alt="" class="thumbnail-img"></a>
+                            <a href=""><img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80" alt="" class="thumbnail-img"></a>
+                            <a href=""><img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80" alt="" class="thumbnail-img"></a>
+                            <a href=""><img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80" alt="" class="thumbnail-img"></a>
+                        </div>
+
+                        <div class= "zoom-img">
+                            <a href=""><img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80" alt="" class="zoom-img"></a>    
+                        </div>
+                    </div>  
+
+                    <div class="product-detail-text">
+                        <div class="product-detail-title">
+
+                            <ul class= "product-detail__name-heart">
+                                <h1>PRODUCT NAME</h1>
+                                <i class="far fa-heart"></i>
+                            </ul>
+                            
+                            <ul class= "product-detail__price-promotions">
+                                <span class="product-detail__price">$PRICE</span>
+                                <a href="" class= "product-detail__promotions"><i class="fas fa-tag"></i>PROMOTIONS</a>
+                            </ul>
+                            
+                        </div>
+
+                        <form action="" method="POST" class="product-detail-selector">
+                            
+                            <div class="product-detail__colors">
+                                <legend>COLORS</legend>
+                                <ul>
+                                    <li><input type="radio" name="color" class= "color-circle"></li>
+                                    <li><input type="radio" name="color" class= "color-circle"></li>
+                                    <li><input type="radio" name="color" class= "color-circle"></li>
+                                    <li><input type="radio" name="color" class= "color-circle"></li>
+                                    <li><input type="radio" name="color" class= "color-circle"></li>
+                                </ul>
+                            </div>
+                                
+                            <div>
+                                <select name="size">
+                                    <option value="" disabled selected>SIZE</option>
+                                    <option value="small">S</option>
+                                    <option value="medium">M</option>
+                                    <option value="large">L</option>
+                                </select>
+                            </div>
+
+                            <div>
+                            <select name="qty">
+                                <option value="" disabled selected>QTY</option>
+                                <option value="1">1</option>
+                                <option value="1">2</option>
+                                <option value="1">3</option>
+                                <option value="1">4</option>
+                                <option value="1">5</option>
+                                <option value="1">6</option>
+                                <option value="1">7</option>
+                                <option value="1">8</option>
+                                <option value="1">9</option>
+                                <option value="1">10</option>
+                            </select>
+
+                            </div>
+                            
+                            <div>
+                                <button type="submit"><i class="fas fa-shopping-cart"></i> ADD TO CART</button>
+                            </div>
+                        </form>
+
+
+                            <div>
+                            <p>DETAILS</p>
+                            <i class="fas fa-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+            
+            <section class="cart-wishlist">
+                <h3>You may also like:</h3>
+                <div class="cart-wishlist-container">
+                    <div class="icon-container">
+                        <span>
+                            <i class="fa fa-arrow-alt-circle-left"></i>
+                        </span>
+                    </div>
+    
+    
+                    <div class="wishlist-img">
+                        <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"  alt="">
+    
+                    </div>
+    
+                    <div class="wishlist-img">
+                        <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"  alt="">
+    
+                    </div>
+    
+                    <div class="wishlist-img">
+                        <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"  alt="">
+    
+                    </div>
+    
+                    <div class="wishlist-img">
+    
+                        <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"  alt="">
+    
+                    </div>
+    
+    
+                    <div class="wishlist-img">
+                        <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"  alt="">
+    
+                    </div class="wishlist-img">
+    
+                    <div class="icon-container">
+                        <span>
+                            <i class="fa fa-arrow-alt-circle-right"></i>
+                        </span>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    
+    
+    </body>
 </html>

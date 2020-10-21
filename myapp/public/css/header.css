@@ -2,6 +2,7 @@
     margin: 0;
     box-sizing: border-box; 
     font-family: 'Lato', sans-serif; 
+    border-radius: 2px;
 }
 
 header{
@@ -67,11 +68,12 @@ a:visited{
 }
 
 #nav-bar1 li{
-    font-size: 10px;
+    font-size: 12px;
     padding: 5px;
     margin: 5px 10px;
 }
 #nav-bar1 li:nth-child(4){
+    font-size: 20px;
     margin: auto 0px;
 }
 
@@ -179,24 +181,65 @@ a:visited{
     justify-content: center;
 }
 
-#nav-bar2 li{
+.nav-bar2-li{
     margin: 10px 40px;
+    font-size: 15px;
+    
 }
 
-#nav-bar2 a{
-    font-weight: bold;
+
+
+#shop{
+    position: relative;
+    border-radius: 2px;
+    z-index: 10;
+ 
 }
 
-/* --------------------- MAIN -------------------------*/
-
-main {
-    background-color: #ede6e034;
-    height: 1000px;
+#shop:hover{
+    background-color: rgba(230, 227, 227, 0.699);
 }
 
-h1{
-    padding: 20px 0px 50px 200px;
+.sub-shop{
+    display: none;
 }
 
+#shop:hover .sub-shop{ 
+    display: flex;
+    position: absolute;
+    width: 150px;
+    flex-direction: column;
+    padding: 1px;
+    top: 38px;
+    left: 0px;
+    font-size: 10px; 
+    background-color:rgba(235, 235, 235, 0.95);
+    z-index: 1000;
+    border-top: 1px solid white;
+    border-radius: 2px;
+} 
+
+.sub-shop-list{
+    margin: 0px auto 0px 0px;
+    text-align: start;
+}
+
+.sub-shop-list:hover{
+    width: 100%;
+    padding-right: auto;
+    margin-right: auto;
+   
+    
+}
+
+.sub-shop-list:hover a{
+    opacity: 0.7;
+    
+}
+
+.sub-shop a{
+    padding: 5px;
+    margin: 0px;
+}
 
 

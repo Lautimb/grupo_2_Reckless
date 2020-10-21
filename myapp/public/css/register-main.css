@@ -1,0 +1,141 @@
+/* --------------------- MAIN -------------------------*/
+
+main {
+    background-color: #ede6e034;
+    padding-bottom: 100px;
+}
+
+h1{
+    padding: 20px 0px 50px 200px;
+}
+
+/* --------------------- FORMS -------------------------*/
+
+section{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0px auto;
+
+}
+h3, .required-files{
+  padding: 5px 0px;  
+}
+
+
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    width: 38%;
+    border: 1px solid black;
+    padding: 10px; 
+    margin-top: 20px; 
+}
+
+
+
+.birthday-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 5px;
+    
+}
+
+.birthday-container select{
+    width: 30%;
+    padding: 7px;
+
+}
+
+.country-city{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+     
+}
+
+
+
+
+.form-container input{
+    border-radius: 2px;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 7px;
+    border: 1px solid black;
+    margin-top: 10px;
+}
+
+.form-container input:focus{
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.562);
+    border: 1px solid #EE3EC9; 
+    outline: 0;
+
+}
+
+.confirm-terms{
+    position: relative;
+    top: 212px;
+
+}
+
+
+.container-city div{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    justify-content: space-between;
+}
+
+
+.form-container button{
+    width: 100%;
+    padding: 12px;
+    margin: 10px 2px ;
+    border: 1px solid  #222;
+    background-color: #222;
+    color: white;
+    
+}
+
+.form-container button:hover{
+    border-color: #EE3EC9;
+    background-color: rgba(34, 34, 34, 0.705);
+    cursor: pointer;
+}
+
+
+
+
+
+
+/* --------------------- FOOTER --------------------*/
+
+footer{
+    display: flex;
+    background-color: white;
+    height: 125px;
+}
+footer ul{
+    font-size: 12px;
+    padding: 0;
+    margin: 10px;
+    align-items: flex-end;
+}
+
+footer i{
+    font-size: 15px;
+}
+
+#footer-left{
+    justify-content: flex-start;
+}
+
+#footer-rigth{
+    justify-content: flex-end;
+}
+

@@ -4,18 +4,23 @@
 /*------------------------- MAIN HOME ----------------------*/
 main{
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 .background{
     width: 100%;
     position: relative;
     top:0;
     z-index: -1;
-    height: 100%;
-   
+
 }
 
 .background img{
     width: 100%;
+    position: relative;
+    top:-220px;
+    z-index: -1;
+    
 }
 
 #new-arrivals{

@@ -25,18 +25,14 @@
                         <div class="prelog-container">
                             <h3 class="title-prelog">WELCOME</h3>
                             <form action="/" method="GET">
-                                <input type="text" placeholder="USERNAME" name="log-in">
+                                <input type="text" placeholder="USERNAME" name="log-in" autocomplete="off">
                                 <input type="password" placeholder="PASSWORD" name="log-in">
                                 <button type="submit" class="btn-log-in" name="log-in">LOG IN</button>
                                 <p>If you have an account with us, log in using your email address and password. </p>
                                 <a class="forget-pass" href="">Did you forget your password?</a>
-                                <div class="btn-register">
-                                    <a href="/register">REGISTER NOW</a>
-                                </div>
+                                <button type="submit" class="btn-register"><a href="/register">REGISTER NOW</a></button>
                             </form>
-
-                        </div>    
-                        
+                        </div>                    
                     </div>
                 </li>     
                 <li><a href="/wishlist">WISHLIST</a></li>
@@ -49,11 +45,19 @@
             </div>  
 
             <ul id="nav-bar2">
-                <li><a href="/">HOME</a></li>
-                <li><a href="/shop">SHOP</a></li>
-                <li><a href="/lookbook">LOOKBOOK</a></li>
-                <li><a href="/social">SOCIAL</a></li>
-                <li><a href="/contact">CONTACT</a></li>
+                <li class="nav-bar2-li"><a href="/">HOME</a></li>
+                <li id="shop" class="nav-bar2-li"><a href="/shop">SHOP</a>
+                    <ul class="sub-shop">
+                        <li class="sub-shop-list"><a href="">NEW ARRIVALS</a></li>
+                        <li class="sub-shop-list"><a href="">TOP</a></li>
+                        <li class="sub-shop-list"><a href="">BOTTOMS</a></li>
+                        <li class="sub-shop-list"><a href="">OUTERWEAR</a></li>
+                        <li class="sub-shop-list"><a href="">DENIM</a></li>
+                    </ul>
+                </li>
+                <li class="nav-bar2-li"><a href="/lookbook">LOOKBOOK</a></li>
+                <li class="nav-bar2-li"><a href="/social">SOCIAL</a></li>
+                <li class="nav-bar2-li"><a href="/contact">CONTACT</a></li>
             </ul>
            
         </nav>

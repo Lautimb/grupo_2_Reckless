@@ -1,0 +1,87 @@
+
+
+
+/*------------------------- MAIN HOME ----------------------*/
+main{
+    position: relative;
+}
+.background{
+    width: 100%;
+    position: relative;
+    top:0;
+    z-index: -1;
+    height: 100%;
+   
+}
+
+.background img{
+    width: 100%;
+}
+
+#new-arrivals{
+    position: relative;
+}
+
+#new-arrivals h2{
+    position: relative;
+   
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.products{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+     
+}
+
+
+.product-container img{
+    height: 100%;
+    width: 100%;
+}
+
+.product-container{
+    position: relative;
+    width: 25%;
+    padding: 0;
+    
+         
+}
+
+.product-container:hover{
+    opacity: 0.8;
+}
+.product-detail{
+    position: absolute;
+    left: 5px;
+    bottom: 12px;
+    color:rgb(245, 245, 245);
+    text-shadow: 2px 2px 2px rgb(54, 54, 54);
+
+}
+
+.fa-heart{
+    position: absolute;
+    right: 15px;
+    bottom: 12px;
+    color: rgb(245, 245, 245);
+    text-shadow: 2px 2px 2px rgb(54, 54, 54);
+    font-size: 30px;
+}
+
+.button-shop{
+    position: fixed;
+    right: 15px;
+    top: 50%;
+    z-index: 10;
+    border: 1px solid black;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.705);
+    background-color: rgba(255, 255, 255, 0.801);
+    font-size: 15px;
+}

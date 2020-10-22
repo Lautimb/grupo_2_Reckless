@@ -2,34 +2,34 @@
 
 
 /*------------------------- MAIN HOME ----------------------*/
-main{
-    position: relative;
-    display: flex;
-    flex-direction: column;
+
+h1, .first-main{
+    display:none;
 }
-.background{
+body{
     width: 100%;
-    position: relative;
-    top:0;
-    z-index: -1;
-
+    position: relative; 
+    overflow-x: hidden;
 }
 
+main{
+    background-color: #ede6e034;
+   
+}
 .background img{
     width: 100%;
     position: relative;
-    top:-220px;
-    z-index: -1;
+   
     
 }
 
 #new-arrivals{
     position: relative;
+    width: 100%;
 }
 
 #new-arrivals h2{
     position: relative;
-   
     display: flex;
     justify-content: center;
     padding: 20px;
@@ -60,12 +60,16 @@ main{
 .product-container:hover{
     opacity: 0.8;
 }
+.product-detail h3{
+    font-weight: normal;
+}
 .product-detail{
     position: absolute;
     left: 5px;
     bottom: 12px;
-    color:rgb(245, 245, 245);
-    text-shadow: 2px 2px 2px rgb(54, 54, 54);
+    color:rgb(0, 0, 0);
+    
+    
 
 }
 
@@ -73,9 +77,9 @@ main{
     position: absolute;
     right: 15px;
     bottom: 12px;
-    color: rgb(245, 245, 245);
-    text-shadow: 2px 2px 2px rgb(54, 54, 54);
-    font-size: 30px;
+    color: rgb(0, 0, 0);
+    
+    font-size: 20px;
 }
 
 .button-shop{
@@ -90,3 +94,78 @@ main{
     background-color: rgba(255, 255, 255, 0.801);
     font-size: 15px;
 }
+
+
+
+/* ----------- RESPONSIVE -----------------*/
+
+
+@media(max-width:1024px){
+    .product-container{
+        position: relative;
+        width: 33.3%;
+        padding: 0;     
+    }
+
+
+}
+
+@media (max-width: 768px) {
+
+    h1{
+        display: inline-block;
+        font-size: 25px;
+        padding: 5px 15px;
+    }
+  
+    #new-arrivals h2{
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    .background img{
+        margin-top: 55px;
+    }
+
+    .product-container{
+        margin-bottom: 80px;
+        position: relative;
+        width: 50%;
+        padding: 0;
+        
+             
+    }
+    .product-container img{
+        position: relative;
+        width: 100%;
+        border: 1px solid #ede6e034;
+    }
+
+    .product-detail{
+        
+        bottom: -50px; 
+            
+    }
+    .fa-heart{
+        bottom: -38px;
+        
+    
+    }
+    
+      
+    
+}
+
+@media (max-width: 425px){
+    .product-container{
+        position: relative;
+        width: 100%;
+        padding: 0;
+           
+    }
+    body{
+        width: 100%;
+    }
+
+}
+

@@ -22,3 +22,16 @@ footer i{
     justify-content: flex-end;
     
 }
+
+@media (max-width:768px){
+    footer{
+        flex-direction: column-reverse;
+        justify-content: center;
+        
+    }
+    #footer-left, #footer-right {
+        justify-content: center;
+    }
+    
+
+}

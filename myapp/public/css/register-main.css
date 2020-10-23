@@ -6,7 +6,8 @@ main {
 }
 
 h1{
-    padding: 20px 0px 50px 200px;
+    font-size: 25px;
+    padding: 30px 0px 50px 200px;
 }
 
 /* --------------------- FORMS -------------------------*/
@@ -14,12 +15,15 @@ h1{
 section{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    padding: 0px auto;
-
+    justify-content: space-evenly;
+    padding: 0px 250px;
 }
+
+
 h3, .required-files{
-  padding: 5px 0px;  
+
+    padding: 5px 0px;  
+
 }
 
 
@@ -27,8 +31,8 @@ h3, .required-files{
 .form-container{
     display: flex;
     flex-direction: column;
-    width: 38%;
-    border: 1px solid black;
+    width: 350px;
+    border: 1px solid #c4c4c4;
     padding: 10px; 
     margin-top: 20px; 
 }
@@ -55,14 +59,24 @@ h3, .required-files{
     width: 100%;
     flex-direction: row;
     justify-content: space-between;
-     
+
+}
+
+.country-city div:nth-child(1){
+    margin-right: 10px;
+    width: 50%;
+}
+
+.country-city div:nth-child(2){
+   
+    width: 50%;
 }
 
 
 
 
 .form-container input{
-    border-radius: 2px;
+    border-radius: 3px;
     width: 100%;
     margin-bottom: 10px;
     padding: 7px;
@@ -70,7 +84,7 @@ h3, .required-files{
     margin-top: 10px;
 }
 
-.form-container input:focus{
+.form-container input:focus:not([type="checkbox"]){
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.562);
     border: 1px solid #EE3EC9; 
     outline: 0;
@@ -79,8 +93,11 @@ h3, .required-files{
 
 .confirm-terms{
     position: relative;
-    top: 212px;
+    top: 218px;
 
+}
+.confirm-terms input , p{
+    margin-top: 5px;
 }
 
 
@@ -109,11 +126,18 @@ h3, .required-files{
 }
 
 
+.terms-policy:hover{
+    text-decoration: underline;
+}
 
+.btn-create-account{
+    position: relative;
+}
 
 
 
 /* --------------------- FOOTER --------------------*/
+
 
 footer{
     display: flex;
@@ -139,3 +163,58 @@ footer i{
     justify-content: flex-end;
 }
 
+
+@media (max-width:1440px){
+    section{
+        padding: 0px 125px;
+    }
+}
+
+@media (max-width:1024px){
+    h1{
+        padding: 30px 0px 50px 125px;
+    }
+    section{
+        padding: 0px 25px;
+    }
+}
+
+@media (max-width:768px){
+    h1{
+        padding: 30px 0px 50px 50px;
+    }
+    section{
+        flex-direction: column;
+        align-items: center;
+        padding: 0px auto;
+    }
+    .form-container{
+        width:85%
+    }
+    .confirm-terms{
+        top: 0px 
+        
+    }
+}
+
+@media (max-width:425px){
+    h1{
+        padding: 30px 0px 50px 25px;
+    }
+    section{
+        padding: 0px 5px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    section div:nth-child(1){
+        margin-bottom: 50px;
+    }
+
+    .form-container{
+        width:90%
+    }
+
+   
+    
+}

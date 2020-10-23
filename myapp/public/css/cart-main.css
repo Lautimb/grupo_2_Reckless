@@ -13,9 +13,7 @@ h1{
 
 
 /* -------------------- CART STYLE ---------------------*/
-h1, .first-main{
-    display:none;
-}
+
 body{
     width: 100%;
     position: relative; 

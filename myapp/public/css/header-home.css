@@ -45,7 +45,7 @@ a{
     
 }
 
-a:hover{
+a:hover:not(.container-logo a){
     opacity: 0.7;
 }
 

@@ -42,7 +42,7 @@
                 </ul>
                 
                 <div class="container-logo">
-                    <img class="logo" src="imgs/logoreckless.png"  alt="">
+                    <a href="/" method="GET"><img class="logo" src="imgs/logoreckless.png"  alt=""></a>
                 </div>  
     
                 <ul id="nav-bar2">
@@ -122,45 +122,53 @@
                             </div>
 
                             <div>
-                            <select name="qty">
-                                <option value="" disabled selected>QTY</option>
-                                <option value="1">1</option>
-                                <option value="1">2</option>
-                                <option value="1">3</option>
-                                <option value="1">4</option>
-                                <option value="1">5</option>
-                                <option value="1">6</option>
-                                <option value="1">7</option>
-                                <option value="1">8</option>
-                                <option value="1">9</option>
-                                <option value="1">10</option>
-                            </select>
-
+                                <select name="qty">
+                                    <option value="" disabled selected>QTY</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
                             </div>
                             
                             <div>
                                 <button type="submit"><i class="fas fa-shopping-cart"></i> ADD TO CART</button>
                             </div>
                         </form>
-
-
-                            <div>
-                            <p>DETAILS</p>
-                            <i class="fas fa-plus"></i>
-                            </div>
+                        
+                        <div class="product-detail__details">
+                            <ul>
+                                <li><p>DETAILS</p></li>
+                                <li><i class="fas fa-plus"></i></li>
+                            </ul>
+                            <ul>
+                                <li><p>SIZE GUIDE</p></li>
+                                <li><i class="fas fa-plus"></i></li>
+                            </ul>
+                            <ul>
+                                <li><p>SHIPPING</p></li>
+                                <li><i class="fas fa-plus"></i></li>
+                            </ul>
                         </div>
+
                     </div>
 
                 </div>
 
             </section>
             
-            <section class="cart-wishlist">
+            <section class="product-suggest">
                 <h3>You may also like:</h3>
-                <div class="cart-wishlist-container">
+                <div class="product-suggest-container">
                     <div class="icon-container">
                         <span>
-                            <i class="fa fa-arrow-alt-circle-left"></i>
+                            <i class="fas fa-less-than"></i>
                         </span>
                     </div>
     
@@ -194,14 +202,30 @@
     
                     <div class="icon-container">
                         <span>
-                            <i class="fa fa-arrow-alt-circle-right"></i>
+                            <i class="fas fa-greater-than"></i>
                         </span>
                     </div>
                 </div>
             </section>
 
         </main>
+
+        <footer>
+
+            <ul id="footer-left">
+                <li><a href="">TERMS OF USE</a></li>
+                <li><a href="">ABOUT US</a></li>
+                <li><a href="">NEWSLETTER</a></li>
+                <li><a href="">FAQ</a></li>
+            </ul>    
     
+            <ul id="footer-right">
+                <li><p>FOLLOW US</p></li>
+                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+        </footer>
     
     </body>
 </html>

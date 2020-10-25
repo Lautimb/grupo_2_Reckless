@@ -6,10 +6,12 @@
 }
 
 header{
+    position: relative;
     display: flex;
     flex-direction: column;
     color: #222;
     border-bottom: 0.5px solid #ede6e0;
+   
 }
 
 
@@ -229,7 +231,7 @@ a:visited{
     left: 0px;
     font-size: 10px; 
     background-color:rgba(235, 235, 235, 0.95);
-    z-index: 10;
+    z-index: 100;
     border-top: 1px solid white;
     border-radius: 2px;
 } 

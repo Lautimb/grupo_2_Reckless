@@ -6,9 +6,7 @@ function fixedMain(){
     
     let navBar2 = document.querySelector('#nav-bar2')
     let mainCart = document.querySelector('#main-cart')
-   
-    console.log(scrollTop);
-     
+
    
         if( scrollTop > 179 ){
             navBar2.style.position = "fixed";

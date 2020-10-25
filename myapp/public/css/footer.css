@@ -1,7 +1,10 @@
 footer{
+    position: relative;
     display: flex;
     background-color: white;
     height: 125px;
+   
+    
 }
 footer ul{
     font-size: 12px;

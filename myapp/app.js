@@ -45,5 +45,6 @@ app.get('/contact',(req,res) => {
     res.sendFile(__dirname + '/views/contact.html')
 })
 
-
-
+app.get('/product-upload',(req,res) => {
+    res.sendFile(__dirname + '/views/product-upload.html')
+})

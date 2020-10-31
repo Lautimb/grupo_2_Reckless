@@ -9,18 +9,37 @@ h1, .first-main{
 body{
     width: 100%;
     position: relative; 
-    overflow-x: hidden;
+    overflow-x: hidden; 
 }
 
 main{
+    position: relative;;
     background-color: #ede6e034;
-   
-}
-.background img{
-    width: 100%;
-    position: relative;
-   
     
+    
+}
+
+
+.parallax-mirror{
+    position: relative;
+    width: 100%;
+    height: 150vh;
+    overflow: hidden;
+    z-index: -1;
+    
+    
+}
+.paralax-link{
+    margin: 0;
+}
+.parallax{
+    position: absolute;
+    
+    background-image: url('/imgs/fondowebmaxreso.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;   
 }
 
 #new-arrivals{
@@ -32,8 +51,9 @@ main{
     position: relative;
     display: flex;
     justify-content: center;
-    padding: 20px;
-    margin: 20px 0;
+    padding: 30px;
+    
+    
 }
 
 .products{
@@ -99,6 +119,11 @@ main{
 
 /* ----------- RESPONSIVE -----------------*/
 
+@media(max-width:1440px){
+   
+
+}
+
 
 @media(max-width:1024px){
     .product-container{
@@ -106,7 +131,7 @@ main{
         width: 33.3%;
         padding: 0;     
     }
-
+    
 
 }
 
@@ -123,7 +148,7 @@ main{
         font-size: 15px;
     }
 
-    .background img{
+    .parallax img{
         margin-top: 55px;
     }
 
@@ -148,11 +173,20 @@ main{
     }
     .fa-heart{
         bottom: -38px;
-        
-    
     }
-   
+    .parallax-mirror{
+        height: 90vh;
+    }
+    
 }
+
+@media (max-width: 600px){
+    .parallax-mirror{
+        height: 80vh;
+
+    }
+}
+
 
 @media (max-width: 425px){
     .product-container{
@@ -165,5 +199,9 @@ main{
         width: 100%;
     }
 
+    .parallax-mirror{
+        height: 70vh;
+        margin-top: 10%;
+    }
 }
 

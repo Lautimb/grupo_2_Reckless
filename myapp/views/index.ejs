@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 , minimum-scale=1.0">
     <title>Reckless</title>
-    <link rel="stylesheet" href="css/styles.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/home-main.css">
@@ -13,79 +13,23 @@
 </head>
 
 <body>
-        <header>
-            <section id="promotions">
-                <h6>PROMOTIONS</h6>
-            </section>
-            <nav>
-                <ul class="first-main">
-                    <li><h1>RECKLESS</h1></li>
-                    <li>
-                        <div id="btn-main">
-                            <i class="fas fa-bars"></i>
-                        </div>
-                    </li>
-                </ul>
-                <ul id="nav-bar1">
-                    <li class="search"><i class="fas fa-search"></i></li>          
-                    <li id="my-account"><a href="">MY ACCOUNT</a>
-                        <div class="myaccount-prelog">
-                            <div class="prelog-container">
-                                <h3 class="title-prelog">WELCOME</h3>
-                                <form action="/" method="GET">
-                                    <input type="text" placeholder="USERNAME" name="log-in" autocomplete="off">
-                                    <input type="password" placeholder="PASSWORD" name="log-in">
-                                    <button type="submit" class="btn-log-in" name="log-in">LOG IN</button>
-                                    <p>If you have an account with us, log in using your email address and password. </p>
-                                    <a class="forget-pass" href="">Did you forget your password?</a>
-                                    <div class="btn-register">
-                                        <a href="/register">REGISTER NOW</a>
-                                    </div>
-                                </form>
 
-                            </div>    
-                            
-                        </div>
-                    </li>     
-                    <li><a href="/wishlist">WISHLIST</a></li>
-                    <li><a href="/cart"><i class="fas fa-shopping-cart"></i></a></li>
-                    <li>EN | ES</li>
-                </ul>
-                
-                <div class="container-logo">
-                    <a href="/" method="GET"><img class="logo" src="imgs/logoreckless.png"  alt=""></a>
-                </div>  
+        <!-- HEADER -->
+        <%- include('partials/header')%>
 
-                <ul id="nav-bar2">
-                    <li class="nav-bar2-li"><a href="/">HOME</a></li>
-                    <li id="shop" class="nav-bar2-li"><a href="/shop">SHOP</a>
-                        <ul class="sub-shop">
-                            <li class="sub-shop-list"><a href="">NEW ARRIVALS</a></li>
-                            <li class="sub-shop-list"><a href="">TOP</a></li>
-                            <li class="sub-shop-list"><a href="">BOTTOMS</a></li>
-                            <li class="sub-shop-list"><a href="">OUTERWEAR</a></li>
-                            <li class="sub-shop-list"><a href="">DENIM</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-bar2-li"><a href="/lookbook">LOOKBOOK</a></li>
-                    <li class="nav-bar2-li"><a href="/social">SOCIAL</a></li>
-                    <li class="nav-bar2-li"><a href="/contact">CONTACT</a></li>
-                </ul>
-            
-            </nav>
-        </header>
-        
+        <a class="paralax-link" href="/shop">
+            <div class="parallax-mirror">
+                <div class="parallax"></div>   
+            </div>
+        </a>
         <main>
-            <div class="background">
-                <img src="imgs/fondoprueba.webp" alt="">
-            </div>   
-        
+            
             <section id="new-arrivals">
                 <h2>NEW ARRIVALS</h2>
                 <div class="products">
 
                     <article class="product-container">
-                        <a href="product-detail">
+                        <a href="/shop/product-detail">
                             <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="">
                             <div class="product-detail">
                                 <h3>Product name</h3>
@@ -204,24 +148,12 @@
 
         </main>
 
-     
+    <script src="scripts/parallax.js"></script>
+    <script src="scripts/fixed-main.js"></script>
 
-    <footer>
+    <!-- FOOTER -->
 
-        <ul id="footer-left">
-            <li><a href="">TERMS OF USE</a></li>
-            <li><a href="">ABOUT US</a></li>
-            <li><a href="">NEWSLETTER</a></li>
-            <li><a href="">FAQ</a></li>
-        </ul>    
-
-        <ul id="footer-right">
-            <li><p>FOLLOW US</p></li>
-            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-        </ul>
-    </footer>
+    <%- include('partials/footer')%>
 
     
 </body>

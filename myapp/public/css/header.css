@@ -6,13 +6,17 @@
 }
 
 header{
+    position: relative;
     display: flex;
     flex-direction: column;
     color: #222;
     border-bottom: 0.5px solid #ede6e0;
+   
 }
 
-
+.first-main {
+    display:none;
+}
 ul{
     width: 100%;
     display: flex;
@@ -199,7 +203,7 @@ a:visited{
     font-size: 15px;
     
 }
-.nav-bar2-li:hover{
+#nav-bar2 li a:hover{
     opacity: 0.7;
 }
 
@@ -229,7 +233,7 @@ a:visited{
     left: 0px;
     font-size: 10px; 
     background-color:rgba(235, 235, 235, 0.95);
-    z-index: 10;
+    z-index: 100;
     border-top: 1px solid white;
     border-radius: 2px;
 } 
@@ -258,3 +262,47 @@ a:visited{
 }
 
 
+/* ------------ HEADER RESPONSIVE -----------------*/
+
+@media (max-width: 768px) {
+
+    header #nav-bar1,#nav-bar2,.logo{
+        display:none;
+    }
+
+    header #promotions{
+        display:none;
+    }
+    
+
+    header .first-main{
+        
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-left: 0;
+        position: fixed;
+        color: #222;
+        border-bottom: 1px solid #ede6e0;
+        background-color: white;
+        top: 0px;
+        z-index: 100;
+    }
+        
+
+    .btn-main{
+        padding: auto 10px;
+    }
+
+    .fa-bars{
+        padding: 5px 15px;
+        font-size:25px;
+    }
+}
+
+@media (max-width: 425px){
+    .fa-bars{
+        padding: 5px;
+    }    
+   
+}

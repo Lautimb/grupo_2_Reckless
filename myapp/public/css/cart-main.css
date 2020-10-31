@@ -2,8 +2,9 @@
 /* --------------------- MAIN -------------------------*/
 
 main {
-    background-color: #ede6e034;
     
+    background-color: #ede6e034;
+
 }
 
 h1{ 
@@ -17,11 +18,11 @@ h1{
 body{
     width: 100%;
     position: relative; 
-    overflow-x: hidden;
 }
 
 
 .cart{
+    position: relative;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -257,7 +258,7 @@ body{
     bottom: 0px;
     right: 40px;
     font-size: 30px;
-    z-index: 2000;
+    z-index: 10;
 }
 
 .fa-arrow-circle-up{
@@ -266,7 +267,7 @@ body{
     bottom: 0px;
     right: 0px;
     font-size: 30px;
-    z-index: 2000;
+    z-index: 10;
 }
 
 

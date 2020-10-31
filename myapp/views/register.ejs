@@ -11,57 +11,9 @@
     <title>Reckless</title>
 </head>
 <body>
+    <!-- HEADER -->
+    <%- include('partials/header')%>
 
-    <header>
-        <section id="promotions">
-            <h6>PROMOTIONS</h6>
-        </section>
-        <nav>
-           
-            <ul id="nav-bar1">
-                <li class="search"><i class="fas fa-search"></i></li>          
-                <li id="my-account"><a href="">MY ACCOUNT</a>
-                    <div class="myaccount-prelog">
-                        <div class="prelog-container">
-                            <h3 class="title-prelog">WELCOME</h3>
-                            <form action="/" method="GET">
-                                <input type="text" placeholder="USERNAME" name="log-in" autocomplete="off">
-                                <input type="password" placeholder="PASSWORD" name="log-in">
-                                <button type="submit" class="btn-log-in" name="log-in">LOG IN</button>
-                                <p>If you have an account with us, log in using your email address and password. </p>
-                                <a class="forget-pass" href="">Did you forget your password?</a>
-                                <button type="submit" class="btn-register"><a href="/register">REGISTER NOW</a></button>
-                            </form>
-                        </div>                    
-                    </div>
-                </li>     
-                <li><a href="/wishlist">WISHLIST</a></li>
-                <li><a href="/cart"><i class="fas fa-shopping-cart"></i></a></li>
-                <li>EN | ES</li>
-            </ul>
-            
-            <div class="container-logo">
-                <a href="/" method="GET"><img class="logo" src="imgs/logoreckless.png"  alt=""></a>
-            </div>  
-
-            <ul id="nav-bar2">
-                <li class="nav-bar2-li"><a href="/">HOME</a></li>
-                <li id="shop" class="nav-bar2-li"><a href="/shop">SHOP</a>
-                    <ul class="sub-shop">
-                        <li class="sub-shop-list"><a href="">NEW ARRIVALS</a></li>
-                        <li class="sub-shop-list"><a href="">TOP</a></li>
-                        <li class="sub-shop-list"><a href="">BOTTOMS</a></li>
-                        <li class="sub-shop-list"><a href="">OUTERWEAR</a></li>
-                        <li class="sub-shop-list"><a href="">DENIM</a></li>
-                    </ul>
-                </li>
-                <li class="nav-bar2-li"><a href="/lookbook">LOOKBOOK</a></li>
-                <li class="nav-bar2-li"><a href="/social">SOCIAL</a></li>
-                <li class="nav-bar2-li"><a href="/contact">CONTACT</a></li>
-            </ul>
-           
-        </nav>
-    </header>
     <main>
         <div>
             <h1>New registration.</h1>
@@ -71,7 +23,7 @@
             <div class="form-container">
                 <h3>PERSONAL ACCOUNT</h3>
                 <p class="required-files">Required fields</p>
-                <form action="/" method="GET">
+                <form action="/" method="POST">
 
                     <label for="first-name">FIRST NAME*</label>
                     <input type="text" name="first-name" id="first-name">
@@ -255,7 +207,7 @@
             <div class="form-container">
                 <h3>COMMERCIAL ACCOUNT</h3>
                 <p class="required-files">Required fields</p>
-                <form action="/" method="GET">
+                <form action="/">
 
                     <label for="business-name">BUSINESS NAME*</label>
                     <input type="text" name="business-name" id="business-name">
@@ -450,23 +402,10 @@
 
     </main>
 
-    <footer>
-
-        <ul id="footer-left">
-            <li><a href="">TERMS OF USE</a></li>
-            <li><a href="">ABOUT US</a></li>
-            <li><a href="">NEWSLETTER</a></li>
-            <li><a href="">FAQ</a></li>
-        </ul>    
-
-        <ul id="footer-rigth">
-            <li><p>FOLLOW US</p></li>
-            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-        </ul>
-    </footer>
-
+    <script src="scripts/fixed-main.js"></script>
+    
+    <!-- FOOTER-->
+    <%- include('partials/footer')%>
 
 </body>
 </html>

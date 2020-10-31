@@ -136,32 +136,6 @@ h3, .required-files{
 
 
 
-/* --------------------- FOOTER --------------------*/
-
-
-footer{
-    display: flex;
-    background-color: white;
-    height: 125px;
-}
-footer ul{
-    font-size: 12px;
-    padding: 0;
-    margin: 10px;
-    align-items: flex-end;
-}
-
-footer i{
-    font-size: 15px;
-}
-
-#footer-left{
-    justify-content: flex-start;
-}
-
-#footer-rigth{
-    justify-content: flex-end;
-}
 
 
 @media (max-width:1440px){

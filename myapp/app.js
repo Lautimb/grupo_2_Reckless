@@ -1,49 +1,47 @@
+const createError = require('http-errors');
 const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const cartRouter = require('./routes/cart');
+const shopRouter = require('./routes/shop');
+const registerRouter = require('./routes/register');
+
 const app = express();
 
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
-app.use(express.static('public'));
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.listen(3000, () => {
-    console.log('Servidor levantado. http://localhost:3000')
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/cart', cartRouter);
+app.use('/shop', shopRouter);
+app.use('/register', registerRouter);
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
 });
 
-app.get('/', (req,res) => {
-    res.sendFile(__dirname + '/views/index.html')
-})
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
 
-app.get('/product-detail', (req,res) => {
-    res.sendFile(__dirname + '/views/product-detail.html')
-})
-
-app.get('/cart',(req,res) => {
-    res.sendFile(__dirname + '/views/cart.html')
-})
-
-app.get('/shop',(req,res) => {
-    res.sendFile(__dirname + '/views/shop.html')
-})
-
-app.get('/wishlist',(req,res) => {
-    res.sendFile(__dirname + '/views/wishlist.html')
-})
-
-app.get('/register',(req,res) => {
-    res.sendFile(__dirname + '/views/register.html')
-})
-
-app.get('/lookbook',(req,res) => {
-    res.sendFile(__dirname + '/views/lookbook.html')
-})
-
-app.get('/social',(req,res) => {
-    res.sendFile(__dirname + '/views/social.html')
-})
-
-app.get('/contact',(req,res) => {
-    res.sendFile(__dirname + '/views/contact.html')
-})
-
-
-
+module.exports = app;

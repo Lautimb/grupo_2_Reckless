@@ -14,7 +14,9 @@ header{
    
 }
 
-
+.first-main {
+    display:none;
+}
 ul{
     width: 100%;
     display: flex;
@@ -260,3 +262,47 @@ a:visited{
 }
 
 
+/* ------------ HEADER RESPONSIVE -----------------*/
+
+@media (max-width: 768px) {
+
+    header #nav-bar1,#nav-bar2,.logo{
+        display:none;
+    }
+
+    header #promotions{
+        display:none;
+    }
+    
+
+    header .first-main{
+        
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-left: 0;
+        position: fixed;
+        color: #222;
+        border-bottom: 1px solid #ede6e0;
+        background-color: white;
+        top: 0px;
+        z-index: 100;
+    }
+        
+
+    .btn-main{
+        padding: auto 10px;
+    }
+
+    .fa-bars{
+        padding: 5px 15px;
+        font-size:25px;
+    }
+}
+
+@media (max-width: 425px){
+    .fa-bars{
+        padding: 5px;
+    }    
+   
+}

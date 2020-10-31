@@ -12,7 +12,7 @@ header{
     display: flex;
     flex-direction: column;
     color: rgb(0, 0, 0);
-    z-index: 1000;
+    z-index: 100;
     width: 100%;
     
     
@@ -239,14 +239,15 @@ a:visited{
 
 .sub-shop{
     display: none;
-    
+   
     position: absolute;
     width: 150px;
     flex-direction: column;
-    padding: 2px 0px 0px 0px;
-    top: 40px;
+    padding: 1px 0px 0px 0px;
+    top: 38px;
     left: 0px;
     font-size: 10px; 
+    border-top: 1px solid white;
     background-color:rgba(233, 232, 232, 0.89);
 }
 
@@ -278,10 +279,6 @@ a:visited{
     padding: 5px;
     margin: 0px;
 }
-
-
-
-/* ------------ HEADER RESPONSIVE -----------------*/
 
 @media (max-width: 768px) {
 
@@ -325,3 +322,4 @@ a:visited{
     }    
    
 }
+

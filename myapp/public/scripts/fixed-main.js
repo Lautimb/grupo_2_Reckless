@@ -10,7 +10,7 @@ function fixedMain(){
             navBar2.style.position = "fixed";
             navBar2.style.top = "0px";
             navBar2.style.backgroundColor = "white";
-            navBar2.style.zIndex = "10";
+            navBar2.style.zIndex = "100";
             navBar2.style.borderBottom = "0.5px solid #ede6e0";  
             
         } else{

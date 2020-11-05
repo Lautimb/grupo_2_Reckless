@@ -7,7 +7,11 @@ const productsController ={
     },
     wishlist: (req,res) =>{
         res.render('products/wishlist');
+    },
+    upload: (req, res) =>{
+        res.render('products/upload');
     }
+    
 
 }
 

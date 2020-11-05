@@ -9,6 +9,7 @@ const productsController = require('../controllers/productsController')
 router.get('/', productsController.index);
 router.get('/detail', productsController.detail);
 router.get('/wishlist', productsController.wishlist);
+router.get('/upload', productsController.upload);
 
 
 module.exports = router;

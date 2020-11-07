@@ -12,136 +12,135 @@
                     <h1 >ADD NEW PRODUCT</h1>
                 </div>
                 <div class="image-upload-container">
-                    <div>
+                    <div class="title-container">
                         <h3>PRODUCT IMAGES</h3>
                     </div>
-                    <ul>
+                    <ul id="loaded-images-ul">
                         <li>
-                            <span class="material-icons">
+                            <span class="material-icons camera-icon">
                                 add_a_photo
                             </span>
-                            <label for="file">ADD IMAGE</label>
+                            <label for="file">+ ADD IMAGE</label>
                             <input id="file" type="file">
                         </li>
                         <li>
-                            <span class="material-icons">
+                            <span class="material-icons camera-icon">
                                 add_a_photo
                             </span>
-                            <label for="file">ADD IMAGE</label>
+                            <label for="file">+ ADD IMAGE</label>
                             <input id="file" type="file">
                         </li>
                         <li>
-                            <span class="material-icons">
+                            <span class="material-icons camera-icon">
                                 add_a_photo
                             </span>
-                            <label for="file">ADD IMAGE</label>
+                            <label for="file">+ ADD IMAGE</label>
                             <input id="file" type="file">
                         </li>
                         <li>
-                            <span class="material-icons">
+                            <span class="material-icons camera-icon">
                                 add_a_photo
                             </span>
-                            <label for="file">ADD IMAGE</label>
+                            <label for="file">+ ADD IMAGE</label>
                             <input id="file" type="file">
                         </li>
                         <li>
-                            <span class="material-icons">
+                            <span class="material-icons camera-icon">
                                 add_a_photo
                             </span>
-                            <label for="file">ADD IMAGE</label>
+                            <label for="file">+ ADD IMAGE</label>
                             <input id="file" type="file">
                         </li>
                         <li>
-                            <span class="material-icons">
+                            <span class="material-icons camera-icon">
                                 add_a_photo
                             </span>
-                            <label for="file">ADD IMAGE</label>
+                            <label for="file">+ ADD IMAGE</label>
                             <input id="file" type="file">
                         </li>
                     </ul>
 
                 </div>
-                <div class="product-name-container">
-                    <div>
+                <div class="product-data-container">
+                    <div class="title-container">
                         <h3>PRODUCT NAME</h3>
                     </div>
-                    <div>
+                    <div class="product-data">
                         <label for="product-name"></label>
 
                         <input type="text">
                     </div>
-                    <div>
+                    <div class="title-container">
                         <h3>PRODUCT DESCRIPTION</h3>
                     </div>
-                    <div>
+                    <div class="product-data">
                         <label for="product-description"></label>
 
                         <textarea name="product-description" id="" cols="30" rows="10"></textarea>
                     </div>
                 </div>
                 <div class="manage-inventory-container">
-                    <div>
+                    <div class="title-container">
                         <h3>MANAGE INVENTORY</h3>
                     </div>
-                    <div>
-                        <form action="manage">
-                            <ul>
-                                <li>
-                                    <p>SIZE</p>
-                                    <select name="size" id="size">
-                                        <option value="" disabled selected>-</option>
-                                        <option value="s">S</option>
-                                        <option value="m">M</option>
-                                        <option value="l">L</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <p>PRODUCT TYPE</p>
-                                    <select name="type" id="type">
-                                        <option value="" disabled selected>-</option>
-                                        <option value="top">TOP</option>
-                                        <option value="bottom">BOTTOMS</option>
-                                        <option value="outerwear">OUTERWEAR</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <p>COLORS & QTY</p>
-                                    <ul>
-                                        <li>
-                                            <input type="radio" name="add-color">
-                                            <input type="number" name="qty">
-                                        </li>
-                                        <li>
-                                            <input type="radio" name="add-color">
-                                            <input type="number" name="qty">
-                                        </li>
-                                        <li>
-                                            <input type="radio" name="add-color">
-                                            <input type="number" name="qty">
-                                        </li>
-                                    </ul>
-                                </li>
+                    <div class="manage-form-container">
+                        
+                        <ul id="ul-upload-data">
+                            <li>
+                                <p>SIZE</p>
+                                <select name="size" id="size">
+                                    <option value="" disabled selected>-</option>
+                                    <option value="s">S</option>
+                                    <option value="m">M</option>
+                                    <option value="l">L</option>
+                                </select>
+                            </li>
+                            <li>
+                                <p>PRODUCT TYPE</p>
+                                <select name="type" id="type">
+                                    <option value="" disabled selected>-</option>
+                                    <option value="top">TOP</option>
+                                    <option value="bottom">BOTTOMS</option>
+                                    <option value="outerwear">OUTERWEAR</option>
+                                </select>
+                            </li>
+                            <li>
+                                <p>COLORS & QTY</p>
+                                <ul>
+                                    <li>
+                                        <input type="radio" name="add-color">
+                                        <input type="number" name="qty">
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="add-color">
+                                        <input type="number" name="qty">
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="add-color">
+                                        <input type="number" name="qty">
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul id="submit-clear-btns">
+                            <li><button type="submit">Save</button></li>
+                            <li>
+                                <button type="reset">
+                                    <span class="material-icons">
+                                    clear
+                                    </span>
+                                </button>
+                            </li>
+                        </ul>
 
-                            </ul>
-                            <ul>
-                                <li><button type="submit">Save</button></li>
-                                <li>
-                                    <button type="reset">
-                                        <span class="material-icons">
-                                        clear
-                                        </span>
-                                    </button>
-                                </li>
-                            </ul>
-
-                        </form>
-                        <div>
+                        
+                        <div class="add-more-container">
                             <label for="add-more">
                                 <button type="button">
                                     <span class="material-icons">
                                     add_circle_outline
                                     </span>
-                                    ADD MORE
+                                    + ADD MORE
                                 </button>
                             </label>
                         </div>

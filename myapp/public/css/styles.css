@@ -12,11 +12,10 @@
 
 /*--------------------- GENERAL STYLE ---------------------*/
 *{
-    padding: 0px;
     margin: 0px;
     box-sizing: border-box;
     font-family: var(--base-font-family);
-    border-radius: 2px;
+   
 }
 
 .first-main{
@@ -31,11 +30,19 @@ body{
 
 h1{
     font-size: 20px;
+}
+
+h1,h2,h3,h4,h5,h6{
     font-weight: normal;
 }
 
+
 .h1-left{ 
     padding: 20px 0px 50px 6%;
+}
+
+.h1-center{
+    align-self: center;
 }
 
 main{
@@ -43,7 +50,9 @@ main{
     background-color: var(--background);
 }
 
+
 li{
+    padding: 0px;
     list-style: none;
 }
 
@@ -61,8 +70,9 @@ header{
     position: relative;
     display: flex;
     flex-direction: column;
-    color: #222;
-    border-bottom: 0.5px solid #ede6e0;
+    color: var(--black);
+    
+    
 }
 
 header ul{
@@ -79,7 +89,7 @@ header a{
 }
 
 #promotions{
-    color: #EE3EC9;
+    color: var(--magenta);
     background-color: rgb(0, 0, 0);
     display: flex;
     justify-content: center;
@@ -129,7 +139,7 @@ header a{
     flex-direction: column;
     padding: 20px;
     margin-top: 5px;
-    border: 1px solid black;
+    border: 1px solid var(--black);
     background-color: rgba(255, 255, 255, 0.897);
     z-index: 15; 
 }
@@ -153,7 +163,7 @@ header a{
 
 .prelog-container input:focus{
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.562);
-    border: 1px solid #EE3EC9; 
+    border: 1px solid var(--magenta); 
     outline: 0;
 }
 
@@ -168,7 +178,7 @@ header a{
 
 .btn-log-in{
     color: white;
-    background-color: black;
+    background-color: var(--black);
     width: 80%;
     padding: 7px;
     border-radius: 2px;
@@ -184,7 +194,7 @@ header a{
     margin-top: 10px;
     padding: 7px;
     border-radius: 2px;
-    background-color: black;
+    background-color: var(--black);
     width: 80%;
     text-align: center;
 }
@@ -202,11 +212,11 @@ header a{
     width: 100%;
     padding: 12px;
     margin: 10px 2px ;
-    border: 1px solid  #222;
-    background-color: #222;
+    border: 1px solid  var(--black);
+    background-color: var(--black);
 }
 .container-checkout button:hover{
-    border-color: #EE3EC9;
+    border-color: var(--magenta);
     background-color: rgba(33, 33, 33, 0.705);
     cursor: pointer;
 }
@@ -214,7 +224,6 @@ header a{
 .container-logo{
     display: flex;
     justify-content: center;
-    
 }
 
 .logo{
@@ -222,6 +231,7 @@ header a{
 }
 
 #nav-bar2{
+    
     justify-content: center;
 }
 
@@ -229,7 +239,7 @@ header a{
     margin: 10px 40px;
     font-size: 15px;
     
-}
+} 
 
 #nav-bar2 li a:hover{
     opacity: 0.7;
@@ -303,7 +313,7 @@ header a{
         justify-content: space-between;
         padding-left: 0;
         position: fixed;
-        color: #222;
+        color: var(--black);
         border-bottom: 1px solid #ede6e0;
         background-color: white;
         top: 0px;
@@ -387,7 +397,7 @@ header a{
     .product-container img{
         position: relative;
         width: 100%;
-        border: 1px solid #ede6e034;
+        border: 1px solid var(--light-gray);
     }
 
     .product-detail{
@@ -417,10 +427,6 @@ header a{
     height: 150vh;
     overflow: hidden;
     z-index: -1; 
-}
-
-.paralax-link{
-    margin: 0;
 }
 
 .parallax{
@@ -514,11 +520,13 @@ header a{
 }
 
 .item-titles{
+    display: flex;
     width: 50%;
     justify-content: space-between;
 }
 
 .item-titles li{
+    padding: 10px;
     width: 30%;    
 }
 
@@ -528,10 +536,13 @@ header a{
 
 .list-item2 ul{
     width: 100%;
+    display: flex;
+    
     justify-content: space-between;
 }
 
 .list-item2 ul li{
+    padding: 10px;
     width: 30%;
 }
 
@@ -675,7 +686,7 @@ header a{
     width: 80px;
     margin-bottom: 10px;
     padding: 7px;
-    border: 1px solid black;
+    border: 1px solid var(--black);
 }
 
 .input-style:focus{
@@ -686,7 +697,7 @@ header a{
 
 .fa-arrow-circle-down {
     position: absolute;
-    color: black;
+    color: var(--black);
     bottom: 0px;
     right: 40px;
     font-size: 30px;
@@ -695,7 +706,7 @@ header a{
 
 .fa-arrow-circle-up{
     position: absolute;
-    color: black;
+    color: var(--black);
     bottom: 0px;
     right: 0px;
     font-size: 30px;
@@ -789,12 +800,9 @@ header a{
 
 /* ----CONTACT MAIN----- */
 
-main{
-    background-color: #ede6e034;
-}
-h3{
+.contact-info h3{
     font-weight: normal;
-    color: #222;
+    color: var(--black);
 }
 .contact-container{
     display: flex;
@@ -808,19 +816,12 @@ h3{
     width: 600px;
     padding: 20px;
     margin-bottom: 50px;
-    border-bottom: 1px solid #ede6e034;
+    border-bottom: 1px solid var(--background);
  
 }
 
-.contact-info{
-
-}
 
 /* ----------------- PRODUCT DETAIL MAIN --------------------*/
-
-main {
-    background-color: #ede6e034;
-}
 
 #product-detail {
     display: flex;
@@ -868,11 +869,6 @@ main {
     justify-content: space-between;
     padding-left: 0px;
 }
-
-.product-detail__name-heart h1{
-    font-size: 20px;
-}
-
 .product-detail__name-heart i{
     font-size: 20px;
 }
@@ -923,24 +919,26 @@ main {
     color: var(--magenta);
 } */
 
-select {
+/* ---------------- CORREGIR -----------*/
+
+.product-detail__select{
     width: 50%;
     border-radius: 2px;
     margin-bottom: 10px;
     padding: 7px;
-    border: 1px solid black;
+    border: 1px solid var(--black);
 }
 
-button {
+.add-to-cart {
     color: white;
     width: 100%;
     padding: 12px;
     margin: 10px 2px ;
-    border: 1px solid  #222;
-    background-color: #222;
+    border: 1px solid  var(--black);
+    background-color: var(--black);
 }
 
-button:hover{
+.add-to-cart:hover{
     border-color: var(--magenta);
     background-color: rgba(33, 33, 33, 0.705);
     cursor: pointer;
@@ -954,7 +952,7 @@ button:hover{
     padding: 5% 0px;
     display: flex;
     justify-content: space-between;
-    border-top: 1px solid #222;
+    border-top: 1px solid var(--black);
 }
 
 .product-detail__details ul li {
@@ -962,14 +960,14 @@ button:hover{
 }
 
 .fa-plus {
-    color: #222;
+    color: var(--black);
     padding: 5px 6px;
-    border: 1px solid #222;
+    border: 1px solid var(--black);
     border-radius: 50%;
 }
 
 .product-detail__details {
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid var(--black);
 }
 
 /* ------------------- YOU MAY ALSO LIKE ---------------- */
@@ -991,15 +989,14 @@ button:hover{
 
 .icon-container i{
     font-size: 20px;
-    color: #222;
+    color: var(--black);
     padding: 7px 9px;
-    border: 1px solid #222;
+    border: 1px solid var(--black);
     border-radius: 50%;
 }
 
 .wishlist-img {
     margin: 0px 20px;
- 
 }
  
 .wishlist-img img{
@@ -1026,12 +1023,9 @@ button:hover{
     padding-bottom: 100px;
 }
 
-h1{
-    font-size: 25px;
-    padding: 30px 0px 50px 200px;
-}
 
-/* --------------------- FORMS -------------------------*/
+
+/* --------------------- FORMS REGISTER-------------------------*/
 
 .register__section{
     display: flex;
@@ -1042,9 +1036,7 @@ h1{
 
 
 h3, .required-files{
-
     padding: 5px 0px;  
-
 }
 
 
@@ -1101,7 +1093,7 @@ h3, .required-files{
     width: 100%;
     margin-bottom: 10px;
     padding: 7px;
-    border: 1px solid black;
+    border: 1px solid var(--black);
     margin-top: 10px;
 }
 
@@ -1134,8 +1126,8 @@ h3, .required-files{
     width: 100%;
     padding: 12px;
     margin: 10px 2px ;
-    border: 1px solid  #222;
-    background-color: #222;
+    border: 1px solid  var(--black);
+    background-color: var(--black);
     color: white;
     
 }
@@ -1160,7 +1152,7 @@ h3, .required-files{
 
 
 @media (max-width:1440px){
-    section{
+    .register__section{
         padding: 0px 125px;
     }
 }
@@ -1169,7 +1161,7 @@ h3, .required-files{
     h1{
         padding: 30px 0px 50px 125px;
     }
-    section{
+    .register__section{
         padding: 0px 25px;
     }
 }
@@ -1178,7 +1170,7 @@ h3, .required-files{
     h1{
         padding: 30px 0px 50px 50px;
     }
-    section{
+    .register__section{
         flex-direction: column;
         align-items: center;
         padding: 0px auto;
@@ -1196,13 +1188,13 @@ h3, .required-files{
     h1{
         padding: 30px 0px 50px 25px;
     }
-    section{
+    .register__section{
         padding: 0px 5px;
         flex-direction: column;
         align-items: center;
     }
 
-    section div:nth-child(1){
+    .register__section div:nth-child(1){
         margin-bottom: 50px;
     }
 
@@ -1216,7 +1208,7 @@ h3, .required-files{
 
 
 
-/*-------UPLOAD MAIN---------*/
+/*---------------------------- UPLOAD -----------------------*/
 
 #product-upload__main{
 
@@ -1227,17 +1219,12 @@ h3, .required-files{
     
 
 }
-
-#product-upload__main h1{
-
+#product-upload__form{
     display: flex;
-    flex-direction: row;
-    padding: 10px;
-    margin-top: 30px;
-    position: relative;
-    justify-content: center;
+    flex-direction: column;
+} 
 
-}
+
 
 .product-data-container{
     display: flex;
@@ -1254,6 +1241,7 @@ h3, .required-files{
 
 
 .product-data input, textarea{
+    border: 1px solid var(--black);
     width: 87%;
     align-self: center;
     padding: 5px;
@@ -1261,23 +1249,17 @@ h3, .required-files{
 
 
 .image-upload-container{
-
+    margin-top: 60px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-
 }
 
-
-
 .title-container{
-
     padding: 10px 65px;
-
 }
 
 #loaded-images-ul{
-
     display: flex;
     justify-content: space-evenly;
     margin: 0px;
@@ -1288,20 +1270,15 @@ h3, .required-files{
     flex-direction: column;
     flex-wrap: wrap;
     margin: 0px;
-    border: dashed 1px black;
+    border: dashed 1px var(--light-gray);
     width: 180px;
     height: 180px;  
     justify-content: space-between;
     background-color: white;
-    
-    
 }
 
 #loaded-images-ul label{
-    
     text-align: center;
-    
-
 }
 
 #loaded-images-ul input{
@@ -1309,59 +1286,23 @@ h3, .required-files{
 }
 
 .camera-icon{
-    
     font-size: 65px;
     align-self: center;
-    margin-top: 30px;
-    
-}
-
-
-
-.manage-inventory-container{
-
-
-}
-
-#manage-inventory-title{
-
-
-
+    margin-top: 30px; 
 }
 
 .manage-form-container{
-
     display: flex;
     flex-direction: row;
-    border: solid 1px #222;
-
-
-
-
+    border: solid 1px var(--black);
 }
-
-#ul-upload-data{
-
-
-
-}
-
-#submit-clear-btns{
-
-
-
-
-}
-
 
 .add-more-container{
-
     display: flex;
     flex-direction: column;
     position: relative;
     align-self: center;
     width: 10%;
-
 }
 
 .submit-button-container{
@@ -1370,6 +1311,12 @@ h3, .required-files{
     position: relative;
     align-self: center;
     width: 10%;
-
 }
+
+textarea:focus ,input:focus{
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.562);
+    border: 1px solid var(--magenta); 
+    outline: 0;
+}
+/*---------------------------- UPLOAD END -----------------------*/
 

@@ -4,8 +4,10 @@ function fixedMain(){
     let scrollTop = document.documentElement.scrollTop;
     
     let navBar2 = document.querySelector('#nav-bar2');
-    
-   
+
+        navBar2.style.backgroundColor = "transparent";
+        navBar2.style.borderBottom = "none";
+        
         if(scrollTop > 179){
             navBar2.style.position = "fixed";
             navBar2.style.top = "0px";
@@ -18,7 +20,6 @@ function fixedMain(){
             navBar2.style.borderBottom = "none";
             navBar2.style.position = "relative";
             navBar2.style.top = "auto";
-            navBar2.style.backgroundColor = "transparent";
            
         }
 

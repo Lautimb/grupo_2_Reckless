@@ -7,10 +7,16 @@ footer{
     
 }
 footer ul{
+    width: 100%;
+    display:flex;
     font-size: 12px;
     padding: 0;
     margin: 10px;
     align-items: flex-end;
+}
+
+footer ul li{
+    padding: 10px;
 }
 
 footer i{

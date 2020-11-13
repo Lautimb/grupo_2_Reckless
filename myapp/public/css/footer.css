@@ -33,7 +33,6 @@ footer li:hover{
 
 #footer-right{
     justify-content: flex-end;
-    
 }
 
 @media (max-width:768px){
@@ -45,6 +44,4 @@ footer li:hover{
     #footer-left, #footer-right {
         justify-content: center;
     }
-    
-
 }

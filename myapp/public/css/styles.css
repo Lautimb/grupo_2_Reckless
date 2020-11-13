@@ -340,18 +340,9 @@ a:visited{
 }
 
 .code-checkout input{
-    border-radius: 2px;
     width: 80%;
     margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 7px;
-    border: 1px solid var(--black);
-}
-
-.code-checkout input:focus{
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.562);
-    border: 1px solid var(--magenta); 
-    outline: 0;
+    margin-bottom: 10px; 
 }
 
 .cart-product{
@@ -788,26 +779,10 @@ h3, .required-files{
    
     width: 50%;
 }
-
-
-
-
 .form-container input{
-    border-radius: 3px;
     width: 100%;
-    margin-bottom: 10px;
-    padding: 7px;
-    border: 1px solid var(--black);
     margin-top: 10px;
 }
-
-.form-container input:focus:not([type="checkbox"]){
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.562);
-    border: 1px solid var(--magenta); 
-    outline: 0;
-
-}
-
 .confirm-terms{
     position: relative;
     top: 218px;
@@ -1019,12 +994,6 @@ h3, .required-files{
     width: 10%;
 }
 
-textarea:focus ,input:focus{
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.562);
-    border: 1px solid var(--magenta); 
-    outline: 0;
-}
-
 .manage-inventory-container{
     width: 100%;
     display: flex;
@@ -1056,15 +1025,7 @@ textarea:focus ,input:focus{
 #ul-upload-data li input[type="number"]{
     width: 50px;
 }
-#ul-upload-data li input{
-    border: 1px solid var(--black);
-    margin-right: 5px;
-}
-#ul-upload-data li input:focus{
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.562);
-    border: 1px solid var(--magenta); 
-    outline: 0;
-}
+
 .save-cancel{
     position: absolute;
     bottom: 10px;

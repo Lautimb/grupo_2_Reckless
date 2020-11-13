@@ -120,12 +120,16 @@ a:visited{
     }
 
     .product-detail{
-        
-        bottom: -50px; 
-            
+        bottom: -50px;    
     }
-    .fa-heart{
-        bottom: -38px;
+
+    .product-container a{
+        position: relative;
+    }
+
+    .product-container span{
+        right: 15px;
+        bottom: -20px;
     }
 }
 
@@ -134,7 +138,6 @@ a:visited{
         position: relative;
         width: 100%;
         padding: 0;
-           
     }
 }
 
@@ -962,9 +965,10 @@ h3, .required-files{
 
 #loaded-images-ul{
     width: 100%;
+    padding-left: 0px;
     display: flex;
     flex-wrap: wrap;
-    
+    justify-content: center;
 }
 
 #loaded-images-ul li{

@@ -18,9 +18,6 @@ WEEKLY 31.10.2020
         - Crear html y css (responsive) de: checkout, shop, lookbook y social.
         - Terminar responsive del cart.
 
-    
-
-
 WEEKLY 04.11.2020
 
     ● Qué hicimos en la semana:
@@ -36,3 +33,16 @@ WEEKLY 04.11.2020
         - Crear partials del HEAD.
         - Cambiar íconos por más bonitos.
         - Terminar de dar forma al UPLOAD de products.
+
+WEEKLY 12.11.2020
+    ● Qué hicimos en la semana:
+        -Fusionados los css de cada seccion en uno solo (juan, lauti y samie)
+        - Creados partials del HEAD (samie)
+        - Terminar de dar forma al ejs UPLOAD de producto (juan)
+        - Terminar de pulir el CSS y dar una revisada general (lauti)
+        - Pulir detalles estéticos
+        - Cambiar Logo
+    ● Si se encontró con algún impedimento:
+        - Se habia realizado un CSS por cada seccion.
+    ● Qué se va a hacer proximo:
+        - Unificar los styles para los inputs

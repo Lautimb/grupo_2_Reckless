@@ -5,16 +5,19 @@
     
     <%- include('../partials/header')%>
    
-    <main>
-        <section id="product-upload__main">
-            <form action="/" method="GET">
-                <div class = "title-container">
+    <main id="product-upload__main">
+        <section id="product-upload__section">
+            <form action="/" method="GET" id="product-upload__form">
+
+                <div class="h1-center">
                     <h1 >ADD NEW PRODUCT</h1>
                 </div>
+                
                 <div class="image-upload-container">
                     <div class="title-container">
                         <h3>PRODUCT IMAGES</h3>
                     </div>
+                    
                     <ul id="loaded-images-ul">
                         <li>
                             <span class="material-icons camera-icon">
@@ -79,10 +82,12 @@
                         <textarea name="product-description" id="" cols="30" rows="10"></textarea>
                     </div>
                 </div>
+
                 <div class="manage-inventory-container">
                     <div class="title-container">
                         <h3>MANAGE INVENTORY</h3>
                     </div>
+
                     <div class="manage-form-container">
                         
                         <ul id="ul-upload-data">
@@ -111,41 +116,65 @@
                                         <input type="radio" name="add-color">
                                         <input type="number" name="qty">
                                     </li>
-                                    <li>
-                                        <input type="radio" name="add-color">
-                                        <input type="number" name="qty">
-                                    </li>
+                                </ul>
+                            </li>
+                            <li class="save-cancel">
+                                <a href="#" class="save-product">Save</a>
+                                <span class="material-icons cancel-product">
+                                    clear
+                                </span>
+                            </li>
+                        </ul>
+                        <ul id="ul-upload-data">
+                            <li>
+                                <p>SIZE</p>
+                                <select name="size" id="size">
+                                    <option value="" disabled selected>-</option>
+                                    <option value="s">S</option>
+                                    <option value="m">M</option>
+                                    <option value="l">L</option>
+                                </select>
+                            </li>
+                            <li>
+                                <p>PRODUCT TYPE</p>
+                                <select name="type" id="type">
+                                    <option value="" disabled selected>-</option>
+                                    <option value="top">TOP</option>
+                                    <option value="bottom">BOTTOMS</option>
+                                    <option value="outerwear">OUTERWEAR</option>
+                                </select>
+                            </li>
+                            <li>
+                                <p>COLORS & QTY</p>
+                                <ul>
                                     <li>
                                         <input type="radio" name="add-color">
                                         <input type="number" name="qty">
                                     </li>
                                 </ul>
                             </li>
-                        </ul>
-                        <ul id="submit-clear-btns">
-                            <li><button type="submit">Save</button></li>
-                            <li>
-                                <button type="reset">
-                                    <span class="material-icons">
+                            <li class="save-cancel">
+                                <a href="#" class="save-product">Save</a>
+                                <span class="material-icons cancel-product">
                                     clear
-                                    </span>
-                                </button>
+                                </span>
                             </li>
                         </ul>
-
-                        
+                     
                         <div class="add-more-container">
-                            <label for="add-more">
-                                <button type="button">
-                                    <span class="material-icons">
-                                    add_circle_outline
+                            
+                            <button type="button">
+                                <div>
+                                    <span class="material-icons add-more">
+                                        add_circle_outline
                                     </span>
-                                    + ADD MORE
-                                </button>
-                            </label>
+                                <p>ADD MORE</p>
+                                </div>
+                            </button>
+                           
                         </div>
-                    </div>
 
+                    </div>
                 </div>
                 
                 <div class="submit-button-container">

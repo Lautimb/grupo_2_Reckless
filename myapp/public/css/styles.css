@@ -17,23 +17,50 @@ body{
 }
 
 h1{
-    font-size: 20px;
+    font-size: 25px;
+    padding: 20px;
 }
+
+h3{
+    font-size: 15px;
+}
+
 
 h1,h2,h3,h4,h5,h6{
     font-weight: normal;
 }
 
 .h1-left{ 
-    padding: 20px 0px 50px 6%;
+    align-self: flex-start;
+    
+    
 }
 
 .h1-center{
     align-self: center;
+    
+}
+
+
+.input-style{
+    border-radius: 2px;
+    width: 80px;
+    margin-bottom: 10px;
+    padding: 7px;
+    border: 1px solid var(--black);
+}
+
+.input-style:focus{
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.562);
+    border: 1px solid var(--magenta); 
+    outline: 0;
 }
 
 main{
     position: relative;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
     background-color: var(--background);
 }
 
@@ -145,7 +172,7 @@ a:visited{
     width: 100%;
     height: 130vh;
     overflow: hidden;
-    z-index: -1; 
+    z-index: 1; 
 }
 
 .parallax{
@@ -164,14 +191,11 @@ a:visited{
 #new-arrivals{
     position: relative;
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-#new-arrivals h2{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    padding: 30px;
-}
+
 
 /* ----------- RESPONSIVE - INDEX - PARALLAX ----------------*/
 @media (max-width: 1024px){
@@ -204,7 +228,7 @@ a:visited{
 @media (max-width: 425px){
     .parallax-mirror{
         height: 50vh;
-        margin-top: 10%;
+        
     }
 }
 
@@ -214,18 +238,20 @@ a:visited{
     position: relative;
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     padding: 0px 10%;
 }
-
 .cart-container{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.cart-article{
     position: relative;
     width: 65%;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .cart-items{
@@ -259,8 +285,7 @@ a:visited{
 
 .list-item2 ul{
     width: 100%;
-    display: flex;
-    
+    display: flex; 
     justify-content: space-between;
 }
 
@@ -271,9 +296,9 @@ a:visited{
 
 .order-summary{
     position: relative;
-    flex-grow: 1;
-    top: -40px;
-    margin-left: 20px;
+    top: -20px;
+    width: 35%;
+    padding-left: 10px;
 }
 
 .order-summary h3{
@@ -286,6 +311,7 @@ a:visited{
     margin-right: 2px;
     text-decoration: underline;
     cursor: pointer;
+    font-size: 12px;
 }
 
 .container-checkout{
@@ -395,19 +421,7 @@ a:visited{
     width: 33%;
 }
 
-.input-style{
-    border-radius: 2px;
-    width: 80px;
-    margin-bottom: 10px;
-    padding: 7px;
-    border: 1px solid var(--black);
-}
 
-.input-style:focus{
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.562);
-    border: 1px solid var(--magenta); 
-    outline: 0;
-}
 
 .action-container {
     position: absolute;
@@ -452,16 +466,13 @@ a:visited{
 
 @media (max-width: 1300px){
 
-    .h1-left{
-        padding: 40px 0px 50px 125px;
-    }
 
     .cart{
         flex-direction: column;
         padding: 0px 10%;
     }
 
-    .cart-container{
+    .cart-article{
         width: 100%;
         justify-content: center;
         
@@ -827,10 +838,6 @@ h3, .required-files{
     position: relative;
 }
 
-
-
-
-
 @media (max-width:1440px){
     .register__section{
         padding: 0px 125px;
@@ -845,7 +852,9 @@ h3, .required-files{
 }
 
 @media (max-width:768px){
-   
+    main{
+        margin-top: 55px;
+    }
     .register__section{
         flex-direction: column;
         align-items: center;
@@ -875,9 +884,7 @@ h3, .required-files{
     .form-container{
         width:90%
     }
-
-   
-    
+  
 }
 
 
@@ -904,8 +911,6 @@ h3, .required-files{
     flex-direction: column;
 } 
 
-
-
 .product-data-container{
     display: flex;
     flex-direction: column;
@@ -917,8 +922,6 @@ h3, .required-files{
     display: flex;
     justify-content: center ;
 }
-
-
 
 .product-data input, textarea{
     border: 1px solid var(--black);

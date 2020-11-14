@@ -4,13 +4,11 @@
     margin: 0px;
     box-sizing: border-box;
     font-family: var(--base-font-family);
-   
 }
 
 .first-main{
-    display:none;
+    display: none;
 }
-
 
 body{
     width: 100%;
@@ -25,7 +23,6 @@ h1{
 h1,h2,h3,h4,h5,h6{
     font-weight: normal;
 }
-
 
 .h1-left{ 
     padding: 20px 0px 50px 6%;
@@ -554,14 +551,18 @@ a:visited{
 }
 
 .product-detail-title {
+    display: flex;
+    flex-direction: column;
     flex-grow: 0.5;
     display: flex;
     flex-wrap: wrap;
 }
 
 .product-detail-title ul{
+    display: flex;
     justify-content: space-between;
     padding-left: 0px;
+    padding-bottom: 10%;
 }
 .product-detail__name-heart i{
     font-size: 20px;

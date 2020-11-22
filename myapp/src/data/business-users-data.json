@@ -1,0 +1,26 @@
+[
+ {
+  "id": 0
+ },
+ {
+  "id": 1,
+  "businessName": "Reckless",
+  "managerName": "Samie",
+  "managerLastName": "Lee",
+  "managerPhone": "2615478569",
+  "website": "reckles.com.ar",
+  "businessId": "0025485",
+  "businessEmail": "samielee@gmail.com",
+  "businessAccountPassword": "$2a$10$qENkygVmRRmkzif1fM6Yx.z2LMlyB6RyK2KQpGK9zioKOC5HiwfFy",
+  "tradingSince": [
+   "09",
+   "18",
+   "2005"
+  ],
+  "businessAddress": "algunlugar 458",
+  "businessCity": "Buenos Aires",
+  "businessCountry": "Argentina",
+  "businessPostalZipCode": "4585",
+  "businessPhone": "45856932"
+ }
+]

@@ -1,0 +1,23 @@
+[
+ {
+  "id": 0
+ },
+ {
+  "id": 1,
+  "firstName": "Juan",
+  "lastName": "Pravata",
+  "personalId": "37125048",
+  "email": "pravata.juan@gmail.com",
+  "password": "$2a$10$vs6Cs1hsPPLi0VgkM2nEy.GYJA6k.8E1hVDK/7TeiUJ9npVAN1/42",
+  "birthday": [
+   "09",
+   "30",
+   "1992"
+  ],
+  "address": "maipu 113",
+  "city": "Mendoza",
+  "country": "Argentina",
+  "postalZipCode": "5500",
+  "phone": "2612178694"
+ }
+]

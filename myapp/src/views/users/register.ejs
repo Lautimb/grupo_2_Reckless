@@ -16,56 +16,56 @@
             <div class="form-container">
                 <h3>PERSONAL ACCOUNT</h3>
                 <p class="required-files">Required fields</p>
-                <form action="/" method="POST">
+                <form action="/users/register" method="POST">
 
-                    <label for="first-name">FIRST NAME*</label>
-                    <input type="text" class="input-style" name="first-name" id="first-name">
+                    <label for="firstName">FIRST NAME*</label>
+                    <input type="text" class="input-style" name="firstName" id="firstName">
 
-                    <label for="last-name">LAST NAME*</label>
-                    <input type="text" class="input-style" name="last-name" id="last-name">
+                    <label for="lastName">LAST NAME*</label>
+                    <input type="text" class="input-style" name="lastName" id="lastName">
 
-                    <label for="personal-id">PERSONAL ID NUMBER*</label>
-                    <input type="number" class="input-style" name="personal-id" id="personal-id">
+                    <label for="personalId">PERSONAL ID NUMBER*</label>
+                    <input type="number" class="input-style" name="personalId" id="personalId">
 
-                    <label for="e-mail">E-MAIL ADRESS*</label>
-                    <input type="email" class="input-style" name="e-mail" id="e-mail">
+                    <label for="email">E-MAIL ADDRESS*</label>
+                    <input type="email" class="input-style" name="email" id="email">
 
                     <label for="password">PASSWORD*</label>
                     <input type="password" class="input-style" name="password" id="password">
 
-                    <label for="password-confirm">CONFIRM PASSWORD*</label>
-                    <input type="password" class="input-style" name="password-confirm" id="password-confirm">
+                    <label for="passwordCheck">CONFIRM PASSWORD*</label>
+                    <input type="password" class="input-style" name="passwordCheck" id="passwordCheck">
 
                     <label for="birthday">BIRTHDAY*</label>
 
                         <div class="birthday-container">
                             <select name="month" class="input-style" id="date-mm">
                                 <option value="" disabled selected>MM</option>
-                                <option value="jan">January</option>
-                                <option value="feb">February</option>
-                                <option value="mar">March</option>
-                                <option value="apr">April</option>
-                                <option value="may">May</option>
-                                <option value="jun">June</option>
-                                <option value="jul">July</option>
-                                <option value="aug">August</option>
-                                <option value="sep">September</option>
-                                <option value="oct">October</option>
-                                <option value="nov">November</option>
-                                <option value="dic">December</option>
+                                <option value="01">January</option>
+                                <option value="02">February</option>
+                                <option value="03">March</option>
+                                <option value="04">April</option>
+                                <option value="05">May</option>
+                                <option value="06">June</option>
+                                <option value="07">July</option>
+                                <option value="08">August</option>
+                                <option value="09">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
                             </select>
 
                             <select name="day" class="input-style" id="date-dd">
                                 <option value="" disabled selected>DD</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
+                                <option value="01">1</option>
+                                <option value="02">2</option>
+                                <option value="03">3</option>
+                                <option value="04">4</option>
+                                <option value="05">5</option>
+                                <option value="06">6</option>
+                                <option value="07">7</option>
+                                <option value="08">8</option>
+                                <option value="09">9</option>
                                 <option value="10">10</option>
                                 <option value="11">11</option>
                                 <option value="12">12</option>
@@ -167,7 +167,7 @@
                         </div>
 
                     <label for="address">ADDRESS*</label>
-                    <input type="address" class="input-style" name="address" id="address">
+                    <input type="text" class="input-style" name="address" id="address">
 
                     <div class="country-city">
                         <div>
@@ -181,8 +181,8 @@
                         </div>
 
                     </div>
-                    <label for="postal-zip-code">POSTAL/ZIP CODE</label>
-                    <input type="text" class="input-style" name="postal-zip-code" id="postal-zip-code">
+                    <label for="postalZipCode">POSTAL/ZIP CODE</label>
+                    <input type="text" class="input-style" name="postalZipCode" id="postalZipCode">
 
                     <label for="phone">PHONE NUMBER*</label>
                     <input type="number" class="input-style" name="phone" id="phone">
@@ -200,68 +200,68 @@
             <div class="form-container">
                 <h3>COMMERCIAL ACCOUNT</h3>
                 <p class="required-files">Required fields</p>
-                <form action="/">
+                <form action="/users/register-business" method="POST">
 
-                    <label for="business-name">BUSINESS NAME*</label>
-                    <input type="text" class="input-style" name="business-name" id="business-name">
+                    <label for="businessName">BUSINESS NAME*</label>
+                    <input type="text" class="input-style" name="businessName" id="businessName">
 
-                    <label for="manager-name">MANAGER NAME*</label>
-                    <input type="text" class="input-style" name="manager-name" id="manager-name">
+                    <label for="managerName">MANAGER NAME*</label>
+                    <input type="text" class="input-style" name="managerName" id="managerName">
 
-                    <label for="manager-last-name">MANAGER LAST NAME*</label>
-                    <input type="text" class="input-style" name="manager-last-name" id="manager-last-name">
+                    <label for="managerLastName">MANAGER LAST NAME*</label>
+                    <input type="text" class="input-style" name="managerLastName" id="managerLastName">
 
-                    <label for="manager-phone">MANAGER PHONE NUMBER*</label>
-                    <input type="number" class="input-style" name="manager-phone" id="manager-phone">
+                    <label for="managerPhone">MANAGER PHONE NUMBER*</label>
+                    <input type="number" class="input-style" name="managerPhone" id="managerPhone">
 
                     <label for="website">WEBSITE*</label>
                     <input type="text" class="input-style" name="website" id="website">
 
-                    <label for="business-id">BUSINESS ID NUMBER*</label>
-                    <input type="number" class="input-style" name="bussines-id" id="business-id">
+                    <label for="businessId">BUSINESS ID NUMBER*</label>
+                    <input type="number" class="input-style" name="businessId" id="businessId">
 
-                    <label for="business-e-mail">E-MAIL ADRESS*</label>
-                    <input type="email" class="input-style" name="business-e-mail" id="business-e-mail">
+                    <label for="businessEmail">E-MAIL ADRESS*</label>
+                    <input type="email" class="input-style" name="businessEmail" id="businessEmail">
 
-                    <label for="busines-acount-password">PASSWORD*</label>
-                    <input type="password" class="input-style" name="busines-acount-password" id="busines-acount-password">
+                    <label for="businessAccountPassword">PASSWORD*</label>
+                    <input type="password" class="input-style" name="businessAccountPassword" id="businessAccountPassword">
 
-                    <label for="password-confirm">CONFIRM PASSWORD*</label>
-                    <input type="password" class="input-style" name="busines-acount-password-confirm" id="busines-acount-password-confirm">
+                    <label for="businessAccountPasswordConfirm">CONFIRM PASSWORD*</label>
+                    <input type="password" class="input-style" name="businessAccountPasswordConfirm" id="businessAccountPasswordConfirm">
 
-                    <label for="trading-since">TRADING SINCE*</label>
+                    <label for="tradingSince">TRADING SINCE*</label>
 
                     <div class="birthday-container">
 
-                        <select name="month" id="date-mm" class="input-style">
+                        <select name="month" id="business-date-mm" class="input-style">
 
                             <option value="" disabled selected>MM</option>
-                            <option value="jan">January</option>
-                            <option value="feb">February</option>
-                            <option value="mar">March</option>
-                            <option value="apr">April</option>
-                            <option value="may">May</option>
-                            <option value="jun">June</option>
-                            <option value="jul">July</option>
-                            <option value="aug">August</option>
-                            <option value="sep">September</option>
-                            <option value="oct">October</option>
-                            <option value="nov">November</option>
-                            <option value="dic">December</option>
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
 
                         </select>
 
-                        <select name="day" id="date-dd" class="input-style">
+                        <select name="day" id="business-date-dd" class="input-style">
                             <option value="" disabled selected>DD</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
+                            <option value="01">1</option>
+                            <option value="02">2</option>
+                            <option value="03">3</option>
+                            <option value="04">4</option>
+                            <option value="05">5</option>
+                            <option value="06">6</option>
+                            <option value="07">7</option>
+                            <option value="08">8</option>
+                            <option value="09">9</option>
                             <option value="10">10</option>
                             <option value="11">11</option>
                             <option value="12">12</option>
@@ -287,7 +287,7 @@
 
                         </select>
 
-                        <select name="year" id="date-yyyy" class="input-style">
+                        <select name="year" id="business-date-yyyy" class="input-style">
                             <option value="" disabled selected="">YYYY</option>
                             <option value="2020">2020</option>
                             <option value="2019">2019</option>
@@ -364,23 +364,23 @@
 
                     </div>
 
-                    <label for="address">ADDRESS*</label>
-                    <input type="address" class="input-style" name="business-address" id="business-address">
+                    <label for="businessAddress">ADDRESS*</label>
+                    <input type="text" class="input-style" name="businessAddress" id="businessAddress">
                     <div class="country-city">
                         <div>
-                            <label for="city">CITY*</label>
-                            <input type="text" class="input-style" name="business-city" id="business-city">
+                            <label for="businessCity">CITY*</label>
+                            <input type="text" class="input-style" name="businessCity" id="businessCity">
                         </div>
                         <div>
-                            <label for="country">COUNTRY</label>
-                            <input type="text" class="input-style" name="business-country" id="business-country">
+                            <label for="businessCountry">COUNTRY</label>
+                            <input type="text" class="input-style" name="businessCountry" id="businessCountry">
                         </div>
                     </div>
-                    <label for="postal-zip-code">POSTAL/ZIP CODE</label>
-                    <input type="text" class="input-style" name="business-postal-zip-code" id="business-postal-zip-code">
+                    <label for="businessPostalZipCode">POSTAL/ZIP CODE</label>
+                    <input type="text" class="input-style" name="businessPostalZipCode" id="businessPostalZipCode">
 
-                    <label for="phone">PHONE NUMBER*</label>
-                    <input type="number" class="input-style" name="business-phone" id="business-phone">
+                    <label for="businessPhone">PHONE NUMBER*</label>
+                    <input type="number" class="input-style" name="businessPhone" id="businessPhone">
                     
                     <div>
                         <input type="checkbox" name="newsletters" value="agree">

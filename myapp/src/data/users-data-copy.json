@@ -22,20 +22,38 @@
  },
  {
   "id": 2,
-  "firstName": "asdf",
-  "lastName": "asdf",
-  "personalId": "11123",
+  "firstName": "hola",
+  "lastName": "hola",
+  "personalId": "123",
   "email": "samie@gmail.com",
-  "password": "$2a$10$9YJoOYboOfc7lSxCu0q3Eufm7nLZ7wSC0RS4ltfvqaTgSf8kfHcDK",
+  "password": "$2a$10$JB2tkzQFSTLm9OIuLaL4CecT.72272Sm5OhCSKkGitP8MbqPvddXq",
+  "birthday": [
+   "11",
+   "28",
+   "1986"
+  ],
+  "address": "asdf",
+  "city": "asdf",
+  "country": "asdf",
+  "postalZipCode": "1407",
+  "phone": "123"
+ },
+ {
+  "id": 3,
+  "firstName": "chau",
+  "lastName": "chau",
+  "personalId": "123",
+  "email": "samie@gmail.com",
+  "password": "$2a$10$A2tC0kfeBnsnIzDwsvvBw.QG9/08p5ZqmOK9Fizh5pSb6.fx81qcO",
   "birthday": [
    "01",
-   "03",
-   "2019"
+   "02",
+   "2020"
   ],
   "address": "asdf",
   "city": "asdf",
   "country": "asdf",
   "postalZipCode": "asdf",
-  "phone": "223"
+  "phone": ""
  }
 ]

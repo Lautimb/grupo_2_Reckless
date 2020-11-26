@@ -1,4 +1,5 @@
-const productsHelper = require('../helpers/products-helper');
+
+const dataBaseHelper = require('../helpers/data-base-helper')
 const productsController ={
     index: (req,res) =>{
         res.render('products');
@@ -13,16 +14,17 @@ const productsController ={
         }
         
         const newProduct = {
-            id: productsHelper.generateId(),
+            id: dataBaseHelper.generateId('products-data.json'),
             images: images,
             name: req.body.name,
             description: req.body.productDescription,
             size: req.body.size,
             type: req.body.type
         }
-        const allProducts = productsHelper.getAllProducts();
+        
+        const allProducts = dataBaseHelper.getAllDataBase('products-data.json');
         const productsToSave = [...allProducts, newProduct];
-        productsHelper.writeProductsData(productsToSave);
+        dataBaseHelper.writeNewDataBase(productsToSave,'products-data.json');
 
         res.redirect('/products/create');
     },

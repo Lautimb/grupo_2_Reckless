@@ -11,7 +11,7 @@ const usersController = {
     createUser: (req, res) =>{
         const passwordHashed = bcrypt.hashSync(req.body.password, 10); 
         const newUser = {
-            id: dataBaseHelper.generateId('users-data-copy.json'),
+            id: dataBaseHelper.generateId('users-data.json'),
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             personalId: req.body.personalId,
@@ -24,9 +24,9 @@ const usersController = {
             postalZipCode: req.body.postalZipCode,
             phone: req.body.phone
         }
-        const allUsers = dataBaseHelper.getAllDataBase('users-data-copy.json');
+        const allUsers = dataBaseHelper.getAllDataBase('users-data.json');
         const usersToSave = [...allUsers, newUser]
-        dataBaseHelper.writeNewDataBase(usersToSave, 'users-data-copy.json');
+        dataBaseHelper.writeNewDataBase(usersToSave, 'users-data.json');
 
         res.redirect('/users/register')
     },
@@ -34,7 +34,7 @@ const usersController = {
     createBusinessUser: (req, res) => {
         const passwordHashed = bcrypt.hashSync(req.body.businessAccountPassword, 10); 
         const newBUser = {
-            id: dataBaseHelper.generateId('business-users-data-copy.json'),
+            id: dataBaseHelper.generateId('business-users-data.json'),
             businessName: req.body.businessName,
             managerName: req.body.managerName,
             managerLastName: req.body.managerLastName,
@@ -50,9 +50,9 @@ const usersController = {
             businessPostalZipCode: req.body.businessPostalZipCode,
             businessPhone: req.body.businessPhone
         }
-        const allBUsers = dataBaseHelper.getAllDataBase('business-users-data-copy.json');
+        const allBUsers = dataBaseHelper.getAllDataBase('business-users-data.json');
         const usersBToSave = [...allBUsers, newBUser]
-        dataBaseHelper.writeNewDataBase(usersBToSave, 'business-users-data-copy.json');
+        dataBaseHelper.writeNewDataBase(usersBToSave, 'business-users-data.json');
 
         res.redirect('/users/register');
     }

@@ -1,7 +1,5 @@
-const usersHelper = require('../helpers/users-helper');
+const dataBaseHelper = require('../helpers/data-base-helper');
 const bcrypt = require('bcryptjs');
-const { generateId } = require('../helpers/users-helper');
-
 
 const usersController = {
     index: (req, res) =>{
@@ -13,7 +11,7 @@ const usersController = {
     createUser: (req, res) =>{
         const passwordHashed = bcrypt.hashSync(req.body.password, 10); 
         const newUser = {
-            id: usersHelper.generateId(),
+            id: dataBaseHelper.generateId('users-data-copy.json'),
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             personalId: req.body.personalId,
@@ -26,18 +24,17 @@ const usersController = {
             postalZipCode: req.body.postalZipCode,
             phone: req.body.phone
         }
-        const allUsers = usersHelper.getAllUsers();
-        console.log(allUsers);
+        const allUsers = dataBaseHelper.getAllDataBase('users-data-copy.json');
         const usersToSave = [...allUsers, newUser]
-        usersHelper.writeUserData(usersToSave);
+        dataBaseHelper.writeNewDataBase(usersToSave, 'users-data-copy.json');
 
         res.redirect('/users/register')
     },
 
     createBusinessUser: (req, res) => {
         const passwordHashed = bcrypt.hashSync(req.body.businessAccountPassword, 10); 
-        const newBusinessUser = {
-            id: usersHelper.generateBusinessId(),
+        const newBUser = {
+            id: dataBaseHelper.generateId('business-users-data-copy.json'),
             businessName: req.body.businessName,
             managerName: req.body.managerName,
             managerLastName: req.body.managerLastName,
@@ -53,9 +50,9 @@ const usersController = {
             businessPostalZipCode: req.body.businessPostalZipCode,
             businessPhone: req.body.businessPhone
         }
-        const allBusinessUsers = usersHelper.getAllBusinessUsers();
-        const businessUsersToSave = [...allBusinessUsers, newBusinessUser]
-        usersHelper.writeBusinessUserData(businessUsersToSave);
+        const allBUsers = dataBaseHelper.getAllDataBase('business-users-data-copy.json');
+        const usersBToSave = [...allBUsers, newBUser]
+        dataBaseHelper.writeNewDataBase(usersBToSave, 'business-users-data-copy.json');
 
         res.redirect('/users/register');
     }

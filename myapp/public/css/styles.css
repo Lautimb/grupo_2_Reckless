@@ -1011,7 +1011,7 @@ h3, .required-files{
     
 }
 
-#ul-upload-data{
+.ul-upload-data{
     position: relative;
     display: flex;
     padding: 0px 0px 10px 0px;
@@ -1022,11 +1022,11 @@ h3, .required-files{
     
 }
 
-#ul-upload-data li{
+.ul-upload-data li{
     padding: 0px 10px;
 }
 
-#ul-upload-data li input[type="number"]{
+.ul-upload-data li input[type="number"]{
     width: 50px;
 }
 

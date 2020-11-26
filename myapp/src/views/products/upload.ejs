@@ -7,7 +7,7 @@
    
     <main id="product-upload__main">
         <section id="product-upload__section">
-            <form action="/" method="GET" id="product-upload__form">
+            <form action="/products/create" method="POST" id="product-upload__form" enctype="multipart/form-data">
 
                 <div class="h1-center">
                     <h1 >ADD NEW PRODUCT</h1>
@@ -23,43 +23,8 @@
                             <span class="material-icons camera-icon">
                                 add_a_photo
                             </span>
-                            <label for="file">+ ADD IMAGE</label>
-                            <input id="file" type="file">
-                        </li>
-                        <li>
-                            <span class="material-icons camera-icon">
-                                add_a_photo
-                            </span>
-                            <label for="file">+ ADD IMAGE</label>
-                            <input id="file" type="file">
-                        </li>
-                        <li>
-                            <span class="material-icons camera-icon">
-                                add_a_photo
-                            </span>
-                            <label for="file">+ ADD IMAGE</label>
-                            <input id="file" type="file">
-                        </li>
-                        <li>
-                            <span class="material-icons camera-icon">
-                                add_a_photo
-                            </span>
-                            <label for="file">+ ADD IMAGE</label>
-                            <input id="file" type="file">
-                        </li>
-                        <li>
-                            <span class="material-icons camera-icon">
-                                add_a_photo
-                            </span>
-                            <label for="file">+ ADD IMAGE</label>
-                            <input id="file" type="file">
-                        </li>
-                        <li>
-                            <span class="material-icons camera-icon">
-                                add_a_photo
-                            </span>
-                            <label for="file">+ ADD IMAGE</label>
-                            <input id="file" type="file">
+                            <label for="file">+ ADD IMAGES (max 6)</label>
+                            <input name="productImages" id="file" type="file" multiple>
                         </li>
                     </ul>
 
@@ -69,17 +34,17 @@
                         <h3>PRODUCT NAME</h3>
                     </div>
                     <div class="product-data">
-                        <label for="product-name"></label>
+                        <label for="name"></label>
 
-                        <input type="text" class="input-style">
+                        <input type="text" class="input-style" name="name">
                     </div>
                     <div class="title-container">
                         <h3>PRODUCT DESCRIPTION</h3>
                     </div>
                     <div class="product-data">
-                        <label for="product-description"></label>
+                        <label for="productDescription"></label>
 
-                        <textarea name="product-description" id="" cols="30" rows="10"></textarea>
+                        <textarea name="productDescription" id="productDescription" cols="30" rows="10"></textarea>
                     </div>
                 </div>
 
@@ -90,7 +55,7 @@
 
                     <div class="manage-form-container">
                         
-                        <ul id="ul-upload-data">
+                        <ul class="ul-upload-data">
                             <li>
                                 <p>SIZE</p>
                                 <select name="size" class="input-style" id="size">
@@ -113,8 +78,8 @@
                                 <p>COLORS & QTY</p>
                                 <ul>
                                     <li>
-                                        <input type="radio" name="add-color">
-                                        <input type="number" class="input-style" name="qty">
+                                        <input type="radio" name="addColor">
+                                        <input type="number" class="input-style" name="">
                                     </li>
                                 </ul>
                             </li>
@@ -125,7 +90,7 @@
                                 </span>
                             </li>
                         </ul>
-                        <ul id="ul-upload-data">
+                        <ul class="ul-upload-data">
                             <li>
                                 <p>SIZE</p>
                                 <select name="size" class="input-style" id="size">
@@ -148,8 +113,8 @@
                                 <p>COLORS & QTY</p>
                                 <ul>
                                     <li>
-                                        <input type="radio" name="add-color">
-                                        <input type="number" class="input-style" name="qty">
+                                        <input type="radio" name="addColor">
+                                        <input type="number" class="input-style" name="">
                                     </li>
                                 </ul>
                             </li>

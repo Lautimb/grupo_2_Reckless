@@ -1,5 +1,19 @@
 [
  {
   "id": 0
+ },
+ {
+  "id": 1,
+  "images": [
+   "jean1.webp",
+   "jean3.webp",
+   "jean4.webp",
+   "jean5.jpg",
+   "jean6.webp",
+   "jean7.jpg"
+  ],
+  "name": "JEANS HI RISE SKINNY VINTAGE",
+  "description": "AZUL - 5252/210\r\n\r\nJeans de tejido elástico con tecnología holding power. Con tiro alto estilo vintage y cinco bolsillos. Efecto lavado. Cierre frontal con cremallera y botón metálico.\r\n\r\nJOIN LIFE\r\nCare for fiber: al menos 95% algodón orgánico.\r\n\r\nAlgodón cultivado utilizando fertilizantes y pesticidas naturales. Además, en su cultivo no se utilizan semillas modificadas genéticamente, lo que ayuda a conservar la biodiversidad de las semillas y la fertilidad del suelo.",
+  "type": "bottom"
  }
 ]

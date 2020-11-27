@@ -12,16 +12,16 @@
                     <div class="product-detail-imgs">
                         <div class= "thumbnail-img-container">
 
-                            <a href=""><img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80" alt="" class="thumbnail-img" ></a>
-                            <a href=""><img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80" alt="" class="thumbnail-img"></a>
-                            <a href=""><img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80" alt="" class="thumbnail-img"></a>
-                            <a href=""><img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80" alt="" class="thumbnail-img"></a>
-                            <a href=""><img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80" alt="" class="thumbnail-img"></a>
-                            <a href=""><img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80" alt="" class="thumbnail-img"></a>
+                            <a href=""><img src="/myapp/public/imgs/products/<%= product.images[0] %>" alt="" class="thumbnail-img" ></a>
+                            <a href=""><img src="/myapp/public/imgs/products/<%= product.images[1] %>" alt="" class="thumbnail-img"></a>
+                            <a href=""><img src="/myapp/public/imgs/products/<%= product.images[2] %>" alt="" class="thumbnail-img"></a>
+                            <a href=""><img src="/myapp/public/imgs/products/<%= product.images[3] %>" alt="" class="thumbnail-img"></a>
+                            <a href=""><img src="/myapp/public/imgs/products/<%= product.images[4] %>" alt="" class="thumbnail-img"></a>
+                            <a href=""><img src="/myapp/public/imgs/products/<%= product.images[5] %>" alt="" class="thumbnail-img"></a>
                         </div>
 
                         <div class= "zoom-img">
-                            <a href=""><img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80" alt="" class="zoom-img"></a>    
+                            <a href=""><img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="" class="zoom-img"></a>    
                         </div>
                     </div>  
 
@@ -29,7 +29,7 @@
                         <div class="product-detail-title">
 
                             <ul class= "product-detail__name-heart">
-                                <h1>PRODUCT NAME</h1>
+                                <h1><%= product.name %></h1>
                                 <i class="far fa-heart"></i>
                             </ul>
                             

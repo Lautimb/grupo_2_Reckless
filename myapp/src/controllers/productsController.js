@@ -1,7 +1,8 @@
 const dataBaseHelper = require('../helpers/data-base-helper');
 const productsController ={
     index: (req,res) =>{
-        res.render('products');
+        const allProducts = dataBaseHelper.getAllDataBase('products-data.json');
+        res.render('products', { products : allProducts});
     },
     create: (req, res) => {
         res.render('products/create');
@@ -25,7 +26,7 @@ const productsController ={
         const productsToSave = [...allProducts, newProduct];
         dataBaseHelper.writeNewDataBase(productsToSave,'products-data.json');
 
-        res.redirect('products');
+        res.redirect('/products');
     },
     detail: (req,res) =>{
         /*
@@ -40,6 +41,7 @@ const productsController ={
         })
 
         res.render('products/detail', { product: result });
+        
     },
     edit: (req,res) =>{
         // Renderizar vista de creacion con los campos value del product:id que se quiera editar.

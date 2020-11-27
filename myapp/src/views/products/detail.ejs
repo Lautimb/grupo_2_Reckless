@@ -11,17 +11,15 @@
                 <div id="product-detail">
                     <div class="product-detail-imgs">
                         <div class= "thumbnail-img-container">
-
-                            <a href=""><img src="/myapp/public/imgs/products/<%= product.images[0] %>" alt="" class="thumbnail-img" ></a>
-                            <a href=""><img src="/myapp/public/imgs/products/<%= product.images[1] %>" alt="" class="thumbnail-img"></a>
-                            <a href=""><img src="/myapp/public/imgs/products/<%= product.images[2] %>" alt="" class="thumbnail-img"></a>
-                            <a href=""><img src="/myapp/public/imgs/products/<%= product.images[3] %>" alt="" class="thumbnail-img"></a>
-                            <a href=""><img src="/myapp/public/imgs/products/<%= product.images[4] %>" alt="" class="thumbnail-img"></a>
-                            <a href=""><img src="/myapp/public/imgs/products/<%= product.images[5] %>" alt="" class="thumbnail-img"></a>
+                           
+                                <% for (image of product.images){%>
+                                   <img src="/imgs/products/<%= image %>" alt="" class="thumbnail-img" >
+                                <%}%>
+                            
                         </div>
 
                         <div class= "zoom-img">
-                            <a href=""><img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="" class="zoom-img"></a>    
+                            <a href=""><img src="/imgs/products/<%= product.images[0] %>" alt="" class="zoom-img"></a>    
                         </div>
                     </div>  
 
@@ -34,7 +32,7 @@
                             </ul>
                             
                             <ul class= "product-detail__price-promotions">
-                                <span class="product-detail__price">$PRICE</span>
+                                <span class="product-detail__price"><%= product.price %></span>
                                 <a href="" class= "product-detail__promotions"><i class="fas fa-tag"></i>PROMOTIONS</a>
                             </ul>
                             

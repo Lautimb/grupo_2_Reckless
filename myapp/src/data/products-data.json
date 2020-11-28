@@ -1,8 +1,5 @@
 [
  {
-  "id": 0
- },
- {
   "id": 1,
   "images": [
    "1606594784563jean1.webp",
@@ -17,5 +14,6 @@
   "price": "1500",
   "discount": "10",
   "type": "bottom"
+
  }
 ]

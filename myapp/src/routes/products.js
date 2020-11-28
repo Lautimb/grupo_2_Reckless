@@ -3,28 +3,19 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 
-
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, path.join('public/imgs/products'))
     },
-    
-      //captar numero que viene con datenow una sola vez, y asignarlo a una variable como un number
-      
     filename: function (req, file, cb) {
-     
-      cb(null, file.originalname);
-      
+      cb(null, Date.now() + file.originalname);
     }
-  })
-
-  const upload = multer({ storage: storage })
-
+})
+const upload = multer({ storage: storage })
 
 const productsController = require('../controllers/productsController')
 
 /* GET Shop page. */
-
 
 router.get('/', productsController.index); // Listado de Productos
 router.get('/create', productsController.create); // Formulario de creacion de productos

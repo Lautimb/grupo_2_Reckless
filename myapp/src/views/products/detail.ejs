@@ -10,11 +10,13 @@
 
                 <div id="product-detail">
                     <div class="product-detail-imgs">
-                        <div class= "thumbnail-img-container">
-                           
-                                <% for (image of product.images){%>
-                                   <img src="/imgs/products/<%= image %>" alt="" class="thumbnail-img" >
-                                <%}%>
+                        <div class= "thumbnail-imgs-container">
+                            
+                            <% for (image of product.images){%>
+                            <div class= "thumbnail-img-container">
+                                <img src="/imgs/products/<%= image %>" alt="" class="thumbnail-img" >
+                            </div>
+                            <%}%>
                             
                         </div>
 
@@ -32,8 +34,8 @@
                             </ul>
                             
                             <ul class= "product-detail__price-promotions">
-                                <span class="product-detail__price"><%= product.price %></span>
-                                <a href="" class= "product-detail__promotions"><i class="fas fa-tag"></i>PROMOTIONS</a>
+                                <span class="product-detail__price">$<%= product.price %></span>
+                                <a href="" class= "product-detail__promotions"><i class="fas fa-tag"></i><%= product.discount %>% OFF</a>
                             </ul>
                             
                         </div>

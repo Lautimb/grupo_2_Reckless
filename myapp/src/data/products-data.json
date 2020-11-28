@@ -5,16 +5,17 @@
  {
   "id": 1,
   "images": [
-   "image1.webp",
-   "image2.webp",
-   "image3.webp",
-   "image4.webp",
-   "image5.webp",
-   "image6.webp"
+   "1606594784563jean1.webp",
+   "1606594784564jean3.webp",
+   "1606594784565jean4.webp",
+   "1606594784567jean5.jpg",
+   "1606594784569jean6.webp",
+   "1606594784570jean7.jpg"
   ],
-  "name": "HOLA!",
-  "description": "DALEEE",
-  "size": "s",
-  "type": "top"
+  "name": "JEANS HI RISE SKINNY VINTAGE",
+  "description": "asdf",
+  "price": "1500",
+  "discount": "10",
+  "type": "bottom"
  }
 ]

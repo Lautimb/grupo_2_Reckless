@@ -1,5 +1,19 @@
 [
  {
-    "id":0
+  "id": 1,
+  "images": [
+   "1606594784563jean1.webp",
+   "1606594784564jean3.webp",
+   "1606594784565jean4.webp",
+   "1606594784567jean5.jpg",
+   "1606594784569jean6.webp",
+   "1606594784570jean7.jpg"
+  ],
+  "name": "JEANS HI RISE SKINNY VINTAGE",
+  "description": "asdf",
+  "price": "1500",
+  "discount": "10",
+  "type": "bottom"
+
  }
 ]

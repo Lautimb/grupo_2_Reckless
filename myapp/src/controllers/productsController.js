@@ -18,15 +18,16 @@ module.exports = {
 
         const images = req.files;
         for(let i = 0; i< images.length; i++){
-            images[i] = images[i].originalname;
+            images[i] = images[i].filename;
         }
         
         const newProduct = {
             id: dataBaseHelper.generateId('products-data.json'),
             images: images,
             name: req.body.name,
-            description: req.body.productDescription,
-            size: req.body.size,
+            description: req.body.description,
+            price: req.body.price,
+            discount: req.body.discount,
             type: req.body.type
         }
         

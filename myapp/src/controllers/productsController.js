@@ -1,13 +1,21 @@
 const dataBaseHelper = require('../helpers/data-base-helper');
-const productsController ={
+
+module.exports = {
     index: (req,res) =>{
-        const allProducts = dataBaseHelper.getAllDataBase('products-data.json');
-        res.render('products', { products : allProducts});
+        const allProducts = dataBaseHelper.getAllDataBase('products-data.json')
+        // enviando a la vista la imagen principal solamente
+        allProducts.forEach(product => {
+            product.images = product.images[0]
+            return
+        });
+        
+        res.render('products/index', { products: allProducts});
     },
     create: (req, res) => {
         res.render('products/create');
     },
     store: (req, res) => {
+
         const images = req.files;
         for(let i = 0; i< images.length; i++){
             images[i] = images[i].originalname;
@@ -58,4 +66,3 @@ const productsController ={
 }
 
 
-module.exports = productsController;

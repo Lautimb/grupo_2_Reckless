@@ -1,20 +1,5 @@
 [
  {
-  "id": 0
- },
- {
-  "id": 1,
-  "images": [
-   "image1.webp",
-   "image2.webp",
-   "image3.webp",
-   "image4.webp",
-   "image5.webp",
-   "image6.webp"
-  ],
-  "name": "HOLA!",
-  "description": "DALEEE",
-  "size": "s",
-  "type": "top"
+    "id":0
  }
 ]

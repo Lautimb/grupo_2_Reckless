@@ -1,6 +1,13 @@
-const indexController = {
+const dataBaseHelper = require('../helpers/data-base-helper');
+
+module.exports = {
     index: (req,res) =>{
-        res.render('index');
+        const allProducts = dataBaseHelper.getAllDataBase('products-data.json');
+        allProducts.forEach(product => {
+            product.images = product.images[0]
+           
+        });
+        res.render('index', { products : allProducts });
     },
     contact: (req,res) =>{
         res.render('contact');
@@ -10,8 +17,6 @@ const indexController = {
     },
     social: (req,res) =>{
         res.render('social');
-    }
-    
+    }    
 }
 
-module.exports = indexController;

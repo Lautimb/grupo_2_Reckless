@@ -13,7 +13,7 @@
   "description": "Una prenda con toda la onda! ",
   "price": "1550",
   "discount": "15",
-  "type": "bottom"
+  "type": "tops"
  },
  {
   "id": 4,
@@ -24,11 +24,11 @@
    "1606594784569jean6.webp",
    "1606594784570jean7.jpg"
   ],
-  "name": "Jean se me borro el name",
+  "name": "Jean sin nombre",
   "description": "Una prenda con toda la onda! ",
   "price": "1550",
   "discount": "15",
-  "type": "bottom"
+  "type": "bottoms"
  },
  {
   "id": 5,
@@ -44,7 +44,7 @@
   "description": "Una prenda con toda la onda! ",
   "price": "1550",
   "discount": "15",
-  "type": "bottom"
+  "type": "denim"
  },
  {
   "id": 6,
@@ -55,7 +55,7 @@
   "description": "Una prenda con toda la onda! ",
   "price": "1550",
   "discount": "15",
-  "type": "bottom"
+  "type": "outerwear"
  },
  {
   "id": 7,
@@ -71,7 +71,7 @@
   "description": "Una prenda con toda la onda! ",
   "price": "1550",
   "discount": "15",
-  "type": "bottom"
+  "type": "outerwear"
  },
  {
   "id": 8,
@@ -87,7 +87,7 @@
   "description": "Una prenda con toda la onda! ",
   "price": "1550",
   "discount": "15",
-  "type": "bottom"
+  "type": "tops"
  },
  {
   "id": 9,
@@ -103,7 +103,7 @@
   "description": "Una prenda con toda la onda! ",
   "price": "1550",
   "discount": "15",
-  "type": "bottom"
+  "type": "bottoms"
  },
  {
   "id": 10,
@@ -119,7 +119,7 @@
   "description": "Una prenda con toda la onda! ",
   "price": "1550",
   "discount": "15",
-  "type": "bottom"
+  "type": "bottoms"
  },
  {
   "id": 11,
@@ -135,7 +135,7 @@
   "description": "Una prenda con toda la onda! ",
   "price": "1550",
   "discount": "15",
-  "type": "bottom"
+  "type": "denim"
  },
  {
   "id": 12,
@@ -151,7 +151,7 @@
   "description": "Una prenda con toda la onda! ",
   "price": "1550",
   "discount": "15",
-  "type": "bottom"
+  "type": "denim"
  },
  {
   "id": 13,
@@ -162,7 +162,7 @@
   "description": "ALTO PE JO TA",
   "price": "156000",
   "discount": "14",
-  "type": "bottom"
+  "type": "bottoms"
  },
  {
   "id": 14,
@@ -173,6 +173,6 @@
   "description": "SALIO DE NASCAR",
   "price": "12345",
   "discount": "12",
-  "type": "top"
+  "type": "tops"
  }
 ]

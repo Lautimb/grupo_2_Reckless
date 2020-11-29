@@ -113,11 +113,13 @@ header a{
     width: 80%;
     padding: 7px;
     border-radius: 2px;
-    border: none;
+    border: 1px solid transparent
 }
 
 .btn-log-in:hover{
-    opacity: 0.8;
+    opacity: .8;
+    border:1px solid var(--magenta);
+    background-color: rgba(33, 33, 33, 0.705);
     cursor: pointer;
 }
 
@@ -128,15 +130,26 @@ header a{
     background-color: var(--black);
     width: 80%;
     text-align: center;
+    border:1px solid transparent;
 }
 
 #btn-register-now{
     font-size: 13px;
     color: white;
+    border: 1px solid varr(--black);
+}
+#btn-register-now a {
+   
 }
 
+
+
 .btn-register:hover{
-    opacity: 0.8;
+    border:1px solid var(--magenta);
+    background-color: rgba(33, 33, 33, 0.705);
+    cursor: pointer;
+    
+   
 }
 
 .container-checkout button{

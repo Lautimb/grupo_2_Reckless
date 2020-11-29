@@ -1,6 +1,37 @@
 [
  {
-  "id": 1,
+  "id": 2,
+  "images": [
+   "1606594784569jean6.webp",
+   "1606594784564jean3.webp",
+   "1606594784563jean1.webp",
+   "1606594784565jean4.webp",
+   "1606594784567jean5.jpg",
+   "1606594784570jean7.jpg"
+  ],
+  "name": "Jean se me borro el name",
+  "description": "Una prenda con toda la onda! ",
+  "price": "1550",
+  "discount": "15",
+  "type": "bottom"
+ },
+ {
+  "id": 4,
+  "images": [
+   "1606594784567jean5.jpg",
+   "1606594784564jean3.webp",
+   "1606594784565jean4.webp",
+   "1606594784569jean6.webp",
+   "1606594784570jean7.jpg"
+  ],
+  "name": "Jean se me borro el name",
+  "description": "Una prenda con toda la onda! ",
+  "price": "1550",
+  "discount": "15",
+  "type": "bottom"
+ },
+ {
+  "id": 5,
   "images": [
    "1606594784563jean1.webp",
    "1606594784564jean3.webp",
@@ -9,11 +40,139 @@
    "1606594784569jean6.webp",
    "1606594784570jean7.jpg"
   ],
-  "name": "JEANS HI RISE SKINNY VINTAGE",
-  "description": "asdf",
-  "price": "1500",
-  "discount": "10",
+  "name": "Jean se me borro el name",
+  "description": "Una prenda con toda la onda! ",
+  "price": "1550",
+  "discount": "15",
   "type": "bottom"
-
+ },
+ {
+  "id": 6,
+  "images": [
+   "16066136461552765 col.jpg"
+  ],
+  "name": "Jean se me borro el name",
+  "description": "Una prenda con toda la onda! ",
+  "price": "1550",
+  "discount": "15",
+  "type": "bottom"
+ },
+ {
+  "id": 7,
+  "images": [
+   "1606594784563jean1.webp",
+   "1606594784564jean3.webp",
+   "1606594784565jean4.webp",
+   "1606594784567jean5.jpg",
+   "1606594784569jean6.webp",
+   "1606594784570jean7.jpg"
+  ],
+  "name": "Jean se me borro el name",
+  "description": "Una prenda con toda la onda! ",
+  "price": "1550",
+  "discount": "15",
+  "type": "bottom"
+ },
+ {
+  "id": 8,
+  "images": [
+   "1606594784563jean1.webp",
+   "1606594784564jean3.webp",
+   "1606594784565jean4.webp",
+   "1606594784567jean5.jpg",
+   "1606594784569jean6.webp",
+   "1606594784570jean7.jpg"
+  ],
+  "name": "Jean se me borro el name",
+  "description": "Una prenda con toda la onda! ",
+  "price": "1550",
+  "discount": "15",
+  "type": "bottom"
+ },
+ {
+  "id": 9,
+  "images": [
+   "1606594784563jean1.webp",
+   "1606594784564jean3.webp",
+   "1606594784565jean4.webp",
+   "1606594784567jean5.jpg",
+   "1606594784569jean6.webp",
+   "1606594784570jean7.jpg"
+  ],
+  "name": "Jean se me borro el name",
+  "description": "Una prenda con toda la onda! ",
+  "price": "1550",
+  "discount": "15",
+  "type": "bottom"
+ },
+ {
+  "id": 10,
+  "images": [
+   "1606594784563jean1.webp",
+   "1606594784564jean3.webp",
+   "1606594784565jean4.webp",
+   "1606594784567jean5.jpg",
+   "1606594784569jean6.webp",
+   "1606594784570jean7.jpg"
+  ],
+  "name": "Jean se me borro el name",
+  "description": "Una prenda con toda la onda! ",
+  "price": "1550",
+  "discount": "15",
+  "type": "bottom"
+ },
+ {
+  "id": 11,
+  "images": [
+   "1606594784563jean1.webp",
+   "1606594784564jean3.webp",
+   "1606594784565jean4.webp",
+   "1606594784567jean5.jpg",
+   "1606594784569jean6.webp",
+   "1606594784570jean7.jpg"
+  ],
+  "name": "Jean se me borro el name",
+  "description": "Una prenda con toda la onda! ",
+  "price": "1550",
+  "discount": "15",
+  "type": "bottom"
+ },
+ {
+  "id": 12,
+  "images": [
+   "1606594784569jean6.webp",
+   "1606594784564jean3.webp",
+   "1606594784563jean1.webp",
+   "1606594784565jean4.webp",
+   "1606594784567jean5.jpg",
+   "1606594784570jean7.jpg"
+  ],
+  "name": "Jean se me borro el name",
+  "description": "Una prenda con toda la onda! ",
+  "price": "1550",
+  "discount": "15",
+  "type": "bottom"
+ },
+ {
+  "id": 13,
+  "images": [
+   "16066136314272695 (2).jpg"
+  ],
+  "name": "SALE DE UNA",
+  "description": "ALTO PE JO TA",
+  "price": "156000",
+  "discount": "14",
+  "type": "bottom"
+ },
+ {
+  "id": 14,
+  "images": [
+   "1606613748405IMG_1060.jpg"
+  ],
+  "name": "La prenda del tato",
+  "description": "SALIO DE NASCAR",
+  "price": "12345",
+  "discount": "12",
+  "type": "top"
  }
 ]

@@ -5,8 +5,8 @@ module.exports = {
         const allProducts = dataBaseHelper.getAllDataBase('products-data.json')
         // enviando a la vista la imagen principal solamente
         allProducts.forEach(product => {
-            product.images = product.images[0]
-            return
+            product.images = product.images[0];
+            return;
         });
         
         res.render('products/index', { products: allProducts});
@@ -46,21 +46,57 @@ module.exports = {
         const id = req.params.id;
         const products = dataBaseHelper.getAllDataBase('products-data.json');
         const result = products.find((product) => {
-            return product.id == id
+            return product.id == id;
         })
-
         res.render('products/detail', { product: result });
         
     },
     edit: (req,res) =>{
         // Renderizar vista de creacion con los campos value del product:id que se quiera editar.
-        res.render('products/create');
+
+        const id = req.params.id;
+        const products = dataBaseHelper.getAllDataBase('products-data.json');
+        const result = products.find((product) => {
+            return product.id == id;
+        })  
+        res.render('products/edit', { productToEdit : result});
     },
+    editStore:(req,res)=>{
+        
+        const images = req.files;
+        for(let i = 0; i< images.length; i++){
+            images[i] = images[i].filename;
+        }
+
+        const allProducts = dataBaseHelper.getAllDataBase('products-data.json');
+        const id = req.params.id;
+        allProducts.map(function(product){
+			if (product.id == id){
+                product.images = images.length == 0 ? product.images : images,
+                product.name = req.body.name,
+                product.description = req.body.description,
+                product.price = req.body.price,
+                product.discount = req.body.discount,
+                product.type = req.body.type
+			}
+			return product;
+		})
+        dataBaseHelper.writeNewDataBase(allProducts,'products-data.json');
+        res.redirect('/');
+    },
+
     wishlist: (req,res) =>{
         res.render('products/wishlist');
     },
     delete: (req, res) =>{
-        res.render('products/detail');
+
+        const id = req.params.id;
+        const allProducts = dataBaseHelper.getAllDataBase('products-data.json');
+        const productDeleted = allProducts.filter((product)=>{
+            return product.id != id;
+        })
+        dataBaseHelper.writeNewDataBase(productDeleted, 'products-data.json');
+        res.redirect('/');
     }
     
 

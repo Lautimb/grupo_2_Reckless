@@ -40,7 +40,7 @@
                             
                         </div>
 
-                        <form action="" method="POST" class="product-detail-selector">
+                        <div class="product-detail-selector">
                             
                             <div class="product-detail__colors">
                                 <legend>COLORS</legend>
@@ -77,11 +77,20 @@
                                     <option value="10">10</option>
                                 </select>
                             </div>
-                            
-                            <div>
-                                <button type="submit" class="add-to-cart"><i class="fas fa-shopping-cart"></i> ADD TO CART</button>
+                            <div class="edit-delete-product">
+                                <div class="buttons-detail">
+                                    <a href="/products/edit/<%= product.id%>"><i class="fas fa-edit"></i>EDIT</a>
+                                </div>
+                                <div>
+                                    <form action="/products/delete/<%= product.id%>?_method=DELETE" method="POST" name="button" >
+                                        <button type="submit" class="buttons-detail" name="button"><i class="fas fa-times"></i>DELETE</button>
+                                    </form>
+                                </div>
                             </div>
-                        </form>
+                            <div class="buttons-detail">
+                                <a href="/cart" type="submit"><i class="fas fa-shopping-cart"></i> ADD TO CART</a>
+                            </div>
+                        </div>
                         
                         <div class="product-detail__details">
                             <ul>

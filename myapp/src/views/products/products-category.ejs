@@ -16,7 +16,7 @@
 
             <div class="products-container">
 
-                <% for(product of products){%>
+                <% for(product of products){ %>
                  
                     <article class="product-container">
                         <a href="/products/detail/<%= product.id %>">
@@ -25,8 +25,8 @@
                                   
                             <div class="product-detail">
                                 <div class="name-price-product-container">
-                                    <h3><%= product.name%></h3> 
-                                    <p>$1550</p>
+                                    <h3><%= product.name %></h3> 
+                                    <p>$<%= product.price %></p>
                                 </div>
                             </div>
                             <div>
@@ -38,7 +38,7 @@
                     </article>
 
                     
-                <%}%>
+                <% } %>
 
             </div>
         </section>

@@ -134,15 +134,11 @@ header a{
 }
 
 #btn-register-now{
+    margin: 0px;
     font-size: 13px;
     color: white;
     border: 1px solid varr(--black);
 }
-#btn-register-now a {
-   
-}
-
-
 
 .btn-register:hover{
     border:1px solid var(--magenta);

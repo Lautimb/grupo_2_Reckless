@@ -32,11 +32,20 @@
                                 <h1><%= product.name %></h1>
                                 <i class="far fa-heart"></i>
                             </ul>
-                            
-                            <ul class= "product-detail__price-promotions">
+                            <% if (product.discount) { %>
+                                <ul class= "product-detail__price-promotions">
+                                    <ul>
+                                        <li><span class="product-detail__price-off">$<%= product.price %></span></li>
+                                        <li><p class= "product-detail__promotions"><i class="fas fa-tag"></i><%= product.discount %>% OFF</p></li>
+                                    </ul>
+                                    <span class="product-detail__reprice">$<%= product.price - product.discount * product.price / 100 %></span>
+                                </ul>
+                                
+                            <% }else { %>
+                                <ul class= "product-detail__price-promotions">
                                 <span class="product-detail__price">$<%= product.price %></span>
-                                <a href="" class= "product-detail__promotions"><i class="fas fa-tag"></i><%= product.discount %>% OFF</a>
-                            </ul>
+                                </ul>
+                            <% } %>
                             
                         </div>
 

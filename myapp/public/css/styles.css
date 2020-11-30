@@ -354,7 +354,7 @@ a:visited{
     cursor: pointer;
 }
 
-.container-checkout button a{
+.container-checkout a button{
     color: white;
 }
 
@@ -590,12 +590,42 @@ a:visited{
     font-size: 20px;
 }
 
-.product-detail__price {
-    font-size: 15px;
+.product-detail__name-heart h1{
+    padding-top: 0px;
+    padding-left: 0px;
+}
+
+.product-detail__price-promotions {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.product-detail__price-promotions ul{
+    display: flex;
+}
+
+.product-detail__price{
+    font-size: 25px;
+}
+
+.product-detail__price-off{
+    font-size: 23px;
+    text-decoration: line-through;
+    text-decoration-color: var(--magenta);
+    text-decoration-style: solid;
+    opacity: .8;
 }
 
 .product-detail__promotions {
-    font-size: 10px;
+    font-size: 15px;
+    color: var(--magenta);
+}
+
+.product-detail__reprice {
+    font-size: 25px;
+    position: absolute;
+    top: 30px;
 }
 
 .product-detail-selector {
@@ -1003,6 +1033,11 @@ h3, .required-files{
     text-align: center;
 }
 
+#loaded-images-ul label:hover{
+    opacity: .8;
+    cursor: pointer;
+}
+
 #loaded-images-ul input{
     display: none;
 }
@@ -1010,7 +1045,7 @@ h3, .required-files{
 .camera-icon{
     font-size: 65px;
     align-self: center;
-    margin-top: 30px; 
+    margin: 30px 0px 15px 0px;
 }
 
 .manage-form-container{

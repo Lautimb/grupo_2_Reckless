@@ -10,7 +10,7 @@
             <form action="/products/create" method="POST" id="product-upload__form" enctype="multipart/form-data">
 
                 <div class="h1-center">
-                    <h1 >ADD NEW PRODUCT</h1>
+                    <h1>ADD NEW PRODUCT</h1>
                 </div>
                 
                 <div class="image-upload-container">
@@ -20,10 +20,13 @@
                     
                     <ul id="loaded-images-ul">
                         <li>
-                            <span class="material-icons camera-icon">
-                                add_a_photo
-                            </span>
-                            <label for="file">+ ADD IMAGES (max 6)</label>
+                            <label for="file">
+                                <span class="material-icons camera-icon">
+                                    add_a_photo
+                                </span>
+                                <p>+ ADD</p>
+                                <p>(max 6 images)</p>
+                            </label>
                             <input name="productImages" id="file" type="file" multiple>
                         </li>
                     </ul>
@@ -80,9 +83,10 @@
                                 <p>PRODUCT TYPE</p>
                                 <select name="type" class="input-style" id="type">
                                     <option value="" disabled selected>-</option>
-                                    <option value="top">TOP</option>
-                                    <option value="bottom">BOTTOMS</option>
+                                    <option value="tops">TOPS</option>
+                                    <option value="bottoms">BOTTOMS</option>
                                     <option value="outerwear">OUTERWEAR</option>
+                                    <option value="denim">DENIM</option>
                                 </select>
                             </li>
                             <li>

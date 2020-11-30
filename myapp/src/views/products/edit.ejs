@@ -11,7 +11,7 @@
             <form action="/products/edit/<%= productToEdit.id %>?_method=PUT" method="POST" id="product-upload__form" enctype="multipart/form-data">
 
                 <div class="h1-center">
-                    <h1>EDIT PRODUCT</h1>
+                    <h1>EDIT PRODUCT: <%= productToEdit.name %></h1>
                 </div>
                 
                 <div class="image-upload-container">
@@ -21,10 +21,13 @@
                     
                     <ul id="loaded-images-ul">
                         <li>
-                            <span class="material-icons camera-icon">
-                                add_a_photo
-                            </span>
-                            <label for="file">+ ADD IMAGES (max 6)</label>
+                            <label for="file">
+                                <span class="material-icons camera-icon">
+                                    add_a_photo
+                                </span>
+                                <p>+ ADD</p>
+                                <p>(max 6 images)</p>
+                            </label>
                             <input name="productImages" id="file" type="file" multiple>
                         </li>
                     </ul>
@@ -154,7 +157,7 @@
                 </div>
                 
                 <div class="submit-button-container">
-                    <button type="submit">UPLOAD PRODUCT</button>
+                    <button type="submit">SAVE PRODUCT</button>
                 </div>
             </form>
         </section>

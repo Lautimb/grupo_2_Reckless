@@ -19,7 +19,7 @@ const productsController = require('../controllers/productsController')
 /* GET Shop page. */
 
 router.get('/', productsController.index); // Listado de Productos
-router.get('/:type', productsController.filter) // Ruta creada para filtrar productos a traves del menu de shop
+router.get('/category/:type', productsController.filter) // Ruta creada para filtrar productos a traves del menu de shop
 router.get('/create', productsController.create); // Formulario de creacion de productos
 
 

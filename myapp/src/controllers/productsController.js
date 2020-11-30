@@ -40,7 +40,7 @@ module.exports = {
         const newProduct = {
             id: dataBaseHelper.generateId('products-data.json'),
             images: images,
-            name: req.body.name,
+            name: req.body.name.toUpperCase(),
             description: req.body.description,
             price: req.body.price,
             discount: req.body.discount,

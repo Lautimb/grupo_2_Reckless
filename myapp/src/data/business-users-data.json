@@ -22,5 +22,26 @@
   "businessCountry": "Argentina",
   "businessPostalZipCode": "4585",
   "businessPhone": "45856932"
+ },
+ {
+  "id": 2,
+  "businessName": "",
+  "managerName": "",
+  "managerLastName": "",
+  "managerPhone": "",
+  "website": "",
+  "businessId": "",
+  "businessEmail": "",
+  "businessAccountPassword": "$2a$10$cEGtWLrSkOVR36Jme8sW.O6lduePj/zO3Ky8HbURNykIZN/3..vdi",
+  "tradingSince": [
+   null,
+   null,
+   null
+  ],
+  "businessAddress": "",
+  "businessCity": "",
+  "businessCountry": "",
+  "businessPostalZipCode": "",
+  "businessPhone": ""
  }
 ]

@@ -676,14 +676,12 @@ a:visited{
 }
 
 .buttons-detail{
-   
     width: 100%;
     padding: 12px;
     margin: 10px 2px ;
     border: 1px solid  var(--black);
     background-color: var(--black);
     align-content: center;
-    
     text-align: center;
     color: white;
 }

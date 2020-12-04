@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const validator = require('../middlewares/validator')
 
 const usersController = require('../controllers/usersController')
 
@@ -7,7 +8,7 @@ const usersController = require('../controllers/usersController')
 
 router.get('/', usersController.index);
 router.get('/register', usersController.register);
-router.post('/register', usersController.createUser);
+router.post('/register', validator.register, usersController.createUser);
 router.post('/register-business', usersController.createBusinessUser);
 
 

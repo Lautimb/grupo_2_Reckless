@@ -1,5 +1,7 @@
 const dataBaseHelper = require('../helpers/data-base-helper');
 const bcrypt = require('bcryptjs');
+const {validationResult} = require('express-validator');
+const moment = require('moment');
 
 const usersController = {
     index: (req, res) =>{
@@ -9,6 +11,8 @@ const usersController = {
         res.render('users/register')
     },
     createUser: (req, res) =>{
+        const result = validationResult(req);
+        return res.send(result.errors);
         const passwordHashed = bcrypt.hashSync(req.body.password, 10); 
         const newUser = {
             id: dataBaseHelper.generateId('users-data.json'),
@@ -17,7 +21,7 @@ const usersController = {
             personalId: req.body.personalId,
             email: req.body.email,
             password: passwordHashed,
-            birthday: [req.body.month, req.body.day, req.body.year],
+            birthday: moment(req.body.year + '-' + req.body.month + '-' + req.body.day).format(),
             address: req.body.address,
             city: req.body.city,
             country: req.body.country,

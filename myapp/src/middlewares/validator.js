@@ -6,27 +6,25 @@ const moment = require('moment');
 
 module.exports = {
     register: [
+
         body('email')
             .notEmpty()
-                .withMessage('Please fill the email field')
+                .withMessage('Please fill the email')
                 .bail()
             .isEmail()
-                .withMessage('Please select a vaild email address')
+                .withMessage('Please select a vaild e-mail address')
                 .bail()
             .custom((value, {req})=>{
                 const users = dataBaseHelper.getAllDataBase('users-data.json');
-                const usersFound = users.find(user => user.email == value);
+                const userFound = users.find(user => user.email == value);
 
-                if(usersFound){
-                    return false
-                }else{
-                    return true
-                }
+                return !userFound;
             })
                 .withMessage('The selected email is already in use'),
+
         body('password')
             .notEmpty()
-                .withMessage('Please fill the password field')
+                .withMessage('Please fill the password')
                 .bail()
             .isLength({min: 6})
                 .withMessage('The password must have at least 6 characters')
@@ -38,36 +36,37 @@ module.exports = {
                 return true
             })
                 .withMessage('These passwords are not the same'),
+
         body('retype')
             .notEmpty()
-                .withMessage('Please fill the confirm password field')
-                .bail()
-            .custom((value, {req}) => {
-            }),
-        body('month')
-            .notEmpty()
-                .withMessage('Please fill the month field')
+                .withMessage('Please retype your password')
+                .bail(),
+
+        body('birthday')
             .custom((value, {req}) => {
                 const month = req.body.month
                 const day = req.body.day
                 const year = req.body.year
-                // if (month == 01 || 03 || 05 || 07 || 08 || 10 || 12 && day <= 31){
-                //     return true
-                // }else if (month == 04 || 06 || 09 || 11 && day <= 30){
-                //     return true
-                // }else if (month == 02 && day <= 28){
-                //     return true
-                // }else if(year%4 == 0 && day == 29 && month == 02){
-                //     return true
-                // }else{
-                //     return false
-                // }
-
                 const date = moment(year + '-' + month + '-' + day);
                 console.log(date);
                 return date.isValid();
                 
             })
                 .withMessage('Select a valid date')
+    ],
+    login: [
+        body('email')
+            .notEmpty()
+                .withMessage('Please fill the email')
+                .bail()
+            .isEmail()
+                .withMessage('Please select a vaild e-mail address')
+                .bail()
+            .custom((value, {req})=>{
+                const users = dataBaseHelper.getAllDataBase('users-data.json');
+                const userFound = users.find(user => user.email == value);
+                return bcrypt.compareSync(req.body.password, userFound.password);
+            })
+                .withMessage('Wrong e-mail or password')
     ]
 }

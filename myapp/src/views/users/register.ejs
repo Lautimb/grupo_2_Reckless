@@ -10,8 +10,16 @@
     <main>
         <div class="h1-left">
             <h1>New registration</h1>
-        </div>  
-     
+        </div> 
+
+        <% if (typeof errors != 'undefined') { %>
+            <ul>
+                <% for (error of errors.errors) { %>
+                    <li><%= error.msg %></li>
+                <% } %>
+            </ul>
+        <% } %>
+
         <section class= "register__section">
             <div class="form-container">
                 <h3>PERSONAL ACCOUNT</h3>

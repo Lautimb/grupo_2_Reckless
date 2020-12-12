@@ -3,16 +3,22 @@ const bcrypt = require('bcryptjs');
 const {validationResult} = require('express-validator');
 const moment = require('moment');
 
-const usersController = {
+module.exports = {
     index: (req, res) =>{
-        res.render('users/index')
+        res.render('users/index');
     },
     register: (req,res)=>{
         res.render('users/register')
     },
     createUser: (req, res) =>{
-        const result = validationResult(req);
-        return res.send(result.errors);
+        const errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            return res.render ('users/register', {
+                errors,
+                old: req.body
+            })
+        }
         const passwordHashed = bcrypt.hashSync(req.body.password, 10); 
         const newUser = {
             id: dataBaseHelper.generateId('users-data.json'),
@@ -21,7 +27,7 @@ const usersController = {
             personalId: req.body.personalId,
             email: req.body.email,
             password: passwordHashed,
-            birthday: moment(req.body.year + '-' + req.body.month + '-' + req.body.day).format(),
+            birthday: moment(req.body.year + '-' + req.body.month + '-' + req.body.day).format('L'),
             address: req.body.address,
             city: req.body.city,
             country: req.body.country,
@@ -59,11 +65,26 @@ const usersController = {
         dataBaseHelper.writeNewDataBase(usersBToSave, 'business-users-data.json');
 
         res.redirect('/users/register');
+    },
+
+    processLogin: (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            const allProducts = dataBaseHelper.getAllDataBase('products-data.json');
+            allProducts.forEach(product => {
+                product.images = product.images[0]
+           
+            })
+            return res.render ('index', { 
+                errors,
+                products : allProducts 
+            })
+        }
+        const allUsers = dataBaseHelper.getAllDataBase('users-data.json');
+        const userFound = allUsers.find(user => user.email == req.body.email)
+        req.session.user = userFound;
+        // si clickea remember, mantener la sesion con cookies.
+
+        return res.redirect ('/');
     }
-
-    
-
-    
-}
-
-module.exports = usersController;
+};

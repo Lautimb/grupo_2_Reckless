@@ -2,6 +2,20 @@
 <html lang="en">
     <%- include('../partials/head')%>
 <body>
-    <h1>Acá tenes tu perfil wachooo</h1>
+    <%- include('../partials/header')%>
+    <main>
+        <div class="h1-left">
+            <h1><%= userLog.firstName%> <%= userLog.lastName %></h1>
+        </div>
+
+        <section>
+            <ul>
+                <li><%= userLog.email %></li>
+                <li><%= userLog.birthday %></li>
+            </ul>
+
+        </section>
+    </main>
+    <%- include('../partials/footer')%>
 </body>
 </html>

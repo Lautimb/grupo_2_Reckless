@@ -6,11 +6,7 @@
   "personalId": "37125048",
   "email": "pravata.juan@gmail.com",
   "password": "$2a$10$vs6Cs1hsPPLi0VgkM2nEy.GYJA6k.8E1hVDK/7TeiUJ9npVAN1/42",
-  "birthday": [
-   "09",
-   "30",
-   "1992"
-  ],
+  "birthday": "1993-09-30",
   "address": "maipu 113",
   "city": "Mendoza",
   "country": "Argentina",
@@ -19,20 +15,16 @@
  },
  {
   "id": 2,
-  "firstName": "asdf",
-  "lastName": "asdf",
-  "personalId": "11123",
+  "firstName": "Samie",
+  "lastName": "Lee",
+  "personalId": "123234",
   "email": "samie@gmail.com",
-  "password": "$2a$10$9YJoOYboOfc7lSxCu0q3Eufm7nLZ7wSC0RS4ltfvqaTgSf8kfHcDK",
-  "birthday": [
-   "01",
-   "03",
-   "2019"
-  ],
-  "address": "asdf",
-  "city": "asdf",
+  "password": "$2a$10$ttKmcL2Z0wDXlrewJaqng.CeIVSep4iREEOQruXfoHirUuPNZcgri",
+  "birthday": "07/05/2015",
+  "address": "ASDasd",
+  "city": "asdfa",
   "country": "asdf",
-  "postalZipCode": "asdf",
-  "phone": "223"
+  "postalZipCode": "123234",
+  "phone": "1231234123414"
  }
 ]

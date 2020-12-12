@@ -11,27 +11,45 @@
                 </div>
             </li>
         </ul>
+
         <ul id="nav-bar1">
-            <li class="search"><i class="fas fa-search"></i></li>          
-            <li id="my-account"><a href="">MY ACCOUNT</a>
+            <li class="search"><i class="fas fa-search"></i></li>   
+            <% if (!userLog) { %>       
+            <li id="my-account"><p>MY ACCOUNT</p>
                 <div class="myaccount-prelog">
                     <div class="prelog-container">
                         <h3 class="title-prelog">WELCOME</h3>
-                        <form action="/" method="GET">
-                            <input type="text" class="input-style" placeholder="USERNAME" name="log-in" autocomplete="off">
-                            <input type="password" class="input-style" placeholder="PASSWORD" name="log-in">
-                            <button type="submit" class="btn-log-in" name="log-in">LOG IN</button>
+
+                        <% if (typeof errors != 'undefined') { %>
+                            <ul>
+                                <% for (error of errors.errors) { %>
+                                    <li><%= error.msg %></li>
+                                <% } %>
+                            </ul>
+                        <% } %>
+
+                        <form action="/users/login" method="POST">
+                            <input type="text" class="input-style" placeholder="E-MAIL" name="email" autocomplete="off">
+                            <input type="password" class="input-style" placeholder="PASSWORD" name="password">
+                            <input type="checkbox" name="remember">
+                            <label for="remember">Remember me</label>
+                            <button type="submit" class="btn-log-in">LOG IN</button>
                             <p>If you have an account with us, log in using your email address and password. </p>
                             <a class="forget-pass" href="">Did you forget your password?</a>
-                            <a href="/users/register">
-                                <div class="btn-register">
-                                    <p id= "btn-register-now">REGISTER NOW</p>
-                                </div>
-                            </a>
                         </form>
+
+                        <a href="/users/register">
+                            <div class="btn-register">
+                                <p id= "btn-register-now">REGISTER NOW</p>
+                            </div>
+                        </a>
+
                     </div>        
                 </div>
-            </li>     
+            </li>
+            <% } else { %>
+                <li id="my-account"><a href="/users/<%= userLog.id %>">HI, <%= userLog.firstName.toUpperCase() %>!</a>
+            <% } %>
             <li><a href="/products/wishlist">WISHLIST</a></li>
             <li>
                 <a href="/cart">

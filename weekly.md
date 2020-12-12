@@ -1,43 +1,13 @@
-WEEKLY 19.11.2020
+WEEKLY 12.12.2020
 
     ● Qué hicimos en la semana:
-        - Completamos la reunion para la retro del sprint anterior.
-        - Actualizamos tablero de trabajo.
-        - Revisamos punto por punto y agendamos días de reunión.
+        - Repasamos teoria para aplicar en el SPRINT
 
      ● Si se encontró con algún impedimento: 
-        - Se apuntaron dudas con respecto al sprint para preguntar a los profes.
+        - Nos genera duda cómo mantener la cookie que recuerda al usuario.
 
     ● Qué se va a hacer:
-        - Completar el register de usuarios.
-        - Creacion de base de datos de usuarios y productos.
-        - Crear carga dinamica de productos.
-
-WEEKLY 24.11.2020
-
-    ● Qué hicimos en la semana:
-        - Creacion de JSON de usuarios
-        - Creacion de JSON de productos
-
-     ● Si se encontró con algún impedimento: 
-
-    ● Qué se va a hacer:
-        - BREAD de productos
-        - Vista dinamica de product detail
-        - Vista dinamica de shop e index
-
-WEEKLY 28.11.2020
-
-    ● Qué hicimos en la semana:
-        - Vista dinamica de product detail
-        - Vista dinamica de shop e index
-        - BREAD de productos
-
-     ● Si se encontró con algún impedimento: 
-
-    ● Qué se va a hacer:
-        - Completar el campo DESCRIPTION del product-detail.
-        - Creacion de base de datos de productos.
-        - Filtrado de productos por categoria.
-        - Metodos PUT y DELETE
-        
+        - Vista de perfil de usuario.
+        - Carga de imagen de perfil de usuario.
+        - Directorio de imagenes de usuario.
+        - Verificacion y redireccion a partir del login del usuario.

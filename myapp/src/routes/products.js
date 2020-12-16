@@ -1,32 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const multer = require('multer');
-const path = require('path');
-
-
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-    cb(null, path.join('public/imgs/products'))
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + file.originalname);
-  }
-})
-
-const upload = multer({ 
-    storage,
-    fileFilter: (req, file, cb) => {
-        const acceptExt = ['.jpg', '.png', '.webp', '.jpeg'];
-        const ext = path.extname(file.originalname);
-        
-        if (!acceptExt.includes(ext)) {
-            req.files = file;
-        }
-        cb(null, acceptExt.includes(ext));
-    }
-})
-
-const productsController = require('../controllers/productsController')
+const productsController = require('../controllers/productsController');
+const multerProducts = require('../middlewares/multer/products')
 
 /* GET Shop page. */
 
@@ -35,13 +10,13 @@ router.get('/category/:type', productsController.filter) // Ruta creada para fil
 router.get('/create', productsController.create); // Formulario de creacion de productos
 
 
-router.post('/create', upload.array('productImages', 6), productsController.store); // Accion de creacion (a donde se envia el formulario)
+router.post('/create', multerProducts.array('productImages', 6), productsController.store); // Accion de creacion (a donde se envia el formulario)
 
 router.get('/detail/:id', productsController.detail); // Detalle de un producto particular
 
 
 router.get('/edit/:id', productsController.edit); // Formulario de edicion de productos
-router.put('/edit/:id', upload.array('productImages', 6), productsController.editStore); // Accion de edicion (a donde se envia la informacion solicitada en el formulario)
+router.put('/edit/:id', multerProducts.array('productImages', 6), productsController.editStore); // Accion de edicion (a donde se envia la informacion solicitada en el formulario)
 
 
 router.delete('/delete/:id', productsController.delete); // Accion de borrado

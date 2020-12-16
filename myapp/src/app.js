@@ -1,11 +1,14 @@
-const createError = require('http-errors');
 const express = require('express');
+const createError = require('http-errors');
 const path = require('path');
+
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const methodOverride = require('method-override');
 const session = require('express-session');
-const setLocals = require ('./middlewares/setLocals');
+
+const setLocals = require('./middlewares/setLocals');
+const log = require('./middlewares/log')
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -30,6 +33,8 @@ app.use(session({
   resave: true,
   saveUninitialized: true
 }));
+
+app.use(log);
 app.use(setLocals);
 
 // routes

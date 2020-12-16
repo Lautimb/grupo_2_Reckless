@@ -83,8 +83,11 @@ module.exports = {
         const allUsers = dataBaseHelper.getAllDataBase('users-data.json');
         const userFound = allUsers.find(user => user.email == req.body.email)
         req.session.user = userFound;
-        // si clickea remember, mantener la sesion con cookies.
-
+        
+        if (req.body.remember){
+            res.cookie('user', userFound.id, {maxAge: 1000 * 60 * 60 * 24 * 365})
+        } 
+    
         return res.redirect ('/');
     }
 };

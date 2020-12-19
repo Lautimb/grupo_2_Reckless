@@ -86,6 +86,7 @@
                                     <option value="10">10</option>
                                 </select>
                             </div>
+                            <% if (userLog.admin) { %> 
                             <div class="edit-delete-product">
                                 <div>
                                     <form action="/products/edit/<%= product.id%>" method="GET" name="button" >
@@ -98,9 +99,11 @@
                                     </form>
                                 </div>
                             </div>
+                            <% }else{ %> 
                             <div class="buttons-detail">
                                 <a href="/cart" type="submit"><i class="fas fa-shopping-cart"></i> ADD TO CART</a>
                             </div>
+                            <% } %> 
                         </div>
                         
                         <div class="product-detail__details">

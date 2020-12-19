@@ -68,5 +68,23 @@ module.exports = {
                 return bcrypt.compareSync(req.body.password, userFound.password);
             })
                 .withMessage('Wrong e-mail or password')
+    ],
+    products: [
+        body('images')
+            .notEmpty()
+                .withMessage('Please, select at least one product images')
+                .bail()
+            .custom((value, {req})=>{
+
+                if(req.files){
+
+                    const ext = path.extname(req.files.originalname)
+                    const acceptedExt = ['.jpg','.png','.jpeg','.webp']
+                    return acceptedExt.includes(ext)
+
+                    }
+                    return false;
+                 })
+                .withMessage('Please select a valid image format')
     ]
 }

@@ -1,4 +1,5 @@
 const multer = require('multer')
+const path = require('path');
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
     cb(null, path.join('public/imgs/products'))
@@ -15,7 +16,7 @@ module.exports = multer({
         const ext = path.extname(file.originalname);
         
         if (!acceptExt.includes(ext)) {
-            req.files = file;
+            req.file = file;
         }
         cb(null, acceptExt.includes(ext));
     }

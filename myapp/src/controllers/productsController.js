@@ -1,5 +1,5 @@
 const dataBaseHelper = require('../helpers/data-base-helper');
-
+const {validationResults} = require('express-validator');
 module.exports = {
     index: (req,res) =>{
         const allProducts = dataBaseHelper.getAllDataBase('products-data.json')
@@ -31,7 +31,8 @@ module.exports = {
         res.render('products/create');
     },
     store: (req, res) => {
-
+        const results = validationResults(req);
+        return res.send(results)
         const images = req.files;
         for(let i = 0; i< images.length; i++){
             images[i] = images[i].filename;

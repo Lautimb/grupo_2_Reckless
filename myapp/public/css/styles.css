@@ -133,6 +133,10 @@ a:visited{
         width: 33.3%;
         padding: 0;     
     }
+    .form-login-style{
+        width: 100%; 
+     }
+
 }
 
 @media (max-width: 768px) {
@@ -224,11 +228,17 @@ a:visited{
     .parallax-mirror{
         height: 80vh;
     }
+    .form-login-style{
+        width: 100%;
+    }
 }
 
 @media (max-width: 600px){
     .parallax-mirror{
         height: 60vh;
+    }
+    .form-login-style{
+       width: 100%; 
     }
 }
 
@@ -660,10 +670,6 @@ a:visited{
     cursor: pointer;
 }
 
-/* .color-circle:checked {
-    background-color: transparent;
-    color: var(--magenta);
-} */
 
 /* ---------------- CORREGIR -----------*/
 
@@ -780,6 +786,28 @@ a:visited{
     padding-bottom: 100px;
 }
 
+/* --------------------- LOGIN -------------------------*/
+
+.require-login-container{
+    display: flex;
+    flex-direction: column;
+    padding: 100px 0px 200px 0px ;
+    width: 50%;
+    align-self: center;
+}
+
+.form-login-style{
+    display: flex;
+    flex-direction: column;  
+}
+
+.form-login-style input:not([type = 'checkbox']){
+    width: 100%;
+}
+.form-login-style button{
+    align-self: center;
+
+}
 
 
 /* --------------------- FORMS REGISTER-------------------------*/
@@ -850,10 +878,6 @@ h3, .required-files{
     top: 218px;
 
 }
-.confirm-terms input , p{
-    margin-top: 5px;
-}
-
 
 .container-city div{
     display: flex;

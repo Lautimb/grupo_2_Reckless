@@ -15,7 +15,7 @@
         <ul id="nav-bar1">
             <li class="search"><i class="fas fa-search"></i></li>   
             <% if (!userLog) { %>       
-            <li id="my-account"><p>MY ACCOUNT</p>
+            <li id="my-account"><p class="my-account-tittle">MY ACCOUNT</p>
                 <div class="myaccount-prelog">
                     <div class="prelog-container">
                         <h3 class="title-prelog">WELCOME</h3>
@@ -48,7 +48,17 @@
                 </div>
             </li>
             <% } else { %>
-                <li id="my-account"><a href="/users/<%= userLog.id %>">HI, <%= userLog.firstName.toUpperCase() %>!</a>
+                <li id="my-profile"><p class="my-account-tittle">HI, <%= userLog.firstName.toUpperCase() %>!</p>
+                    <div class="logued-container">
+                        <ul>
+                            <li><a href="/users/profile">Profile</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="/users/logout">Logout</a></li>
+                        </ul>
+                    </div>
+                </li>
+
             <% } %>
             <li><a href="/products/wishlist">WISHLIST</a></li>
             <li>

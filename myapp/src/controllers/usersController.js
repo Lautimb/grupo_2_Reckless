@@ -89,5 +89,15 @@ module.exports = {
         } 
     
         return res.redirect ('/');
+    },
+    logout: (req, res) => {
+        req.session.destroy(()=> {
+            req.session = null
+            res.cookie('user', null, {maxAge: -1})
+            res.redirect('/')
+        })
+    },
+    requireLogin: (req, res) => {
+        res.render('users/requireLogin');
     }
 };

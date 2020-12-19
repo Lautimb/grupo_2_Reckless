@@ -25,6 +25,7 @@
   "city": "asdfa",
   "country": "asdf",
   "postalZipCode": "123234",
-  "phone": "1231234123414"
+  "phone": "1231234123414",
+  "admin": true
  }
 ]

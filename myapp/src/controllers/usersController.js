@@ -69,7 +69,7 @@ module.exports = {
 
     processLogin: (req, res) => {
         const errors = validationResult(req);
-        if (!errors.isEmpty()) {
+       /* if (!errors.isEmpty()) {
             const allProducts = dataBaseHelper.getAllDataBase('products-data.json');
             allProducts.forEach(product => {
                 product.images = product.images[0]
@@ -78,6 +78,12 @@ module.exports = {
             return res.render ('index', { 
                 errors,
                 products : allProducts 
+            })
+        }*/
+        
+        if(!errors.isEmpty()){
+            return res.render('users/requireLogin', {
+                errors: errors.mapped()
             })
         }
         const allUsers = dataBaseHelper.getAllDataBase('users-data.json');

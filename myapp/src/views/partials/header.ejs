@@ -20,19 +20,14 @@
                     <div class="prelog-container">
                         <h3 class="title-prelog">WELCOME</h3>
 
-                        <% if (typeof errors != 'undefined') { %>
-                            <ul>
-                                <% for (error of errors.errors) { %>
-                                    <li><%= error.msg %></li>
-                                <% } %>
-                            </ul>
-                        <% } %>
 
                         <form action="/users/login" method="POST">
                             <input type="text" class="input-style" placeholder="E-MAIL" name="email" autocomplete="off">
                             <input type="password" class="input-style" placeholder="PASSWORD" name="password">
-                            <input type="checkbox" name="remember">
-                            <label for="remember">Remember me</label>
+                            <div>
+                                <label class="label-padding" for="remember">Remember me</label>
+                                <input type="checkbox" name="remember">
+                            </div>
                             <button type="submit" class="btn-log-in">LOG IN</button>
                             <p>If you have an account with us, log in using your email address and password. </p>
                             <a class="forget-pass" href="">Did you forget your password?</a>

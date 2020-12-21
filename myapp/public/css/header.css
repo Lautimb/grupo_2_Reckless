@@ -120,17 +120,21 @@ header a{
     width: 100%;
 }
 
-.myaccount-prelog input{
+.myaccount-prelog input:not([type = 'checkbox']){
     border-radius: 2px;
     width: 100%;
     margin-bottom: 10px;
     padding: 7px;
     border: 1px solid black;
 }
+.label-padding{
+    padding-right: 10px;
+}
 
 .prelog-container input:focus{
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.562);
-    border: 1px solid var(--magenta); 
+    border: 1px solid;
+    border-image: linear-gradient(to right, var(--cyan) 33%, var(--magenta) 33%,var(--magenta) 66%, var(--yellow) 66%,var(--yellow) 100% ) 5; 
     outline: 0;
 }
 
@@ -148,6 +152,7 @@ header a{
     background-color: var(--black);
     width: 80%;
     padding: 7px;
+    margin: 10px;
     border-radius: 2px;
     border: 1px solid transparent
 }

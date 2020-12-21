@@ -17,7 +17,7 @@ router.get('/detail/:id', productsController.detail); // Detalle de un producto 
 
 
 router.get('/edit/:id',admin, productsController.edit); // Formulario de edicion de productos
-router.put('/edit/:id', multerProducts.array('images', 6), validator.products, productsController.editStore); // Accion de edicion (a donde se envia la informacion solicitada en el formulario)
+router.put('/edit/:id', multerProducts.array('images', 6), validator.products , productsController.editStore); // Accion de edicion (a donde se envia la informacion solicitada en el formulario)
 
 
 router.delete('/delete/:id',admin, productsController.delete); // Accion de borrado

@@ -64,10 +64,8 @@
                             <% } else { %>
                                 <input class= "input-style width-input-price-discount" type="text" value="" name="price" id="productPrice">
                             <% } %>
-                            
                         </div>
                         <div>
-                        
                             <label for="discount">DISCOUNT %</label>
                             <% if(typeof old != 'undefined') {%>
                                 <input class= "input-style width-input-price-discount" type="text" value="<%= old.discount ? old.discount : '' %>" name="discount" id="productPromo">
@@ -108,7 +106,6 @@
                                         <option value="outerwear">OUTERWEAR</option>
                                         <option value="denim">DENIM</option>
                                     </select>
-                                    
                                     <small class="errors-style "><%= typeof errors == 'undefined' ? '' : typeof errors.type == 'undefined' ? '' : errors.type.msg %></small>
                                 </li>
                             <li>

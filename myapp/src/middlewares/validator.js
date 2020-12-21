@@ -70,21 +70,40 @@ module.exports = {
                 .withMessage('Wrong e-mail or password')
     ],
     products: [
-        body('images')
+        body('name')
             .notEmpty()
-                .withMessage('Please, select at least one product images')
+                .withMessage("Fill product's name")
+                .bail(),
+        body('price')
+            .isInt({min:1})
+                .withMessage('Price must be greater than 0')
+                .bail(),
+        body('discount')
+            .isInt({min:1 , max: 99.9})
+                .withMessage('Discount must be greater than 0 and less than 100')
+                .bail(),
+        body('type')
+            .notEmpty()
+                .withMessage("Select type")
+                .bail(),
+        body('images')
+            .custom((value, {req})=>{
+                return req.body.files != undefined   
+            })
+                .withMessage('Please insert an image')
                 .bail()
             .custom((value, {req})=>{
-
+                const acceptedExt = ['.jpg','.webp','.jpeg','.png']
+                console.log(req.files)
                 if(req.files){
-
-                    const ext = path.extname(req.files.originalname)
-                    const acceptedExt = ['.jpg','.png','.jpeg','.webp']
-                    return acceptedExt.includes(ext)
-
-                    }
-                    return false;
-                 })
-                .withMessage('Please select a valid image format')
-    ]
+                    const images = req.files
+                    const result = images.map( image => {
+                        return acceptedExt.includes(path.extname(image.originalname))
+                    })
+                    return result.includes(true)
+                }
+            })
+                .withMessage('Invalid extension')
+                
+    ] 
 }

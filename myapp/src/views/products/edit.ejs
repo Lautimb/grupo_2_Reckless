@@ -28,7 +28,9 @@
                                 <p>+ ADD</p>
                                 <p>(max 6 images)</p>
                             </label>
-                            <input name="productImages" id="file" type="file" multiple>
+                            
+                            <input name="images" id="file" type="file" multiple>
+                            
                         </li>
                     </ul>
 
@@ -82,7 +84,7 @@
                             <li>
                                 <p>PRODUCT TYPE</p>
                                 <select name="type" class="input-style" id="type">
-                                    <option value="<%= productToEdit.type%>" selected ><%= productToEdit.type%></option>
+                                    <option value="<%= productToEdit.type%>" selected ><%= productToEdit.type.toUpperCase()%></option>
                                     <option value="top">TOP</option>
                                     <option value="bottom">BOTTOMS</option>
                                     <option value="outerwear">OUTERWEAR</option>

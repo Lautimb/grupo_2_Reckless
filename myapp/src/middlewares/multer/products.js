@@ -11,13 +11,15 @@ const storage = multer.diskStorage({
 
 module.exports = multer({ 
     storage,
+
     fileFilter: (req, file, cb) => {
-        const acceptExt = ['.jpg', '.png', '.webp', '.jpeg'];
-        const ext = path.extname(file.originalname);
-        
-        if (!acceptExt.includes(ext)) {
-            req.file = file;
-        }
-        cb(null, acceptExt.includes(ext));
+		
+		const acceptedExt = ['.jpg','.webp','.jpeg','.png']
+		const ext = path.extname(file.originalname)
+		 req.body.files = false;
+		if(!acceptedExt.includes(ext)){
+			req.body.files = file
+		}
+		cb(null,acceptedExt.includes(ext));
     }
 })

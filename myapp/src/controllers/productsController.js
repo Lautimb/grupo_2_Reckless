@@ -1,5 +1,6 @@
 const dataBaseHelper = require('../helpers/data-base-helper');
-const {validationResults} = require('express-validator');
+const { validationResult } = require('express-validator');
+
 module.exports = {
     index: (req,res) =>{
         const allProducts = dataBaseHelper.getAllDataBase('products-data.json')
@@ -31,13 +32,18 @@ module.exports = {
         res.render('products/create');
     },
     store: (req, res) => {
-        const results = validationResults(req);
-        return res.send(results)
-        const images = req.files;
-        for(let i = 0; i< images.length; i++){
-            images[i] = images[i].filename;
+        const errors = validationResult(req);
+        console.log(errors.mapped())
+        if(!errors.isEmpty()){
+
+            return res.render('products/create', {
+                errors: errors.mapped(),
+                old: req.body
+            })
         }
-        
+        const files = req.files;
+        const images = files.map( image => image.filename);
+       
         const newProduct = {
             id: dataBaseHelper.generateId('products-data.json'),
             images: images,
@@ -55,11 +61,7 @@ module.exports = {
         res.redirect('/products');
     },
     detail: (req,res) =>{
-        /*
-        1. Leer Base de datos completa y buscar el producto entero del id requerido.
-        2. Captar el producto y asignarlo a una variable que debe ser un objeto literal con propiedades y valores.
-        3. Mandar el producto a la vista.
-        */
+       
         const id = req.params.id;
         const products = dataBaseHelper.getAllDataBase('products-data.json');
         const result = products.find((product) => {
@@ -69,25 +71,32 @@ module.exports = {
         
     },
     edit: (req,res) =>{
-        // Renderizar vista de creacion con los campos value del product:id que se quiera editar.
-
+        
         const id = req.params.id;
         const products = dataBaseHelper.getAllDataBase('products-data.json');
         const result = products.find((product) => {
             return product.id == id;
         })  
+        
         res.render('products/edit', { productToEdit : result});
     },
     editStore:(req,res)=>{
-        
-        const images = req.files;
-        for(let i = 0; i< images.length; i++){
-            images[i] = images[i].filename;
+
+        const errors = validationResult(req);
+        if(!errors.isEmpty()){
+
+            return res.render('products/edit', {
+                errors: errors.mapped(),
+                old: req.body
+            })
         }
+
+        const files = req.files
+        const images = files.map( image => image.filename)
 
         const allProducts = dataBaseHelper.getAllDataBase('products-data.json');
         const id = req.params.id;
-        allProducts.map(function(product){
+        allProducts.map( product => {
 			if (product.id == id){
                 product.images = images.length == 0 ? product.images : images,
                 product.name = req.body.name,

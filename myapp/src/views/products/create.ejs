@@ -12,7 +12,6 @@
                 <div class="h1-center">
                     <h1>ADD NEW PRODUCT</h1>
                 </div>
-                
                 <div class="image-upload-container">
                     <div class="title-container">
                         <h3>PRODUCT IMAGES</h3>
@@ -29,7 +28,11 @@
                             </label>
                             <input name="images" id="file" type="file" multiple>
                         </li>
+                        <li>
+                            <small class="errors-style"><%= typeof errors == 'undefined' ? '' : typeof errors.images == 'undefined' ? '' : errors.images.msg %></small>
+                        </li>
                     </ul>
+                    
 
                 </div>
                 <div class="product-data-container">
@@ -38,26 +41,42 @@
                     </div>
                     <div class="product-data">
                         <label for="name"></label>
-
-                        <input type="text" class="input-style" name="name">
+                        <% if(typeof old != 'undefined') {%>
+                            <input type="text" class="input-style" value="<%= old.name ? old.name : '' %> " name="name"> 
+                            <small class="errors-style"><%= typeof errors == 'undefined' ? '' : typeof errors.name == 'undefined' ? '' : errors.name.msg %></small>
+                        <% } else { %>
+                            <input type="text" class="input-style" value="" name="name"> 
+                        <% } %>
                     </div>
                     <div class="title-container">
                         <h3>PRODUCT DESCRIPTION</h3>
                     </div>
                     <div class="product-data">
                         <label for="description"></label>
-
                         <textarea class="input-style textarea-style" name="description" id="description" cols="30" rows="10"></textarea>
                     </div>
                     <div class="product-price-discount">
                         <div>
                             <label for="price">PRICE $ </label>
-                            <input class= "input-style width-input-price-discount" type="text" name="price" id="productPrice"></input>
+                            <% if(typeof old != 'undefined') {%>
+                                <input class= "input-style width-input-price-discount" type="text" value="<%= old.price ? old.price : '' %>" name="price" id="productPrice">          
+                                <small class="errors-style "><%= typeof errors == 'undefined' ? '' : typeof errors.price == 'undefined' ? '' : errors.price.msg %></small>
+                            <% } else { %>
+                                <input class= "input-style width-input-price-discount" type="text" value="" name="price" id="productPrice">
+                            <% } %>
+                            
                         </div>
                         <div>
-                            <label for="discount">DISCOUNT </label>
-                            <input class= "input-style width-input-price-discount" type="text" name="discount" id="productPromo"></input>
-                            <label for=""> % </label>
+                        
+                            <label for="discount">DISCOUNT %</label>
+                            <% if(typeof old != 'undefined') {%>
+                                <input class= "input-style width-input-price-discount" type="text" value="<%= old.discount ? old.discount : '' %>" name="discount" id="productPromo">
+                                <label for=""> % </label>
+                        
+                            <small class="errors-style "><%= typeof errors == 'undefined' ? '' : typeof errors.discount == 'undefined' ? '' : errors.discount.msg %></small>
+                            <% } else {%>
+                                <input class= "input-style width-input-price-discount" type="text" value="" name="discount" id="productPromo">
+                            <% } %>
                         </div>
                     </div>
                 </div>
@@ -81,14 +100,17 @@
                             </li>
                             <li>
                                 <p>PRODUCT TYPE</p>
-                                <select name="type" class="input-style" id="type">
-                                    <option value="" disabled selected>-</option>
-                                    <option value="tops">TOPS</option>
-                                    <option value="bottoms">BOTTOMS</option>
-                                    <option value="outerwear">OUTERWEAR</option>
-                                    <option value="denim">DENIM</option>
-                                </select>
-                            </li>
+                                
+                                    <select name="type" class="input-style" id="type">
+                                        <option value="" disabled selected>-</option>
+                                        <option value="tops">TOPS</option>
+                                        <option value="bottoms">BOTTOMS</option>
+                                        <option value="outerwear">OUTERWEAR</option>
+                                        <option value="denim">DENIM</option>
+                                    </select>
+                                    
+                                    <small class="errors-style "><%= typeof errors == 'undefined' ? '' : typeof errors.type == 'undefined' ? '' : errors.type.msg %></small>
+                                </li>
                             <li>
                                 <p>COLORS & QTY</p>
                                 <ul>

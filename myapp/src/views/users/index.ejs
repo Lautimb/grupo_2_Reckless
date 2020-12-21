@@ -4,17 +4,23 @@
 <body>
     <%- include('../partials/header')%>
     <main>
-        <div class="h1-left">
-            <h1><%= userLog.firstName%> <%= userLog.lastName %></h1>
+        <div class="h1-center">
+            <h1><%= userLog.firstName%> <%= userLog.lastName %>'s Profile</h1>
         </div>
+        <div class="user-profile-style">
+            <section>
+                <ul class="user-profile-data">
+                    <li>Member N°: <%= userLog.id  %> </li>
+                    <li>First Name: <%= userLog.firstName  %> </li>
+                    <li>Last Name: <%= userLog.lastName  %> </li>
+                    <li>Email: <%= userLog.email %></li>
+                    <li>Bitrthday: <%= userLog.birthday %></li>
+                    <li>Counrty: <%= userLog.country  %> </li>
+                    <li>City: <%= userLog.city  %> </li>
+                </ul>
 
-        <section>
-            <ul>
-                <li><%= userLog.email %></li>
-                <li><%= userLog.birthday %></li>
-            </ul>
-
-        </section>
+            </section>
+        </div>
     </main>
     <%- include('../partials/footer')%>
 </body>

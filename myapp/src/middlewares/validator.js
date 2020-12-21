@@ -67,7 +67,11 @@ module.exports = {
                 const userFound = users.find(user => user.email == value);
                 return bcrypt.compareSync(req.body.password, userFound.password);
             })
-                .withMessage('Wrong e-mail or password')
+                .withMessage('Wrong e-mail or password'),
+        body('password')
+            .notEmpty()
+                .withMessage('Please fill the password')
+                .bail()
     ],
     products: [
         body('name')

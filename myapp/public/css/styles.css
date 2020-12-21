@@ -51,7 +51,8 @@ h1,h2,h3,h4,h5,h6{
 
 .input-style:focus{
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.562);
-    border: 1px solid var(--magenta); 
+    border: 1px solid; 
+    border-image: linear-gradient(to right, var(--cyan) 33%, var(--magenta) 33%,var(--magenta) 66%, var(--yellow) 66%,var(--yellow) 100% ) 5;
     outline: 0;
 }
 .button-style{
@@ -705,9 +706,16 @@ a:visited{
 .require-login-container{
     display: flex;
     flex-direction: column;
-    padding: 100px 0px 200px 0px ;
-    width: 50%;
+    border: 2px solid;
+    border-image: linear-gradient(to right, var(--cyan) 33%, var(--magenta) 33%,var(--magenta) 66%, var(--yellow) 66%,var(--yellow) 100% ) 5;
+    padding: 100px 75px;
+    margin-bottom: 100px;
+    width: 25%;
     align-self: center;
+}
+
+.check-box-rowed label{
+ padding-right: 10px;
 }
 
 .form-login-style{
@@ -722,6 +730,34 @@ a:visited{
     align-self: center;
 
 }
+
+/* --------------------- PROFILE STYLES ------------------------*/
+.user-profile-style{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    padding: 0px 0px 15px 0px;
+    margin-top: 25px;
+    margin-bottom: 250px;
+    width: 25%;
+    height: 25%;
+    border: 3px solid;
+    border-image: linear-gradient(to right, var(--cyan) 33%, var(--magenta) 33%,var(--magenta) 66%, var(--yellow) 66%,var(--yellow) 100% ) 5;
+}
+.user-profile-data{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+}
+.user-profile-data li{
+    font-size: 20px;
+    margin-left: 0px;
+    padding: 20px 0px 0px 0px;
+}
+
+
+
+
 
 
 /* --------------------- FORMS REGISTER-------------------------*/
@@ -865,6 +901,9 @@ h3, .required-files{
 }
 .errors-style{
     color: var(--magenta);
+}
+.form-login-style small{
+    margin-bottom: 10px;
 }
 .product-data small{
     align-self: flex-start;
@@ -1053,6 +1092,9 @@ h3, .required-files{
     .register__section{
         padding: 0px 125px;
     }
+    .require-login-container{
+        width: 35%;
+    }
 
 }
 
@@ -1073,6 +1115,13 @@ h3, .required-files{
     .register__section{
         padding: 0px 25px;
     }
+    .user-profile-style{
+        width: 40%;
+    }
+    .require-login-container{
+        width: 40%;
+    }
+   
 
 }
 @media (max-width: 768px) {
@@ -1134,6 +1183,13 @@ h3, .required-files{
         top: 0px 
         
     }
+    .user-profile-style{
+        width: 65%;
+    }
+    .require-login-container{
+        width: 65%;
+    }
+}
 
     @media (max-width: 600px){
         .parallax-mirror{
@@ -1141,6 +1197,12 @@ h3, .required-files{
         }
         .form-login-style{
            width: 100%; 
+        }
+        .user-profile-style{
+            width: 80%;
+        }
+        .require-login-container{
+            width: 80%;
         }
     }
     
@@ -1169,7 +1231,12 @@ h3, .required-files{
             width:90%
         }
     
+        .user-profile-style{
+            width: 90%;
+        }
+        .require-login-container{
+            width: 90%;
+        }
     }  
    
     
-}

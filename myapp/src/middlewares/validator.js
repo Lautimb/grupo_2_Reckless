@@ -21,7 +21,6 @@ module.exports = {
                 return !userFound;
             })
                 .withMessage('The selected email is already in use'),
-
         body('password')
             .notEmpty()
                 .withMessage('Please fill the password')
@@ -73,7 +72,9 @@ module.exports = {
                 .withMessage('Please fill the password')
                 .bail()
     ],
+
     products: [
+
         body('name')
             .notEmpty()
                 .withMessage("Fill product's name")
@@ -83,7 +84,13 @@ module.exports = {
                 .withMessage('Price must be greater than 0')
                 .bail(),
         body('discount')
-            .isInt({min:1 , max: 99.9})
+            .custom((value)=>{
+                
+                if(value == false || (value > 0 && value < 100)){
+                    return true
+                }
+                return false;
+            })
                 .withMessage('Discount must be greater than 0 and less than 100')
                 .bail(),
         body('type')
@@ -92,22 +99,14 @@ module.exports = {
                 .bail(),
         body('images')
             .custom((value, {req})=>{
-                return req.body.files != undefined   
+                return req.files 
             })
                 .withMessage('Please insert an image')
                 .bail()
             .custom((value, {req})=>{
-                const acceptedExt = ['.jpg','.webp','.jpeg','.png']
-                console.log(req.files)
-                if(req.files){
-                    const images = req.files
-                    const result = images.map( image => {
-                        return acceptedExt.includes(path.extname(image.originalname))
-                    })
-                    return result.includes(true)
-                }
+                return !req.body.files
             })
                 .withMessage('Invalid extension')
-                
-    ] 
+    ]
 }
+

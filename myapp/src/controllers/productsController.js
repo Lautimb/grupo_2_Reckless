@@ -33,7 +33,6 @@ module.exports = {
     },
     store: (req, res) => {
         const errors = validationResult(req);
-        console.log(errors.mapped())
         if(!errors.isEmpty()){
 
             return res.render('products/create', {
@@ -78,27 +77,27 @@ module.exports = {
             return product.id == id;
         })  
         
-        res.render('products/edit', { productToEdit : result});
+        res.render('products/edit', { old : result});
     },
     editStore:(req,res)=>{
-
+        const id = req.params.id;
         const errors = validationResult(req);
         if(!errors.isEmpty()){
-
             return res.render('products/edit', {
                 errors: errors.mapped(),
-                old: req.body
+                old: req.body,
+                id
             })
         }
-
+        
         const files = req.files
         const images = files.map( image => image.filename)
 
         const allProducts = dataBaseHelper.getAllDataBase('products-data.json');
-        const id = req.params.id;
+    
         allProducts.map( product => {
 			if (product.id == id){
-                product.images = images.length == 0 ? product.images : images,
+                product.images = images == false ? product.images : images,
                 product.name = req.body.name,
                 product.description = req.body.description,
                 product.price = req.body.price,

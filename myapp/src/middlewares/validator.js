@@ -68,7 +68,9 @@ module.exports = {
             })
                 .withMessage('Wrong e-mail or password')
     ],
+
     products: [
+
         body('name')
             .notEmpty()
                 .withMessage("Fill product's name")
@@ -78,7 +80,7 @@ module.exports = {
                 .withMessage('Price must be greater than 0')
                 .bail(),
         body('discount')
-            .custom((value , {req})=>{
+            .custom((value)=>{
                 
                 if(value == false || (value > 0 && value < 100)){
                     return true
@@ -93,23 +95,14 @@ module.exports = {
                 .bail(),
         body('images')
             .custom((value, {req})=>{
-                return req.body.files != undefined   
+                return req.files 
             })
                 .withMessage('Please insert an image')
                 .bail()
             .custom((value, {req})=>{
-                const acceptedExt = ['.jpg','.webp','.jpeg','.png']
-                console.log(req.files)
-                if(req.files){
-                    const images = req.files
-                    const result = images.map( image => {
-                        return acceptedExt.includes(path.extname(image.originalname))
-                    })
-                    return result.includes(true)
-                }
+                return !req.body.files
             })
                 .withMessage('Invalid extension')
-                
-    ] 
+    ]
 }
 

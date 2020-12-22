@@ -16,17 +16,6 @@
   "type": "denim"
  },
  {
-  "id": 3,
-  "images": [
-   "1608494311409starwarsVII.jpg"
-  ],
-  "name": "TRACK JACKET",
-  "description": "asd",
-  "price": "4000",
-  "discount": "2",
-  "type": "bottom"
- },
- {
   "id": 4,
   "images": [
    "16066966796941255708710_1_1_1.webp",

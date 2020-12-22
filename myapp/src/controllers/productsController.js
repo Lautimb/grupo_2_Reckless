@@ -97,7 +97,7 @@ module.exports = {
     
         allProducts.map( product => {
 			if (product.id == id){
-                product.images = images.length == 0 ? product.images : images,
+                product.images = images == false ? product.images : images,
                 product.name = req.body.name,
                 product.description = req.body.description,
                 product.price = req.body.price,

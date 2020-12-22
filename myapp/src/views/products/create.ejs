@@ -42,7 +42,7 @@
                     <div class="product-data">
                         <label for="name"></label>
                         <% if(typeof old != 'undefined') {%>
-                            <input type="text" class="input-style" value="<%= old.name ? old.name : '' %> " name="name"> 
+                            <input type="text" class="input-style" value="<%= old.name ? old.name : '' %>" name="name"> 
                             <small class="errors-style"><%= typeof errors == 'undefined' ? '' : typeof errors.name == 'undefined' ? '' : errors.name.msg %></small>
                         <% } else { %>
                             <input type="text" class="input-style" value="" name="name"> 

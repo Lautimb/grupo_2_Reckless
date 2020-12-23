@@ -38,7 +38,7 @@ module.exports = {
         const usersToSave = [...allUsers, newUser]
         dataBaseHelper.writeNewDataBase(usersToSave, 'users-data.json');
 
-        res.redirect('/users/register')
+        res.redirect('/users/requireLogin')
     },
 
     createBusinessUser: (req, res) => {

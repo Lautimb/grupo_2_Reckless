@@ -28,5 +28,19 @@
   "postalZipCode": "5500",
   "phone": "2612178694",
   "admin": true
+ },
+ {
+  "id": 3,
+  "firstName": "Laupa",
+  "lastName": "Barandia",
+  "personalId": "37245577",
+  "email": "lautaro@gmail.com",
+  "password": "$2a$10$CBPDZZkEKjOobyP/5OjPf.xBctpD5G8B2NSqrTGlQYftHR6KMLIEm",
+  "birthday": "01/05/1993",
+  "address": "Dardo rocha 2037",
+  "city": "Marcos Paz",
+  "country": "Argentina PAPA!",
+  "postalZipCode": "1727",
+  "phone": "01123232424"
  }
 ]

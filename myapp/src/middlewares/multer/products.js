@@ -18,7 +18,9 @@ module.exports = multer({
 		const ext = path.extname(file.originalname)
 		
 		if(!acceptedExt.includes(ext)){
-			req.body.files = file
+      
+      req.files = [...req.files ,file]
+      
 		}
 		cb(null,acceptedExt.includes(ext));
     }

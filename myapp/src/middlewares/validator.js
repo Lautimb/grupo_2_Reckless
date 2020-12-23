@@ -4,6 +4,8 @@ const path = require('path');
 const bcrypt = require('bcryptjs');
 const moment = require('moment');
 
+let msgFiles;
+
 module.exports = {
     register: [
 
@@ -98,13 +100,26 @@ module.exports = {
                 .withMessage("Select type")
                 .bail(),
         body('images')
-            .custom((value, {req})=>{
-                return req.files 
+            .custom((value ,{req})=>{
+                if(req.method == 'PUT'){
+                    return true
+                }
+                return req.files.length != 0
             })
-                .withMessage('Please insert an image')
+                .withMessage('Please select a file')
                 .bail()
             .custom((value, {req})=>{
-                return !req.body.files
+                const acceptedExt = ['.jpg','.webp','.jpeg','.png']
+                const files = req.files;
+                const filesWrong = files.map(file => {
+                    if(!acceptedExt.includes(path.extname(file.originalname))){
+                        return file;
+                    }
+                })
+                if(filesWrong.length == 0){
+                    return true;
+                }
+                return false;
             })
                 .withMessage('Invalid extension')
     ]

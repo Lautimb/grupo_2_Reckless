@@ -86,7 +86,7 @@
   "description": "High-waist trousers with an elastic waistband. Side pockets and patch pocket with flap on the leg.",
   "price": "3500",
   "discount": "",
-  "type": "bottoms"
+  "type": "bottom"
  },
  {
   "id": 9,
@@ -102,7 +102,7 @@
   "description": "Faded trousers with an elastic drawstring waistband. Front pockets and rear patch pockets. Patch pockets with flaps on the legs. Elastic cuffed hems.",
   "price": "4750",
   "discount": "",
-  "type": "bottoms"
+  "type": "bottom"
  },
  {
   "id": 10,
@@ -117,7 +117,7 @@
   "description": "Loose-fit, cropped, faded jeans featuring a five-pocket design, turn-up hems, a zip fly and a top button fastening.",
   "price": "5500",
   "discount": "",
-  "type": "bottoms"
+  "type": "bottom"
  },
  {
   "id": 11,
@@ -146,7 +146,7 @@
   "description": "Faded skinny jeans with five pockets. Featuring flap patch pockets on the legs. Hems with side zips. Zip-up front and top button fastening.",
   "price": "4750",
   "discount": "",
-  "type": "bottoms"
+  "type": "bottom"
  },
  {
   "id": 13,
@@ -157,11 +157,11 @@
    "16067027368237385277800_2_3_1.webp",
    "16067027368247385277800_6_1_1.webp"
   ],
-  "name": "COATED TROUSERS TRF",
+  "name": "COATED TROUSERS TRF ",
   "description": "High-waist trousers with an elastic waistband. Side pockets. Visible seam details",
   "price": "5250",
   "discount": "30",
-  "type": "bottoms"
+  "type": "bottom"
  },
  {
   "id": 14,
@@ -177,7 +177,7 @@
   "description": "Loose-fitting faded-effect T-shirt featuring a round neck, short sleeves, patch pocket on the chest and contrast fabric hem.",
   "price": "3250",
   "discount": "30",
-  "type": "tops"
+  "type": "top"
  },
  {
   "id": 15,
@@ -189,7 +189,7 @@
   "description": "Hoodie with an adjustable drawstring hood. Long sleeves. Pouch pocket on the front. Matching ribbed trims.",
   "price": "5500",
   "discount": "",
-  "type": "tops"
+  "type": "top"
  },
  {
   "id": 16,
@@ -205,7 +205,7 @@
   "description": "Collared shirt with long sleeves. Front pocket. Button-up front.",
   "price": "6200",
   "discount": "",
-  "type": "tops"
+  "type": "top"
  },
  {
   "id": 17,
@@ -220,7 +220,7 @@
   "description": "Oversized short sleeve T-shirt with a round neck and contrast front print.",
   "price": "3200",
   "discount": "",
-  "type": "tops"
+  "type": "top"
  },
  {
   "id": 18,
@@ -231,7 +231,7 @@
    "16067034320058228222407_6_3_1.jpg",
    "16067034320088228222407_6_4_1.jpg"
   ],
-  "name": "RIPPED MOM JEANS TRF     ",
+  "name": "RIPPED MOM JEANS TRF       ",
   "description": "Faded-effect high-waist jeans. Featuring a five-pocket design, ripped detailing on the front and zip fly and metal top button fastening.",
   "price": "5500",
   "discount": "",

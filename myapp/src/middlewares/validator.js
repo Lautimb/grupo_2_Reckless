@@ -114,9 +114,14 @@ module.exports = {
                 const filesWrong = files.map(file => {
                     if(!acceptedExt.includes(path.extname(file.originalname))){
                         return file;
+                    } else{
+                        return undefined
                     }
                 })
-                if(filesWrong.length == 0){
+                
+                console.log(filesWrong.length)
+
+                if(filesWrong == 0){
                     return true;
                 }
                 return false;

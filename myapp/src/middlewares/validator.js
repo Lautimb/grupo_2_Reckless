@@ -100,33 +100,25 @@ module.exports = {
                 .withMessage("Select type")
                 .bail(),
         body('images')
-            .custom((value ,{req})=>{
-                if(req.method == 'PUT'){
-                    return true
-                }
-                return req.files.length != 0
-            })
-                .withMessage('Please select a file')
-                .bail()
-            .custom((value, {req})=>{
-                const acceptedExt = ['.jpg','.webp','.jpeg','.png']
-                const files = req.files;
-                const filesWrong = files.map(file => {
-                    if(!acceptedExt.includes(path.extname(file.originalname))){
-                        return file;
-                    } else{
-                        return undefined
-                    }
-                })
-                
-                console.log(filesWrong.length)
-
-                if(filesWrong == 0){
-                    return true;
-                }
-                return false;
-            })
-                .withMessage('Invalid extension')
+        .custom((value ,{req})=>{
+            if(req.method == 'PUT'){
+                return true
+            }
+            return req.files.length != 0
+        })
+            .withMessage('Please select a file')
+            .bail()
+        .custom((value, {req})=>{
+            const acceptedExt = ['.jpg','.webp','.jpeg','.png']
+            const files = req.files;  
+            const fileWrong = files.find(file => {
+                if(!acceptedExt.includes(path.extname(file.originalname))){
+                    return file
+                } 
+             })
+            return !fileWrong
+        })
+            .withMessage('Invalid extension')
     ]
 }
 

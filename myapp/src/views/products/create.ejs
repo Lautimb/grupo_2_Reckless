@@ -53,7 +53,12 @@
                     </div>
                     <div class="product-data">
                         <label for="description"></label>
-                        <textarea class="input-style textarea-style" name="description" id="description" cols="30" rows="10"></textarea>
+                        <% if(typeof old != 'undefined'){%>
+                            <textarea class="input-style textarea-style" name="description" id="description" cols="30" rows="10"><%= old.description ? old.description : '' %></textarea>
+                        <% } else{%>
+                            <textarea class="input-style textarea-style" name="description" id="description" cols="30" rows="10"></textarea>
+                        <% }%>
+                       
                     </div>
                     <div class="product-price-discount">
                         <div>
@@ -100,9 +105,13 @@
                                 <p>PRODUCT TYPE</p>
                                 
                                     <select name="type" class="input-style" id="type">
-                                        <option value="" disabled selected>-</option>
-                                        <option value="tops">TOPS</option>
-                                        <option value="bottoms">BOTTOMS</option>
+                                        <% if(typeof old != 'undefined'){%>
+                                            <option value="<%= old.type %>" selected ><%= old.type.toUpperCase()%></option>
+                                        <% } else{%>
+                                            <option value="" selected >-</option>
+                                        <% }%>
+                                        <option value="top">TOP</option>
+                                        <option value="bottom">BOTTOM</option>
                                         <option value="outerwear">OUTERWEAR</option>
                                         <option value="denim">DENIM</option>
                                     </select>
@@ -139,8 +148,9 @@
                                 <select name="type" class="input-style" id="type">
                                     <option value="" disabled selected>-</option>
                                     <option value="top">TOP</option>
-                                    <option value="bottom">BOTTOMS</option>
+                                    <option value="bottom">BOTTOM</option>
                                     <option value="outerwear">OUTERWEAR</option>
+                                    <option value="denim">DENIM</option>
                                 </select>
                             </li>
                             <li>

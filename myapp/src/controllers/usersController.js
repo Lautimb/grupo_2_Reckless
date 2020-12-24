@@ -53,7 +53,7 @@ module.exports = {
             businessId: req.body.businessId,
             businessEmail: req.body.businessEmail,
             businessAccountPassword: passwordHashed,
-            tradingSince: [req.body.month, req.body.day, req.body.year],
+            tradingSince: moment(req.body.year + '-' + req.body.month + '-' + req.body.day).format('L'),
             businessAddress: req.body.businessAddress,
             businessCity: req.body.businessCity,
             businessCountry: req.body.businessCountry,

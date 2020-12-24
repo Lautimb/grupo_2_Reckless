@@ -99,10 +99,11 @@
                             <li>
                                 <p>PRODUCT TYPE</p>
                                 <select name="type" class="input-style" id="type">
-                                    <option value="<%= old.type%>" selected ><%= old.type%></option>
+                                    <option value="<%= old.type%>" selected ><%= old.type.toUpperCase()%></option>
                                     <option value="top">TOP</option>
-                                    <option value="bottom">BOTTOMS</option>
+                                    <option value="bottom">BOTTOM</option>
                                     <option value="outerwear">OUTERWEAR</option>
+                                    <option value="denim">DENIM</option>
                                 </select>
                                 <small class="errors-style"><%= typeof errors == 'undefined' ? '' : typeof errors.type == 'undefined' ? '' : errors.type.msg %></small>
                             </li>
@@ -139,6 +140,7 @@
                                     <option value="top">TOP</option>
                                     <option value="bottom">BOTTOMS</option>
                                     <option value="outerwear">OUTERWEAR</option>
+                                    <option value="denim">DENIM</option>
                                 </select>
                             </li>
                             <li>

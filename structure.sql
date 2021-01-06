@@ -9,7 +9,12 @@ CREATE TABLE users (
     email VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     birthday DATE NOT NULL,
-    role INT NOT NULL DEFAULT 10,
+	-- business data 
+    manager_first_name VARCHAR(50) DEFAULT NULL,
+    manager_last_name VARCHAR(50) DEFAULT NULL,
+    company VARCHAR(50) DEFAULT NULL,
+    phone_number VARCHAR(50) DEFAULT NULL,
+    user_type_id INT UNSIGNED,
     
     -- cart_id INT UNSIGNED,
     -- wishlist_id INT UNSIGNED,
@@ -19,19 +24,21 @@ CREATE TABLE users (
     deleted_at DATETIME -- Fecha de borrado del registro completo
 );
 
-CREATE TABLE business_users (
+CREATE TABLE user_types (
 	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-    manager_first_name VARCHAR(50) NOT NULL,
-    manager_last_name VARCHAR(50) NOT NULL,
-    email VARCHAR(50) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
-    company VARCHAR(50) NOT NULL,
-    phone_number VARCHAR(50) NOT NULL,
+	title VARCHAR(50) NOT NULL,
     
-    -- cart_id INT UNSIGNED,
-    -- wishlist_id INT UNSIGNED,
-    
-	created_at DATETIME DEFAULT CURRENT_TIMESTAMP, -- Fecha de alta
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP, -- Fecha de alta
+    updated_at DATETIME ON UPDATE CURRENT_TIMESTAMP, -- Fecha de modificación
+    deleted_at DATETIME -- Fecha de borrado del registro completo
+);
+
+CREATE TABLE wishlists(
+	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    user_id INT UNSIGNED,
+    product_id INT UNSIGNED,
+	
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP, -- Fecha de alta
     updated_at DATETIME ON UPDATE CURRENT_TIMESTAMP, -- Fecha de modificación
     deleted_at DATETIME -- Fecha de borrado del registro completo
 );
@@ -130,6 +137,31 @@ CREATE TABLE product_type (
     updated_at DATETIME ON UPDATE CURRENT_TIMESTAMP, -- Fecha de modificación
     deleted_at DATETIME -- Fecha de borrado del registro completo
 );
+
+CREATE TABLE stocks (
+	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+	qty INT UNSIGNED NOT NULL DEFAULT 0,
+    product_id INT UNSIGNED,
+    color_id INT UNSIGNED,
+    size_id INT UNSIGNED,
+    
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP, -- Fecha de alta
+    updated_at DATETIME ON UPDATE CURRENT_TIMESTAMP, -- Fecha de modificación
+    deleted_at DATETIME -- Fecha de borrado del registro completo
+);
+
+
+ALTER TABLE users
+ADD FOREIGN KEY (user_type_id) REFERENCES user_types(id);
+
+ALTER TABLE wishlists
+ADD FOREIGN KEY (user_id) REFERENCES users(id),
+ADD FOREIGN KEY (product_id) REFERENCES products(id);
+
+ALTER TABLE stocks
+ADD FOREIGN KEY (product_id) REFERENCES products(id),
+ADD FOREIGN KEY (size_id) REFERENCES sizes(id),
+ADD FOREIGN KEY (color_id) REFERENCES colors(id);
 
 ALTER TABLE product_color
 ADD FOREIGN KEY (product_id) REFERENCES products(id),

@@ -23,7 +23,7 @@ module.exports = {
         // le agrego una propiedad al objeto creado con los productos a mostrar, y guardo en él, el tipo de producto en mayúsculas para poner de titulo en la seccion.
         productsToShow.type = type.toUpperCase();
         // mando la respuesta con los productos a mostrar
-		res.render('products/products-category', {
+		res.render('products/products-type', {
 			products: productsToShow
 		});
 
@@ -100,7 +100,7 @@ module.exports = {
                 product.images = images == false ? product.images : images,
                 product.name = req.body.name,
                 product.description = req.body.description,
-                product.price = req.body.price,
+                product.price = req.body.price, 
                 product.discount = req.body.discount,
                 product.type = req.body.type
 			}
@@ -114,7 +114,6 @@ module.exports = {
         res.render('products/wishlist');
     },
     delete: (req, res) =>{
-
         const id = req.params.id;
         const allProducts = dataBaseHelper.getAllDataBase('products-data.json');
         const productDeleted = allProducts.filter((product)=>{

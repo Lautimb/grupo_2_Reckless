@@ -69,18 +69,7 @@ module.exports = {
 
     processLogin: (req, res) => {
         const errors = validationResult(req);
-       /* if (!errors.isEmpty()) {
-            const allProducts = dataBaseHelper.getAllDataBase('products-data.json');
-            allProducts.forEach(product => {
-                product.images = product.images[0]
-           
-            })
-            return res.render ('index', { 
-                errors,
-                products : allProducts 
-            })
-        }*/
-        
+       
         if(!errors.isEmpty()){
             return res.render('users/requireLogin', {
                 errors: errors.mapped()
@@ -100,7 +89,7 @@ module.exports = {
         req.session.destroy(()=> {
             req.session = null
             res.cookie('user', null, {maxAge: -1})
-            res.redirect('/')
+            return res.redirect('/')
         })
     },
     requireLogin: (req, res) => {

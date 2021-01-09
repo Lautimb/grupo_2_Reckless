@@ -150,6 +150,42 @@ CREATE TABLE stocks (
     deleted_at DATETIME -- Fecha de borrado del registro completo
 );
 
+CREATE TABLE orders (
+	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    order_number VARCHAR(255),
+	total_qty INT UNSIGNED NOT NULL DEFAULT 0,
+    subtotal DECIMAL(10,2),
+    promotion VARCHAR(50),
+    discount SMALLINT UNSIGNED DEFAULT 0,
+    total DECIMAL(10,2),
+    
+    user_id INT UNSIGNED,
+    
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP, -- Fecha de alta
+    updated_at DATETIME ON UPDATE CURRENT_TIMESTAMP, -- Fecha de modificación
+    deleted_at DATETIME -- Fecha de borrado del registro completo
+);
+
+CREATE TABLE items (
+	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255),
+	img VARCHAR(255),
+    price DECIMAL(10,2) UNSIGNED NOT NULL,
+	wholesale_price DECIMAL(10,2) UNSIGNED NOT NULL,
+    discount SMALLINT UNSIGNED DEFAULT 0,
+    qty INT,
+    item_subtotal DECIMAL(10,2),
+    status BOOLEAN,
+    
+    user_id INT UNSIGNED,
+    order_id INT UNSIGNED,
+    product_id INT UNSIGNED,
+    
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP, -- Fecha de alta
+    updated_at DATETIME ON UPDATE CURRENT_TIMESTAMP, -- Fecha de modificación
+    deleted_at DATETIME -- Fecha de borrado del registro completo
+);
+
 
 ALTER TABLE users
 ADD FOREIGN KEY (user_type_id) REFERENCES user_types(id);
@@ -178,3 +214,11 @@ ADD FOREIGN KEY (image_id) REFERENCES images(id);
 ALTER TABLE product_type
 ADD FOREIGN KEY (product_id) REFERENCES products(id),
 ADD FOREIGN KEY (type_id) REFERENCES types(id);
+
+ALTER TABLE orders
+ADD FOREIGN KEY (user_id) REFERENCES users(id);
+
+ALTER TABLE items
+ADD FOREIGN KEY (user_id) REFERENCES users(id),
+ADD FOREIGN KEY (order_id) REFERENCES orders(id),
+ADD FOREIGN KEY (product_id) REFERENCES products(id);

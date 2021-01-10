@@ -60,7 +60,7 @@ CREATE TABLE products (
 CREATE TABLE colors (
 	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(50) NOT NULL,
-    hexagesimal VARCHAR(20) NOT NULL,
+    hexagecimal VARCHAR(20) NOT NULL,
     
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP, -- Fecha de alta
     updated_at DATETIME ON UPDATE CURRENT_TIMESTAMP, -- Fecha de modificación

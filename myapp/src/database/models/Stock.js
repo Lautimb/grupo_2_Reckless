@@ -4,21 +4,23 @@ module.exports = (sequelize, dataTypes)=>{
 
     const cols = {
         id:{
-            type: dataTypes.INTEGER,
+            type: dataTypes.INTEGER.UNSIGNED,
             primaryKey: true,
             autoIncrement: true 
         },
          qty:{
-            type: dataTypes.INTEGER
+            type: dataTypes.INTEGER.UNSTIGNED,
+            allowNull: false,
+            defaultValue: "0"
         },
         product_id: {
-            type: dataTypes.INTEGER
+            type: dataTypes.INTEGER.UNSIGNED
         },
         color_id: {
-            type: dataTypes.INTEGER
+            type: dataTypes.INTEGER.UNSIGNED
         },
         size_id:{
-            type: dataTypes.INTEGER
+            type: dataTypes.INTEGER.UNSIGNED
         }
 
     }
@@ -33,7 +35,7 @@ module.exports = (sequelize, dataTypes)=>{
     Stock.associate = (models) =>{
         Stock.belongsTo(models.Product, {
             as: "products",
-            foreignKey: "stock_id",
+            foreignKey: "product_id",
             timestamps: true
         })
         Stock.belongsTo(models.Color,{

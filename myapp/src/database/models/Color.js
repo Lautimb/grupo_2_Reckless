@@ -1,21 +1,23 @@
-module.exports = (sequelize, dataTypes)=>{
+module.exports = (sequelize, DataTypes)=>{
     
     const alias = "Color";
 
     const cols = {
         id:{
-            type: dataTypes.INTEGER,
+            type: DataTypes.INTEGER.UNSIGNED,
             primaryKey: true,
             autoIncrement: true 
         },
         title:{
-            type: dataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: false
         },
-        hexagecimal: {
-            type: dataTypes.STRING
+        hexadecimal: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
 
-    }
+    };
 
     const config = {
         tableName: "colors",
@@ -39,5 +41,4 @@ module.exports = (sequelize, dataTypes)=>{
         })
     }
     return Color;
-
 }

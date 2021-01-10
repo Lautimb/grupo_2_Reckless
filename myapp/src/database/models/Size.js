@@ -4,12 +4,13 @@ module.exports = (sequelize, dataTypes)=>{
 
     const cols = {
         id:{
-            type: dataTypes.INTEGER,
+            type: dataTypes.INTEGER.UNSIGNED,
             primaryKey: true,
             autoIncrement: true 
         },
         title:{
-            type: dataTypes.STRING
+            type: dataTypes.STRING(5),
+            allowNull: false
         }
 
     }

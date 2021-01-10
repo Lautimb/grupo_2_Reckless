@@ -16,9 +16,6 @@ CREATE TABLE users (
     phone_number VARCHAR(50) DEFAULT NULL,
     user_type_id INT UNSIGNED,
     
-    -- cart_id INT UNSIGNED,
-    -- wishlist_id INT UNSIGNED,
-    
 	created_at DATETIME DEFAULT CURRENT_TIMESTAMP, -- Fecha de alta
     updated_at DATETIME ON UPDATE CURRENT_TIMESTAMP, -- Fecha de modificación
     deleted_at DATETIME -- Fecha de borrado del registro completo
@@ -46,6 +43,7 @@ CREATE TABLE wishlists(
 CREATE TABLE products (
 	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
+    description VARCHAR(255) NOT NULL,
     price DECIMAL(10,2) UNSIGNED NOT NULL,
     wholesale_price DECIMAL(10,2) UNSIGNED NOT NULL,
 	discount SMALLINT UNSIGNED DEFAULT 0,
@@ -60,7 +58,7 @@ CREATE TABLE products (
 CREATE TABLE colors (
 	id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(50) NOT NULL,
-    hexagecimal VARCHAR(20) NOT NULL,
+    hexadecimal VARCHAR(20) NOT NULL,
     
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP, -- Fecha de alta
     updated_at DATETIME ON UPDATE CURRENT_TIMESTAMP, -- Fecha de modificación
@@ -173,19 +171,17 @@ CREATE TABLE items (
     price DECIMAL(10,2) UNSIGNED NOT NULL,
 	wholesale_price DECIMAL(10,2) UNSIGNED NOT NULL,
     discount SMALLINT UNSIGNED DEFAULT 0,
-    qty INT,
+    qty INT UNSIGNED NOT NULL DEFAULT 0,
     item_subtotal DECIMAL(10,2),
     status BOOLEAN,
     
     user_id INT UNSIGNED,
     order_id INT UNSIGNED,
-    product_id INT UNSIGNED,
     
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP, -- Fecha de alta
     updated_at DATETIME ON UPDATE CURRENT_TIMESTAMP, -- Fecha de modificación
     deleted_at DATETIME -- Fecha de borrado del registro completo
 );
-
 
 ALTER TABLE users
 ADD FOREIGN KEY (user_type_id) REFERENCES user_types(id);
@@ -220,5 +216,4 @@ ADD FOREIGN KEY (user_id) REFERENCES users(id);
 
 ALTER TABLE items
 ADD FOREIGN KEY (user_id) REFERENCES users(id),
-ADD FOREIGN KEY (order_id) REFERENCES orders(id),
-ADD FOREIGN KEY (product_id) REFERENCES products(id);
+ADD FOREIGN KEY (order_id) REFERENCES orders(id);

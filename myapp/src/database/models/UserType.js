@@ -4,12 +4,13 @@ module.exports = (sequelize, dataTypes)=>{
 
     const cols = {
         id:{
-            type: dataTypes.INTEGER,
+            type: dataTypes.INTEGER.UNSIGNED,
             primaryKey: true,
             autoIncrement: true 
         },
         title:{
-            type: dataTypes.STRING
+            type: dataTypes.STRING,
+            allowNull: false
         }
 
     }
@@ -27,8 +28,7 @@ module.exports = (sequelize, dataTypes)=>{
             foreignKey: "user_type_id", 
             timestamps: true
         })
-   
     }
+    
     return UserType;
-
 }

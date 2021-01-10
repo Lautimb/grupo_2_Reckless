@@ -4,9 +4,9 @@ module.exports = (sequelize, dataTypes)=>{
 
     const cols = {
         id:{
-            type: dataTypes.INTEGER,
+            type: dataTypes.INTEGER.UNSIGNED,
             primaryKey: true,
-            autoIncrement: true 
+            autoIncrement: true
         },
         filename:{
             type: dataTypes.STRING

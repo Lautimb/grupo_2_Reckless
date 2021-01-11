@@ -34,13 +34,8 @@ module.exports = (sequelize, dataTypes)=>{
         },
 
     }
-
-    const config = {
-        tableName: "products",
-        timestamps: false
-    }
-
-    const Product = sequelize.define(alias, cols, config)
+    
+    const Product = sequelize.define(alias, cols)
 
     Product.associate = (models)=>{
         Product.belongsToMany(models.Type, {

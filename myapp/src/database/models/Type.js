@@ -15,12 +15,7 @@ module.exports = (sequelize, dataTypes)=>{
 
     }
 
-    const config = {
-        tableName: "types",
-        timestamps: true
-    }
-
-    const Type = sequelize.define(alias, cols, config)
+    const Type = sequelize.define(alias, cols)
     
     Type.associate = (models) =>{
         Type.belongsToMany(models.Product, {

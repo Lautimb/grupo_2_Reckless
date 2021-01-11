@@ -31,12 +31,7 @@ module.exports = (sequelize, dataTypes)=>{
         }
     }
 
-    const config = {
-        tableName: "orders",
-        timestamps: true
-    }
-
-    const Order = sequelize.define(alias, cols, config)
+    const Order = sequelize.define(alias, cols)
 
     Order.associate = (models) => {
 

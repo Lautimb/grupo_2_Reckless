@@ -24,13 +24,8 @@ module.exports = (sequelize, dataTypes)=>{
         }
 
     }
-
-    const config = {
-        tableName: "stocks",
-        timestamps: true
-    }
-
-    const Stock = sequelize.define(alias, cols, config)
+    
+    const Stock = sequelize.define(alias, cols)
     
     Stock.associate = (models) =>{
         Stock.belongsTo(models.Product, {

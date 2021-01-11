@@ -32,8 +32,8 @@ module.exports = {
     create: (req, res) => {
         res.render('products/create');
     },
-    store: (req, res) => {
-        /*const errors = validationResult(req);
+    store: async (req, res) => {
+        const errors = validationResult(req);
         if(!errors.isEmpty()){
 
             return res.render('products/create', {
@@ -44,7 +44,7 @@ module.exports = {
         const files = req.files;
         const images = files.map( image => image.filename);
        
-        const newProduct = {
+        /*const newProduct = {
             id: dataBaseHelper.generateId('products-data.json'),
             images: images,
             name: req.body.name.toUpperCase(),
@@ -57,7 +57,7 @@ module.exports = {
         const allProducts = dataBaseHelper.getAllDataBase('products-data.json');
         const productsToSave = [...allProducts, newProduct];
         dataBaseHelper.writeNewDataBase(productsToSave,'products-data.json');*/
-        db.Product.create({
+        await db.Product.create({
             name: req.body.name,
             description: req.body.description,
             price: req.body.price,

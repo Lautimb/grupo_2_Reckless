@@ -13,13 +13,8 @@ module.exports = (sequelize, dataTypes)=>{
         }
 
     }
-
-    const config = {
-        tableName: "images",
-        timestamps: true
-    }
-
-    const Image = sequelize.define(alias, cols, config)
+    
+    const Image = sequelize.define(alias, cols)
     
     Image.associate = (models) =>{
         Image.belongsToMany(models.Product, {

@@ -50,7 +50,7 @@ module.exports = (sequelize, dataTypes)=>{
         timestamps: true
     }
 
-    const Order = sequelize.define(alias, cols, config)
+    const Item = sequelize.define(alias, cols, config)
 
     Item.associate = (models) => {
 

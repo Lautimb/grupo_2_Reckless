@@ -23,7 +23,7 @@ module.exports = (sequelize, dataTypes)=>{
             type: dataTypes.STRING(50)
         },
         discount:{
-            type: dataTypes.SAMLLINT.UNSIGNED,
+            type: dataTypes.SMALLINT.UNSIGNED,
             defaultValue: "0"
         },
         user_id:{

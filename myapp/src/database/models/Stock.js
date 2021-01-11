@@ -9,7 +9,7 @@ module.exports = (sequelize, dataTypes)=>{
             autoIncrement: true 
         },
          qty:{
-            type: dataTypes.INTEGER.UNSTIGNED,
+            type: dataTypes.INTEGER.UNSIGNED,
             allowNull: false,
             defaultValue: "0"
         },

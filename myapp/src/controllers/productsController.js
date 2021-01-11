@@ -1,5 +1,6 @@
 const dataBaseHelper = require('../helpers/data-base-helper');
 const { validationResult } = require('express-validator');
+const db = require('../database/models')
 
 module.exports = {
     index: (req,res) =>{
@@ -32,7 +33,7 @@ module.exports = {
         res.render('products/create');
     },
     store: (req, res) => {
-        const errors = validationResult(req);
+        /*const errors = validationResult(req);
         if(!errors.isEmpty()){
 
             return res.render('products/create', {
@@ -55,7 +56,16 @@ module.exports = {
         
         const allProducts = dataBaseHelper.getAllDataBase('products-data.json');
         const productsToSave = [...allProducts, newProduct];
-        dataBaseHelper.writeNewDataBase(productsToSave,'products-data.json');
+        dataBaseHelper.writeNewDataBase(productsToSave,'products-data.json');*/
+        db.Product.create({
+            name: req.body.name,
+            description: req.body.description,
+            price: req.body.price,
+            wholesale_price: req.body.wholesaleprice,
+            discount: req.body.discount,
+            art: req.body.art            
+        })
+
 
         res.redirect('/products');
     },

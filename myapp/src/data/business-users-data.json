@@ -43,5 +43,13 @@
   "businessCountry": "",
   "businessPostalZipCode": "",
   "businessPhone": ""
+ },
+ {
+  "id": 3,
+  "businessName": "Hola",
+  "managerLastName": "asd",
+  "businessEmail": "dale@gmail.com",
+  "businessAccountPassword": "$2a$10$Am1/e6Y5FCCxjOWNeXmHveIhO6HUI0H.t34YLdiUunH.Jn4vaJiFm",
+  "tradingSince": "Invalid date"
  }
 ]

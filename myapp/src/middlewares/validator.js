@@ -65,8 +65,12 @@ module.exports = {
                 .bail()
             .custom((value, {req})=>{
                 const users = dataBaseHelper.getAllDataBase('users-data.json');
-                const userFound = users.find(user => user.email == value);
-                return bcrypt.compareSync(req.body.password, userFound.password);
+                const userFound = users.filter(user => user.email == value);
+                console.log(userFound)
+                if(userFound[0]){
+                    return bcrypt.compareSync(req.body.password, userFound[0].password);
+                }
+                return false
             })
                 .withMessage('Wrong e-mail or password'),
         body('password')

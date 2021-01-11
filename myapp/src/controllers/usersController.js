@@ -15,7 +15,7 @@ module.exports = {
 
         if (!errors.isEmpty()) {
             return res.render ('users/register', {
-                errors,
+                errors: errors.mapped(),
                 old: req.body
             })
         }
@@ -27,18 +27,13 @@ module.exports = {
             personalId: req.body.personalId,
             email: req.body.email,
             password: passwordHashed,
-            birthday: moment(req.body.year + '-' + req.body.month + '-' + req.body.day).format('L'),
-            address: req.body.address,
-            city: req.body.city,
-            country: req.body.country,
-            postalZipCode: req.body.postalZipCode,
-            phone: req.body.phone
+            birthday: moment(req.body.year + '-' + req.body.month + '-' + req.body.day).format('L')
         }
         const allUsers = dataBaseHelper.getAllDataBase('users-data.json');
         const usersToSave = [...allUsers, newUser]
         dataBaseHelper.writeNewDataBase(usersToSave, 'users-data.json');
 
-        res.redirect('/users/requireLogin')
+        res.redirect('/users/login')
     },
 
     createBusinessUser: (req, res) => {
@@ -67,12 +62,17 @@ module.exports = {
         res.redirect('/users/register');
     },
 
+    requireLogin: (req, res) => {
+        res.render('users/requireLogin');
+    },
+
     processLogin: (req, res) => {
         const errors = validationResult(req);
        
         if(!errors.isEmpty()){
             return res.render('users/requireLogin', {
-                errors: errors.mapped()
+                errors: errors.mapped(),
+                email: req.body.email
             })
         }
         const allUsers = dataBaseHelper.getAllDataBase('users-data.json');
@@ -91,8 +91,6 @@ module.exports = {
             res.cookie('user', null, {maxAge: -1})
             return res.redirect('/')
         })
-    },
-    requireLogin: (req, res) => {
-        res.render('users/requireLogin');
     }
+    
 };

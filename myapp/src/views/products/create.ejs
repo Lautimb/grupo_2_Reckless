@@ -53,7 +53,7 @@
                     </div>
                     <div class="product-data">
                         <label for="description"></label>
-                        <% if(typeof old != 'undefined'){%>
+                        <%  if(typeof old != 'undefined'){%>
                             <textarea class="input-style textarea-style" name="description" id="description" cols="30" rows="10"><%= old.description ? old.description : '' %></textarea>
                         <% } else{%>
                             <textarea class="input-style textarea-style" name="description" id="description" cols="30" rows="10"></textarea>
@@ -80,6 +80,16 @@
                             <% } else {%>
                                 <input class= "input-style width-input-price-discount" type="text" value="" name="discount" id="productPromo">
                             <% } %>
+                        </div>
+                        <div>
+                            <label for="price">WHOLESALE PRICE $ </label>
+                            
+                                <input class= "input-style width-input-price-discount" type="text" value="" name="wholesaleprice" id="productPrice">
+
+                        </div>
+                        <div>
+                            <label for="discount">ART:</label>
+                                <input class= "input-style width-input-price-discount" type="text" value="" name="art" id="productPromo">
                         </div>
                     </div>
                 </div>

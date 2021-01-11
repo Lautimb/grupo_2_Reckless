@@ -34,15 +34,17 @@ WEEKLY 03.01.2020
 WEEKLY 09.01.2020
 
     ● Qué hicimos en la semana:
-        - 
-        - 
-        - 
+        - Relacionar las tablas de usuarios con cart, wishlist, etc
+        - Creada tabla de stock
+        - Terminado diagrama en formato PDF.
+        - Terminado structure.sql
+        - Armados los modelos y las relaciones entre tablas con Sequelize
 
      ● Si se encontró con algún impedimento:
-        - 
+        - es necesario la propiedad config si respetamos los nombres en ingles y siempre queremos los timestamps?
 
     ● Qué se va a hacer:
-        - 
-        - 
-        - 
+        - Script de datos con Mockaroo
+        - BREAD de productos y usuarios
+        - Revision final antes de la entrega.
 

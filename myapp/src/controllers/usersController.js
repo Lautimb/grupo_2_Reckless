@@ -2,6 +2,7 @@ const dataBaseHelper = require('../helpers/data-base-helper');
 const bcrypt = require('bcryptjs');
 const {validationResult} = require('express-validator');
 const moment = require('moment');
+const db = require('../database/models');
 
 module.exports = {
     index: (req, res) =>{
@@ -11,27 +12,45 @@ module.exports = {
         res.render('users/register')
     },
     createUser: (req, res) =>{
-        const errors = validationResult(req);
+        // const errors = validationResult(req);
 
-        if (!errors.isEmpty()) {
-            return res.render ('users/register', {
-                errors: errors.mapped(),
-                old: req.body
-            })
-        }
-        const passwordHashed = bcrypt.hashSync(req.body.password, 10); 
-        const newUser = {
-            id: dataBaseHelper.generateId('users-data.json'),
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            personalId: req.body.personalId,
+        // if (!errors.isEmpty()) {
+        //     return res.render ('users/register', {
+        //         errors: errors.mapped(),
+        //         old: req.body
+        //     })
+        // }
+        // const passwordHashed = bcrypt.hashSync(req.body.password, 10); 
+        // const newUser = {
+        //     id: dataBaseHelper.generateId('users-data.json'),
+        //     firstName: req.body.firstName,
+        //     lastName: req.body.lastName,
+        //     personalId: req.body.personalId,
+        //     email: req.body.email,
+        //     password: passwordHashed,
+        //     birthday: moment(req.body.year + '-' + req.body.month + '-' + req.body.day).format('L')
+        // }
+        // const allUsers = dataBaseHelper.getAllDataBase('users-data.json');
+        // const usersToSave = [...allUsers, newUser]
+        // dataBaseHelper.writeNewDataBase(usersToSave, 'users-data.json');
+        const passwordHashed = bcrypt.hashSync(req.body.password, 10);
+        
+        console.log(req.body)
+        db.User.create({
+            first_name: req.body.firstName,
+            last_name: req.body.lastName,
             email: req.body.email,
             password: passwordHashed,
             birthday: moment(req.body.year + '-' + req.body.month + '-' + req.body.day).format('L')
-        }
-        const allUsers = dataBaseHelper.getAllDataBase('users-data.json');
-        const usersToSave = [...allUsers, newUser]
-        dataBaseHelper.writeNewDataBase(usersToSave, 'users-data.json');
+            
+            // BUSINESS DATA
+
+            // manager_first_name: req.body.managerFirstName,
+            // manager_last_name: req.body.managerLastName,
+            // company: req.body.businessName,
+            // phone_number: req.body.phoneNumber,
+
+        })
 
         res.redirect('/users/login')
     },
@@ -66,18 +85,20 @@ module.exports = {
         res.render('users/requireLogin');
     },
 
-    processLogin: (req, res) => {
+    processLogin: async (req, res) => {
         const errors = validationResult(req);
-       
+        const users = await db.User.findAll()
+        
         if(!errors.isEmpty()){
             return res.render('users/requireLogin', {
                 errors: errors.mapped(),
                 email: req.body.email
             })
         }
-        const allUsers = dataBaseHelper.getAllDataBase('users-data.json');
-        const userFound = allUsers.find(user => user.email == req.body.email)
-        req.session.user = userFound;
+
+        const userFound = users.find( user => user.email == req.body.email)
+        req.session.user = userFound.dataValues
+       
         
         if (req.body.remember){
             res.cookie('user', userFound.id, {maxAge: 1000 * 60 * 60 * 24 * 365})

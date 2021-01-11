@@ -3,8 +3,7 @@ const dataBaseHelper = require('../helpers/data-base-helper');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 const moment = require('moment');
-
-let msgFiles;
+const db = require('../database/models')
 
 module.exports = {
     register: [
@@ -63,8 +62,8 @@ module.exports = {
             .isEmail()
                 .withMessage('Please select a vaild e-mail address')
                 .bail()
-            .custom((value, {req})=>{
-                const users = dataBaseHelper.getAllDataBase('users-data.json');
+            .custom(async(value, {req})=>{
+                const users = await db.User.findAll()
                 const userFound = users.filter(user => user.email == value);
                 console.log(userFound)
                 if(userFound[0]){

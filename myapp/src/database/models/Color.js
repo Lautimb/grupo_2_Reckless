@@ -19,12 +19,7 @@ module.exports = (sequelize, DataTypes)=>{
 
     };
 
-    const config = {
-        tableName: "colors",
-        timestamps: true
-    }
-
-    const Color = sequelize.define(alias, cols, config)
+    const Color = sequelize.define(alias, cols)
     
     Color.associate = (models) =>{
         Color.belongsToMany(models.Product, {

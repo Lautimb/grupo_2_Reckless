@@ -5,7 +5,10 @@ module.exports = {
     "password": null,
     "database": "recklessdb",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "define": {
+      "underscore": true
+    }
   },
   "test": {
     "username": "root",

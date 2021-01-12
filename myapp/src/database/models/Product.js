@@ -31,8 +31,7 @@ module.exports = (sequelize, dataTypes)=>{
         art: {
             type: dataTypes.STRING(50),
             allowNull: false
-        },
-
+        }
     }
     
     const Product = sequelize.define(alias, cols)

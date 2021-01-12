@@ -11,7 +11,7 @@ module.exports = {
     register: (req,res)=>{
         res.render('users/register')
     },
-    createUser: (req, res) =>{
+    createUser: async (req, res) =>{
         // const errors = validationResult(req);
 
         // if (!errors.isEmpty()) {
@@ -36,7 +36,7 @@ module.exports = {
         const passwordHashed = bcrypt.hashSync(req.body.password, 10);
         
         console.log(req.body)
-        db.User.create({
+        await db.User.create({
             first_name: req.body.firstName,
             last_name: req.body.lastName,
             email: req.body.email,
@@ -97,7 +97,7 @@ module.exports = {
         }
 
         const userFound = users.find( user => user.email == req.body.email)
-        req.session.user = userFound.dataValues
+        req.session.user = userFound
        
         
         if (req.body.remember){

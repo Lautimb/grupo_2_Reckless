@@ -10,7 +10,7 @@ const validator = require('../middlewares/validator')
 
 router.get('/', productsController.index); // Listado de Productos
 router.get('/type/:type', productsController.filter) // Ruta creada para filtrar productos a traves del menu de shop
-router.get('/create',admin, productsController.create); // Formulario de creacion de productos
+router.get('/create',/*admin,*/ productsController.create); // Formulario de creacion de productos
 router.post('/create', multerProducts.array('images', 6), validator.products, productsController.store); // Accion de creacion (a donde se envia el formulario)
 
 router.get('/detail/:id', productsController.detail); // Detalle de un producto particular

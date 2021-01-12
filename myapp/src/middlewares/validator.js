@@ -15,8 +15,8 @@ module.exports = {
             .isEmail()
                 .withMessage('Please select a vaild e-mail address')
                 .bail()
-            .custom((value, {req})=>{
-                const users = dataBaseHelper.getAllDataBase('users-data.json');
+            .custom(async(value, {req})=>{
+                const users = await db.User.findAll()
                 const userFound = users.find(user => user.email == value);
 
                 return !userFound;
@@ -48,7 +48,7 @@ module.exports = {
                 const day = req.body.day
                 const year = req.body.year
                 const date = moment(year + '-' + month + '-' + day);
-                console.log(date);
+               
                 return date.isValid();
                 
             })
@@ -65,7 +65,6 @@ module.exports = {
             .custom(async(value, {req})=>{
                 const users = await db.User.findAll()
                 const userFound = users.filter(user => user.email == value);
-                console.log(userFound)
                 if(userFound[0]){
                     return bcrypt.compareSync(req.body.password, userFound[0].password);
                 }

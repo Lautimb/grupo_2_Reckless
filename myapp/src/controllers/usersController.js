@@ -88,7 +88,7 @@ module.exports = {
     processLogin: async (req, res) => {
         const errors = validationResult(req);
         const users = await db.User.findAll()
-        
+
         if(!errors.isEmpty()){
             return res.render('users/requireLogin', {
                 errors: errors.mapped(),
@@ -98,8 +98,7 @@ module.exports = {
 
         const userFound = users.find( user => user.email == req.body.email)
         req.session.user = userFound
-       
-        
+      
         if (req.body.remember){
             res.cookie('user', userFound.id, {maxAge: 1000 * 60 * 60 * 24 * 365})
         } 

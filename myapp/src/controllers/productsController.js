@@ -33,6 +33,9 @@ module.exports = {
         res.render('products/create');
     },
     store: async (req, res) => {
+
+        //return res.send(req.body)
+
         const errors = validationResult(req);
         if(!errors.isEmpty()){
 
@@ -57,7 +60,7 @@ module.exports = {
         const allProducts = dataBaseHelper.getAllDataBase('products-data.json');
         const productsToSave = [...allProducts, newProduct];
         dataBaseHelper.writeNewDataBase(productsToSave,'products-data.json');*/
-        await db.Product.create({
+        const product = await db.Product.create({
             name: req.body.name,
             description: req.body.description,
             price: req.body.price,
@@ -66,6 +69,7 @@ module.exports = {
             art: req.body.art            
         })
 
+        product.setSizes(typeof req.body.size == "string" ? [req.body.size] : req.body.size) // .set 
 
         res.redirect('/products');
     },

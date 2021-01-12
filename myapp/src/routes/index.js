@@ -1,5 +1,4 @@
 const express = require('express');
-const { contact } = require('../controllers/indexController');
 const router = express.Router();
 
 const indexController = require('../controllers/indexController');

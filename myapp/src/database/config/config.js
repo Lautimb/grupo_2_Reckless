@@ -7,7 +7,7 @@ module.exports = {
     "host": "127.0.0.1",
     "dialect": "mysql",
     "define": {
-      "underscore": true
+      "underscored": true
     }
   },
   "test": {

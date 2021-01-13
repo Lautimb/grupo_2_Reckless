@@ -28,7 +28,7 @@
                                 <p>+ ADD</p>
                                 <p>(max 6 images)</p>
                             </label>
-                            <input name="images" id="file" type="file" multiple value="<%= images[0] %>">
+                            <input name="images" id="file" type="file" multiple>
                         </li>
                         <li>
                             <!-- <small class="errors-style"><%#= typeof errors == 'undefined' ? '' : typeof errors.images == 'undefined' ? '' : errors.images.msg %></small> -->
@@ -105,10 +105,10 @@
                                 <p>SIZE</p>
 
                                 <select name="size" class="input-style" id="size" >
-                                    <option value="" >-</option>
-                                    <option value="s">S</option>
-                                    <option value="m">M</option>
-                                    <option value="l">L</option>
+                                    <option value="<%= product.sizes[0].id %>" selected><%= product.sizes[0].title %></option>
+                                    <option value="1">S</option>
+                                    <option value="2">M</option>
+                                    <option value="3">L</option>
                                 </select>
                             </li>
                             <li>
@@ -138,56 +138,6 @@
                                 </span>
                             </li>
                         </ul>
-                        <ul class="ul-upload-data">
-                            <li>
-                                <p>SIZE</p>
-                                <select name="size" class="input-style" id="size">
-                                    <option value="" disabled selected>-</option>
-                                    <option value="s">S</option>
-                                    <option value="m">M</option>
-                                    <option value="l">L</option>
-                                </select>
-                            </li>
-                            <li>
-                                <p>PRODUCT TYPE</p>
-                                <select name="type" class="input-style" id="type">
-                                    <option value="" disabled selected>-</option>
-                                    <option value="top">TOP</option>
-                                    <option value="bottom">BOTTOMS</option>
-                                    <option value="outerwear">OUTERWEAR</option>
-                                    <option value="denim">DENIM</option>
-                                </select>
-                            </li>
-                            <li>
-                                <p>COLORS & QTY</p>
-                                <ul>
-                                    <li>
-                                        <input type="radio" name="addColor">
-                                        <input type="number" class="input-style" name="">
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="save-cancel">
-                                <a href="#" class="save-product">Save</a>
-                                <span class="material-icons cancel-product">
-                                    clear
-                                </span>
-                            </li>
-                        </ul>
-                     
-                        <div class="add-more-container">
-                            
-                            <button type="button">
-                                <div>
-                                    <span class="material-icons add-more">
-                                        add_circle_outline
-                                    </span>
-                                <p>ADD MORE</p>
-                                </div>
-                            </button>
-                           
-                        </div>
-
                     </div>
                 </div>
                 

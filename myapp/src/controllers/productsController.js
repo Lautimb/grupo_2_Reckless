@@ -68,7 +68,8 @@ module.exports = {
         
         const sizes = (typeof req.body.size == "string" ? [req.body.size] : req.body.size)
         
-        await product.setSizes(parseInt(sizes),product.id) 
+        await product.setSizes(parseInt(sizes),product.id)
+        
        
         res.redirect('/products');
     },

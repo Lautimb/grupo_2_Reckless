@@ -76,7 +76,7 @@
                                 <input class= "input-style width-input-price-discount" type="text" value="<%= old.discount ? old.discount : '' %>" name="discount" id="productPromo">
                                 <label for=""> % </label>
                         
-                            <small class="errors-style "><%= typeof errors == 'undefined' ? '' : typeof errors.discount == 'undefined' ? '' : errors.discount.msg %></small>
+                                <small class="errors-style "><%= typeof errors == 'undefined' ? '' : typeof errors.discount == 'undefined' ? '' : errors.discount.msg %></small>
                             <% } else {%>
                                 <input class= "input-style width-input-price-discount" type="text" value="" name="discount" id="productPromo">
                             <% } %>
@@ -84,12 +84,12 @@
                         <div>
                             <label for="price">WHOLESALE PRICE $ </label>
                             
-                                <input class= "input-style width-input-price-discount" type="text" value="" name="wholesaleprice" id="productPrice">
+                                <input class= "input-style width-input-price-discount" type="text" value="<%= old.wholesaleprice ? old.wholesaleprice : '' %>" name="wholesaleprice" id="productPrice">
 
                         </div>
                         <div>
                             <label for="discount">ART:</label>
-                                <input class= "input-style width-input-price-discount" type="text" value="" name="art" id="productPromo">
+                                <input class= "input-style width-input-price-discount" type="text" value="<%= old.art ? old.art: '' %>" name="art" id="productPromo">
                         </div>
                     </div>
                 </div>
@@ -115,17 +115,17 @@
                                 <p>PRODUCT TYPE</p>
                                 
                                     <select name="type" class="input-style" id="type">
-                                        <% if(typeof old != 'undefined'){%>
-                                            <option value="<%= old.type %>" selected ><%= old.type.toUpperCase()%></option>
-                                        <% } else{%>
-                                            <option value="" selected >-</option>
-                                        <% }%>
+                                        <%# if(typeof old != 'undefined'){%>
+                                            <!-- <option value="<%#= old.type %>" selected ><%#= old.type.toUpperCase()%></option> -->
+                                        <%# } else{%>
+                                        <option value="" selected >-</option>
+                                        <%# }%>
                                         <option value="top">TOP</option>
                                         <option value="bottom">BOTTOM</option>
                                         <option value="outerwear">OUTERWEAR</option>
                                         <option value="denim">DENIM</option>
                                     </select>
-                                    <small class="errors-style "><%= typeof errors == 'undefined' ? '' : typeof errors.type == 'undefined' ? '' : errors.type.msg %></small>
+                                    <!-- <small class="errors-style "><%#= typeof errors == 'undefined' ? '' : typeof errors.type == 'undefined' ? '' : errors.type.msg %></small> -->
                                 </li>
                             <li>
                                 <p>COLORS & QTY</p>

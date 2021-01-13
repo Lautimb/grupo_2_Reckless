@@ -97,10 +97,10 @@ module.exports = {
             })
                 .withMessage('Discount must be greater than 0 and less than 100')
                 .bail(),
-        body('type')
-            .notEmpty()
-                .withMessage("Select type")
-                .bail(),
+        // body('type')
+        //     .notEmpty()
+        //         .withMessage("Select type")
+        //         .bail(),
         body('images')
         .custom((value ,{req})=>{
             if(req.method == 'PUT'){

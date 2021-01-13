@@ -35,7 +35,8 @@ module.exports = {
     create: (req, res) => {
         res.render('products/create');
     },
-    store: async (req, res) => {
+
+    store: async(req, res)=>{
 
         const errors = validationResult(req);
         if(!errors.isEmpty()){
@@ -45,15 +46,6 @@ module.exports = {
                 old: req.body
             })
         }
-
-        const files = req.files;
-        const imagesMapped = files.map( image => image.filename );
-        const imageStrings = JSON.stringify(imagesMapped)
-        
-        const images = await db.Image.create({
-            filename: imageStrings
-            }
-        )
        
         const product = await db.Product.create({
             name: req.body.name,
@@ -63,6 +55,14 @@ module.exports = {
             discount: req.body.discount,
             art: req.body.art            
         })
+        
+        const files = req.files;
+        const imagesMapped = files.map( image => image.filename );
+        const imageStrings = JSON.stringify(imagesMapped)
+
+        const images = await db.Image.create({
+            filename: imageStrings
+        })
 
         await product.setImages(images.id, product.id)
         
@@ -70,6 +70,7 @@ module.exports = {
         
         await product.setSizes(parseInt(sizes),product.id) 
         
+       
         res.redirect('/products');
     },
     detail: async (req,res) =>{
@@ -82,7 +83,6 @@ module.exports = {
         product.images[0].filename = JSON.parse(product.images[0].filename)
         
         res.render('products/detail', { product });
-        
     },
     edit: async(req,res) =>{
         
@@ -150,7 +150,23 @@ module.exports = {
             }
         }
         );
+        const product = await db.Product.findByPk(req.params.id,{
+            include:["images","sizes"]
+        });
 
+                
+        const files = req.files;
+        const imagesMapped = files.map( image => image.filename );
+        const imageStrings = JSON.stringify(imagesMapped)
+        const images = await db.Image.create({
+            filename: imageStrings
+        })
+        
+        await product.setImages(images);
+
+        const sizes = (typeof req.body.size == "string" ? [req.body.size] : req.body.size)
+
+        await product.setSizes(parseInt(sizes),product.id)
 
         return res.redirect('/');
     },

@@ -21,11 +21,12 @@
                     <article class="product-container">
                         <a href="/products/detail/<%= product.id %>">
                            
-                              <img src="/imgs/products/<%= product.images %>" alt=""> 
+                              <img src="/imgs/products/<%= product.images[0].filename[0] %>" alt=""> 
                                   
                             <div class="product-detail">
                                 <div class="name-price-product-container">
                                     <h3><%= product.name%></h3> 
+                                    <h6><%= product.images[0].filename %></h6>
                                     <p>$<%= product.price %></p>
                                 </div>
                             </div>

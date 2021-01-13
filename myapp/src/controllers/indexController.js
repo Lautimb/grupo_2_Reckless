@@ -1,13 +1,17 @@
-const dataBaseHelper = require('../helpers/data-base-helper');
-
+const db = require('../database/models')
 module.exports = {
-    index: (req,res) =>{
-        const allProducts = dataBaseHelper.getAllDataBase('products-data.json');
-        allProducts.forEach(product => {
-            product.images = product.images[0]
-           
+    index: async (req,res) =>{
+        const products = await db.Product.findAll({
+            include: ["images"]
         });
-        res.render('index', { products : allProducts });
+
+        products.forEach(product => {
+            product.images[0].filename = JSON.parse(product.images[0].filename)
+            return 
+        });
+        
+       
+        res.render('index', { products });
     },
     contact: (req,res) =>{
         res.render('contact');

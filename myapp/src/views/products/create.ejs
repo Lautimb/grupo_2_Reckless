@@ -74,7 +74,6 @@
                             <label for="discount">DISCOUNT %</label>
                             <% if(typeof old != 'undefined') {%>
                                 <input class= "input-style width-input-price-discount" type="text" value="<%= old.discount ? old.discount : '' %>" name="discount" id="productPromo">
-                                <label for=""> % </label>
                         
                                 <small class="errors-style "><%= typeof errors == 'undefined' ? '' : typeof errors.discount == 'undefined' ? '' : errors.discount.msg %></small>
                             <% } else {%>
@@ -83,13 +82,19 @@
                         </div>
                         <div>
                             <label for="price">WHOLESALE PRICE $ </label>
-                            
+                            <% if(typeof old != 'undefined') {%>
                                 <input class= "input-style width-input-price-discount" type="text" value="<%= old.wholesaleprice ? old.wholesaleprice : '' %>" name="wholesaleprice" id="productPrice">
-
+                            <% } else {%>
+                                <input class= "input-style width-input-price-discount" type="text" value="" name="wholesaleprice" id="productPrice">
+                            <% } %>
                         </div>
                         <div>
                             <label for="discount">ART:</label>
+                            <% if(typeof old != 'undefined') {%>
                                 <input class= "input-style width-input-price-discount" type="text" value="<%= old.art ? old.art: '' %>" name="art" id="productPromo">
+                            <% } else {%>
+                                <input class= "input-style width-input-price-discount" type="text" value="" name="art" id="productPromo">
+                            <% } %>
                         </div>
                     </div>
                 </div>

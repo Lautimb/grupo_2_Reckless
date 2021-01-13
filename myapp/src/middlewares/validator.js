@@ -18,7 +18,7 @@ module.exports = {
             .custom(async(value, {req})=>{
                 const users = await db.User.findAll()
                 const userFound = users.find(user => user.email == value);
-
+                
                 return !userFound;
             })
                 .withMessage('The selected email is already in use'),

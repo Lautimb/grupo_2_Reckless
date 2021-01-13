@@ -8,10 +8,10 @@
     <main id="product-upload__main">
         <section id="product-upload__section">
 
-            <form action="/products/edit/<%= old.id ? old.id : id%>?_method=PUT" method="POST" id="product-upload__form" enctype="multipart/form-data">
+            <form action="/products/edit/<%= product.id %>?_method=PUT" method="POST" id="product-upload__form" enctype="multipart/form-data">
 
                 <div class="h1-center">
-                    <h1>EDIT PRODUCT: <%= old.name %></h1>
+                    <h1>EDIT PRODUCT: <%= product.name %></h1>
                 </div>
                 
                 <div class="image-upload-container">
@@ -28,10 +28,10 @@
                                 <p>+ ADD</p>
                                 <p>(max 6 images)</p>
                             </label>
-                            <input name="images" id="file" type="file" multiple>
+                            <input name="images" id="file" type="file" multiple value="<%= images[0] %>">
                         </li>
                         <li>
-                            <small class="errors-style"><%= typeof errors == 'undefined' ? '' : typeof errors.images == 'undefined' ? '' : errors.images.msg %></small>
+                            <!-- <small class="errors-style"><%#= typeof errors == 'undefined' ? '' : typeof errors.images == 'undefined' ? '' : errors.images.msg %></small> -->
                         </li>
                     </ul>
 
@@ -42,8 +42,8 @@
                     </div>
                     <div class="product-data">
                         <label for="name"></label>
-                        <% if(typeof old != 'undefined') {%>
-                            <input type="text" class="input-style" value="<%= old.name ? old.name : '' %> " name="name"> 
+                        <% if(typeof product != 'undefined') {%>
+                            <input type="text" class="input-style" value="<%= product.name ? product.name : '' %> " name="name"> 
                             <small class="errors-style"><%= typeof errors == 'undefined' ? '' : typeof errors.name == 'undefined' ? '' : errors.name.msg %></small>
                         <% } else { %>
                             <input type="text" class="input-style" value="" name="name"> 
@@ -54,29 +54,44 @@
                     </div>
                     <div class="product-data">
                         <label for="description"></label>
-                        <textarea class="input-style textarea-style" name="description" id="description" cols="30" rows="10"><%= old.description%></textarea>
+                        <textarea class="input-style textarea-style" name="description" id="description" cols="30" rows="10"><%= product.description%></textarea>
                     </div>
                     <div class="product-price-discount">
                         <div>
                             <label for="price">PRICE $ </label>
-                            <% if(typeof old != 'undefined') {%>
-                                <input class= "input-style width-input-price-discount" type="text" value="<%= old.price ? old.price : '' %>" name="price" id="productPrice">          
+                            <% if(typeof product != 'undefined') {%>
+                                <input class= "input-style width-input-price-discount" type="text" value="<%= product.price ? product.price : '' %>" name="price" id="productPrice">          
                                 <small class="errors-style "><%= typeof errors == 'undefined' ? '' : typeof errors.price == 'undefined' ? '' : errors.price.msg %></small>
                             <% } else { %>
                                 <input class= "input-style width-input-price-discount" type="text" value="" name="price" id="productPrice">
                             <% } %>
                         </div>
                         <div>
-                            <% if(typeof old != 'undefined') {%>
-                                <label for=""> % </label>
-                                <input class= "input-style width-input-price-discount" type="text" value="<%= old.discount ? old.discount : '' %>" name="discount" id="productPromo">
+                            <% if(typeof product != 'undefined') {%>
+                                <label for="discount">DISCOUNT %</label>
+                                <input class= "input-style width-input-price-discount" type="text" value="<%= product.discount ? product.discount : '' %>" name="discount" id="productPromo">
                                 <small class="errors-style"><%= typeof errors == 'undefined' ? '' : typeof errors.discount == 'undefined' ? '' : errors.discount.msg %></small>
                             <% } else {%>
                                 <input class= "input-style width-input-price-discount" type="text" value="" name="discount" id="productPromo">
                             <% } %>
                         </div>
-                    </div>
-                </div>
+                        <div>
+                            <% if(typeof product != 'undefined') {%>
+                                <label for="price">WHOLESALE PRICE $ </label>
+                                    <input class= "input-style width-input-price-discount" type="text" value="<%= product.wholesale_price ? product.wholesale_price : '' %>" name="wholesaleprice" id="productPrice">
+                            <% } else {%>
+                                <input class= "input-style width-input-price-discount" type="text" value="" name="wholesaleprice" id="productPromo">
+                            <% } %>
+                        </div>
+                        <div>
+                            <% if(typeof product != 'undefined') {%>
+                                <label for="discount">ART:</label>
+                                    <input class= "input-style width-input-price-discount" type="text" value="<%= product.art ? product.art : '' %>" name="art" id="productPromo">
+                            <% } else {%>
+                                <input class= "input-style width-input-price-discount" type="text" value="" name="art" id="productPromo">
+                            <% } %>
+                        </div>
+                     </div>
 
                 <div class="manage-inventory-container">
                     <div class="title-container">
@@ -99,7 +114,7 @@
                             <li>
                                 <p>PRODUCT TYPE</p>
                                 <select name="type" class="input-style" id="type">
-                                    <option value="<%= old.type%>" selected ><%= old.type.toUpperCase()%></option>
+                                    <option value="" disabled selected></option>
                                     <option value="top">TOP</option>
                                     <option value="bottom">BOTTOM</option>
                                     <option value="outerwear">OUTERWEAR</option>

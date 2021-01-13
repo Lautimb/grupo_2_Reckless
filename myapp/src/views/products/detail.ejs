@@ -12,7 +12,7 @@
                     <div class="product-detail-imgs">
                         <div class= "thumbnail-imgs-container">
                             
-                            <% for (image of product.images){%>
+                            <% for (image of product.images[0].filename){%>
                             <div class= "thumbnail-img-container">
                                 <img src="/imgs/products/<%= image %>" alt="" class="thumbnail-img" >
                             </div>
@@ -21,7 +21,7 @@
                         </div>
 
                         <div class= "zoom-img">
-                            <a href=""><img src="/imgs/products/<%= product.images[0] %>" alt="" class="zoom-img"></a>    
+                            <a href=""><img src="/imgs/products/<%= product.images[0].filename[0] %>" alt="" class="zoom-img"></a>    
                         </div>
                     </div>  
 
@@ -64,10 +64,8 @@
                                 
                             <div>
                                 <select name="size" class="product-detail__select">
-                                    <option value="" disabled selected>SIZE</option>
-                                    <option value="small">S</option>
-                                    <option value="medium">M</option>
-                                    <option value="large">L</option>
+                                    <option value="<%= product.sizes[0].title %>" selected><%= product.sizes[0].title %></option>
+                                    
                                 </select>
                             </div>
 
@@ -86,24 +84,25 @@
                                     <option value="10">10</option>
                                 </select>
                             </div>
-                            <% if (userLog.admin) { %> 
-                            <div class="edit-delete-product">
+                            <%# if (userLog.admin) { %> 
+                             <div class="edit-delete-product">
                                 <div>
                                     <form action="/products/edit/<%= product.id%>" method="GET" name="button" >
                                         <button type="submit" class="buttons-detail" name="button"><i class="fas fa-times"></i>EDIT</button>
                                     </form>
                                 </div>
                                 <div>
-                                    <form action="/products/delete/<%= product.id%>?_method=DELETE" method="POST" name="button" >
+                                    <form action="/products/delete/<%= product.id %>?_method=DELETE" method="POST" name="button" >
                                         <button type="submit" class="buttons-detail" name="button"><i class="fas fa-times"></i>DEL</button>
                                     </form>
                                 </div>
-                            </div>
-                            <% }else{ %> 
+                            </div> 
+                            <%# }else{ %> 
                             <div class="buttons-detail">
-                                <a href="/cart" type="submit"><i class="fas fa-shopping-cart"></i> ADD TO CART</a>
+                                <a href="/cart" type="submit"><i class="fas fa-sho
+                                    pping-cart"></i> ADD TO CART</a>
                             </div>
-                            <% } %> 
+                            <%# } %> 
                         </div>
                         
                         <div class="product-detail__details">

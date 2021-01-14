@@ -114,13 +114,13 @@
                             <li>
                                 <p>PRODUCT TYPE</p>
                                 <select name="type" class="input-style" id="type">
-                                    <option value="" disabled selected></option>
-                                    <option value="top">TOP</option>
-                                    <option value="bottom">BOTTOM</option>
-                                    <option value="outerwear">OUTERWEAR</option>
-                                    <option value="denim">DENIM</option>
+                                    <option value="<%= product.types[0].id %>" selected><%= product.types[0].title %></option>
+                                    <option value="1">TOP</option>
+                                    <option value="2">BOTTOM</option>
+                                    <option value="3">OUTERWEAR</option>
+                                    <option value="4">DENIM</option>
                                 </select>
-                                <small class="errors-style"><%= typeof errors == 'undefined' ? '' : typeof errors.type == 'undefined' ? '' : errors.type.msg %></small>
+                                    <!-- <small class="errors-style "><%#= typeof errors == 'undefined' ? '' : typeof errors.type == 'undefined' ? '' : errors.type.msg %></small> -->
                             </li>
                             <li>
                                 <p>COLORS & QTY</p>

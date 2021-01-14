@@ -53,7 +53,7 @@ module.exports = {
             price: req.body.price,
             wholesale_price: req.body.wholesaleprice,
             discount: req.body.discount,
-            art: req.body.art            
+            art: req.body.art
         })
         
         const files = req.files;
@@ -70,6 +70,9 @@ module.exports = {
         
         await product.setSizes(parseInt(sizes),product.id)
         
+        const types = (typeof req.body.type == "string" ? [req.body.type] : req.body.type)
+        
+        await product.setTypes(parseInt(types),product.id)
        
         res.redirect('/products');
     },
@@ -89,14 +92,12 @@ module.exports = {
         const id = req.params.id;
         
         const product = await db.Product.findByPk(id,{
-            include:["images","sizes"]
+            include:["images","sizes", "types"]
         })
 
-    
-        const images = JSON.parse(product.images[0].filename)
-       
-        
-        res.render('products/edit', { product, images });
+        product.images[0].filename = JSON.parse(product.images[0].filename)
+
+        res.render('products/edit', { product });
 
     },
     update: async(req,res)=>{
@@ -151,24 +152,29 @@ module.exports = {
         }
         );
         const product = await db.Product.findByPk(req.params.id,{
-            include:["images","sizes"]
+            include:["images","sizes", "types"]
         });
-
-                
-        const files = req.files;
-        const imagesMapped = files.map( image => image.filename );
-        const imageStrings = JSON.stringify(imagesMapped)
-        const images = await db.Image.create({
-            filename: imageStrings
-        })
         
-        await product.setImages(images);
+
+        if (req.files.length > 0) {
+            const files = req.files;
+            const imagesMapped = files.map( image => image.filename );
+            const imageStrings = JSON.stringify(imagesMapped)
+            const images = await db.Image.create({
+                filename: imageStrings
+            })
+            await product.setImages(images);
+        }
 
         const sizes = (typeof req.body.size == "string" ? [req.body.size] : req.body.size)
 
         await product.setSizes(parseInt(sizes),product.id)
 
-        return res.redirect('/');
+        const types = (typeof req.body.type == "string" ? [req.body.type] : req.body.type)
+
+        await product.setTypes(parseInt(types),product.id)
+
+        return res.redirect('/'); 
     },
 
     wishlist: (req,res) =>{
@@ -181,7 +187,9 @@ module.exports = {
 
         await product.setImages([]);
 
-        await product.setSizes([])
+        await product.setSizes([]);
+
+        await product.setTypes([]);
         
         await db.Product.destroy({
           where: {

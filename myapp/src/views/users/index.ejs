@@ -10,13 +10,17 @@
         <div class="user-profile-style">
             <section>
                 <ul class="user-profile-data">
-                    <li>First Name: <%= userLog.first_name  %> </li>
-                    <li>Last Name: <%= userLog.last_name  %> </li>
-                    <li>Email: <%= userLog.email %></li>
+                    <li>First name: <%= userLog.first_name  %> </li>
+                    <li>Last name: <%= userLog.last_name  %> </li>
+                    <li>E-mail: <%= userLog.email %></li>
                     <li>Bitrthday: <%= userLog.birthday %></li>                 
                 </ul>
-
             </section>
+        </div>
+        <div class="submit-button-container">
+            <form action="/users/edit/<%= userLog.id%>" method="GET" name="button" >
+                <button type="submit" class="buttons-detail" name="button">EDIT</button>
+            </form>
         </div>
     </main>
     <%- include('../partials/footer')%>

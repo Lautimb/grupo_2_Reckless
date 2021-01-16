@@ -110,25 +110,19 @@
                             <li>
                                 <p>SIZE</p>
                                 <select name="size" class="input-style" id="size">
-                                    <option value="" disabled selected>-</option>
-                                    <option value="1">S</option>
-                                    <option value="2">M</option>
-                                    <option value="3">L</option>
+                                    <!-- <option value="" disabled selected>-</option> -->
+                                    <% for (size of sizes){%>
+                                        <option value="<%= size.id %>"><%= size.title %></option>
+                                    <% } %>
                                 </select>
                             </li>
                             <li>
                                 <p>PRODUCT TYPE</p>
                                 
-                                    <select name="type" class="input-style" id="type">
-                                        <%# if(typeof old != 'undefined'){%>
-                                            <!-- <option value="<%#= old.type %>" selected ><%#= old.type.toUpperCase()%></option> -->
-                                        <%# } else{%>
-                                        <option value="" selected >-</option>
-                                        <%# }%>
-                                        <option value="1">TOP</option>
-                                        <option value="2">BOTTOM</option>
-                                        <option value="3">OUTERWEAR</option>
-                                        <option value="4">DENIM</option>
+                                    <select name="type" class="input-style input-types" >
+                                        <% for (type of types){%>
+                                            <option value="<%= type.id %>"><%= type.title.toUpperCase() %></option>
+                                        <% } %>
                                     </select>
                                     <!-- <small class="errors-style "><%#= typeof errors == 'undefined' ? '' : typeof errors.type == 'undefined' ? '' : errors.type.msg %></small> -->
                                 </li>

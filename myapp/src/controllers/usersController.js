@@ -111,6 +111,33 @@ module.exports = {
             res.cookie('user', null, {maxAge: -1})
             return res.redirect('/')
         })
+    },
+    edit: async (req, res) => {
+        const id = req.params.id;
+        const user = await db.User.findByPk(id)
+        const birthday = moment(user.birthday);
+        res.render('users/edit', { 
+            user,
+            birthday
+        });
+    },
+    update: async (req, res) => {
+        const passwordHashed = bcrypt.hashSync(req.body.password, 10);
+
+        await db.User.update(
+            {
+                first_name: req.body.firstName,
+                last_name: req.body.lastName,
+                email: req.body.email,
+                password: passwordHashed,
+                birthday: moment(req.body.year + '-' + req.body.month + '-' + req.body.day).format('L')
+            },
+            {
+                where: { id: req.params.id}
+            }
+        );
+
+        res.redirect('/users/profile')
     }
     
 };

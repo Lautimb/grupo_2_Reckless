@@ -110,7 +110,7 @@
                             <li>
                                 <p>SIZE</p>
                                 <select name="size" class="input-style" id="size">
-                                    <!-- <option value="" disabled selected>-</option> -->
+                                    <option value="" selected>-</option>
                                     <% for (size of sizes){%>
                                         <option value="<%= size.id %>"><%= size.title %></option>
                                     <% } %>
@@ -120,6 +120,7 @@
                                 <p>PRODUCT TYPE</p>
                                 
                                     <select name="type" class="input-style input-types" >
+                                        <option value="" selected>-</option>
                                         <% for (type of types){%>
                                             <option value="<%= type.id %>"><%= type.title.toUpperCase() %></option>
                                         <% } %>

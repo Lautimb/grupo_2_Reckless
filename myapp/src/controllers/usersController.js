@@ -35,7 +35,7 @@ module.exports = {
         // dataBaseHelper.writeNewDataBase(usersToSave, 'users-data.json');
         const passwordHashed = bcrypt.hashSync(req.body.password, 10);
         
-        console.log(req.body)
+      
         await db.User.create({
             first_name: req.body.firstName,
             last_name: req.body.lastName,

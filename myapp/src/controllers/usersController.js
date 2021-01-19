@@ -12,27 +12,7 @@ module.exports = {
         res.render('users/register')
     },
     createUser: async (req, res) =>{
-        // const errors = validationResult(req);
-
-        // if (!errors.isEmpty()) {
-        //     return res.render ('users/register', {
-        //         errors: errors.mapped(),
-        //         old: req.body
-        //     })
-        // }
-        // const passwordHashed = bcrypt.hashSync(req.body.password, 10); 
-        // const newUser = {
-        //     id: dataBaseHelper.generateId('users-data.json'),
-        //     firstName: req.body.firstName,
-        //     lastName: req.body.lastName,
-        //     personalId: req.body.personalId,
-        //     email: req.body.email,
-        //     password: passwordHashed,
-        //     birthday: moment(req.body.year + '-' + req.body.month + '-' + req.body.day).format('L')
-        // }
-        // const allUsers = dataBaseHelper.getAllDataBase('users-data.json');
-        // const usersToSave = [...allUsers, newUser]
-        // dataBaseHelper.writeNewDataBase(usersToSave, 'users-data.json');
+       
         const passwordHashed = bcrypt.hashSync(req.body.password, 10);
         
       
@@ -41,7 +21,7 @@ module.exports = {
             last_name: req.body.lastName,
             email: req.body.email,
             password: passwordHashed,
-            birthday: moment(req.body.year + '-' + req.body.month + '-' + req.body.day).format('L')
+            birthday: moment(req.body.year + '-' + req.body.month + '-' + req.body.day ).format('l')
             
             // BUSINESS DATA
 

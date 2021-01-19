@@ -9,6 +9,7 @@ const session = require('express-session');
 
 const setLocals = require('./middlewares/setLocals');
 const log = require('./middlewares/log')
+const typeFilter = require('./middlewares/typeFilter')
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -35,6 +36,7 @@ app.use(session({
 }));
 
 app.use(log);
+app.use(typeFilter);
 app.use(setLocals);
 
 // routes

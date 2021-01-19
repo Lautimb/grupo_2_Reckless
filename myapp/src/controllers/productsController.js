@@ -21,14 +21,22 @@ module.exports = {
             include:["images","types"]
         })
         // recibo por parametro el tipo de producto a mostrar, dato obtenido del submenu del shop en la lista del header
-        
+        const type = req.params.type
         // filtro el producto a mostrar
-		
+        products.forEach( product => {
+            product.images[0].filename = JSON.parse(product.images[0].filename)
+            return 
+        });
+
+        const productsToShow = products.filter( product => product.types[0].title.toLowerCase() == type)
+
+       
         // le agrego una propiedad al objeto creado con los productos a mostrar, y guardo en él, el tipo de producto en mayúsculas para poner de titulo en la seccion.
         
         // mando la respuesta con los productos a mostrar
 		res.render('products/products-type', {
-			products
+            products : productsToShow,
+            type
 		});
 
     },

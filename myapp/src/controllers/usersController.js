@@ -116,6 +116,7 @@ module.exports = {
         const id = req.params.id;
         const user = await db.User.findByPk(id)
         const birthday = moment(user.birthday);
+        
         res.render('users/edit', { 
             user,
             birthday

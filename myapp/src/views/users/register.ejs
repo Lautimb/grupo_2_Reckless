@@ -9,16 +9,8 @@
 
     <main>
         <div class="h1-left">
-            <h1>Edit your profile</h1>
+            <h1>Register</h1>
         </div> 
-
-        <% if (typeof errors != 'undefined') { %>
-            <ul>
-                <% for (error of errors.errors) { %>
-                    <li><%= error.msg %></li>
-                <% } %>
-            </ul>
-        <% } %>
 
         <section class= "register__section">
             <div class="form-container">
@@ -27,50 +19,51 @@
                 <form action="/users/register" method="POST">
 
                     <label for="firstName">FIRST NAME*</label>
-                    <input type="text" class="input-style" name="firstName" id="firstName">
+                    <input type="text" class="input-style" name="firstName" id="firstName" value="<%= typeof errors == 'undefined' ? '' : typeof old == 'undefined' ? '' : old.firstName %>">
+                    
+                    <small class="errors-style" style="display:block"><%= typeof errors == 'undefined' ? '': typeof errors.firstName == 'undefined' ? '' : errors.firstName.msg  %> </small>
 
                     <label for="lastName">LAST NAME*</label>
-                    <input type="text" class="input-style" name="lastName" id="lastName">
+                    <input type="text" class="input-style" name="lastName" id="lastName" value="<%= typeof errors == 'undefined' ? '' : typeof old == 'undefined' ? '' : old.firstName %>">
+
+                    <small class="errors-style" style="display:block"><%= typeof errors == 'undefined' ? '': typeof errors.lastName == 'undefined' ? '' : errors.lastName.msg  %> </small>
+
 
                     <label for="email">E-MAIL ADDRESS*</label>
-                    <input type="email" class="input-style" name="email" id="email">
+                    <input type="email" class="input-style" name="email" id="email" value="<%= typeof errors == 'undefined' ? '' : typeof old == 'undefined' ? '' : old.email %>">
+
+                    <small class="errors-style" style="display:block"><%= typeof errors == 'undefined' ? '': typeof errors.email == 'undefined' ? '' : errors.email.msg  %> </small>
+
 
                     <label for="password">PASSWORD*</label>
                     <input type="password" class="input-style" name="password" id="password">
 
+                    <small class="errors-style" style="display:block"><%= typeof errors == 'undefined' ? '': typeof errors.password == 'undefined' ? '' : errors.password.msg  %> </small>
+
+
                     <label for="passwordCheck">CONFIRM PASSWORD*</label>
                     <input type="password" class="input-style" name="retype" id="retype">
+
+                    <small class="errors-style" style="display:block"><%= typeof errors == 'undefined' ? '': typeof errors.retype == 'undefined' ? '' : errors.retype.msg  %> </small>
+
 
                     <label for="birthday">BIRTHDAY*</label>
 
                         <div class="birthday-container">
-                            <select name="month" class="input-style" id="date-mm">
-                                <option value="" disabled selected>MM</option>
-                                <option value="01">January</option>
-                                <option value="02">February</option>
-                                <option value="03">March</option>
-                                <option value="04">April</option>
-                                <option value="05">May</option>
-                                <option value="06">June</option>
-                                <option value="07">July</option>
-                                <option value="08">August</option>
-                                <option value="09">September</option>
-                                <option value="10">October</option>
-                                <option value="11">November</option>
-                                <option value="12">December</option>
-                            </select>
 
                             <select name="day" class="input-style" id="date-dd">
-                                <option value="" disabled selected>DD</option>
-                                <option value="01">1</option>
-                                <option value="02">2</option>
-                                <option value="03">3</option>
-                                <option value="04">4</option>
-                                <option value="05">5</option>
-                                <option value="06">6</option>
-                                <option value="07">7</option>
-                                <option value="08">8</option>
-                                <option value="09">9</option>
+                                
+                                <option value= "<%= typeof old == 'undefined' ? '' : old.day %>"    selected><%= typeof old == 'undefined' ? 'DD' : " Day " + old.day %> 
+                                </option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
                                 <option value="10">10</option>
                                 <option value="11">11</option>
                                 <option value="12">12</option>
@@ -95,8 +88,28 @@
                                 <option value="31">31</option>
     
                             </select>
-                            <select name="year" id="date-yyyy" class="input-style">
-                                <option value="" disabled selected="">YYYY</option>
+
+                            <select name="month" class="input-style" id="date-mm" value="<%= typeof errors == 'undefined' ? '' : typeof old == 'undefined' ? '' : old.month%>">
+                                <option value= "<%= typeof old == 'undefined' ? '' : old.month %>"    selected><%= typeof old == 'undefined' ? 'MM' : " Month " + old.month  %>
+                                    
+                                </option>                                
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+
+                            <select name="year" id="date-yyyy" class="input-style" value="<%= typeof errors == 'undefined' ? '' : typeof old == 'undefined' ? '' : old.year %>">
+                                <option value= "<%= typeof old == 'undefined' ? '' : old.year %>"    selected><%= typeof old == 'undefined' ? 'YYYY' : " Year " + old.year %>   
+                                </option> 
                                 <option value="2020">2020</option>
                                 <option value="2019">2019</option>
                                 <option value="2018">2018</option>
@@ -170,6 +183,9 @@
                                 <option value="1950">1950</option>
                             </select>
                         </div>
+                    
+                    <small class="errors-style" style="display:block"><%= typeof errors == 'undefined' ? '': typeof errors.birthday == 'undefined' ? '' : errors.birthday.msg  %> </small>
+
 
                     <div class="confirm-terms">
                         <input type="checkbox" name="newsletters" value="agree">

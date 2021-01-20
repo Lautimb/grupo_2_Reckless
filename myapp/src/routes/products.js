@@ -16,7 +16,7 @@ router.post('/create', multerProducts.array('images', 6), validator.products, pr
 router.get('/detail/:id', productsController.detail); // Detalle de un producto particular
 
 router.get('/edit/:id',/*admin,*/ productsController.edit); // Formulario de edicion de productos
-router.put('/edit/:id', multerProducts.array('images', 6),/* validator.products,*/ productsController.update); // Accion de edicion (a donde se envia la informacion solicitada en el formulario)
+router.put('/edit/:id', multerProducts.array('images', 6),validator.products, productsController.update); // Accion de edicion (a donde se envia la informacion solicitada en el formulario)
 
 router.delete('/delete/:id',/*admin,*/ productsController.delete); // Accion de borrado
 router.get('/wishlist',auth, productsController.wishlist); // Quizas deba ser con un filter, no haga falta armar otro view.ejs

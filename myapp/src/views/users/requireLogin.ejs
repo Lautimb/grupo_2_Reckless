@@ -12,8 +12,10 @@
         <div class="require-login-container">
             <section>
                 <form action="/users/login" class="form-login-style" method="POST">
-                    <input type="email" class="input-style" placeholder="E-MAIL" name="email" autocomplete="off" value="<%= typeof email == 'undefined' ? '': typeof email == 'undefined' ? '' : email  %> %>">
-                    <small class="errors-style"><%= typeof errors == 'undefined' ? '': typeof errors.email == 'undefined' ? '' : errors.email.msg  %> </small>
+                    <input type="email" class="input-style" placeholder="E-MAIL" name="email" autocomplete="off" value="<%= typeof email == 'undefined' ? '': typeof email == 'undefined' ? '' : email  %>">
+                    
+                    <small class="errors-style"><%= typeof errors == 'undefined' ? '': typeof errors.email == 'undefined' ? '' : errors.email.msg  %></small>
+                    
                     <input type="password" class="input-style" placeholder="PASSWORD" name="password">
                     <small class="errors-style"><%= typeof errors == 'undefined' ? '': typeof errors.password == 'undefined' ? '' : errors.password.msg  %> </small>
                     <div class="check-box-rowed">

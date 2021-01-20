@@ -9,7 +9,7 @@
 
     <main>
         <div class="h1-left">
-            <h1>Edit your profile</h1>
+            <h1>Register</h1>
         </div> 
 
         <% if (typeof errors != 'undefined') { %>
@@ -24,7 +24,7 @@
             <div class="form-container">
                 <h3>PERSONAL ACCOUNT</h3>
                 <p class="required-files">Required fields *</p>
-                <form action="/users/register" method="POST">
+                <form action="/users/register" method="POST" id="register-form">
 
                     <label for="firstName">FIRST NAME*</label>
                     <input type="text" class="input-style" name="firstName" id="firstName">
@@ -221,6 +221,6 @@
     </main>
     <!-- FOOTER-->
     <%- include('../partials/footer')%>
-    
+    <script src="/scripts/validator.js"></script>
 </body> 
 </html>

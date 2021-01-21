@@ -16,8 +16,8 @@
             <div class="form-container">
                 <h3>PERSONAL ACCOUNT</h3>
                 <p class="required-files">Required fields *</p>
-                <form action="/users/register" method="POST">
-
+                <form action="/users/register" method="POST" id="register-form">
+                    <ul class="errors"></ul>
                     <label for="firstName">FIRST NAME*</label>
                     <input type="text" class="input-style" name="firstName" id="firstName" value="<%= typeof errors == 'undefined' ? '' : typeof old == 'undefined' ? '' : old.firstName %>">
                     
@@ -237,6 +237,6 @@
     </main>
     <!-- FOOTER-->
     <%- include('../partials/footer')%>
-    
+    <script src="/scripts/validator.js"></script>
 </body> 
 </html>

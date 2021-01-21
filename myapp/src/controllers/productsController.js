@@ -1,4 +1,3 @@
-const dataBaseHelper = require('../helpers/data-base-helper');
 const { validationResult } = require('express-validator');
 const db = require('../database/models');
 

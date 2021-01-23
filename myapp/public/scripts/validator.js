@@ -10,17 +10,27 @@ registerForm.addEventListener("submit", (event)=>{
     const name = document.querySelector("#firstName");
     const lastName = document.querySelector("#lastName");
     const email = document.querySelector("#email")
+    const password = document.querySelector("#password");
+    const retype = document.querySelector("#retype");
 
     if(name.value.trim().length <= 2){
-        errors.push("Your name must contain at least 2 characters");
+        errors.push("Your name must contain at least 2 characters.");
     }
 
     if(lastName.value.trim().length <= 2){
-        errors.push("Your last name must contain at least 2 characters");
+        errors.push("Your last name must contain at least 2 characters.");
     }
 
     if(email.value.length == 0){
-        errors.push("Your email is required")
+        errors.push("Your email is required.")
+    }
+
+    if(password.value.length <= 8){
+        errors.push("Your password is required and must contain at least 8 characters.")
+    }
+
+    if(retype.value != password.value){
+        errors.push("These passwords aren't the same. Please retype the same password")
     }
 
     

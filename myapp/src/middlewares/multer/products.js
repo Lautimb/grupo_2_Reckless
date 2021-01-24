@@ -14,7 +14,7 @@ module.exports = multer({
 
     fileFilter: (req, file, cb) => {
 		
-		const acceptedExt = ['.jpg','.webp','.jpeg','.png']
+		const acceptedExt = ['.jpg','.webp','.jpeg','.png', '.gif']
 		const ext = path.extname(file.originalname)
 		
 		if(!acceptedExt.includes(ext)){

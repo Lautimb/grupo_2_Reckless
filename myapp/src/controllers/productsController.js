@@ -50,7 +50,6 @@ module.exports = {
     },
 
     store: async(req, res)=>{
-
         const errors = validationResult(req);
         if(!errors.isEmpty()){
 
@@ -86,6 +85,10 @@ module.exports = {
         const types = (typeof req.body.type == "string" ? [req.body.type] : req.body.type)
         
         await product.setTypes(parseInt(types),product.id)
+
+        //const qty = (typeof req.body.qty == "number" ? [req.body.qty] : req.body.qty)
+
+        
        
         res.redirect('/products');
     },

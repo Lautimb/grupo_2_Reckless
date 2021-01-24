@@ -11,12 +11,11 @@ module.exports = {
             .notEmpty()
                 .withMessage('Please fill the name')
                 .bail()
-            .custom((value)=> value.trim().length > 2 )                
+            .custom((value)=> value.trim().length >= 2 )                
                 .withMessage('The name must have at least 2 characters'),
         body('lastName')
             .notEmpty()
-                .withMessage('Please fill the last name')
-                .bail(),
+                .withMessage('Please fill the last name'),
         body('email')
             .notEmpty()
                 .withMessage('Please fill the email')
@@ -50,8 +49,7 @@ module.exports = {
                 }
                 return true
             })
-                .withMessage('These passwords are not the same')
-                .bail(),
+                .withMessage('These passwords are not the same'),
         body('retype')
             .notEmpty()
                 .withMessage('Please retype your password')
@@ -83,7 +81,7 @@ module.exports = {
                     }
                 })
                 .then(user => {
-                    let { password } = req.body;
+                    const { password } = req.body;
                     if(!user || !bcrypt.compareSync(password, user.password)){
                         return Promise.reject('Wrong email or password');
                     }
@@ -97,15 +95,37 @@ module.exports = {
     ],
 
     products: [
+        body('images')
+            .custom((value ,{req})=>{
+                if(req.method == 'PUT'){
+                    return true
+                }
+                return req.files.length != 0
+            })
+                .withMessage('Please select a file')
+                .bail()
+        .custom((value, {req})=>{
+            const acceptedExt = ['.jpg','.webp','.jpeg','.png','.gif']
+            const files = req.files;  
+            const fileWrong = files.find(file => {
 
+                if(!acceptedExt.includes(path.extname(file.originalname))){
+                    return file
+                } 
+            })
+            return !fileWrong
+        })  
+                .withMessage('Invalid extension')
+                .bail(),
         body('name')
             .notEmpty()
                 .withMessage("Fill product's name")
-                .bail()
-            .isLength({min: 5}),
+            .isLength({min: 5})
+                .withMessage("Product's name must have at least 5 characters")
+            .bail(),
         body('description')
             .isLength({min: 20})
-                .withMessage("Fill product's name")
+                .withMessage("Fill product's description")
                 .bail(),
         body('price')
             .isInt({min:1})
@@ -121,30 +141,24 @@ module.exports = {
             })
                 .withMessage('Discount must be greater than 0 and less than 100')
                 .bail(),
+        body('wholesaleprice')
+            .notEmpty()
+                .withMessage("Please select product's wholesale price")
+                .bail()
+            .isInt({min:1})
+                .withMessage('Wholesale price must be greater than 0'),
+        body("art")
+            .notEmpty()
+                .withMessage("Please fill product's article code"),
+        body("size")
+            .notEmpty()
+                .withMessage("Please select a size"),
         body('type')
             .notEmpty()
-                .withMessage("Select type")
+                .withMessage("Please select product's type")
                 .bail(),
-        body('images')
-            .custom((value ,{req})=>{
-                if(req.method == 'PUT'){
-                    return true
-                }
-                return req.files.length != 0
-            })
-                .withMessage('Please select a file')
-                .bail()
-        .custom((value, {req})=>{
-            const acceptedExt = ['.jpg','.webp','.jpeg','.png','.gif']
-            const files = req.files;  
-            const fileWrong = files.find(file => {
-                if(!acceptedExt.includes(path.extname(file.originalname))){
-                    return file
-                } 
-             })
-            return !fileWrong
-        })
-            .withMessage('Invalid extension')
+        body("qty")
+            .notEmpty() 
     ]
 }
 

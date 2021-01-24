@@ -12,6 +12,7 @@
                 <div class="h1-center">
                     <h1>ADD NEW PRODUCT</h1>
                 </div>
+                <ul class="errors"></ul>
                 <div class="image-upload-container">
                     <div class="title-container">
                         <h3>PRODUCT IMAGES</h3>
@@ -42,10 +43,10 @@
                     <div class="product-data">
                         <label for="name"></label>
                         <% if(typeof old != 'undefined') {%>
-                            <input type="text" class="input-style" value="<%= old.name ? old.name : '' %>" name="name"> 
+                            <input type="text" class="input-style" value="<%= old.name ? old.name : '' %>" name="name" id="create-name"> 
                             <small class="errors-style"><%= typeof errors == 'undefined' ? '' : typeof errors.name == 'undefined' ? '' : errors.name.msg %></small>
                         <% } else { %>
-                            <input type="text" class="input-style" value="" name="name"> 
+                            <input type="text" class="input-style" value="" name="name" id="create-name"> 
                         <% } %>
                     </div>
                     <div class="title-container">
@@ -83,17 +84,17 @@
                         <div>
                             <label for="price">WHOLESALE PRICE $ </label>
                             <% if(typeof old != 'undefined') {%>
-                                <input class= "input-style width-input-price-discount" type="text" value="<%= old.wholesaleprice ? old.wholesaleprice : '' %>" name="wholesaleprice" id="productPrice">
+                                <input class= "input-style width-input-price-discount" type="text" value="<%= old.wholesaleprice ? old.wholesaleprice : '' %>" name="wholesaleprice" id="productWholesalePrice">
                             <% } else {%>
-                                <input class= "input-style width-input-price-discount" type="text" value="" name="wholesaleprice" id="productPrice">
+                                <input class= "input-style width-input-price-discount" type="text" value="" name="wholesaleprice" id="productWholesalePrice">
                             <% } %>
                         </div>
                         <div>
                             <label for="discount">ART:</label>
                             <% if(typeof old != 'undefined') {%>
-                                <input class= "input-style width-input-price-discount" type="text" value="<%= old.art ? old.art: '' %>" name="art" id="productPromo">
+                                <input class= "input-style width-input-price-discount" type="text" value="<%= old.art ? old.art: '' %>" name="art" id="productArt">
                             <% } else {%>
-                                <input class= "input-style width-input-price-discount" type="text" value="" name="art" id="productPromo">
+                                <input class= "input-style width-input-price-discount" type="text" value="" name="art" id="productArt">
                             <% } %>
                         </div>
                     </div>
@@ -147,7 +148,7 @@
                 </div>
                 
                 <div class="submit-button-container">
-                    <button type="submit">UPLOAD PRODUCT</button>
+                    <button type="button" id="create-button">UPLOAD PRODUCT</button>
                 </div>
             </form>
         </section>
@@ -159,7 +160,7 @@
     </main>
     
     <%- include('../partials/footer')%>
-    
+    <script src="/scripts/validator/create.js"></script>
     
 </body>
 </html>

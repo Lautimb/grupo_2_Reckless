@@ -51,7 +51,6 @@ module.exports = {
 
     store: async(req, res)=>{
         const errors = validationResult(req);
-        return res.send(errors.mapped())
         if(!errors.isEmpty()){
 
             return res.render('products/create', {

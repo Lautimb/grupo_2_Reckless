@@ -47,10 +47,14 @@ module.exports = {
 
         const errors = validationResult(req);
         if(!errors.isEmpty()){
+            const sizes = await db.Size.findAll()
+            const types = await db.Type.findAll()
 
             return res.render('products/create', {
                 errors: errors.mapped(),
-                old: req.body
+                old: req.body,
+                sizes,
+                types
             })
         }
        

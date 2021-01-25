@@ -5,6 +5,7 @@ const errorElement = document.querySelector(".errors");
 
 
 createButton.addEventListener("click", (event)=>{
+
     const images = document.querySelector("#file").files;
     const name = document.querySelector("#create-name");
     const description = document.querySelector("#description");
@@ -20,7 +21,6 @@ createButton.addEventListener("click", (event)=>{
     
     for(image of images){
         const ext = image.type.split("/").pop()
-        console.log(ext)
         if(!acceptedExt.includes(ext)){
             errors.push("Invalid extension. You can only use .jpg, .webp, .jpeg, .png and .gif files.")
        }
@@ -43,8 +43,10 @@ createButton.addEventListener("click", (event)=>{
         errors.push("Discount must be greater than 0 and lower than 100.")
     }
     
+    if(!errors.length){
+        createForm.submit()
+    }
     for (error of errors){
         errorElement.innerHTML += `<li>${error}</li>`;
     }
-    event.preventDefault()
 })

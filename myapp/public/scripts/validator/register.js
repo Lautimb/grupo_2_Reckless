@@ -14,7 +14,7 @@ registerButton.addEventListener("click", (event)=>{
     const day = document.querySelector("#date-dd");
     const month = document.querySelector("#date-mm");
     const year = document.querySelector("#date-yyyy");
-    const decimal=  /^(?=.{8,}$)(?=.?[a-z])(?=.?[A-Z])(?=.?[0-9])(?=.?\W).*$/;
+    const passwordRegex =  /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
     if(name.value.trim().length < 2){
         errors.push("Your name must contain at least 2 characters.");
@@ -28,7 +28,7 @@ registerButton.addEventListener("click", (event)=>{
         errors.push("Your email is required.");
     }
 
-    if(password.value.length < 8 /*&& password.value.search(/[A-Z]/) == -1*/){
+    if(!password.value.match(passwordRegex)){
         errors.push("Your password is required and must contain at least 8 characters and must contain an upper case character and one o more numbers");
     }
 

@@ -1,12 +1,29 @@
 const { User } = require('../../database/models');
 
 module.exports = {
-    async index (req, res) {
-        const user = await User.findAll({
-            attributes: ['email']
-        });
+    async list (req, res) {
+        try{
+            const users = await User.findAll({
+                attributes: ['id', 'email']
+            })
 
-        res.json(user)
+            // meta
+            res.json({
+                meta: {
+                    status: 'success',
+                    count: users.length
+                },
+                data: {
+                    users,
+                }
+            })
+        } catch(error) {
+            res.status(500).json({
+                meta: {
+                    status: 'error',
+                },
+                error: 'Users not found',
+            })
+        }
     }
-    
 };

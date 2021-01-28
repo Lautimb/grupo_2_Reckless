@@ -1,10 +1,11 @@
 const { User } = require('../../database/models');
+const bcrypt = require('bcryptjs');
 
 module.exports = {
     async list (req, res) {
         try{
             const users = await User.findAll({
-                attributes: ['id', 'email']
+                attributes: ['email', 'password']
             })
 
             // meta
@@ -22,7 +23,7 @@ module.exports = {
                 meta: {
                     status: 'error',
                 },
-                error: 'Users not found',
+                error: 'User not found',
             })
         }
     }

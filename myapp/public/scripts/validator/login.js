@@ -2,7 +2,8 @@ const loginForm = document.querySelector("#login-form");
 const loginButton = document.querySelector("#login-button");
 const errorElement = document.querySelector(".errors");
 
-loginButton.addEventListener("click", (event) => {
+loginButton.addEventListener("click", (e) => {
+
     const errors = [];
     errorElement.innerHTML = "";
     const email = document.querySelector("#login-email");
@@ -17,7 +18,7 @@ loginButton.addEventListener("click", (event) => {
     }
 
     if(!errors.length){
-        registerForm.submit()
+        loginForm.submit()
     }
     for (error of errors){
         errorElement.innerHTML += `<li>${error}</li>`;

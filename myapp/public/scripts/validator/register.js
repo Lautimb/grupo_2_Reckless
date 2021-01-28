@@ -1,9 +1,29 @@
 const registerForm = document.querySelector("#register-form");
 const registerButton = document.querySelector("#button-register");
 const errorElement = document.querySelector(".errors");
+const usersList = [];
 
 
-registerButton.addEventListener("click", (_event)=>{
+window.onload = function () {
+    fetch('http://localhost:3000/api/users',{
+        method: 'POST',
+        body: JSON.stringify(),
+        headers:{
+            'Content-Type': 'application/json'
+        }
+    })
+        .then((res)=> res.json())
+        
+        .then(function(users){
+            const data = users.data.users;
+            for (user of data) {
+                usersList.push(user);
+            }
+        })
+         
+}
+
+registerButton.addEventListener("click", (e)=>{
     const errors = []
     errorElement.innerHTML = ""
     const name = document.querySelector("#firstName");
@@ -15,24 +35,7 @@ registerButton.addEventListener("click", (_event)=>{
     const month = document.querySelector("#date-mm");
     const year = document.querySelector("#date-yyyy");
     const passwordRegex =  /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-    
-
-    // NO SE COMO ACCEDER A LA INFO QUE TRAIGO, NO LA PUEDO SACAR DEL CALLBACK
-
-    fetch('http://localhost:3000/api/users',{
-        method: 'POST',
-        body: JSON.stringify(),
-        headers:{
-            'Content-Type': 'application/json'
-        }
-    })
-        .then((res)=> res.json())
-            .then(function(users){
-                console.log(users)
-      
-            })
-         
-   
+    const emailRegex = /^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gim;
 
     if(name.value.trim().length < 2){
         errors.push("Your name must contain at least 2 characters.");
@@ -44,10 +47,20 @@ registerButton.addEventListener("click", (_event)=>{
 
     if(email.value.length == 0){
         errors.push("Your email is required.");
-    }    
+    }
+    
+    for (user of usersList) {
+        if(email.value == user.email){
+            errors.push("E-mail not available, please select a different e-mail")
+        }
+    }
+
+    if(!email.value.match(emailRegex)){
+        errors.push("Your e-mail has an invalid format. Please enter the correct e-mail")
+    }
 
     if(!password.value.match(passwordRegex)){
-        errors.push("Your password is required and must contain at least 8 characters and must contain an upper case character and one o more numbers");
+        errors.push("Your password is required and must contain at least 8 characters, an upper case and a number ");
     }
 
     if(retype.value != password.value){

@@ -7,13 +7,12 @@
    
     <main id="product-upload__main">
         <section id="product-upload__section">
-
             <form action="/products/edit/<%= product.id %>?_method=PUT" method="POST" id="product-upload__form" enctype="multipart/form-data">
 
                 <div class="h1-center">
                     <h1>EDIT PRODUCT: <%= product.name %></h1>
                 </div>
-                
+                <ul class="errors"></ul>
                 <div class="image-upload-container">
                     <div class="title-container">
                         <h3>PRODUCT IMAGES</h3>
@@ -31,7 +30,7 @@
                             <input name="images" id="file" type="file" multiple>
                         </li>
                         <li>
-                            <!-- <small class="errors-style"><%#= typeof errors == 'undefined' ? '' : typeof errors.images == 'undefined' ? '' : errors.images.msg %></small> -->
+                            <small class="errors-style"><%= typeof errors == 'undefined' ? '' : typeof errors.images == 'undefined' ? '' : errors.images.msg %></small>
                         </li>
                     </ul>
 
@@ -43,10 +42,10 @@
                     <div class="product-data">
                         <label for="name"></label>
                         <% if(typeof product != 'undefined') {%>
-                            <input type="text" class="input-style" value="<%= product.name ? product.name : '' %> " name="name"> 
+                            <input type="text" class="input-style" value="<%= product.name ? product.name : '' %> " name="name" id="create-name"> 
                             <small class="errors-style"><%= typeof errors == 'undefined' ? '' : typeof errors.name == 'undefined' ? '' : errors.name.msg %></small>
                         <% } else { %>
-                            <input type="text" class="input-style" value="" name="name"> 
+                            <input type="text" class="input-style" value="" name="name" id="create-name"> 
                         <% } %>
                     </div>
                     <div class="title-container">
@@ -142,7 +141,7 @@
                 </div>
                 
                 <div class="submit-button-container">
-                    <button type="submit">SAVE PRODUCT</button>
+                    <button type="button" id="create-button">SAVE PRODUCT</button>
                 </div>
             </form>
         </section>
@@ -154,7 +153,7 @@
     </main>
     
     <%- include('../partials/footer')%>
-    
+    <script src="/scripts/validator/create.js"></script>
     
 </body>
 </html>

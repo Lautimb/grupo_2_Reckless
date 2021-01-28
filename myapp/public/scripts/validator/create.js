@@ -1,8 +1,7 @@
 const createForm = document.querySelector("#product-upload__form");
 const createButton = document.querySelector("#create-button");
 const errorElement = document.querySelector(".errors");
-
-
+const url = window.location.pathname;
 
 createButton.addEventListener("click", (event)=>{
 
@@ -12,11 +11,13 @@ createButton.addEventListener("click", (event)=>{
     const price = document.querySelector("#productPrice");
     const discount = document.querySelector("#productPromo");
     const errors = [];
-    errorElement.innerHTML = ""
+    errorElement.innerHTML = "";
     const acceptedExt = ['jpg','webp','jpeg','png', 'gif'];
 
-    if(images.length == 0){
-        errors.push("Please select 6 photos of your product")
+    if(url.includes("products/create")){
+        if(images.length == 0){
+            errors.push("Please select a photo for your product")
+        }
     }
     
     for(image of images){

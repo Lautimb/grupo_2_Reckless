@@ -61,7 +61,7 @@ module.exports = {
 
         const userFound = await User.findOne({
             where: {
-                email: remail
+                email: email
             }
         });
 

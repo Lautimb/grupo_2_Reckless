@@ -10,9 +10,9 @@ CREATE TABLE users (
     
     password VARCHAR(255) NOT NULL,
     birthday DATE NOT NULL,
+    
 	-- business data 
-    manager_first_name VARCHAR(50) DEFAULT NULL,
-    manager_last_name VARCHAR(50) DEFAULT NULL,
+
     company VARCHAR(50) DEFAULT NULL,
     phone_number VARCHAR(50) DEFAULT NULL,
     user_type_id INT UNSIGNED,

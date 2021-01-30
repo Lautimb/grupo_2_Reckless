@@ -126,7 +126,7 @@
                                             <option value="<%= type.id %>"><%= type.title.toUpperCase() %></option>
                                         <% } %>
                                     </select>
-                                    <!-- <small class="errors-style "><%#= typeof errors == 'undefined' ? '' : typeof errors.type == 'undefined' ? '' : errors.type.msg %></small> -->
+                                    <small class="errors-style "><%= typeof errors == 'undefined' ? '' : typeof errors.type == 'undefined' ? '' : errors.type.msg %></small> 
                                 </li>
                             <li>
                                 <p>COLORS & QTY</p>

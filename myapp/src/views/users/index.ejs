@@ -16,12 +16,12 @@
             </ul>
         </div>
         <div class="submit-button-container">
-            <form action="/users/edit/<%= userLog.id%>" method="GET" name="button" >
-                <button type="submit" class="buttons-detail" name="button">EDIT PROFILE</button>
-            </form>
-            <form action="/products/create" method="GET" name="button" >
-                <button type="submit" class="buttons-detail" name="button">NEW PRODUCT</button>
-            </form>
+            <a href="/users/edit/<%= userLog.id%>">
+                <button type="button" class="buttons-detail" name="button">EDIT PROFILE</button>
+            </a>
+            <a href="/products/create">
+                <button href="/products/create" type="button" class="buttons-detail" name="button">NEW PRODUCT</button>
+            </a>
         </div>
     </main>
     <%- include('../partials/footer')%>

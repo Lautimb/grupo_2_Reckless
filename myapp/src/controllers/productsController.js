@@ -44,6 +44,7 @@ module.exports = {
         const types = await db.Type.findAll()
         
         res.render('products/create',{
+            old: req.body,
             sizes,
             types
         });
@@ -51,11 +52,16 @@ module.exports = {
 
     store: async(req, res)=>{
         const errors = validationResult(req);
-        if(!errors.isEmpty()){
+        
 
+        if(!errors.isEmpty()){ 
+            const sizes = await db.Size.findAll()
+            const types = await db.Type.findAll() 
             return res.render('products/create', {
                 errors: errors.mapped(),
-                old: req.body
+                old: req.body,
+                sizes,
+                types
             })
         }
        

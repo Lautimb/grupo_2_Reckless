@@ -21,14 +21,52 @@
                     <ul id="loaded-images-ul">
                         <li>
                             <label for="file">
-                                <span class="material-icons camera-icon">
-                                    add_a_photo
-                                </span>
-                                <p>+ ADD</p>
-                                <p>(max 6 images)</p>
+                                <div>
+                                    <span class="material-icons camera-icon">
+                                        add_a_photo
+                                    </span>
+                                    <p>+ ADD</p>
+                                    <p>(max 6 images)</p>
+                                </div>
+                                <div>
+                                    <span class="material-icons camera-icon">
+                                        add_a_photo
+                                    </span>
+                                    <p>+ ADD</p>
+                                    <p>(max 6 images)</p>
+                                </div>
+                                <div>
+                                    <span class="material-icons camera-icon">
+                                        add_a_photo
+                                    </span>
+                                    <p>+ ADD</p>
+                                    <p>(max 6 images)</p>
+                                </div>
+                                <div>
+                                    <span class="material-icons camera-icon">
+                                        add_a_photo
+                                    </span>
+                                    <p>+ ADD</p>
+                                    <p>(max 6 images)</p>
+                                </div>
+                                <div>
+                                    <span class="material-icons camera-icon">
+                                        add_a_photo
+                                    </span>
+                                    <p>+ ADD</p>
+                                    <p>(max 6 images)</p>
+                                </div>
+                                <div>
+                                    <span class="material-icons camera-icon">
+                                        add_a_photo
+                                    </span>
+                                    <p>+ ADD</p>
+                                    <p>(max 6 images)</p>
+                                </div>
                             </label>
                             <input name="images" id="file" type="file" multiple>
                         </li>
+                        
                         <li>
                             <small class="errors-style"><%= typeof errors == 'undefined' ? '' : typeof errors.images == 'undefined' ? '' : errors.images.msg %></small>
                         </li>
@@ -37,6 +75,34 @@
 
                 </div>
                 <div class="product-data-container">
+                    <ul class="product-price-discount">
+                        <li>
+                            <div>
+                                <h3>ART.</h3>
+                            </div>
+                            <div>
+                                <label for="art"></label>
+                                <% if(typeof old != 'undefined') {%>
+                                    <input class= "input-style width-input-price-discount" type="text" value="<%= old.art ? old.art: '' %>" name="art" id="productArt">
+                                <% } else {%>
+                                    <input class= "input-style width-input-price-discount" type="text" value="" name="art" id="productArt">
+                                <% } %>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <h3>PRODUCT TYPE</h3>
+                            </div>
+                                <select name="type" class="input-style input-types width-input-price-discount" >
+                                    <option value="" selected>-</option>
+                                    <% for (type of types){%>
+                                        <option value="<%= type.id %>"><%= type.title.toUpperCase() %></option>
+                                    <% } %>
+                                </select>
+                                <small class="errors-style "><%= typeof errors == 'undefined' ? '' : typeof errors.type == 'undefined' ? '' : errors.type.msg %></small>
+                        </li>
+                    </ul>
+                    
                     <div class="title-container">
                         <h3>PRODUCT NAME</h3>
                     </div>
@@ -63,7 +129,8 @@
                     </div>
                     <div class="product-price-discount">
                         <div>
-                            <label for="price">PRICE $ </label>
+                            <p>PRICE</p>
+                            <label for="price"> $ </label>
                             <% if(typeof old != 'undefined') {%>
                                 <input class= "input-style width-input-price-discount" type="text" value="<%= old.price ? old.price : '' %>" name="price" id="productPrice">          
                                 <small class="errors-style "><%= typeof errors == 'undefined' ? '' : typeof errors.price == 'undefined' ? '' : errors.price.msg %></small>
@@ -72,17 +139,8 @@
                             <% } %>
                         </div>
                         <div>
-                            <label for="discount">DISCOUNT %</label>
-                            <% if(typeof old != 'undefined') {%>
-                                <input class= "input-style width-input-price-discount" type="text" value="<%= old.discount ? old.discount : '' %>" name="discount" id="productPromo">
-                        
-                                <small class="errors-style "><%= typeof errors == 'undefined' ? '' : typeof errors.discount == 'undefined' ? '' : errors.discount.msg %></small>
-                            <% } else {%>
-                                <input class= "input-style width-input-price-discount" type="text" value="" name="discount" id="productPromo">
-                            <% } %>
-                        </div>
-                        <div>
-                            <label for="price">WHOLESALE PRICE $ </label>
+                            <p>WHOLESALE PRICE</p>
+                            <label for="price"> $ </label>
                             <% if(typeof old != 'undefined') {%>
                                 <input class= "input-style width-input-price-discount" type="text" value="<%= old.wholesaleprice ? old.wholesaleprice : '' %>" name="wholesaleprice" id="productWholesalePrice">
                             <% } else {%>
@@ -90,11 +148,14 @@
                             <% } %>
                         </div>
                         <div>
-                            <label for="discount">ART:</label>
+                            <p>DISCOUNT</p>
+                            <label for="discount"> %</label>
                             <% if(typeof old != 'undefined') {%>
-                                <input class= "input-style width-input-price-discount" type="text" value="<%= old.art ? old.art: '' %>" name="art" id="productArt">
+                                <input class= "input-style width-input-price-discount" type="text" value="<%= old.discount ? old.discount : '' %>" name="discount" id="productPromo">
+                        
+                                <small class="errors-style "><%= typeof errors == 'undefined' ? '' : typeof errors.discount == 'undefined' ? '' : errors.discount.msg %></small>
                             <% } else {%>
-                                <input class= "input-style width-input-price-discount" type="text" value="" name="art" id="productArt">
+                                <input class= "input-style width-input-price-discount" type="text" value="" name="discount" id="productPromo">
                             <% } %>
                         </div>
                     </div>
@@ -117,17 +178,6 @@
                                     <% } %>
                                 </select>
                             </li>
-                            <li>
-                                <p>PRODUCT TYPE</p>
-                                
-                                    <select name="type" class="input-style input-types" >
-                                        <option value="" selected>-</option>
-                                        <% for (type of types){%>
-                                            <option value="<%= type.id %>"><%= type.title.toUpperCase() %></option>
-                                        <% } %>
-                                    </select>
-                                    <!-- <small class="errors-style "><%#= typeof errors == 'undefined' ? '' : typeof errors.type == 'undefined' ? '' : errors.type.msg %></small> -->
-                                </li>
                             <li>
                                 <p>COLORS & QTY</p>
                                 <ul>

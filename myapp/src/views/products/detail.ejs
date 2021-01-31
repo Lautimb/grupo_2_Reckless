@@ -64,7 +64,7 @@
                                 
                             <div>
                                 <select name="size" class="product-detail__select">
-                                    <option value="<%= product.sizes[0].title %>" selected><%= product.sizes[0].title %></option>
+                                    <option value="" selected><%= product.sizes[0].title %></option>
                                     
                                 </select>
                             </div>
@@ -84,9 +84,9 @@
                                     <option value="10">10</option>
                                 </select>
                             </div>
-                            <%# if (userLog.admin) { %> 
-                             <div class="edit-delete-product">
+                            <div class="edit-delete-product">
                                 <div>
+                                    <% if (userLog.user_type_id == 1 || userLog.user_type_id == 2) { %> 
                                     <form action="/products/edit/<%= product.id%>" method="GET" name="button" >
                                         <button type="submit" class="buttons-detail" name="button"><i class="fas fa-times"></i>EDIT</button>
                                     </form>
@@ -97,12 +97,12 @@
                                     </form>
                                 </div>
                             </div> 
-                            <%# }else{ %> 
+                            <% }else{ %> 
                             <div class="buttons-detail">
                                 <a href="/cart" type="submit"><i class="fas fa-sho
                                     pping-cart"></i> ADD TO CART</a>
                             </div>
-                            <%# } %> 
+                            <% } %> 
                         </div>
                         
                         <div class="product-detail__details">

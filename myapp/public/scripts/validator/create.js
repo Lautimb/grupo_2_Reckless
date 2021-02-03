@@ -38,7 +38,7 @@ createButton.addEventListener("click", (event)=>{
     if(price.value == ""){
         errors.push("Price must be greater than 0")
     }
-    console.log()
+    
 
     if(!(discount.value > 0 && discount.value < 100) && discount.value.length > 0){
         errors.push("Discount must be greater than 0 and lower than 100.")
@@ -50,4 +50,5 @@ createButton.addEventListener("click", (event)=>{
     for (error of errors){
         errorElement.innerHTML += `<li>${error}</li>`;
     }
+    console.log(errors)
 })

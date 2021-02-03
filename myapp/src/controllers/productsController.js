@@ -52,7 +52,7 @@ module.exports = {
 
     store: async(req, res)=>{
         const errors = validationResult(req);
-        
+        console.log(errors)
 
         if(!errors.isEmpty()){ 
             const sizes = await db.Size.findAll()
@@ -112,58 +112,43 @@ module.exports = {
     edit: async(req,res) =>{
         
         const id = req.params.id;
-        
+        // Traigo la lista de talles y categorias para mandar a los select del form
+        const sizes = await db.Size.findAll()
+        const types = await db.Type.findAll()
+
         const product = await db.Product.findByPk(id,{
             include:["images","sizes", "types"]
         })
-
+       
         product.images[0].filename = JSON.parse(product.images[0].filename)
 
-        res.render('products/edit', { product });
+        res.render('products/edit', { product, sizes, types });
 
     },
     update: async(req,res)=>{
         
-        // const errors = validationResult(req);
-        // if(!errors.isEmpty()){
-        //     return res.render('products/edit', {
-        //         errors: errors.mapped(),
-        //         old: req.body,
-        //         id
-        //     })
-        // }
+        const errors = validationResult(req);
         
-        // allProducts.map( product => {
-		// 	if (product.id == id){
-        //         product.images = images == false ? product.images : images,
-        //         product.name = req.body.name,
-        //         product.description = req.body.description,
-        //         product.price = req.body.price, 
-        //         product.discount = req.body.discount,
-        //         product.type = req.body.type
-		// 	}
-		// 	return product;
-		// })
-        // dataBaseHelper.writeNewDataBase(allProducts,'products-data.json');
-
-        // const id = req.params.id;
-        // const product = await db.Product.findByPk(id,{
-        //     include: ["images","sizes"]
-        // });
-
+        if(!errors.isEmpty()){
+            const sizes = await db.Size.findAll()
+            const types = await db.Type.findAll()
+            
+            return res.render('products/edit', {
+                errors: errors.mapped(),
+                old: req.body,
+                sizes,
+                types
+            })
+        }
         
-        // LOGRAMOS EDITAR TODOS LOS CAMPOS QUE NOS LLEGAN A TRAVES DEL BODY, PERO NO LLEGAMOS A EDITAR LAS IMAGENES QUE NOS LLEGAN POR 
-        // EL REQ.FILES, O LA QUE DEBERIA PERMANECER DE LA DB
-
-
-        const { name, description, price , wholesale_price, discount , art } = req.body;
+        const { name, description, price , wholesaleprice, discount , art } = req.body;
     
         await db.Product.update(
         {
             name,
             price,
             description,
-            wholesale_price,
+            wholesale_price: wholesaleprice,
             discount,
             art
         },

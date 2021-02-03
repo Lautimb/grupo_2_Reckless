@@ -23,6 +23,8 @@ Starfish restrospective
 1) Interiorizarnos más con los lenguajes aprendidos.
 2) Chequear periodicamente y contribuir en Trello.
 3) Investigar paralelamente sobre herramientas que nos agilicen el trabajo para lograr hacer mas efectivo el tiempo.
+4) Dedicar tiempo libre para invertir en detalles del proyecto.
+5) Actualizar backlog de detalles esteticos para que estos no queden olvidados y que no nos consuman tiempo de desarrollo.
 
 * Keep doing:
 1) Crear cronograma equitativo de tareas.
@@ -30,13 +32,6 @@ Starfish restrospective
 3) Permitir un periodo de re-checkeo de las tareas realizadas para descartar cabos sueltos. 
 4) Seguir mateniendo el ritmo de encuentros virtuales para el trabajo.
 5) Considerar el hacer un poco mas siempre.
-6) Mantener actualizado el tablero de trabajo.
-7) Seguir mantiendo un ambiente agradable de trabajo.
-8) Trabajar mas con git, branches.
-9) Actualizar backlog de detalles esteticos para que estos no queden olvidados y que no nos consuman tiempo de desarrollo.
-10) Agregar dias extra a la semana del trabajo cuando sea necesario
-11) Dedicar tiempo libre para invertir en detalles del proyecto.
-12) Consultar más seguido con los profesores por los detalles o dudas que tenemos del proyecto, en lugar de posponer o sacar conclusiones a priori.
 
 * Do less:
 1) Entrevista semanal con el cliente.

@@ -1,6 +1,4 @@
-
-
-function fixedMain(){
+window.addEventListener('scroll',() => {
 
     let scrollTop = document.documentElement.scrollTop;
     let navBar2 = document.querySelector('#nav-bar2');
@@ -26,6 +24,4 @@ function fixedMain(){
                 main.style.marginTop= "0";
             }     
         }
-}
-
-window.addEventListener('scroll',fixedMain);
+});

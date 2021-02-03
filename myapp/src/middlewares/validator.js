@@ -1,76 +1,93 @@
-const {body} = require('express-validator');
-const dataBaseHelper = require('../helpers/data-base-helper');
+const { body } = require('express-validator');
+const { User } = require('../database/models')
+
 const path = require('path');
 const bcrypt = require('bcryptjs');
 const moment = require('moment');
-const db = require('../database/models')
 
 module.exports = {
     register: [
-
+        body('firstName')
+            .notEmpty()
+                .withMessage('Please fill the name')
+                .bail()
+            .custom((value)=> value.trim().length >= 2 )                
+                .withMessage('The name must have at least 2 characters'),
+        body('lastName')
+            .notEmpty()
+                .withMessage('Please fill the last name'),
         body('email')
             .notEmpty()
                 .withMessage('Please fill the email')
                 .bail()
             .isEmail()
-                .withMessage('Please select a vaild e-mail address')
+                .withMessage('Please select a valid e-mail address')
                 .bail()
-            .custom(async(value, {req})=>{
-                const users = await db.User.findAll()
-                const userFound = users.find(user => user.email == value);
-                
-                return !userFound;
-            })
-                .withMessage('The selected email is already in use'),
+            .custom((value) => {
+                return User.findOne({
+                    where: {
+                        email: value
+                    }
+                })
+                .then(user => {
+                    if(user){
+                        return Promise.reject('Email not available');
+                    }
+                });
+            }),             
         body('password')
             .notEmpty()
                 .withMessage('Please fill the password')
                 .bail()
-            .isLength({min: 6})
-                .withMessage('The password must have at least 6 characters')
+            .isLength({min: 8})
+                .withMessage('The password must have at least 8 characters')
                 .bail()
             .custom((value, {req})=>{
-                if(req.body.retype){
-                    return value == req.body.retype
+                let { retype } = req.body;
+                if(retype){
+                    return value == retype
                 }
                 return true
             })
                 .withMessage('These passwords are not the same'),
-
         body('retype')
             .notEmpty()
                 .withMessage('Please retype your password')
                 .bail(),
-
         body('birthday')
             .custom((value, {req}) => {
-                const month = req.body.month
-                const day = req.body.day
-                const year = req.body.year
-                const date = moment(year + '-' + month + '-' + day);
+                let { year, month, day } = req.body;
+                const date = moment(year + '-' + month+ '-' + day);
                
                 return date.isValid();
                 
             })
                 .withMessage('Select a valid date')
     ],
+
+
     login: [
         body('email')
             .notEmpty()
                 .withMessage('Please fill the email')
                 .bail()
             .isEmail()
-                .withMessage('Please select a vaild e-mail address')
+                .withMessage('Please select a valid e-mail address')
                 .bail()
-            .custom(async(value, {req})=>{
-                const users = await db.User.findAll()
-                const userFound = users.filter(user => user.email == value);
-                if(userFound[0]){
-                    return bcrypt.compareSync(req.body.password, userFound[0].password);
-                }
-                return false
+            .custom((value, { req }) => {
+                return User.findOne({
+                    where: {
+                        email: value
+                    }
+                })
+                .then(user => {
+                    const { password } = req.body;
+                    if(!user || !bcrypt.compareSync(password, user.password)){
+                        return Promise.reject('Wrong email or password');
+                    }
+                });
             })
-                .withMessage('Wrong e-mail or password'),
+                .bail(),
         body('password')
             .notEmpty()
                 .withMessage('Please fill the password')
@@ -78,13 +95,40 @@ module.exports = {
     ],
 
     products: [
+        body('images')
+            .custom((value ,{req})=>{
+                if(req.method == 'PUT'){
+                    return true
+                }
+                return req.files.length != 0
+            })
+                .withMessage('Please select a file')
+                .bail()
+        .custom((value, {req})=>{
+            const acceptedExt = ['.jpg','.webp','.jpeg','.png','.gif']
+            const files = req.files;  
+            const fileWrong = files.find(file => {
 
+                if(!acceptedExt.includes(path.extname(file.originalname))){
+                    return file
+                } 
+            })
+            return !fileWrong
+        })  
+                .withMessage('Invalid extension')
+                .bail(),
         body('name')
             .notEmpty()
                 .withMessage("Fill product's name")
+            .isLength({min: 5})
+                .withMessage("Product's name must have at least 5 characters")
+            .bail(),
+        body('description')
+            .isLength({min: 20})
+                .withMessage("Fill product's description")
                 .bail(),
         body('price')
-            .isInt({min:1})
+            .isFloat({min:1})
                 .withMessage('Price must be greater than 0')
                 .bail(),
         body('discount')
@@ -97,30 +141,22 @@ module.exports = {
             })
                 .withMessage('Discount must be greater than 0 and less than 100')
                 .bail(),
-        // body('type')
-        //     .notEmpty()
-        //         .withMessage("Select type")
-        //         .bail(),
-        body('images')
-        .custom((value ,{req})=>{
-            if(req.method == 'PUT'){
-                return true
-            }
-            return req.files.length != 0
-        })
-            .withMessage('Please select a file')
-            .bail()
-        .custom((value, {req})=>{
-            const acceptedExt = ['.jpg','.webp','.jpeg','.png']
-            const files = req.files;  
-            const fileWrong = files.find(file => {
-                if(!acceptedExt.includes(path.extname(file.originalname))){
-                    return file
-                } 
-             })
-            return !fileWrong
-        })
-            .withMessage('Invalid extension')
+        body('wholesaleprice')
+            .notEmpty()
+                .withMessage("Please select product's wholesale price")
+                .bail()
+            .isFloat({min:1})
+                .withMessage('Wholesale price must be greater than 0'),
+        body("art")
+            .notEmpty()
+                .withMessage("Please fill product's article code"),
+        body("size")
+            .notEmpty()
+                .withMessage("Please select a size"),
+        body('type')
+            .notEmpty()
+                .withMessage("Please select product's type")
+        
     ]
 }
 

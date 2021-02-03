@@ -150,7 +150,7 @@ a:visited{
 
 /* ---------------------------------- PARALLAX INDEX END */
 
-/* --------------------- INDEX ------------------------ */
+/* --------------------- PRODUCTS INDEX ------------------------ */
 
 #new-arrivals{
     position: relative;
@@ -736,11 +736,8 @@ a:visited{
     display: flex;
     flex-direction: column;
     align-self: center;
-    padding: 0px 0px 15px 0px;
     margin-top: 25px;
     margin-bottom: 25px;
-    width: 25%;
-    height: 25%;
     border: 3px solid;
     border-image: linear-gradient(to right, var(--cyan) 33%, var(--magenta) 33%,var(--magenta) 66%, var(--yellow) 66%,var(--yellow) 100% ) 5;
 }
@@ -748,11 +745,14 @@ a:visited{
     display: flex;
     position: relative;
     flex-direction: column;
+    padding: 10px 40px 10px 40px;
+    width: 360px;
 }
+
 .user-profile-data li{
     font-size: 20px;
     margin-left: 0px;
-    padding: 20px 0px 0px 0px;
+    padding: 10px 0px 10px 0px;
 }
 
 /* --------------------- FORMS REGISTER-------------------------*/
@@ -923,8 +923,12 @@ h3, .required-files{
     justify-content: space-around;
 }
 
+.product-price-discount div p{
+    padding-left: 15px;
+}
+
 .width-input-price-discount {
-    width: 100px;
+    width: 150px;
 }
 
 .image-upload-container{
@@ -942,24 +946,30 @@ h3, .required-files{
     width: 100%;
     padding-left: 0px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: space-evenly;
 }
 
-#loaded-images-ul li:nth-child(1){
+#loaded-images-ul li div{
     display: flex;
     flex-direction: column;
     margin: 0px;
+    padding: 5px;
     border: dashed 1px var(--light-gray);
     width: 180px;
     height: 180px;
     margin: 10px;
-    justify-content: space-between;
+    justify-content: space-around;
     background-color: white;
 }
 
 #loaded-images-ul label{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
     text-align: center;
 }
 
@@ -997,7 +1007,7 @@ h3, .required-files{
     flex-direction: column;
     position: relative;
     align-self: center;
-    width: 10%;
+    margin-bottom: 165px;
 }
 
 .manage-inventory-container{

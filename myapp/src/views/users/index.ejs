@@ -8,19 +8,22 @@
             <h1>My Profile</h1>
         </div>
         <div class="user-profile-style">
-            <section>
-                <ul class="user-profile-data">
-                    <li>First name: <%= userLog.first_name  %> </li>
-                    <li>Last name: <%= userLog.last_name  %> </li>
-                    <li>E-mail: <%= userLog.email %></li>
-                    <li>Bitrthday: <%= userLog.birthday %></li>                 
-                </ul>
-            </section>
+            <ul class="user-profile-data">
+                <li>First name: <%= userLog.first_name  %> </li>
+                <li>Last name: <%= userLog.last_name  %> </li>
+                <li>E-mail: <%= userLog.email %></li>
+                <li>Birthday: <%= userLog.birthday %></li>                 
+            </ul>
         </div>
         <div class="submit-button-container">
-            <form action="/users/edit/<%= userLog.id%>" method="GET" name="button" >
-                <button type="submit" class="buttons-detail" name="button">EDIT</button>
-            </form>
+            <a href="/users/edit/<%= userLog.id%>">
+                <button type="button" class="buttons-detail" name="button">EDIT PROFILE</button>
+            </a>
+            <% if(userLog.user_type_id == 1 || userLog.user_type_id == 2){%>
+                <a href="/products/create">
+                    <button href="/products/create" type="button" class="buttons-detail" name="button">NEW PRODUCT</button>
+                </a>
+            <% } %>
         </div>
     </main>
     <%- include('../partials/footer')%>

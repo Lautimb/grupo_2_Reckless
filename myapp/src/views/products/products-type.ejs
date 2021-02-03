@@ -11,7 +11,7 @@
 
         <section id="new-arrivals">
             <div class="h1-center">
-                <h1><%= products.type %></h1>
+                <h1><%= type.toUpperCase() %></h1>
             </div>
 
             <div class="products-container">
@@ -21,7 +21,7 @@
                     <article class="product-container">
                         <a href="/products/detail/<%= product.id %>">
                            
-                              <img src="/imgs/products/<%= product.images[0] %>" alt=""> 
+                              <img src="/imgs/products/<%= product.images[0].filename[0] %>" alt=""> 
                                   
                             <div class="product-detail">
                                 <div class="name-price-product-container">

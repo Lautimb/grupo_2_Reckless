@@ -9,11 +9,13 @@ const session = require('express-session');
 
 const setLocals = require('./middlewares/setLocals');
 const log = require('./middlewares/log')
+const typeFilter = require('./middlewares/typeFilter')
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const cartRouter = require('./routes/cart');
 const productsRouter = require('./routes/products');
+const apiUsersRouter = require('./routes/api/users')
 
 const app = express();
 
@@ -35,6 +37,7 @@ app.use(session({
 }));
 
 app.use(log);
+app.use(typeFilter);
 app.use(setLocals);
 
 // routes
@@ -42,6 +45,9 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/cart', cartRouter);
 app.use('/products', productsRouter);
+
+// api routes 
+app.use('/api/users', apiUsersRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -57,8 +63,12 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error',{ error: err });
 });
+
+
+
+
 
 module.exports = app;
 

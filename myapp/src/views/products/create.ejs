@@ -12,6 +12,7 @@
                 <div class="h1-center">
                     <h1>ADD NEW PRODUCT</h1>
                 </div>
+                <ul class="errors"></ul>
                 <div class="image-upload-container">
                     <div class="title-container">
                         <h3>PRODUCT IMAGES</h3>
@@ -20,14 +21,52 @@
                     <ul id="loaded-images-ul">
                         <li>
                             <label for="file">
-                                <span class="material-icons camera-icon">
-                                    add_a_photo
-                                </span>
-                                <p>+ ADD</p>
-                                <p>(max 6 images)</p>
+                                <div>
+                                    <span class="material-icons camera-icon">
+                                        add_a_photo
+                                    </span>
+                                    <p>+ ADD</p>
+                                    <p>(max 6 images)</p>
+                                </div>
+                                <div>
+                                    <span class="material-icons camera-icon">
+                                        add_a_photo
+                                    </span>
+                                    <p>+ ADD</p>
+                                    <p>(max 6 images)</p>
+                                </div>
+                                <div>
+                                    <span class="material-icons camera-icon">
+                                        add_a_photo
+                                    </span>
+                                    <p>+ ADD</p>
+                                    <p>(max 6 images)</p>
+                                </div>
+                                <div>
+                                    <span class="material-icons camera-icon">
+                                        add_a_photo
+                                    </span>
+                                    <p>+ ADD</p>
+                                    <p>(max 6 images)</p>
+                                </div>
+                                <div>
+                                    <span class="material-icons camera-icon">
+                                        add_a_photo
+                                    </span>
+                                    <p>+ ADD</p>
+                                    <p>(max 6 images)</p>
+                                </div>
+                                <div>
+                                    <span class="material-icons camera-icon">
+                                        add_a_photo
+                                    </span>
+                                    <p>+ ADD</p>
+                                    <p>(max 6 images)</p>
+                                </div>
                             </label>
                             <input name="images" id="file" type="file" multiple>
                         </li>
+                        
                         <li>
                             <small class="errors-style"><%= typeof errors == 'undefined' ? '' : typeof errors.images == 'undefined' ? '' : errors.images.msg %></small>
                         </li>
@@ -36,16 +75,44 @@
 
                 </div>
                 <div class="product-data-container">
+                    <ul class="product-price-discount">
+                        <li>
+                            <div>
+                                <h3>ART.</h3>
+                            </div>
+                            <div>
+                                <label for="art"></label>
+                                <% if(typeof old != 'undefined') {%>
+                                    <input class= "input-style width-input-price-discount" type="text" value="<%= old.art ? old.art: '' %>" name="art" id="productArt">
+                                <% } else {%>
+                                    <input class= "input-style width-input-price-discount" type="text" value="" name="art" id="productArt">
+                                <% } %>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <h3>PRODUCT TYPE</h3>
+                            </div>
+                                <select name="type" class="input-style input-types width-input-price-discount" >
+                                    <option value="" selected>-</option>
+                                    <% for (type of types){%>
+                                        <option value="<%= type.id %>"><%= type.title.toUpperCase() %></option>
+                                    <% } %>
+                                </select>
+                                <small class="errors-style "><%= typeof errors == 'undefined' ? '' : typeof errors.type == 'undefined' ? '' : errors.type.msg %></small>
+                        </li>
+                    </ul>
+                    
                     <div class="title-container">
                         <h3>PRODUCT NAME</h3>
                     </div>
                     <div class="product-data">
                         <label for="name"></label>
                         <% if(typeof old != 'undefined') {%>
-                            <input type="text" class="input-style" value="<%= old.name ? old.name : '' %>" name="name"> 
+                            <input type="text" class="input-style" value="<%= old.name ? old.name : '' %>" name="name" id="create-name"> 
                             <small class="errors-style"><%= typeof errors == 'undefined' ? '' : typeof errors.name == 'undefined' ? '' : errors.name.msg %></small>
                         <% } else { %>
-                            <input type="text" class="input-style" value="" name="name"> 
+                            <input type="text" class="input-style" value="" name="name" id="create-name"> 
                         <% } %>
                     </div>
                     <div class="title-container">
@@ -62,7 +129,8 @@
                     </div>
                     <div class="product-price-discount">
                         <div>
-                            <label for="price">PRICE $ </label>
+                            <p>PRICE</p>
+                            <label for="price"> $ </label>
                             <% if(typeof old != 'undefined') {%>
                                 <input class= "input-style width-input-price-discount" type="text" value="<%= old.price ? old.price : '' %>" name="price" id="productPrice">          
                                 <small class="errors-style "><%= typeof errors == 'undefined' ? '' : typeof errors.price == 'undefined' ? '' : errors.price.msg %></small>
@@ -71,29 +139,23 @@
                             <% } %>
                         </div>
                         <div>
-                            <label for="discount">DISCOUNT %</label>
+                            <p>WHOLESALE PRICE</p>
+                            <label for="price"> $ </label>
+                            <% if(typeof old != 'undefined') {%>
+                                <input class= "input-style width-input-price-discount" type="text" value="<%= old.wholesaleprice ? old.wholesaleprice : '' %>" name="wholesaleprice" id="productWholesalePrice">
+                            <% } else {%>
+                                <input class= "input-style width-input-price-discount" type="text" value="" name="wholesaleprice" id="productWholesalePrice">
+                            <% } %>
+                        </div>
+                        <div>
+                            <p>DISCOUNT</p>
+                            <label for="discount"> %</label>
                             <% if(typeof old != 'undefined') {%>
                                 <input class= "input-style width-input-price-discount" type="text" value="<%= old.discount ? old.discount : '' %>" name="discount" id="productPromo">
                         
                                 <small class="errors-style "><%= typeof errors == 'undefined' ? '' : typeof errors.discount == 'undefined' ? '' : errors.discount.msg %></small>
                             <% } else {%>
                                 <input class= "input-style width-input-price-discount" type="text" value="" name="discount" id="productPromo">
-                            <% } %>
-                        </div>
-                        <div>
-                            <label for="price">WHOLESALE PRICE $ </label>
-                            <% if(typeof old != 'undefined') {%>
-                                <input class= "input-style width-input-price-discount" type="text" value="<%= old.wholesaleprice ? old.wholesaleprice : '' %>" name="wholesaleprice" id="productPrice">
-                            <% } else {%>
-                                <input class= "input-style width-input-price-discount" type="text" value="" name="wholesaleprice" id="productPrice">
-                            <% } %>
-                        </div>
-                        <div>
-                            <label for="discount">ART:</label>
-                            <% if(typeof old != 'undefined') {%>
-                                <input class= "input-style width-input-price-discount" type="text" value="<%= old.art ? old.art: '' %>" name="art" id="productPromo">
-                            <% } else {%>
-                                <input class= "input-style width-input-price-discount" type="text" value="" name="art" id="productPromo">
                             <% } %>
                         </div>
                     </div>
@@ -112,27 +174,17 @@
                                 <select name="size" class="input-style" id="size">
                                     <option value="" selected>-</option>
                                     <% for (size of sizes){%>
-                                        <option value="<%= size.id %>"><%= size.title %></option>
+                                        <option value="<%= size.id  %>"><%= size.title %></option>
                                     <% } %>
                                 </select>
                             </li>
                             <li>
-                                <p>PRODUCT TYPE</p>
-                                
-                                    <select name="type" class="input-style input-types" >
-                                        <option value="" selected>-</option>
-                                        <% for (type of types){%>
-                                            <option value="<%= type.id %>"><%= type.title.toUpperCase() %></option>
-                                        <% } %>
-                                    </select>
-                                    <!-- <small class="errors-style "><%#= typeof errors == 'undefined' ? '' : typeof errors.type == 'undefined' ? '' : errors.type.msg %></small> -->
-                                </li>
-                            <li>
+
                                 <p>COLORS & QTY</p>
                                 <ul>
                                     <li>
                                         <input type="radio" name="addColor">
-                                        <input type="number" class="input-style" name="">
+                                        <input type="number" class="input-style" name="qty" value="<%= old.qty ? old.qty : '' %>">
                                     </li>
                                 </ul>
                             </li>
@@ -147,7 +199,7 @@
                 </div>
                 
                 <div class="submit-button-container">
-                    <button type="submit">UPLOAD PRODUCT</button>
+                    <button type="button" id="create-button">UPLOAD PRODUCT</button>
                 </div>
             </form>
         </section>
@@ -159,7 +211,7 @@
     </main>
     
     <%- include('../partials/footer')%>
-    
+    <script src="/scripts/validator/create.js"></script>
     
 </body>
 </html>

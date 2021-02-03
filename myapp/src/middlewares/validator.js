@@ -128,7 +128,7 @@ module.exports = {
                 .withMessage("Fill product's description")
                 .bail(),
         body('price')
-            .isInt({min:1})
+            .isFloat({min:1})
                 .withMessage('Price must be greater than 0')
                 .bail(),
         body('discount')
@@ -145,7 +145,7 @@ module.exports = {
             .notEmpty()
                 .withMessage("Please select product's wholesale price")
                 .bail()
-            .isInt({min:1})
+            .isFloat({min:1})
                 .withMessage('Wholesale price must be greater than 0'),
         body("art")
             .notEmpty()
@@ -156,9 +156,7 @@ module.exports = {
         body('type')
             .notEmpty()
                 .withMessage("Please select product's type")
-                .bail(),
-        body("qty")
-            .notEmpty() 
+        
     ]
 }
 

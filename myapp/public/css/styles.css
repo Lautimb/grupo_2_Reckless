@@ -1007,6 +1007,7 @@ h3, .required-files{
     flex-direction: column;
     position: relative;
     align-self: center;
+    margin-bottom: 165px;
 }
 
 .manage-inventory-container{

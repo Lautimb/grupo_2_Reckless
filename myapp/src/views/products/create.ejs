@@ -174,7 +174,7 @@
                                 <select name="size" class="input-style" id="size">
                                     <option value="" selected>-</option>
                                     <% for (size of sizes){%>
-                                        <option value="<%= size.id %>"><%= size.title %></option>
+                                        <option value="<%= size.id  %>"><%= size.title %></option>
                                     <% } %>
                                 </select>
                             </li>
@@ -183,7 +183,7 @@
                                 <ul>
                                     <li>
                                         <input type="radio" name="addColor">
-                                        <input type="number" class="input-style" name="">
+                                        <input type="number" class="input-style" name="qty" value="<%= old.qty ? old.qty : '' %>">
                                     </li>
                                 </ul>
                             </li>

@@ -30,19 +30,23 @@ module.exports = (sequelize, dataTypes)=>{
             allowNull: false
         },
 
-        user_type_id:{
-            type: dataTypes.INTEGER.UNSIGNED
-        },
-        
         // BUSINESS DATA
         
-        
+        manager_first_name : {
+            type: dataTypes.STRING(50)
+        },
+        manager_last_name :{
+            type: dataTypes.STRING(50)
+        },
         company:{
             type: dataTypes.STRING(50)
         },
         phone_number: {
             type: dataTypes.STRING(50)
         },
+        user_type_id:{
+            type: dataTypes.INTEGER.UNSIGNED
+        }
     }
 
     const User = sequelize.define(alias, cols)

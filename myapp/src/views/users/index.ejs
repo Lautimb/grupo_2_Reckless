@@ -19,9 +19,11 @@
             <a href="/users/edit/<%= userLog.id%>">
                 <button type="button" class="buttons-detail" name="button">EDIT PROFILE</button>
             </a>
-            <a href="/products/create">
-                <button href="/products/create" type="button" class="buttons-detail" name="button">NEW PRODUCT</button>
-            </a>
+            <% if(userLog.user_type_id == 1 || userLog.user_type_id == 2){%>
+                <a href="/products/create">
+                    <button href="/products/create" type="button" class="buttons-detail" name="button">NEW PRODUCT</button>
+                </a>
+            <% } %>
         </div>
     </main>
     <%- include('../partials/footer')%>

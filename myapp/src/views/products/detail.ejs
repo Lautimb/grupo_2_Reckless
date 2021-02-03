@@ -84,9 +84,9 @@
                                     <option value="10">10</option>
                                 </select>
                             </div>
+                            <% if (userLog.user_type_id == 1 || userLog.user_type_id == 2) { %> 
                             <div class="edit-delete-product">
                                 <div>
-                                    <% if (userLog.user_type_id == 1 || userLog.user_type_id == 2) { %> 
                                     <form action="/products/edit/<%= product.id%>" method="GET" name="button" >
                                         <button type="submit" class="buttons-detail" name="button"><i class="fas fa-times"></i>EDIT</button>
                                     </form>

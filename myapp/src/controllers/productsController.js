@@ -52,7 +52,6 @@ module.exports = {
 
     store: async(req, res)=>{
         const errors = validationResult(req);
-        console.log(errors)
 
         if(!errors.isEmpty()){ 
             const sizes = await db.Size.findAll()

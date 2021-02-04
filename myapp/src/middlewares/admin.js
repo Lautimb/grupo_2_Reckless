@@ -1,8 +1,8 @@
 module.exports = (req, res, next) => {
-
-    if(!res.locals.userLog.admin){
-       return res.redirect('/')
+    const userLog = res.locals.userLog
+   
+    if(userLog.user_type_id == 1 || userLog.user_type_id == 2){
+        return next()
     }
-
-    next();
+    return res.redirect('/')
 }

@@ -30,12 +30,10 @@ module.exports = {
             last_name: lastName,
             email: email,
             password: password,
-            birthday: moment(year + '-' + month + '-' + day ).format('l')
+            birthday: moment(year + '-' + month + '-' + day ).format('l'),
             
             // BUSINESS DATA
 
-            // manager_first_name: managerFirstName,
-            // manager_last_name: managerLastName,
             // company: businessName,
             // phone_number: phoneNumber,
 

@@ -5,7 +5,7 @@ const storage = multer.diskStorage({
     cb(null, path.join('public/imgs/products'))
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + file.originalname);
+    cb(null, Date.now() + file.originalname.replace(/ /g, ""));
   }
 })
 
@@ -15,7 +15,7 @@ module.exports = multer({
     fileFilter: (req, file, cb) => {
 		
 		const acceptedExt = ['.jpg','.webp','.jpeg','.png', '.gif']
-		const ext = path.extname(file.originalname)
+		const ext = path.extname(file.originalname.replace(/ /g, ""))
 		
 		if(!acceptedExt.includes(ext)){
       

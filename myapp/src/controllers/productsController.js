@@ -74,7 +74,7 @@ module.exports = {
         })
         
         const files = req.files;
-        const imagesMapped = files.map( image => image.filename );
+        const imagesMapped = files.map( image => image.filename.replace(/ /g, ""));
         const imageStrings = JSON.stringify(imagesMapped)
 
         const images = await db.Image.create({
@@ -164,7 +164,7 @@ module.exports = {
 
         if (req.files.length > 0) {
             const files = req.files;
-            const imagesMapped = files.map( image => image.filename );
+            const imagesMapped = files.map( image => image.filename.replace(/ /g, "") );
             const imageStrings = JSON.stringify(imagesMapped)
             const images = await db.Image.create({
                 filename: imageStrings

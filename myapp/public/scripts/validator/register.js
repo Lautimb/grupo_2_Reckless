@@ -6,7 +6,7 @@ const usersList = [];
 
 window.onload = function () {
     fetch('http://localhost:3000/api/users',{
-        method: 'POST',
+        method: 'GET',
         body: JSON.stringify(),
         headers:{
             'Content-Type': 'application/json'
@@ -14,9 +14,8 @@ window.onload = function () {
     })
         .then((res)=> res.json())
         
-        .then(function(users){
-            const data = users.data.users;
-            for (user of data) {
+        .then(function(data){            
+            for (user of data.users) {
                 usersList.push(user);
             }
         })

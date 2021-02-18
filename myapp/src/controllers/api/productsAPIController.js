@@ -1,6 +1,7 @@
 const { Product } = require('../../database/models');
 
 
+
 module.exports = {
     async list (req, res) {
         try{
@@ -36,12 +37,10 @@ module.exports = {
             const product = await Product.findByPk(req.params.id,{
                 include:["images","types","sizes","colors"]
             })
-
+            
             const images = JSON.parse(product.images[0].filename)
             product.dataValues.images_url = images.map((image,i) => image = `http://localhost:3000/imgs/products/${images[i]}`)
-            product.dataValues.images = undefined
-
-
+            product.dataValues.images = undefined //Quitando data que parece sobrar
 
             res.json({
                 meta: {

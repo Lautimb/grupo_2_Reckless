@@ -21,7 +21,7 @@ module.exports = {
                 return product.types[0].title == 'Top'
 
             })
-
+            
             const bottom = products.filter(product => {
                 return product.types[0].title == 'Bottom'
 

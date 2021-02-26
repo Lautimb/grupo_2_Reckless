@@ -5,18 +5,45 @@ const { Product } = require('../../database/models');
 module.exports = {
     async list (req, res) {
         try{
-            const products = await Product.findAll({
-                include:["images"]
+            const allProducts = await Product.findAndCountAll({
+                include:["images", "sizes", "types"],
+                order: ["id"],
+                limit: 4,
+                offset: 4,
+            })
+            allproducts.rows.forEach( product => {
+                product.dataValues.detail = `http://localhost:3000/api/products/${product.id}`                    
+            })
+
+            
+
+            const top = products.filter(product => {
+                return product.types[0].title == 'Top'
+
             })
             
-            products.forEach( product => {
-                product.dataValues.detail =  `http://localhost:3000/api/products/${product.id}`                                
+            const bottom = products.filter(product => {
+                return product.types[0].title == 'Bottom'
+
             })
+
+            const outerwear = products.filter(product => {
+                return product.types[0].title == 'Outerwear'
+
+            })
+           
+
+
             
             res.json({
                 meta: {
                     status: 'success',
-                    count: products.length
+                    count: products.length,
+                    countByCategory: {
+                        Top: top.length,
+                        Bottom: bottom.length,
+                        Outerwear: outerwear.length
+                    }
                 },
                 data: {
                     products

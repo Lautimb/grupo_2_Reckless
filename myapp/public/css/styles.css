@@ -629,15 +629,29 @@ a:visited{
 .product-detail__details ul{
     padding: 5% 0px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     border-top: 1px solid var(--black);
+}
+.product-detail__details ul div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
 }
 
 .product-detail__details ul li {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
     padding-left: 0px;
 }
+.product-detail__details p{
+    margin: auto;
+}
+
 
 .product-detail__details span{
+    
     color: var(--black);
     padding: 5px 6px;
     border: 1px solid var(--black);
@@ -647,6 +661,21 @@ a:visited{
 .product-detail__details {
     border-bottom: 1px solid var(--black);
 }
+
+
+.show-description:hover{
+    cursor: pointer;
+}
+
+#detail-description-text{
+    margin-top: 10px;
+}
+
+.active{
+    display: none;
+}
+
+
 
 /* ------------------- YOU MAY ALSO LIKE ---------------- */
 

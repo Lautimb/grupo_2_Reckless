@@ -1,48 +1,24 @@
 const { User } = require('../../database/models');
 
+
 module.exports = {
     async list (req, res) {
         try{
             const users = await User.findAll({
-                attributes: ['id','first_name','last_name','email']
+                attributes: ['email', 'password']
             })
-            
-            users.forEach( user => {
-                user.dataValue.detail = `http://localhost:3000/api/users/${user.id}`
-            })
-            
+
+            // meta
             res.json({
-                meta:{
-                    state:'sucess',
+                meta: {
+                    status: 'success',
                     count: users.length
                 },
-                users
+                data: {
+                    users,
+                }
             })
-        } catch (error) {
-            res.status(500).json({
-                meta: {
-                    status: 'error',
-                },
-                error: 'Users not found',
-            })
-        }
-    },
-
-    async detail (req,res){
-        try{
-            const id = req.params.id
-            const user = await User.findByPk(id,{
-                attributes: {exclude: ['password','user_type_id']}
-            })
-            res.json({
-                meta:{
-                    state:'sucess',
-                    count: user.length
-                },
-                user
-            })
-
-        } catch (error) {
+        } catch(error) {
             res.status(500).json({
                 meta: {
                     status: 'error',

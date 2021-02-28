@@ -71,4 +71,3 @@ WEEKLY 28.02.2021
     ● Qué se va a hacer:
         - Mostrar detalle de producto 
         - Panel de categorias
-        - Revision general antes de la entrega para ver que no rompa nada.

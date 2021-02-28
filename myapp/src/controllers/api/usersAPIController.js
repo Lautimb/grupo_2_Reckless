@@ -8,7 +8,7 @@ module.exports = {
             })
             
             users.forEach( user => {
-                user.dataValue.detail = `http://localhost:3000/api/users/${user.id}`
+                return user.setDataValue('detail',`http://localhost:3300/api/users/${user.id}`)
             })
             
             res.json({

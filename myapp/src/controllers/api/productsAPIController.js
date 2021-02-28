@@ -5,32 +5,36 @@ const { Product } = require('../../database/models');
 module.exports = {
     async list (req, res) {
         try{
+            const page = Number(req.query.page) || 1
             const allProducts = await Product.findAndCountAll({
                 include:["images", "sizes", "types"],
                 order: ["id"],
                 limit: 4,
-                offset: 4,
+                offset: 4 * (page - 1),
             })
-            allproducts.rows.forEach( product => {
+
+            const totalPages = Math.ceil(allProducts / 4)
+            allProducts.rows.forEach( product => {
                 product.dataValues.detail = `http://localhost:3000/api/products/${product.id}`                    
             })
 
+           
+
+            const top = allProducts.rows.filter( product => {
+                return product.types[0].title == "Top"
+            })
+
             
-
-            const top = products.filter(product => {
-                return product.types[0].title == 'Top'
-
+            const bottom = allProducts.rows.filter( product => {
+                return product.types[0].title == "Bottom"
             })
+           
+
+            const outerwear = allProducts.rows.filter( product => {
+                return product.types[0].title == "Outerwear"
+            })
+
             
-            const bottom = products.filter(product => {
-                return product.types[0].title == 'Bottom'
-
-            })
-
-            const outerwear = products.filter(product => {
-                return product.types[0].title == 'Outerwear'
-
-            })
            
 
 
@@ -38,7 +42,7 @@ module.exports = {
             res.json({
                 meta: {
                     status: 'success',
-                    count: products.length,
+                    count: allProducts.length,
                     countByCategory: {
                         Top: top.length,
                         Bottom: bottom.length,
@@ -46,7 +50,7 @@ module.exports = {
                     }
                 },
                 data: {
-                    products
+                    allProducts
                 }
             })
         } catch (error) {

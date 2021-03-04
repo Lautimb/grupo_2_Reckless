@@ -1,5 +1,5 @@
 const { Product } = require('../../database/models');
-
+const { Type } = require('../../database/models')
 
 
 module.exports = {
@@ -7,17 +7,24 @@ module.exports = {
         try{
             const page = Number(req.query.page) || 1
             const allProducts = await Product.findAndCountAll({
-                include:["images", "sizes", "types"],
+                include: ["images", "sizes", "types"],
                 order: ["id"],
                 limit: 4,
                 offset: 4 * (page - 1),
             })
 
             const totalPages = Math.ceil(allProducts / 4)
+
             allProducts.rows.forEach( product => {
-                product.dataValues.detail = `http://localhost:3000/api/products/${product.id}`                    
+                product.dataValues.detail = `http://localhost:3300/api/products/${product.id}`                    
+                // product.setDataValues('detail',`http://localhost:3000/api/products/${product.id}`)
             })
 
+            const prices = allProducts.rows.map( product => parseInt(product.price))
+            const totalAmount = prices.reduce((totalAmount, price) => totalAmount + price );
+            
+
+            const types = await Type.findAll()
            
 
             const top = allProducts.rows.filter( product => {
@@ -34,11 +41,11 @@ module.exports = {
                 return product.types[0].title == "Outerwear"
             })
 
-            
-           
+            const denim = allProducts.rows.filter( product => {
+                return product.types[0].title == "Denim"
+            })
 
 
-            
             res.json({
                 meta: {
                     status: 'success',
@@ -46,12 +53,14 @@ module.exports = {
                     countByCategory: {
                         Top: top.length,
                         Bottom: bottom.length,
-                        Outerwear: outerwear.length
-                    }
+                        Outerwear: outerwear.length,
+                        Denim: denim.length
+                    },
+                    totalAmount,
+                    totalCategories : types.length
                 },
-                data: {
-                    allProducts
-                }
+                allProducts
+               
             })
         } catch (error) {
             res.status(500).json({

@@ -17,8 +17,14 @@ module.exports = {
 
             allProducts.rows.forEach( product => {
                 product.dataValues.detail = `http://localhost:3300/api/products/${product.id}`                    
-                // product.setDataValues('detail',`http://localhost:3000/api/products/${product.id}`)
+                // product.setDataValues('detail',`http://localhost:3300/api/products/${product.id}`)
+
+                const images = JSON.parse(product.images[0].filename)
+                product.dataValues.images_url = images.map((image,i) => image = `http://localhost:3300/imgs/products/${images[i]}`)
+                product.dataValues.images = undefined //Quitando data que parece sobrar
             })
+
+            const lastProduct = allProducts.rows[allProducts.rows.length - 1];
 
             const prices = allProducts.rows.map( product => parseInt(product.price))
             const totalAmount = prices.reduce((totalAmount, price) => totalAmount + price );
@@ -57,7 +63,8 @@ module.exports = {
                         Denim: denim.length
                     },
                     totalAmount,
-                    totalCategories : types.length
+                    totalCategories : types.length,
+                    lastProduct
                 },
                 allProducts
                
@@ -79,7 +86,7 @@ module.exports = {
             })
             
             const images = JSON.parse(product.images[0].filename)
-            product.dataValues.images_url = images.map((image,i) => image = `http://localhost:3000/imgs/products/${images[i]}`)
+            product.dataValues.images_url = images.map((image,i) => image = `http://localhost:3300/imgs/products/${images[i]}`)
             product.dataValues.images = undefined //Quitando data que parece sobrar
 
             res.json({

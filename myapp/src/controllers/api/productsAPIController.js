@@ -82,7 +82,7 @@ module.exports = {
                     totalPages,
                     previousPage: page > 1 ?`http://localhost:3300/api/products/${page - 1}` : null,
                     currentPage: `http://localhost:3300/api/products/${page}`,
-                    nextPage:  `http://localhost:3300/api/products/${page + 1}`
+                    nextPage:  page < totalPages ? `http://localhost:3300/api/products/${page + 1}` : null
                 },
                 allProducts
                

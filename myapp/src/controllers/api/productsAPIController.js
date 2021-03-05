@@ -7,13 +7,18 @@ module.exports = {
         try{
             const page = Number(req.query.page) || 1
             const allProducts = await Product.findAndCountAll({
-                include: ["images", "sizes", "types"],
+                include: [{
+                    all: true,
+                    nested: true
+                }
+                ],
                 order: ["id"],
                 limit: 4,
                 offset: 4 * (page - 1),
             })
 
-            const totalPages = Math.ceil(allProducts / 4)
+            const totalPages = Math.ceil(allProducts.count / 4)
+            
 
             allProducts.rows.forEach( product => {
                 product.dataValues.detail = `http://localhost:3300/api/products/${product.id}`                    
@@ -30,26 +35,38 @@ module.exports = {
             const totalAmount = prices.reduce((totalAmount, price) => totalAmount + price );
             
 
-            const types = await Type.findAll()
+            const types = await Type.findAll({
+                include:[{
+                    all: true,
+                    nested: true
+                }]
+            })
+
+            const type = types.map(cat =>{
+                const title = cat.title
+                const titleQty = cat.products.length
+                return title + ': ' + titleQty
+            })
+            
            
 
-            const top = allProducts.rows.filter( product => {
-                return product.types[0].title == "Top"
-            })
+            // const top = allProducts.rows.filter( product => {
+            //     return product.types[0].title == "Top"
+            // })
 
             
-            const bottom = allProducts.rows.filter( product => {
-                return product.types[0].title == "Bottom"
-            })
+            // const bottom = allProducts.rows.filter( product => {
+            //     return product.types[0].title == "Bottom"
+            // })
            
 
-            const outerwear = allProducts.rows.filter( product => {
-                return product.types[0].title == "Outerwear"
-            })
+            // const outerwear = allProducts.rows.filter( product => {
+            //     return product.types[0].title == "Outerwear"
+            // })
 
-            const denim = allProducts.rows.filter( product => {
-                return product.types[0].title == "Denim"
-            })
+            // const denim = allProducts.rows.filter( product => {
+            //     return product.types[0].title == "Denim"
+            // })
 
 
             res.json({
@@ -57,14 +74,15 @@ module.exports = {
                     status: 'success',
                     count: allProducts.length,
                     countByCategory: {
-                        Top: top.length,
-                        Bottom: bottom.length,
-                        Outerwear: outerwear.length,
-                        Denim: denim.length
+                        type
                     },
                     totalAmount,
                     totalCategories : types.length,
-                    lastProduct
+                    lastProduct,
+                    totalPages,
+                    previousPage: page > 1 ?`http://localhost:3300/api/products/${page - 1}` : null,
+                    currentPage: `http://localhost:3300/api/products/${page}`,
+                    nextPage:  `http://localhost:3300/api/products/${page + 1}`
                 },
                 allProducts
                

@@ -5,35 +5,44 @@ const { Type } = require('../../database/models')
 module.exports = {
     async list (req, res) {
         try{
+
+            // PAGINATION
             const page = Number(req.query.page) || 1
-            const allProducts = await Product.findAndCountAll({
+            
+            const paginatedProducts = await Product.findAndCountAll({
                 include: [{
                     all: true,
                     nested: true
-                }
-                ],
+                }],
                 order: ["id"],
                 limit: 4,
                 offset: 4 * (page - 1),
             })
-
-            const totalPages = Math.ceil(allProducts.count / 4)
+            const totalPages = Math.ceil(paginatedProducts.count / 4)
             
-
-            allProducts.rows.forEach( product => {
+            // SETTING IMGS
+            paginatedProducts.rows.forEach( product => {
+               
                 product.dataValues.detail = `http://localhost:3300/api/products/${product.id}`                    
-                // product.setDataValues('detail',`http://localhost:3300/api/products/${product.id}`)
-
                 const images = JSON.parse(product.images[0].filename)
-                product.dataValues.images_url = images.map((image,i) => image = `http://localhost:3300/imgs/products/${images[i]}`)
-                product.dataValues.images = undefined //Quitando data que parece sobrar
+                product.dataValues.images_url = images.map(image => image = `http://localhost:3300/imgs/products/${image}`)
+                product.dataValues.images = undefined 
             })
+            paginatedProducts.page = page
 
-            const lastProduct = allProducts.rows[allProducts.rows.length - 1];
+            // ALL PRODUCTS NO LIMIT
+            const allProducts = await Product.findAll({include:{all:true,nested:true}})
 
-            const prices = allProducts.rows.map( product => parseInt(product.price))
+            // LAST PRODUCT
+            const lastProduct = allProducts[allProducts.length - 1]
+            lastProduct.dataValues.images_url = `http://localhost:3300/imgs/products/${JSON.parse(lastProduct.images[0].filename)}`
+            lastProduct.dataValues.detail = `http://localhost:3300/products/detail/${lastProduct.id}` 
+
+            // TOTAL AMOUNT IN DATA BASE
+            const prices = await allProducts.map( product => parseInt(product.price))
             const totalAmount = prices.reduce((totalAmount, price) => totalAmount + price );
             
+            // COUNT BY CATEGORIES
 
             const types = await Type.findAll({
                 include:[{
@@ -43,48 +52,31 @@ module.exports = {
             })
 
             const type = types.map(cat =>{
-                const title = cat.title
-                const titleQty = cat.products.length
-                return title + ': ' + titleQty
+                const eachType = []
+                eachType.push(cat.title)
+                eachType.push(cat.products.length)
+                return eachType
             })
+
+            const typeObject = Object.fromEntries(type);
             
-           
-
-            // const top = allProducts.rows.filter( product => {
-            //     return product.types[0].title == "Top"
-            // })
-
-            
-            // const bottom = allProducts.rows.filter( product => {
-            //     return product.types[0].title == "Bottom"
-            // })
-           
-
-            // const outerwear = allProducts.rows.filter( product => {
-            //     return product.types[0].title == "Outerwear"
-            // })
-
-            // const denim = allProducts.rows.filter( product => {
-            //     return product.types[0].title == "Denim"
-            // })
-
 
             res.json({
                 meta: {
                     status: 'success',
                     count: allProducts.length,
                     countByCategory: {
-                        type
+                        types: typeObject
                     },
                     totalAmount,
                     totalCategories : types.length,
                     lastProduct,
                     totalPages,
-                    previousPage: page > 1 ?`http://localhost:3300/api/products/${page - 1}` : null,
-                    currentPage: `http://localhost:3300/api/products/${page}`,
-                    nextPage:  `http://localhost:3300/api/products/${page + 1}`
+                    previousPage: page > 1 ? `http://localhost:3300/api/products?page=${page - 1}` : null,
+                    currentPage: `http://localhost:3300/api/products?page=${page}`,
+                    nextPage:  `http://localhost:3300/api/products?page=${page + 1}`
                 },
-                allProducts
+                paginatedProducts
                
             })
         } catch (error) {
@@ -98,14 +90,16 @@ module.exports = {
     },
 
     async detail (req,res) {
+
         try{
+
             const product = await Product.findByPk(req.params.id,{
                 include:["images","types","sizes","colors"]
             })
             
             const images = JSON.parse(product.images[0].filename)
-            product.dataValues.images_url = images.map((image,i) => image = `http://localhost:3300/imgs/products/${images[i]}`)
-            product.dataValues.images = undefined //Quitando data que parece sobrar
+            product.dataValues.images_url = images.map( image => `http://localhost:3300/imgs/products/${image}`)
+            product.dataValues.images = undefined 
 
             res.json({
                 meta: {

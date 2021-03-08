@@ -65,9 +65,7 @@ module.exports = {
                 meta: {
                     status: 'success',
                     count: allProducts.length,
-                    countByCategory: {
-                        types: typeObject
-                    },
+                    countByCategory: typeObject,
                     totalAmount,
                     totalCategories : types.length,
                     lastProduct,

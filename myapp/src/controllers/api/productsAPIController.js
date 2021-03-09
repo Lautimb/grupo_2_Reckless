@@ -15,10 +15,10 @@ module.exports = {
                     nested: true
                 }],
                 order: ["id"],
-                limit: 2,
-                offset: 2 * (page - 1),
+                limit: 4,
+                offset: 4 * (page - 1),
             })
-            const totalPages = Math.ceil(paginatedProducts.count / 2)
+            const totalPages = Math.ceil(paginatedProducts.count / 4)
             
             // SETTING IMGS
             paginatedProducts.rows.forEach( product => {

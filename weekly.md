@@ -1,4 +1,4 @@
-WEEKLY 10.02.2021
+WEEKLY 20.01.2021
 
     ● Qué hicimos en la semana:
         - Actualizacion retro.md
@@ -9,65 +9,46 @@ WEEKLY 10.02.2021
         - No se encontró ningún impedimento
 
     ● Qué se va a hacer:
-        - Comenzar con API de productos
+        - Comenzar con Validaciones de Back y de Frontend
         
 
-WEEKLY 13.02.2021
+WEEKLY 23.01.2021
 
     ● Qué hicimos en la semana:
-        - Avanzamos con API de products
+        - Cambio de validaciones de USER de Backend con Sequelize
+        - Cambio de validaciones de USER de Frontend con JS
 
      ● Si se encontró con algún impedimento:
-        - 
+        - No pudimos validar email porque se realizan con APIS
 
     ● Qué se va a hacer:
-        - Terminar API de products (detail)
-        - Comenzar con API users
+        - Terminar validaciones de USER de front y back
+        - Comenzar con validaciones de PRODUCT en front y back
 
-WEEKLY 17.02.2021
+WEEKLY 27.01.2021
 
     ● Qué hicimos en la semana:
-        - Terminamos con API de productos
-        - Comenzamos con API users
+        - Avanzamos con validaciones de PRODUCT en front y back
+        - Aplicamos APIS para validar el email
 
      ● Si se encontró con algún impedimento:
-        - 
+        - Llego el feedback del sprint 6 y hay correcciones y mejoras a aplicar.
+        - Debemos aplicar el script del Super Admin
 
     ● Qué se va a hacer:
-        - Continuar con API users y detail
+        - Boton de creacion de product
+        - Terminar validaciones de PRODUCT
 
-WEEKLY 20.02.2021
+WEEKLY 27.01.2021
 
     ● Qué hicimos en la semana:
-        - Completamos API usuarios 
-        - Probar el pagination
+        - Completamos validaciones de PRODUCT.
+        - Modificamos vista de CREATE PRODUCT.
+        - Agregamos Boton de creacion de producto en perfil de usuario(super admin)
 
      ● Si se encontró con algún impedimento:
-        - 
+        - Quizas nos falta pulir algunas vistas e ir completando el data.sql para poblar la mayoria de las tablas y dejar todo funcional.
 
     ● Qué se va a hacer:
-        - terminar y completar pagination
+        - Revision general antes de la entrega para ver que no rompa nada.
 
-WEEKLY 24.02.2021
-
-    ● Qué hicimos en la semana:
-        - Separamos en componentes de React el Dashboard
-
-     ● Si se encontró con algún impedimento:
-        - 
-
-    ● Qué se va a hacer:
-        - Terminar pagination
-        - Alimentar el Dashboard con las apis
-
-WEEKLY 28.02.2021
-
-    ● Qué hicimos en la semana:
-        - Alimentamos el Dashboard con la cantidad total de usuarios, productos y categorias
-
-     ● Si se encontró con algún impedimento:
-        - 
-
-    ● Qué se va a hacer:
-        - Mostrar detalle de producto 
-        - Panel de categorias

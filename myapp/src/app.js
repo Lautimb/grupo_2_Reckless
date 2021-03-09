@@ -7,8 +7,6 @@ const logger = require('morgan');
 const methodOverride = require('method-override');
 const session = require('express-session');
 
-const cors = require('cors')
-
 const setLocals = require('./middlewares/setLocals');
 const log = require('./middlewares/log')
 const typeFilter = require('./middlewares/typeFilter')
@@ -17,9 +15,6 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const cartRouter = require('./routes/cart');
 const productsRouter = require('./routes/products');
-
-
-// API routes
 const apiUsersRouter = require('./routes/api/users')
 
 const app = express();
@@ -44,7 +39,6 @@ app.use(session({
 app.use(log);
 app.use(typeFilter);
 app.use(setLocals);
-app.use(cors())
 
 // routes
 app.use('/', indexRouter);

@@ -15,10 +15,10 @@ module.exports = {
                     nested: true
                 }],
                 order: ["id"],
-                limit: 4,
-                offset: 4 * (page - 1),
+                limit: 2,
+                offset: 2 * (page - 1),
             })
-            const totalPages = Math.ceil(paginatedProducts.count / 4)
+            const totalPages = Math.ceil(paginatedProducts.count / 2)
             
             // SETTING IMGS
             paginatedProducts.rows.forEach( product => {
@@ -59,15 +59,12 @@ module.exports = {
             })
 
             const typeObject = Object.fromEntries(type);
-            
 
             res.json({
                 meta: {
                     status: 'success',
                     count: allProducts.length,
-                    countByCategory: {
-                        types: typeObject
-                    },
+                    countByCategory: typeObject,
                     totalAmount,
                     totalCategories : types.length,
                     lastProduct,
@@ -77,7 +74,7 @@ module.exports = {
                     nextPage:  `http://localhost:3300/api/products?page=${page + 1}`
                 },
                 paginatedProducts
-               
+                
             })
         } catch (error) {
             res.status(500).json({

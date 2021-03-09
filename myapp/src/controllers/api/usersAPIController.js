@@ -1,5 +1,6 @@
 const { User } = require('../../database/models');
 
+
 module.exports = {
     async list (req, res) {
         try{
@@ -10,39 +11,18 @@ module.exports = {
             users.forEach( user => {
                 return user.setDataValue('detail',`http://localhost:3300/api/users/${user.id}`)
             })
-            
+
+            // meta
             res.json({
-                meta:{
-                    state:'sucess',
+                meta: {
+                    status: 'success',
                     count: users.length
                 },
-                users
+                data: {
+                    users,
+                }
             })
-        } catch (error) {
-            res.status(500).json({
-                meta: {
-                    status: 'error',
-                },
-                error: 'Users not found',
-            })
-        }
-    },
-
-    async detail (req,res){
-        try{
-            const id = req.params.id
-            const user = await User.findByPk(id,{
-                attributes: {exclude: ['password','user_type_id']}
-            })
-            res.json({
-                meta:{
-                    state:'sucess',
-                    count: user.length
-                },
-                user
-            })
-
-        } catch (error) {
+        } catch(error) {
             res.status(500).json({
                 meta: {
                     status: 'error',

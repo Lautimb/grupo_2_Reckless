@@ -14,7 +14,7 @@
                             
                             <% for (image of product.images[0].filename){%>
                             <div class= "thumbnail-img-container">
-                                <img src="/imgs/products/<%= image %>" alt="" class="thumbnail-img">
+                                <img src="/imgs/products/<%= image %>" alt="" class="thumbnail-img" >
                             </div>
                             <%}%>
                             
@@ -107,32 +107,20 @@
                         
                         <div class="product-detail__details">
                             <ul>
-                                <div>
-                                    <li><p>DETAILS</p></li>
-                                    <li>
-                                        <span class="material-icons show-description">
-                                            add
-                                        </span>
-                                        <span class="material-icons show-description active">
-                                            remove
-                                        </span>
-                                    </li>
-                                </div>
-                                <div class="detail-description">
-                                    <p id="detail-description-text" class= "active">
-                                        <%= product.description %>
-                                    </p>
-                                </div>
+                                <li><p>DETAILS</p></li>
+                                <li>
+                                    <span class="material-icons">
+                                        add
+                                    </span>
+                                </li>
                             </ul>
                             <ul>
-                                <div>
-                                    <li><p>SIZE GUIDE</p></li>
-                                    <li>
-                                        <span class="material-icons show-description">
-                                            add
-                                        </span>
-                                    </li>
-                                </div>
+                                <li><p>SIZE GUIDE</p></li>
+                                <li>
+                                    <span class="material-icons">
+                                        add
+                                    </span>
+                                </li>
                             </ul>
                             <ul>
                                 <div>
@@ -201,7 +189,6 @@
         </main>
 
         <!-- FOOTER -->
-        <script src="/scripts/productDetail.js"></script>
 
         <%- include('../partials/footer')%>
     

@@ -5,11 +5,7 @@ module.exports = {
     async list (req, res) {
         try{
             const users = await User.findAll({
-                attributes: ['id','first_name','last_name','email']
-            })
-            
-            users.forEach( user => {
-                return user.setDataValue('detail',`http://localhost:3300/api/users/${user.id}`)
+                attributes: ['email', 'password']
             })
 
             // meta

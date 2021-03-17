@@ -5,7 +5,7 @@ module.exports = {
     async list (req, res) {
         try{
             const users = await User.findAll({
-                attributes: ['email', 'password']
+                attributes: ['email', 'last_name','first_name']
             })
 
             // meta

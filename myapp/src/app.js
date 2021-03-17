@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const methodOverride = require('method-override');
 const session = require('express-session');
+const cors = require('cors')
 
 const setLocals = require('./middlewares/setLocals');
 const log = require('./middlewares/log')
@@ -40,7 +41,7 @@ app.use(session({
 app.use(log);
 app.use(typeFilter);
 app.use(setLocals);
-
+app.use(cors())
 // routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

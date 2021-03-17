@@ -18,15 +18,15 @@ module.exports = {
                 limit: 4,
                 offset: 4 * (page - 1),
             })
-            const totalPages = Math.ceil(paginatedProducts.count / 2)
+            const totalPages = Math.ceil(paginatedProducts.count / 4)
             
             // SETTING IMGS
-            paginatedProducts.rows.forEach( product => { 
+            paginatedProducts.rows.forEach( product => {
+               
                 product.dataValues.detail = `http://localhost:3300/api/products/${product.id}`                    
                 const images = JSON.parse(product.images[0].filename)
                 product.dataValues.images_url = images.map(image => image = `http://localhost:3300/imgs/products/${image}`)
                 product.dataValues.images = undefined 
-                
             })
             paginatedProducts.page = page
 
@@ -35,7 +35,6 @@ module.exports = {
 
             // LAST PRODUCT
             const lastProduct = allProducts[allProducts.length - 1]
-
             lastProduct.dataValues.images_url = `http://localhost:3300/imgs/products/${JSON.parse(lastProduct.images[0].filename)}`
             lastProduct.dataValues.detail = `http://localhost:3300/products/detail/${lastProduct.id}` 
 
@@ -70,9 +69,11 @@ module.exports = {
                     totalCategories : types.length,
                     lastProduct,
                     totalPages,
+
                     previousPage: page > 1 ? `http://localhost:3300/api/products?page=${page - 1}` : null,
                     currentPage: `http://localhost:3300/api/products?page=${page}`,
                     nextPage:  page < totalPages ? `http://localhost:3300/api/products?page=${page + 1}` : null
+
                 },
                 paginatedProducts
                 

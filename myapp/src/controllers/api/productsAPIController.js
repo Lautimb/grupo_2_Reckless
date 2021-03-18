@@ -5,7 +5,6 @@ const { Type } = require('../../database/models')
 module.exports = {
     async list (req, res) {
         try{
-
             // PAGINATION
             const page = Number(req.query.page) || 1
             

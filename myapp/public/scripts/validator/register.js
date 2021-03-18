@@ -5,7 +5,7 @@ const usersList = [];
 
 
 window.onload = function () {
-    fetch('http://localhost:3000/api/users',{
+    fetch('http://localhost:3300/api/users',{
         method: 'POST',
         body: JSON.stringify(),
         headers:{

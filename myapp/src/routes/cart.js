@@ -9,7 +9,7 @@ router.get('/', cartController.cart);
 
 // cart/addToCart
 
-router.post('/addToCart', cartController.addToCart);
+router.post('/addToCart/:id', cartController.addToCart);
 
 // cart/deleteFromCart
 

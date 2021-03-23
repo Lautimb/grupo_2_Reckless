@@ -34,9 +34,6 @@ module.exports = (sequelize, dataTypes)=>{
         item_subtotal:{
             type: dataTypes.DECIMAL(10, 2)
         },
-        status:{
-            type: dataTypes.BOOLEAN
-        },
         user_id:{
             type: dataTypes.INTEGER.UNSIGNED
         },

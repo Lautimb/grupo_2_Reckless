@@ -217,6 +217,7 @@ module.exports = {
     },
 
     saveNewColor: async (req, res) => {
+        
         const color = await db.Color.create({
             title: req.body.title,
             hexadecimal: req.body.hexadecimal

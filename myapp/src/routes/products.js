@@ -21,11 +21,11 @@ router.put('/edit/:id', multerProducts.array('images', 6),validator.products, pr
 router.delete('/delete/:id', productsController.delete); // Accion de borrado
 router.get('/wishlist',auth, productsController.wishlist); // Quizas deba ser con un filter, no haga falta armar otro view.ejs
 
-router.get('/create/colors', admin, productsController.colors);
-router.get('/create/colors/add', admin, productsController.newColor);
-router.post('/create/colors/add', admin, productsController.saveNewColor);
-router.get('/create/sizes', admin, productsController.sizes);
-router.get('/create/sizes/add', admin, productsController.newSize);
-router.post('/create/sizes/add', admin, productsController.saveNewSize);
+router.get('/create/colors', admin, productsController.colors); // Listado de colores
+router.get('/create/colors/add', admin, productsController.newColor); // Formulario de creacion de nuevo color
+router.post('/create/colors/add', admin, productsController.saveNewColor); // Accion de creacion de nuevo color
+router.get('/create/sizes', admin, productsController.sizes); // Listado de talles
+router.get('/create/sizes/add', admin, productsController.newSize); // Formulario de creacion de nuevo talle
+router.post('/create/sizes/add', admin, productsController.saveNewSize); // Accion de creacion de nuevo talle
 
 module.exports = router;

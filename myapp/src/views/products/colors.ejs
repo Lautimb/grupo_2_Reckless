@@ -30,15 +30,19 @@
                                 <p>HEXADECIMAL</p>
                             </li>
                         </ul>
+                        <% for (color of colors) {%>
                         <ul class="ul-upload-data">
+                            
                             <li>
                                 <input type="checkbox" name="colors">
-                                <label for="colors">RED</p>
+                                <label for="colors"><%= color.title.toUpperCase() %></p>
                             </li>
                             <li>
-                                <div id="color-circle" style="background-color: red;"></div> 
+                                <div id="color-circle" style="background-color:<%= color.hexadecimal%>"></div> 
                             </li>
+                            
                         </ul>
+                        <%}%>
                         <div class="submit-button-container">
                             <button type="button" id="create-button">EDIT</button>
                         </div>

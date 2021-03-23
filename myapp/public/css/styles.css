@@ -880,6 +880,7 @@ h3, .required-files{
 #product-upload__form{
     display: flex;
     flex-direction: column;
+    margin-bottom: 165px;
 } 
 
 .product-data-container{
@@ -1007,7 +1008,6 @@ h3, .required-files{
     flex-direction: column;
     position: relative;
     align-self: center;
-    margin-bottom: 165px;
 }
 
 .manage-inventory-container{
@@ -1088,6 +1088,15 @@ h3, .required-files{
     border-color: var(--magenta);
     background-color: rgba(33, 33, 33, 0.705);
     cursor: pointer;
+}
+
+#color-circle {
+    width: 16px;
+    height: 16px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    border: 1px solid;
 }
 /*---------------------------- UPLOAD END -----------------------*/
 

@@ -204,7 +204,45 @@ module.exports = {
         });
     
         return res.redirect("/");
-      }
+    },
+
+    colors: async (req, res) => {
+        const colors = await db.Color.findAll()
+
+        res.render ('products/colors',{ colors });
+    },
+
+    newColor: async (req, res) => {
+        res.render ('products/newColor')
+    },
+
+    saveNewColor: async (req, res) => {
+        const color = await db.Color.create({
+            title: req.body.title,
+            hexadecimal: req.body.hexadecimal
+        })
+
+        res.redirect('/products/create/colors')
+    },
+
+    sizes: async (req, res) => {
+
+        const sizes = await db.Size.findAll()
+
+        res.render ('products/sizes', { sizes })
+    },
+
+    newSize: async (req, res) => {
+        res.render ('products/newSize')
+    },
+
+    saveNewSize: async (req, res) => {
+        const size = await db.Size.create({
+            title: req.body.title
+        })
+
+        res.redirect('/products/create/sizes')
+    }
     
 
 }

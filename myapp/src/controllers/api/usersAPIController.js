@@ -56,15 +56,16 @@ module.exports = {
             // tengo que recibir el id del producto para crear la relacion en la base de datos
             const idUser = req.session.user.id
             const productId = req.params.id
-            const user = await User.findByPk(idUser)
+            const user = await User.findByPk(idUser,{
+
+            })
            
             await user.setProducts([idUser,productId])
             
             res.json({
                 meta: {
                     state:'sucess',
-                },
-                user
+                }
             })
             
             // const users = await User.findByPk()
@@ -80,8 +81,11 @@ module.exports = {
     },
     async removeWishlist (req,res) {
         try{
-           
-            
+            console.log('remove ejecutado')
+
+            await user.setProducts([])
+
+             
         }   catch (error){
             res.status(500).json({
                 meta: {

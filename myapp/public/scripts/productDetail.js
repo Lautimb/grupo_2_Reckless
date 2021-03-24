@@ -13,6 +13,6 @@ detailButton[1].onclick = (e) =>{
     description.classList.toggle('active')
     detailButton[0].classList.toggle('active')
     detailButton[1].classList.toggle('active')   
- // hola perro
+ 
 }
 

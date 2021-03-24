@@ -4,7 +4,7 @@ module.exports = {
     async list (req, res) {
         try{
             const users = await User.findAll({
-                attributes: ['id','first_name','last_name','email']
+                attributes: {exclude: ['password','user_type_id']}
             })
             
             users.forEach( user => {

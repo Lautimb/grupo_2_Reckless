@@ -1,4 +1,4 @@
-RETRO SPRINT 8: RECKLESS
+RETRO SPRINT 7: RECKLESS
 
 Cosas a favor:
 
@@ -9,6 +9,9 @@ Cosas a favor:
 
 Cosas a mejorar:
 * Estar más al día con la teoría para ir aplicando al proyecto las herramientas aprendidas en la cursada.
+* Acudir a la documentación de las herramientas disponibles.
+* Revisar en profundidad antes de entregar
+
 
 Starfish restrospective
 
@@ -18,6 +21,7 @@ Starfish restrospective
 
 * Do more:
 1) Interiorizarnos más con los lenguajes aprendidos.
+2) Chequear periodicamente y contribuir en Trello.
 3) Investigar paralelamente sobre herramientas que nos agilicen el trabajo para lograr hacer mas efectivo el tiempo.
 4) Dedicar tiempo libre para invertir en detalles del proyecto.
 5) Actualizar backlog de detalles esteticos para que estos no queden olvidados y que no nos consuman tiempo de desarrollo.
@@ -28,7 +32,6 @@ Starfish restrospective
 3) Permitir un periodo de re-checkeo de las tareas realizadas para descartar cabos sueltos. 
 4) Seguir mateniendo el ritmo de encuentros virtuales para el trabajo.
 5) Considerar el hacer un poco mas siempre.
-6) Acudir a la documentación de las herramientas disponibles.
 
 * Do less:
 1) Entrevista semanal con el cliente.

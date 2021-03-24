@@ -6,7 +6,6 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const methodOverride = require('method-override');
 const session = require('express-session');
-
 const cors = require('cors')
 
 const setLocals = require('./middlewares/setLocals');
@@ -17,9 +16,6 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const cartRouter = require('./routes/cart');
 const productsRouter = require('./routes/products');
-
-
-// API routes
 const apiUsersRouter = require('./routes/api/users')
 const apiProductsRouter = require('./routes/api/products')
 
@@ -46,7 +42,6 @@ app.use(log);
 app.use(typeFilter);
 app.use(setLocals);
 app.use(cors())
-
 // routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -55,7 +50,8 @@ app.use('/products', productsRouter);
 
 // api routes 
 app.use('/api/users', apiUsersRouter)
-app.use('/api/products',apiProductsRouter)
+app.use('/api/products', apiProductsRouter)
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

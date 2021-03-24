@@ -6,6 +6,17 @@ const cartController = require('../controllers/cartController')
 /* GET Cart Page. */
 
 router.get('/', cartController.cart);
+
+// cart/addToCart
+
+router.post('/addToCart/:id', cartController.addToCart);
+
+// cart/deleteFromCart
+
+
+
+//cart/checkout
+
 router.get('/checkout',auth, cartController.checkout);
 
 module.exports = router;

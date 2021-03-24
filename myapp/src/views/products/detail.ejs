@@ -49,41 +49,7 @@
                             
                         </div>
 
-                        <div class="product-detail-selector">
-                            
-                            <div class="product-detail__colors">
-                                <legend>COLORS</legend>
-                                <ul>
-                                    <li><input type="radio" name="color" class= "color-circle"></li>
-                                    <li><input type="radio" name="color" class= "color-circle"></li>
-                                    <li><input type="radio" name="color" class= "color-circle"></li>
-                                    <li><input type="radio" name="color" class= "color-circle"></li>
-                                    <li><input type="radio" name="color" class= "color-circle"></li>
-                                </ul>
-                            </div>
-                                
-                            <div>
-                                <select name="size" class="product-detail__select">
-                                    <option value="" selected><%= product.sizes[0].title %></option>
-                                    
-                                </select>
-                            </div>
-
-                            <div>
-                                <select name="qty" class="product-detail__select">
-                                    <option value="" disabled selected>QTY</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                </select>
-                            </div>
+                        
                             <% if (userLog.user_type_id == 1 || userLog.user_type_id == 2) { %> 
                             <div class="edit-delete-product">
                                 <div>
@@ -98,9 +64,35 @@
                                 </div>
                             </div> 
                             <% }else{ %> 
-                            <div class="buttons-detail">
-                                <a href="/cart" type="submit"><i class="fas fa-sho
-                                    pping-cart"></i> ADD TO CART</a>
+                            <div class="product-detail-selector">
+                                    <form action="/cart/addToCart/<%= product.id%>" method="POST" name="addToCartButton" >
+                                        <div >
+                            
+                                            <div class="product-detail__colors">
+                                                <legend>COLORS</legend>
+                                                <ul>
+                                                    <li><input type="radio" name="color" class= "color-circle"></li>
+                                                    <li><input type="radio" name="color" class= "color-circle"></li>
+                                                    <li><input type="radio" name="color" class= "color-circle"></li>
+                                                    <li><input type="radio" name="color" class= "color-circle"></li>
+                                                    <li><input type="radio" name="color" class= "color-circle"></li>
+                                                </ul>
+                                            </div>
+                                                
+                                            <div>
+                                                <select name="size" class="product-detail__select">
+                                                    <option value="" selected><%= product.sizes[0].title %></option>
+                                                    
+                                                </select>
+                                            </div>
+                
+                                            <div class="product-detail-selector">
+                                               <label for="qty" style ="font-size: 14px"> QUANTITY</label>
+                                               <input class="product-detail__select" type="number" value="1" name="qty" id="qty">
+                                            </div>
+                                        <button type="submit" class="buttons-detail" name="button"><i class="fas fa-sho
+                                            pping-cart"></i>ADD TO CART</button>
+                                    </form>
                             </div>
                             <% } %> 
                         </div>

@@ -37,12 +37,14 @@
                                         <p>$<%= product.price %></p>
                                     </div>
                                 </div>
-                                <div>
-                                    <span class="material-icons-outlined">
-                                        favorite_border
-                                    </span>
-                                </div>
                             </a>
+                            <div>
+                             
+                                <span><i class="fas fa-heart like" id="<%= product.id %>"></i></span>
+                                <!-- <span class="material-icons-outlined like" ">
+                                    favorite_border
+                                </span> -->
+                            </div>
                         </article>
                     <%}%>
                 </div>
@@ -52,7 +54,7 @@
         </main>
 
     <script src="/scripts/parallax.js"></script>
-
+    <script src="/scripts/wishlist.js"></script>
     <!-- FOOTER -->
 
     <%- include('partials/footer')%>

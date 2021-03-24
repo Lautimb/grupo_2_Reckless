@@ -353,7 +353,15 @@ a:visited{
     width: 33%;
 }
 
-
+.like{
+    z-index: 200;
+}
+.like:hover{
+    cursor: pointer;
+}
+.added{
+    color: rgb(236, 63, 63);
+}
 
 .action-container {
     position: absolute;
@@ -558,6 +566,8 @@ a:visited{
     flex-direction: column;
     justify-content: space-evenly;
 }
+
+
 
 .product-detail__colors {
     padding-left: 0px;

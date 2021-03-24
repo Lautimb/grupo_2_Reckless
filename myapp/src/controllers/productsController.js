@@ -42,11 +42,13 @@ module.exports = {
 
         const sizes = await db.Size.findAll()
         const types = await db.Type.findAll()
+        const colors = await db.Color.findAll()
         
         res.render('products/create',{
             old: req.body,
             sizes,
-            types
+            types,
+            colors
         });
     },
 
@@ -217,7 +219,7 @@ module.exports = {
     },
 
     saveNewColor: async (req, res) => {
-        
+
         const color = await db.Color.create({
             title: req.body.title,
             hexadecimal: req.body.hexadecimal
@@ -244,7 +246,6 @@ module.exports = {
 
         res.redirect('/products/create/sizes')
     }
-    
 
 }
 

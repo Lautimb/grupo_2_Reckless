@@ -50,20 +50,48 @@
                         </div>
 
                         
-                            <% if (userLog.user_type_id == 1 || userLog.user_type_id == 2) { %> 
-                            <div class="edit-delete-product">
-                                <div>
-                                    <form action="/products/edit/<%= product.id%>" method="GET" name="button" >
-                                        <button type="submit" class="buttons-detail" name="button"><i class="fas fa-times"></i>EDIT</button>
-                                    </form>
-                                </div>
-                                <div>
-                                    <form action="/products/delete/<%= product.id %>?_method=DELETE" method="POST" name="button" >
-                                        <button type="submit" class="buttons-detail" name="button"><i class="fas fa-times"></i>DEL</button>
-                                    </form>
-                                </div>
-                            </div> 
-                            <% }else{ %> 
+                        <% if (userLog.user_type_id == 1 || userLog.user_type_id == 2) { %> 
+                            <div class="product-detail-selector">
+                                
+                                <div >
+                    
+                                    <div class="product-detail__colors">
+                                        <legend>COLORS</legend>
+                                        <ul>
+                                            <li><input type="radio" name="color" class= "color-circle"></li>
+                                            <li><input type="radio" name="color" class= "color-circle"></li>
+                                            <li><input type="radio" name="color" class= "color-circle"></li>
+                                            <li><input type="radio" name="color" class= "color-circle"></li>
+                                            <li><input type="radio" name="color" class= "color-circle"></li>
+                                        </ul>
+                                    </div>
+                                        
+                                    <div>
+                                        <select name="size" class="product-detail__select">
+                                            <option value="" selected><%= product.sizes[0].title %></option>
+                                            
+                                        </select>
+                                    </div>
+        
+                                    <div class="product-detail-selector">
+                                        <label for="qty" style ="font-size: 14px"> QUANTITY</label>
+                                        <input class="product-detail__select" type="number" value="1" name="qty" id="qty">
+                                    </div>
+                                    <div class="edit-delete-product">
+                                        <div>
+                                            <a href="/products/edit/<%= product.id%>" >
+                                                <button type="button" class="buttons-detail"><i class="fas fa-times"></i>EDIT</button>
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <form action="/products/delete/<%= product.id %>?_method=DELETE" method="POST" name="button" >
+                                                <button type="submit" class="buttons-detail" name="button"><i class="fas fa-times"></i>DEL</button>
+                                            </form>
+                                        </div>
+                                    </div> 
+                                
+                            </div>
+                        <% }else{ %> 
                             <div class="product-detail-selector">
                                     <form action="/cart/addToCart/<%= product.id%>" method="POST" name="addToCartButton" >
                                         <div >
@@ -90,37 +118,50 @@
                                                <label for="qty" style ="font-size: 14px"> QUANTITY</label>
                                                <input class="product-detail__select" type="number" value="1" name="qty" id="qty">
                                             </div>
-                                        <button type="submit" class="buttons-detail" name="button"><i class="fas fa-sho
+                                            <button type="submit" class="buttons-detail" name="button"><i class="fas fa-sho
                                             pping-cart"></i>ADD TO CART</button>
                                     </form>
                             </div>
-                            <% } %> 
-                        </div>
+                        <% } %> 
                         
                         <div class="product-detail__details">
                             <ul>
-                                <li><p>DETAILS</p></li>
-                                <li>
-                                    <span class="material-icons">
-                                        add
-                                    </span>
-                                </li>
+                                <div>
+                                    <li><p>DETAILS</p></li>
+                                    <li>
+                                        <span class="material-icons show-description">
+                                            add
+                                        </span>
+                                        <span class="material-icons show-description active">
+                                            remove
+                                        </span>
+                                    </li>
+                                </div>
+                                <div class="detail-description">
+                                    <p id="detail-description-text" class= "active">
+                                        <%= product.description %>
+                                    </p>
+                                </div>
                             </ul>
                             <ul>
-                                <li><p>SIZE GUIDE</p></li>
-                                <li>
-                                    <span class="material-icons">
-                                        add
-                                    </span>
-                                </li>
+                                <div>
+                                    <li><p>SIZE GUIDE</p></li>
+                                        <li>
+                                            <span class="material-icons">
+                                                add
+                                            </span>
+                                        </li>
+                                </div>
                             </ul>
                             <ul>
-                                <li><p>SHIPPING</p></li>
-                                <li>
-                                    <span class="material-icons">
-                                        add
-                                    </span>
-                                </li>
+                                <div>
+                                    <li><p>SHIPPING</p></li>
+                                    <li>
+                                        <span class="material-icons">
+                                            add
+                                        </span>
+                                    </li>
+                                </div>
                             </ul>
                         </div>
 
@@ -177,10 +218,9 @@
             </section>
 
         </main>
-
+        <script src="/scripts/productDetail.js"></script>
         <!-- FOOTER -->
 
         <%- include('../partials/footer')%>
-    
     </body>
 </html>

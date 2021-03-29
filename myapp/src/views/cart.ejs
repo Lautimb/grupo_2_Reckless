@@ -17,6 +17,8 @@
             
 
             <div class="cart-container">
+                <% if(items.length != 0){ %> 
+                    <% for(item of items){ %> 
                 <div class="cart-article">
                     <article class="cart-items">
                         <div class="cart-items-titles">
@@ -35,12 +37,11 @@
                             <div class="list-item">
                                 
                                 <div class="product-img">
-                                    <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"  alt="">
+                                    <img src="/imgs/products/<%= item.img[0] %>"  alt="">
                                 </div>
                                 
                                 <ul class="product-features">
-                                    <li><h3>PRODUCT NAME</h3></li>
-                                    <li><p>STYLE #222222</p></li>
+                                    <li><h3><%= item.name %> </h3></li>
                                     <li><p>Size 6</p></li>
                                     <li><a href="" id="product-edit">Edit</a></li>
                                 </ul>
@@ -49,14 +50,14 @@
 
                             <div class="list-item2">
                                 <ul>   
-                                    <li>$0.00</li>
+                                    <li> <%= item.price  %>  </li>
                                     <li>
                                         <form action="">
                                             <input type="number" name="productQuantity" class="input-style">
                                         </form>
                                     </li>
                                     <li>
-                                        $0.00
+                                        <%= item.item_subtotal %> 
                                     </li>
                                 </ul>
 
@@ -72,9 +73,9 @@
                         </div>
                         
                     </article>
-                </div>  
-            
-            
+                </div>
+                <% } %>   
+  
                 <div class="order-summary">
 
                     <h3>Order summary</h3>
@@ -95,6 +96,9 @@
                             </form>
                         </div>
                     </div>
+                    <% }else{ %>
+                        <p> There's no items inside your cart yet</p>
+                    <% } %>
                 </div>    
             </div> 
             </div>

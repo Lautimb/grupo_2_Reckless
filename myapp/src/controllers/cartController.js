@@ -3,8 +3,20 @@ const {Product, Item, User, Order, Image} = require('../database/models')
 
 
 const cartController = {
-    cart: (req,res)=>{
-        res.render('cart')
+    async cart (req,res) {
+       const items = await Item.findAll({
+            where: {
+                user_id: req.session.user.id,
+                order_id: null
+
+            }
+        })
+        items.forEach( item => {
+            item.img = JSON.parse(item.img)
+            return 
+        })
+       
+        res.render("cart", {items})
     },
 
     async addToCart (req, res) {
@@ -26,7 +38,7 @@ const cartController = {
             user_id: req.session.user.id 
         })
 
-        res.send(item)
+        res.redirect("/cart")
     },
 
 

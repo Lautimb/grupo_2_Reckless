@@ -45,6 +45,8 @@
                                     <li><p>Size 6</p></li>
                                     <li><a href="" id="product-edit">Edit</a></li>
                                 </ul>
+
+
                                 
                             </div>
 
@@ -53,7 +55,7 @@
                                     <li> <%= item.price  %>  </li>
                                     <li>
                                         <form action="">
-                                            <input type="number" name="productQuantity" class="input-style">
+                                            <input type="number" value='<%= item.qty %>' name="productQuantity" class="input-style">
                                         </form>
                                     </li>
                                     <li>
@@ -62,12 +64,11 @@
                                 </ul>
 
                                 <div class="action-container">
-                                    <span class="material-icons">
-                                        keyboard_arrow_up
-                                    </span>
-                                    <span class="material-icons">
-                                        keyboard_arrow_down
-                                    </span>
+                                    <div>
+                                        <form action="/cart/delete/<%= item.id %>?_method=DELETE" method="POST" name="button" >
+                                            <button type="submit" class="buttons-detail" name="button"><i class="fas fa-times"></i>DEL</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>

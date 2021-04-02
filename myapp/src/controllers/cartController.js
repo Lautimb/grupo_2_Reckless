@@ -15,6 +15,7 @@ const cartController = {
             item.img = JSON.parse(item.img)
             return 
         })
+        
        
         res.render("cart", {items})
     },
@@ -40,7 +41,18 @@ const cartController = {
 
         res.redirect("/cart")
     },
+    async delete (req, res) {
+        
+        const {id} = req.params
 
+        await Item.destroy({
+            where: {
+                id: id
+            }
+        })
+
+        return res.redirect("/cart")
+    },
 
     checkout: (req,res)=>{
         

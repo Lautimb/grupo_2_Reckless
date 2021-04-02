@@ -13,7 +13,7 @@ router.post('/addToCart/:id', cartController.addToCart);
 
 // cart/deleteFromCart
 
-
+router.delete('/delete/:id', cartController.delete);
 
 //cart/checkout
 

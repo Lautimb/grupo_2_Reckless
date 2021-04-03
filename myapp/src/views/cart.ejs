@@ -14,12 +14,10 @@
             <h1>Shopping cart</h1>
         </div>
         <section class="cart">
-            
-
             <div class="cart-container">
-                <% if(items.length != 0){ %> 
-                    <% for(item of items){ %> 
                 <div class="cart-article">
+                    <% if(items.length != 0){ %> 
+                        <% for(item of items){ %> 
                     <article class="cart-items">
                         <div class="cart-items-titles">
                             <ul class="item-titles">
@@ -41,8 +39,8 @@
                                 </div>
                                 
                                 <ul class="product-features">
-                                    <li><h3><%= item.name %> </h3></li>
-                                    <li><p>Size 6</p></li>
+                                    <li><h2><%= item.name %> </h2></li>
+                                    <li><p>Discount: <%=item.discount %>%  </p></li>
                                     <li><a href="" id="product-edit">Edit</a></li>
                                 </ul>
 
@@ -74,21 +72,23 @@
                         </div>
                         
                     </article>
+                        <% } %>   
+                    <% }else{ %>
+                        <p> There's no items inside your cart yet</p>
+                    <% } %>
                 </div>
-                <% } %>   
-  
+
+                
                 <div class="order-summary">
-
-                    <h3>Order summary</h3>
-                    <p class="delivery-options">Delivery options</p>
-
                     <div class="container-checkout">
                         <div class="data-pre-checkout">
                             <p>Subtotal</p>
                             <p>Shipping</p>
                             <p>Estimated tax</p>
-                            <h4>TOTAL</h4>
-                            <a href="/cart/checkout"><button type="submit">PROCEED TO CHECKOUT</button></a>
+                            <h4><%= total %> </h4>
+                            <form action = "/cart/shop" method="POST" name="shopButton">
+                                <button type="submit" class = "buttons-detail">PROCEED TO CHECKOUT</button></a>
+                            </form>
                         </div>
                         <div class="code-checkout">
                             <p>PROMO CODE</p>
@@ -97,12 +97,10 @@
                             </form>
                         </div>
                     </div>
-                    <% }else{ %>
-                        <p> There's no items inside your cart yet</p>
-                    <% } %>
-                </div>    
+                </div>
+                    
             </div> 
-            </div>
+
         </section>   
 
         <section class="cart-wishlist">

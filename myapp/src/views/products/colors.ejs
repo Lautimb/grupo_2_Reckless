@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head')%>
+<body>
+    
+    <%- include('../partials/header')%>
+   
+    <main id="product-upload__main">
+        <section id="product-upload__section">
+            <form action="/products/create" method="POST" id="product-upload__form" enctype="multipart/form-data">
+
+                <div class="h1-center">
+                    <h1>COLORS</h1>
+                </div>
+                
+
+                <div class="manage-inventory-container">
+                    <div class="title-container">
+                        <h3>AVAILABLE COLORS</h3>
+                    </div>
+
+                    <div class="manage-form-container">
+                        
+                        <ul class="ul-upload-data">
+                            <li>
+                                <input type="checkbox" name="colors">
+                                <label for="colors">TITLE</label>
+                            </li>
+                            <li>
+                                <p>HEXADECIMAL</p>
+                            </li>
+                        </ul>
+                        <% for (color of colors) {%>
+                        <ul class="ul-upload-data">
+                            
+                            <li>
+                                <input type="checkbox" name="colors">
+                                <label for="colors"><%= color.title.toUpperCase() %></label>
+                            </li>
+                            <li>
+                                <div id="color-circle" style="background-color:<%= color.hexadecimal%>"></div> 
+                            </li>
+                            
+                        </ul>
+                        <%}%>
+                        <div class="submit-button-container">
+                            <button type="button" id="create-button">EDIT</button>
+                        </div>
+                        <div class="submit-button-container">
+                            <button type="button" id="create-button">DELETE</button>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <a href="/products/create/colors/add">
+                    <button href="/products/create/colors/add" type="button" class="buttons-detail" name="button">+ ADD NEW COLOR</button>
+                </a>
+            </form>
+        </section>
+
+
+
+
+
+    </main>
+    
+    <%- include('../partials/footer')%>
+    <script src="/scripts/validator/create.js"></script>
+    
+</body>
+</html>

@@ -167,35 +167,52 @@
                     </div>
 
                     <div class="manage-form-container">
+                        <div id="div-upload-data">
+                            <ul class="ul-upload-data" id="0">
+                                <li>
+                                    <input type="checkbox" name="colorSizeQtyCheckbox" class="ul-checkbox">
+                                </li>
+                                <li>
+                                    <p>SIZE</p>
+                                    <select name="size" class="input-style" id="size">
+                                        <option value="" selected>-</option>
+                                        <% for (size of sizes){%>
+                                            <option value="<%= size.id  %>"><%= size.title %></option>
+                                        <% } %>
+                                    </select>
+                                </li>
+                                <li>
+                                    <p>COLOR</p>
+                                    <select name="color" class="input-style" id="color">
+                                        <option value="" selected>-</option>
+                                        <% for (color of colors){%>
+                                            <option value="<%= color.id  %>"><%= color.title %></option>
+                                        <% } %>
+                                    </select>
+                                </li>
+                                <li>
+                                    <p>QTY</p>
+                                    <input type="number" class="input-style" name="qty" value="<%= old.qty ? old.qty : '' %>">
+                                </li>
+                                <li class="save-cancel">
+                                    <a href="#" class="save-product">Save</a>
+                                    <a href="#">
+                                        <span class="material-icons cancel-product clear-button">
+                                            clear
+                                        </span>
+                                    </a>   
+                                </li>
+                            </ul>
                         
-                        <ul class="ul-upload-data">
-                            <li>
-                                <p>SIZE</p>
-                                <select name="size" class="input-style" id="size">
-                                    <option value="" selected>-</option>
-                                    <% for (size of sizes){%>
-                                        <option value="<%= size.id  %>"><%= size.title %></option>
-                                    <% } %>
-                                </select>
-                            </li>
-                            <li>
+                        </div>
 
-                                <p>COLORS & QTY</p>
-                                <ul>
-                                    <li>
-                                        <input type="radio" name="addColor">
-                                        <input type="number" class="input-style" name="qty" value="<%= old.qty ? old.qty : '' %>">
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="save-cancel">
-                                <a href="#" class="save-product">Save</a>
-                                <span class="material-icons cancel-product">
-                                    clear
-                                </span>
-                            </li>
-                        </ul>
+                        <div class="submit-button-container">
+                            <button type="button" id="add-more-button">+ ADD MORE</button>
+                            <button type="button" id="delete-option-button">DELETE SELECTED</button>
+                        </div>
+                        
                     </div>
+                    
                 </div>
                 
                 <div class="submit-button-container">
@@ -212,6 +229,6 @@
     
     <%- include('../partials/footer')%>
     <script src="/scripts/validator/create.js"></script>
-    
+    <script src="/scripts/productStock.js"></script>
 </body>
 </html>

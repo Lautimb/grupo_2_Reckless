@@ -131,6 +131,8 @@ a:visited{
 }
 
 
+
+
 /* PARALLAX INDEX START ------------------------------*/
 
 .parallax-mirror{
@@ -229,7 +231,7 @@ a:visited{
 }
 
 .order-summary{
-    position: relative;
+    position:relative;
     top: -20px;
     width: 35%;
     padding-left: 10px;
@@ -585,16 +587,23 @@ a:visited{
 }
 
 .product-detail__colors li{
-    padding: 5%;
+    padding: 15px;
 }
 
 .color-circle {
-    transform: scale(2);
-    background-color: transparent
+    margin: 0px;
+    padding: 0px;
+    opacity: 0;
 }
 
 .color-circle:hover {
     cursor: pointer;
+}
+
+#color-input {
+    position: relative;
+    left: -16.3px;
+
 }
 
 
@@ -641,15 +650,29 @@ a:visited{
 .product-detail__details ul{
     padding: 5% 0px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     border-top: 1px solid var(--black);
+}
+.product-detail__details ul div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
 }
 
 .product-detail__details ul li {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
     padding-left: 0px;
 }
+.product-detail__details p{
+    margin: auto;
+}
+
 
 .product-detail__details span{
+    
     color: var(--black);
     padding: 5px 6px;
     border: 1px solid var(--black);
@@ -658,6 +681,19 @@ a:visited{
 
 .product-detail__details {
     border-bottom: 1px solid var(--black);
+}
+
+
+.show-description:hover{
+    cursor: pointer;
+}
+
+#detail-description-text{
+    margin-top: 10px;
+}
+
+.active{
+    display: none;
 }
 
 /* ------------------- YOU MAY ALSO LIKE ---------------- */
@@ -905,6 +941,7 @@ h3, .required-files{
 #product-upload__form{
     display: flex;
     flex-direction: column;
+    margin-bottom: 165px;
 } 
 
 .product-data-container{
@@ -1032,7 +1069,6 @@ h3, .required-files{
     flex-direction: column;
     position: relative;
     align-self: center;
-    margin-bottom: 165px;
 }
 
 .manage-inventory-container{
@@ -1112,6 +1148,16 @@ h3, .required-files{
 .submit-button-container button:hover{
     border-color: var(--magenta);
     background-color: rgba(33, 33, 33, 0.705);
+    cursor: pointer;
+}
+
+#color-circle {
+    display: inline-block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid;
     cursor: pointer;
 }
 /*---------------------------- UPLOAD END -----------------------*/

@@ -26,6 +26,9 @@ module.exports = (sequelize, dataTypes)=>{
             type: dataTypes.SMALLINT.UNSIGNED,
             defaultValue: "0"
         },
+        total:{
+            type: dataTypes.DECIMAL(10,2).UNSIGNED
+        },
         user_id:{
             type: dataTypes.INTEGER.UNSIGNED
         }

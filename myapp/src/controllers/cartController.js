@@ -32,7 +32,7 @@ const cartController = {
             }]
         })
 
-        let item = await Item.create({
+        await Item.create({
             name: product.name,
             img: product.images[0].filename,
             price: product.price,
@@ -79,9 +79,9 @@ const cartController = {
 
         // creamos la orden
         const order = await Order.create({
-            total: totalAmount,
             total_qty: totalQty,
-            user_id: req.session.user.id
+            user_id: req.session.user.id,
+            total: totalAmount
 
         })
         // actualizamos items

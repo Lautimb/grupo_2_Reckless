@@ -281,7 +281,7 @@ header a{
 @media (max-width: 768px) {
 
     header #nav-bar1,#nav-bar2,.logo{
-        display:none;
+        display: none;
     }
 
     header #promotions{

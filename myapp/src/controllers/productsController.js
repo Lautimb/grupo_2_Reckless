@@ -6,12 +6,10 @@ module.exports = {
         const products = await db.Product.findAll({
             include: ["images"]
         });
-
         products.forEach( product => {
             product.images[0].filename = JSON.parse(product.images[0].filename)
             return 
         });
-       
         res.render('products/index', { products });
     },
     filter: async (req,res)=>{
@@ -92,8 +90,6 @@ module.exports = {
         await product.setTypes(parseInt(types),product.id)
 
         //const qty = (typeof req.body.qty == "number" ? [req.body.qty] : req.body.qty)
-
-        
        
         res.redirect('/products');
     },

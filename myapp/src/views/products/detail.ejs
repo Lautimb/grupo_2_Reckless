@@ -56,20 +56,24 @@
                                 <div >
                     
                                     <div class="product-detail__colors">
-                                        <legend>COLORS</legend>
+                                        <legend>COLOR: <%= product.colors[0].title %></legend>
                                         <ul>
-                                            <li><input type="radio" name="color" class= "color-circle"></li>
-                                            <li><input type="radio" name="color" class= "color-circle"></li>
-                                            <li><input type="radio" name="color" class= "color-circle"></li>
-                                            <li><input type="radio" name="color" class= "color-circle"></li>
-                                            <li><input type="radio" name="color" class= "color-circle"></li>
+                                            <% for( color of product.colors ) { %>
+                                            <li>
+                                                <input type="radio" name="color" class= "color-circle">
+                                                <label for="color" id="color-input">
+                                                    <div id="color-circle" style="background-color: <%= color.hexadecimal %>"></div>
+                                                </label>
+                                            </li>
+                                            <% } %>
                                         </ul>
                                     </div>
                                         
                                     <div>
                                         <select name="size" class="product-detail__select">
-                                            <option value="" selected><%= product.sizes[0].title %></option>
-                                            
+                                            <% for (size of product.sizes) { %>}
+                                            <option value="<%= size.id %>" selected><%= size.title %></option>
+                                            <% } %>
                                         </select>
                                     </div>
         

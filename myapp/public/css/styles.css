@@ -575,16 +575,23 @@ a:visited{
 }
 
 .product-detail__colors li{
-    padding: 5%;
+    padding: 15px;
 }
 
 .color-circle {
-    transform: scale(2);
-    background-color: transparent
+    margin: 0px;
+    padding: 0px;
+    opacity: 0;
 }
 
 .color-circle:hover {
     cursor: pointer;
+}
+
+#color-input {
+    position: relative;
+    left: -16.3px;
+
 }
 
 
@@ -1120,12 +1127,13 @@ h3, .required-files{
 }
 
 #color-circle {
-    width: 16px;
-    height: 16px;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
+    display: inline-block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
     border: 1px solid;
+    cursor: pointer;
 }
 /*---------------------------- UPLOAD END -----------------------*/
 

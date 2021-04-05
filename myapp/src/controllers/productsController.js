@@ -42,11 +42,13 @@ module.exports = {
 
         const sizes = await db.Size.findAll()
         const types = await db.Type.findAll()
+        const colors = await db.Color.findAll()
         
         res.render('products/create',{
             old: req.body,
             sizes,
-            types
+            types,
+            colors
         });
     },
 
@@ -82,18 +84,29 @@ module.exports = {
         })
 
         await product.setImages(images.id, product.id)
-        
+
+        // Sizes
         const sizes = (typeof req.body.size == "string" ? [req.body.size] : req.body.size)
         
-        await product.setSizes(parseInt(sizes),product.id)
-        
+        const eachSize = sizes.map(sizeID=> parseInt(sizeID)) // falta agregar logica para que se guarde 1 sola vez la relacion talle-producto
+
+        await product.addSizes(eachSize, product.id)
+
+        // Types
         const types = (typeof req.body.type == "string" ? [req.body.type] : req.body.type)
         
-        await product.setTypes(parseInt(types),product.id)
+        await product.addTypes(parseInt(types),product.id)
 
-        //const qty = (typeof req.body.qty == "number" ? [req.body.qty] : req.body.qty)
+        //Colors
+        const colors = (typeof req.body.color == "string" ? [req.body.color] : req.body.color)
 
-        
+        const eachColor = colors.map(colorID=> parseInt(colorID)) // falta agregar logica para que se guarde 1 sola vez la relacion color-producto
+
+        await product.addColors(eachColor, product.id)
+
+        //const stocks = (typeof req.body.qty == "number" ? [req.body.qty] : req.body.qty)
+
+        //await product.setQty(parseInt(stocks), product.id)
        
         res.redirect('/products');
     },
@@ -101,7 +114,7 @@ module.exports = {
        
         const id = req.params.id;
         const product = await db.Product.findByPk(id,{
-            include:["images","sizes"]
+            include:["images","sizes", "colors"]
         });
       
         product.images[0].filename = JSON.parse(product.images[0].filename)
@@ -204,7 +217,46 @@ module.exports = {
         });
     
         return res.redirect("/");
-      }
+    },
+
+    colors: async (req, res) => {
+        const colors = await db.Color.findAll()
+
+        res.render ('products/colors',{ colors });
+    },
+
+    newColor: async (req, res) => {
+        res.render ('products/newColor')
+    },
+
+    saveNewColor: async (req, res) => {
+
+        const color = await db.Color.create({
+            title: req.body.title,
+            hexadecimal: req.body.hexadecimal
+        })
+
+        res.redirect('/products/create/colors')
+    },
+
+    sizes: async (req, res) => {
+
+        const sizes = await db.Size.findAll()
+
+        res.render ('products/sizes', { sizes })
+    },
+
+    newSize: async (req, res) => {
+        res.render ('products/newSize')
+    },
+
+    saveNewSize: async (req, res) => {
+        const size = await db.Size.create({
+            title: req.body.title
+        })
+
+        res.redirect('/products/create/sizes')
+    },
     
 
 }

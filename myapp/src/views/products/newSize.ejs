@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head')%>
+<body>
+    
+    <%- include('../partials/header')%>
+   
+    <main id="product-upload__main">
+        <section id="product-upload__section">
+            <form action="/products/create/sizes/add" method="POST" id="product-upload__form">
+
+                <div class="h1-center">
+                    <h1>ADD NEW SIZE</h1>
+                </div>
+                <ul class="errors"></ul>
+                
+                <div class="product-data-container">
+                
+                    <div class="title-container">
+                        <h3>SIZE TITLE</h3>
+                    </div>
+                    <div class="product-data">
+                        <label for="title"></label>
+                        <input type="text" class="input-style" value="" name="title" id="create-name">
+                    </div>
+                </div>
+                
+                <div class="submit-button-container">
+                    <button type="submit" id="create-button">SAVE SIZE</button>
+                </div>
+            </form>
+        </section>
+
+
+
+
+
+    </main>
+    
+    <%- include('../partials/footer')%>
+    
+</body>
+</html>

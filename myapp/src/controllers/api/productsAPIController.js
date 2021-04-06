@@ -5,7 +5,6 @@ const { Type } = require('../../database/models')
 module.exports = {
     async list (req, res) {
         try{
-
             // PAGINATION
             const page = Number(req.query.page) || 1
             
@@ -73,7 +72,6 @@ module.exports = {
                     previousPage: page > 1 ? `http://localhost:3300/api/products?page=${page - 1}` : null,
                     currentPage: `http://localhost:3300/api/products?page=${page}`,
                     nextPage:  page < totalPages ? `http://localhost:3300/api/products?page=${page + 1}` : null
-
                 },
                 paginatedProducts
                 
@@ -118,4 +116,5 @@ module.exports = {
             })
         }
     }
+    
 };

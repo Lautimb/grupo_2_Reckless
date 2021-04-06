@@ -6,18 +6,18 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const methodOverride = require('method-override');
 const session = require('express-session');
-const cors = require('cors')
+const cors = require('cors');
 
 const setLocals = require('./middlewares/setLocals');
-const log = require('./middlewares/log')
-const typeFilter = require('./middlewares/typeFilter')
+const log = require('./middlewares/log');
+const typeFilter = require('./middlewares/typeFilter');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const cartRouter = require('./routes/cart');
 const productsRouter = require('./routes/products');
-const apiUsersRouter = require('./routes/api/users')
-const apiProductsRouter = require('./routes/api/products')
+const apiUsersRouter = require('./routes/api/users');
+const apiProductsRouter = require('./routes/api/products');
 
 const app = express();
 
@@ -31,7 +31,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
-app.use(methodOverride('_method'))
+app.use(methodOverride('_method'));
 app.use(session({
   secret: 'Reckless',
   resave: true,
@@ -49,8 +49,8 @@ app.use('/cart', cartRouter);
 app.use('/products', productsRouter);
 
 // api routes 
-app.use('/api/users', apiUsersRouter)
-app.use('/api/products', apiProductsRouter)
+app.use('/api/users', apiUsersRouter);
+app.use('/api/products', apiProductsRouter);
 
 
 // catch 404 and forward to error handler

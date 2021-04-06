@@ -49,86 +49,123 @@
                             
                         </div>
 
-                        <div class="product-detail-selector">
-                            
-                            <div class="product-detail__colors">
-                                <legend>COLORS</legend>
-                                <ul>
-                                    <li><input type="radio" name="color" class= "color-circle"></li>
-                                    <li><input type="radio" name="color" class= "color-circle"></li>
-                                    <li><input type="radio" name="color" class= "color-circle"></li>
-                                    <li><input type="radio" name="color" class= "color-circle"></li>
-                                    <li><input type="radio" name="color" class= "color-circle"></li>
-                                </ul>
-                            </div>
+                        
+                        <% if (userLog.user_type_id == 1 || userLog.user_type_id == 2) { %> 
+                            <div class="product-detail-selector">
                                 
-                            <div>
-                                <select name="size" class="product-detail__select">
-                                    <option value="" selected><%= product.sizes[0].title %></option>
-                                    
-                                </select>
+                                <div >
+                    
+                                    <div class="product-detail__colors">
+                                        <legend>COLOR: <%= product.colors[0].title %></legend>
+                                        <ul>
+                                            <% for( color of product.colors ) { %>
+                                            <li>
+                                                <input type="radio" name="color" class= "color-circle">
+                                                <label for="color" id="color-input">
+                                                    <div id="color-circle" style="background-color: <%= color.hexadecimal %>"></div>
+                                                </label>
+                                            </li>
+                                            <% } %>
+                                        </ul>
+                                    </div>
+                                        
+                                    <div>
+                                        <select name="size" class="product-detail__select">
+                                            <% for (size of product.sizes) { %>}
+                                            <option value="<%= size.id %>" selected><%= size.title %></option>
+                                            <% } %>
+                                        </select>
+                                    </div>
+        
+                                    <div class="product-detail-selector">
+                                        <label for="qty" style ="font-size: 14px"> QUANTITY</label>
+                                        <input class="product-detail__select" type="number" value="1" name="qty" id="qty">
+                                    </div>
+                                    <div class="edit-delete-product">
+                                        <div>
+                                            <a href="/products/edit/<%= product.id%>" >
+                                                <button type="button" class="buttons-detail"><i class="fas fa-times"></i>EDIT</button>
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <form action="/products/delete/<%= product.id %>?_method=DELETE" method="POST" name="button" >
+                                                <button type="submit" class="buttons-detail" name="button"><i class="fas fa-times"></i>DEL</button>
+                                            </form>
+                                        </div>
+                                    </div> 
+                                
                             </div>
-
-                            <div>
-                                <select name="qty" class="product-detail__select">
-                                    <option value="" disabled selected>QTY</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                </select>
-                            </div>
-                            <% if (userLog.user_type_id == 1 || userLog.user_type_id == 2) { %> 
-                            <div class="edit-delete-product">
-                                <div>
-                                    <form action="/products/edit/<%= product.id%>" method="GET" name="button" >
-                                        <button type="submit" class="buttons-detail" name="button"><i class="fas fa-times"></i>EDIT</button>
+                        <% }else{ %> 
+                            <div class="product-detail-selector">
+                                    <form action="/cart/addToCart/<%= product.id%>" method="POST" name="addToCartButton" >
+                                        <div >
+                            
+                                            <div class="product-detail__colors">
+                                                <legend>COLORS</legend>
+                                                <ul>
+                                                    <li><input type="radio" name="color" class= "color-circle"></li>
+                                                    <li><input type="radio" name="color" class= "color-circle"></li>
+                                                    <li><input type="radio" name="color" class= "color-circle"></li>
+                                                    <li><input type="radio" name="color" class= "color-circle"></li>
+                                                    <li><input type="radio" name="color" class= "color-circle"></li>
+                                                </ul>
+                                            </div>
+                                                
+                                            <div>
+                                                <select name="size" class="product-detail__select">
+                                                    <option value="" selected><%= product.sizes[0].title %></option>
+                                                    
+                                                </select>
+                                            </div>
+                
+                                            <div class="product-detail-selector">
+                                               <label for="qty" style ="font-size: 14px"> QUANTITY</label>
+                                               <input class="product-detail__select" type="number" value="1" name="qty" id="qty">
+                                            </div>
+                                            <button type="submit" class="buttons-detail" name="button"><i class="fas fa-sho
+                                            pping-cart"></i>ADD TO CART</button>
                                     </form>
-                                </div>
-                                <div>
-                                    <form action="/products/delete/<%= product.id %>?_method=DELETE" method="POST" name="button" >
-                                        <button type="submit" class="buttons-detail" name="button"><i class="fas fa-times"></i>DEL</button>
-                                    </form>
-                                </div>
-                            </div> 
-                            <% }else{ %> 
-                            <div class="buttons-detail">
-                                <a href="/cart" type="submit"><i class="fas fa-sho
-                                    pping-cart"></i> ADD TO CART</a>
                             </div>
-                            <% } %> 
-                        </div>
+                        <% } %> 
                         
                         <div class="product-detail__details">
                             <ul>
-                                <li><p>DETAILS</p></li>
-                                <li>
-                                    <span class="material-icons">
-                                        add
-                                    </span>
-                                </li>
+                                <div>
+                                    <li><p>DETAILS</p></li>
+                                    <li>
+                                        <span class="material-icons show-description">
+                                            add
+                                        </span>
+                                        <span class="material-icons show-description active">
+                                            remove
+                                        </span>
+                                    </li>
+                                </div>
+                                <div class="detail-description">
+                                    <p id="detail-description-text" class= "active">
+                                        <%= product.description %>
+                                    </p>
+                                </div>
                             </ul>
                             <ul>
-                                <li><p>SIZE GUIDE</p></li>
-                                <li>
-                                    <span class="material-icons">
-                                        add
-                                    </span>
-                                </li>
+                                <div>
+                                    <li><p>SIZE GUIDE</p></li>
+                                        <li>
+                                            <span class="material-icons">
+                                                add
+                                            </span>
+                                        </li>
+                                </div>
                             </ul>
                             <ul>
-                                <li><p>SHIPPING</p></li>
-                                <li>
-                                    <span class="material-icons">
-                                        add
-                                    </span>
-                                </li>
+                                <div>
+                                    <li><p>SHIPPING</p></li>
+                                    <li>
+                                        <span class="material-icons">
+                                            add
+                                        </span>
+                                    </li>
+                                </div>
                             </ul>
                         </div>
 
@@ -185,10 +222,9 @@
             </section>
 
         </main>
-
+        <script src="/scripts/productDetail.js"></script>
         <!-- FOOTER -->
 
         <%- include('../partials/footer')%>
-    
     </body>
 </html>

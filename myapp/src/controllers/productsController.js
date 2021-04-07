@@ -1,6 +1,6 @@
 const { validationResult } = require('express-validator');
 const db = require('../database/models');
-
+const parser = require('../helpers/parser')
 module.exports = {
     index: async (req,res) =>{
         const products = await db.Product.findAll({
@@ -53,6 +53,8 @@ module.exports = {
     store: async(req, res)=>{
         const errors = validationResult(req);
 
+        const { qty, color , size , name, description, price , wholesaleprice , discount , art} = req.body
+
         if(!errors.isEmpty()){ 
             const sizes = await db.Size.findAll()
             const types = await db.Type.findAll() 
@@ -65,14 +67,16 @@ module.exports = {
         }
        
         const product = await db.Product.create({
-            name: req.body.name,
-            description: req.body.description,
-            price: req.body.price,
-            wholesale_price: req.body.wholesaleprice,
-            discount: req.body.discount,
-            art: req.body.art
+            name,
+            description,
+            price,
+            wholesale_price: wholesaleprice,
+            discount,
+            art
         })
         
+        // Images
+
         const files = req.files;
         const imagesMapped = files.map( image => image.filename );
         const imageStrings = JSON.stringify(imagesMapped)
@@ -80,32 +84,32 @@ module.exports = {
         const images = await db.Image.create({
             filename: imageStrings
         })
-
         await product.setImages(images.id, product.id)
 
         // Sizes
-        const sizes = (typeof req.body.size == "string" ? [req.body.size] : req.body.size)
-        
-        const eachSize = sizes.map(sizeID=> parseInt(sizeID)) // falta agregar logica para que se guarde 1 sola vez la relacion talle-producto
-
+        const eachSize = parser(size)
         await product.addSizes(eachSize, product.id)
 
         // Types
         const types = (typeof req.body.type == "string" ? [req.body.type] : req.body.type)
-        
         await product.addTypes(parseInt(types),product.id)
 
         //Colors
-        const colors = (typeof req.body.color == "string" ? [req.body.color] : req.body.color)
-
-        const eachColor = colors.map(colorID=> parseInt(colorID)) // falta agregar logica para que se guarde 1 sola vez la relacion color-producto
-
+        const eachColor = parser(color)
         await product.addColors(eachColor, product.id)
 
-        //const stocks = (typeof req.body.qty == "number" ? [req.body.qty] : req.body.qty)
+        // Qty
+        const eachQty= parser(qty)
 
-        //await product.setQty(parseInt(stocks), product.id)
-       
+        await eachQty.forEach((qty, i ) =>{
+            db.Stock.create({
+                qty: qty,
+                product_id: product.id,
+                color_id: eachColor[i],
+                size_id: eachSize[i]
+            })
+        })
+        
         res.redirect('/products');
     },
     detail: async (req,res) =>{
@@ -207,6 +211,12 @@ module.exports = {
         await product.setSizes([]);
 
         await product.setTypes([]);
+
+        await product.setColors([]);
+
+        await product.setStocks([])
+
+        await product.setUsers([])
         
         await db.Product.destroy({
           where: {

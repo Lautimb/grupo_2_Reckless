@@ -1,4 +1,4 @@
-const {Product, Item, User, Order, Image} = require('../database/models') 
+const {Product, Item, User, Order, Stock} = require('../database/models') 
 
 
 

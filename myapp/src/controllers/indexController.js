@@ -2,15 +2,19 @@ const db = require('../database/models')
 module.exports = {
     index: async (req,res) =>{
         const products = await db.Product.findAll({
-            include: ["images","users"]
+            include: ["images","users"],
+            order:[
+                ["created_at", "ASC"],
+                
+            ]
           
         });
         
+        // return res.send(products)
         products.forEach(product => {    
             product.images[0].filename = JSON.parse(product.images[0].filename)
             return 
         });
-
         if(req.session.user){
             products.forEach(product => {    
                 product.users.forEach( user => {

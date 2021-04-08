@@ -31,6 +31,10 @@ module.exports = (sequelize, dataTypes)=>{
             allowNull: false,
             defaultValue: '0'
         },
+        // color_id:{
+        //     type: dataTypes.STRING,
+        //     allowNull: true
+        // },
         item_subtotal:{
             type: dataTypes.DECIMAL(10, 2)
         },

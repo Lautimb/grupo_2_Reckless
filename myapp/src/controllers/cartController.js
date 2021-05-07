@@ -31,7 +31,7 @@ const cartController = {
                 nested: true
             }]
         })
-
+        
         await Item.create({
             name: product.name,
             img: product.images[0].filename,
@@ -39,6 +39,9 @@ const cartController = {
             wholesale_price: product.wholesale_price,
             discount: product.discount,
             qty: req.body.qty,
+            product_id: product.id,
+            color_id: req.body.color,
+            size_id: req.body.size,
             item_subtotal: (product.price - (product.discount * product.price / 100)) * req.body.qty,
             user_id: req.session.user.id 
         })
@@ -82,7 +85,34 @@ const cartController = {
             total_qty: totalQty,
             user_id: req.session.user.id,
             total: totalAmount
+        })
+        
+        let stock = items.map(async (item, i) =>{
+            console.log(item)
+            const itemStock = await Stock.findOne({
+             where:{
+                 product_id: item.product_id,
+                 color_id: item.color_id,
+                 size_id: item.size_id
+                }
+            }) 
+           return [...stock, itemStock.qty]
+        })
 
+        
+        return res.send(stock)
+
+
+         await items.forEach(item =>{
+            Stock.update({
+                qty: item.qty
+            }, {
+                where: {
+                    product_id: item.product_id,
+                    color_id: item.color_id,
+                    size_id: item.size_id
+                }
+            })
         })
         // actualizamos items
         await Item.update({

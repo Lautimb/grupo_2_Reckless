@@ -4,21 +4,30 @@ const parser = require('../helpers/parser')
 module.exports = {
     index: async (req,res) =>{
         const products = await db.Product.findAll({
-            include: ["images"]
+            include: ["images","users"],
+            order:[["created_at", "ASC"]]
         });
+        if(req.session.user){
+            products.forEach(product => {    
+                product.users.forEach( user => {
+                    if(req.session.user.id == user.wishlists.user_id){
+                        product.setDataValue('liked', 'added') 
+                    }
+                })            
+            });
+        }
         products.forEach( product => {
             product.images[0].filename = JSON.parse(product.images[0].filename)
+            product.setDataValue('users', '')
             return 
         });
         res.render('products/index', { products });
     },
     filter: async (req,res)=>{
         const products = await db.Product.findAll({
-            include:["images","types"]
+            include:["images","types","users"]
         })
-        // recibo por parametro el tipo de producto a mostrar, dato obtenido del submenu del shop en la lista del header
-        const type = req.params.type
-        // filtro el producto a mostrar
+        const { type } = req.params
         products.forEach( product => {
             product.images[0].filename = JSON.parse(product.images[0].filename)
             return 
@@ -26,10 +35,16 @@ module.exports = {
 
         const productsToShow = products.filter( product => product.types[0].title.toLowerCase() == type)
 
+        if(req.session.user){
+            products.forEach(product => {    
+                product.users.forEach( user => {
+                    if(req.session.user.id == user.wishlists.user_id){
+                        product.setDataValue('liked', 'added') 
+                    }
+                })            
+            });
+        }
        
-        // le agrego una propiedad al objeto creado con los productos a mostrar, y guardo en él, el tipo de producto en mayúsculas para poner de titulo en la seccion.
-        
-        // mando la respuesta con los productos a mostrar
 		res.render('products/products-type', {
             products : productsToShow,
             type
@@ -198,8 +213,27 @@ module.exports = {
         return res.redirect('/'); 
     },
 
-    wishlist: (req,res) =>{
-        res.render('products/wishlist');
+    wishlist: async (req,res) =>{
+
+        const products = await db.Product.findAll({
+            include: ["images","users"],
+            order:[["created_at", "ASC"]],
+        });
+        const productsWished = []
+
+        products.forEach(product => {    
+            product.images[0].filename = JSON.parse(product.images[0].filename)
+            product.users.forEach( user => {
+                if(req.session.user.id == user.wishlists.user_id){
+                    product.setDataValue('liked', 'added') 
+                    productsWished.push(product)
+                }
+            })            
+        });
+        
+        res.render('products/wishlist',{
+            productsWished
+        });
     },
 
     delete: async (req, res) => {

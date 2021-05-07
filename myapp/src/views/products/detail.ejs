@@ -30,7 +30,11 @@
 
                             <ul class= "product-detail__name-heart">
                                 <h1><%= product.name %></h1>
-                                <i class="far fa-heart"></i>
+                                <% if(product.dataValues.liked == 'added'){ %> 
+                                    <span><i class="fas fa-heart like added" id="<%= product.id %>"></i></span> 
+                                <% } else { %>
+                                    <span><i class="fas fa-heart like" id="<%= product.id %>"></i></span>   
+                                <% } %>
                             </ul>
                             <% if (product.discount) { %>
                                 <ul class= "product-detail__price-promotions">
@@ -225,7 +229,11 @@
                 </div>
             </section>
 
+            <%- include('partials/modalRequireLogin')%>
+
+
         </main>
+        <script src="/scripts/wishlist.js"></script>
         <script src="/scripts/productDetail.js"></script>
         <!-- FOOTER -->
 

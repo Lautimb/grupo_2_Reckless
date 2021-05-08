@@ -31,15 +31,7 @@ module.exports = (sequelize, dataTypes)=>{
             allowNull: false,
             defaultValue: '0'
         },
-        product_id:{
-            type: dataTypes.INTEGER,
-            allowNull: false
-        },
-        color_id:{
-            type: dataTypes.INTEGER,
-            allowNull: false
-        },
-        size_id:{
+        stock_id:{
             type: dataTypes.INTEGER,
             allowNull: false
         },

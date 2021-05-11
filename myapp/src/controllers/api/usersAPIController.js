@@ -1,5 +1,4 @@
 const { User } = require('../../database/models');
-
 module.exports = {
     async list (req, res) {
         try{
@@ -59,14 +58,13 @@ module.exports = {
             const idProduct = parseInt(req.body.productId)
             const user = await User.findByPk(idUser)
             await user.addProducts(idProduct)
-
+            
             res.json({
                 meta: {
                     state:'sucess'
                 }              
             })
-            
-            
+                        
         } catch (error){
             res.status(500).json({
                 meta: {
@@ -82,8 +80,8 @@ module.exports = {
             const idProduct = parseInt(req.body.productId)
             const user = await User.findByPk(idUser)
             await user.removeProducts(idProduct)
+            
 
-           
             res.json({
                 meta: {
                     state:'sucess remove'
@@ -118,26 +116,6 @@ module.exports = {
                     status: 'error',
                 },
                 error: 'Error, the product cannot be delete',
-            })
-        }
-    },
-    async addedWishlists (req,res){
-        try{     
-
-            
-            res.json({
-                meta: {
-                    state:'sucess response'
-                }                
-                   
-            })
-            
-        } catch (error){
-            res.status(500).json({
-                meta: {
-                    status: 'error',
-                },
-                error: 'Error, wishlists is dead',
             })
         }
     }

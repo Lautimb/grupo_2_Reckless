@@ -1,0 +1,29 @@
+<div class="inactive" id="modalRequireLogin">
+    <div class="require-login-container">
+        <section>
+            <div>
+                <h2 class="login-modal-title">Sing in</h2>
+            </div>
+            <form action="/users/login" class="form-login-style" id="login-form" method="POST">
+            <span><i class="fas fa-times close-modal"></i></span>                      
+            <ul class="errors"></ul>
+            <input type="email" class="input-style" id="login-email" placeholder="E-MAIL" name="email" autocomplete="off" value="<%= typeof email == 'undefined' ? '': typeof email == 'undefined' ? '' : email  %>">
+            
+            <small class="errors-style"><%= typeof errors == 'undefined' ? '': typeof errors.email == 'undefined' ? '' : errors.email.msg  %></small>
+            
+            <input type="password" class="input-style" id="password-login" placeholder="PASSWORD" name="password">
+            <small class="errors-style"><%= typeof errors == 'undefined' ? '': typeof errors.password == 'undefined' ? '' : errors.password.msg  %> </small>
+            <div class="check-box-rowed">
+                <label for="remember">Remember me</label>
+                <input type="checkbox" name="remember">
+            </div>
+            <button type="submit" id="login-button" class="btn-log-in btn-centered">LOG IN</button>
+            <p>If you have an account with us, log in using your email address and password. </p>
+            <a class="forget-pass" href="">Did you forget your password?</a>
+            <a href="/users/register" class="form-login-style">
+                <button type="submit"  class="btn-log-in">REGISTER</button> 
+            </a>
+        </form>
+    </section>
+    </div>    
+</div>

@@ -1,14 +1,12 @@
 const {Product, Item, User, Order, Stock} = require('../database/models') 
 
-
-
 const cartController = {
     async cart (req,res) {
+
        const items = await Item.findAll({
             where: {
                 user_id: req.session.user.id,
                 order_id: null
-
             }
         })
         items.forEach( item => {

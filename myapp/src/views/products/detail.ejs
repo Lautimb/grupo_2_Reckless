@@ -64,9 +64,9 @@
                                         <ul>
                                             <% for( color of product.colors ) { %>
                                             <li>
-                                                <input type="radio" name="color" class= "color-circle">
+                                                <input type="radio" name="color" value="color" class= "color-circle">
                                                 <label for="color" id="color-input">
-                                                    <div id="color-circle" style= "background-color: <%= color.hexadecimal %>" ></div>
+                                                    <span id="color-circle" style= "background-color: <%= color.hexadecimal %>" ></span>
                                                 </label>
                                             </li>
                                             <% } %>
@@ -109,10 +109,8 @@
                                                 <ul>
                                                     <% for( color of product.colors ) { %>
                                                     <li>
-                                                        <input type="radio" name="color" class= "color-circle">
-                                                        <label for="color" id="color-input">
-                                                            <div id="color-circle" style= "background-color: <%= color.hexadecimal %>" ></div>
-                                                        </label>
+                                                            <span id="color-circle" style= "background-color: <%= color.hexadecimal %>" ></span>
+                                                            <input type="radio" name="color" value="<%=color.id%>" class= "color-circle">
                                                     </li>
                                                     <% } %>
                                                 </ul>

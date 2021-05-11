@@ -90,11 +90,16 @@ const cartController = {
             total: totalAmount
         })
 
-
-
-         await items.forEach(item =>{
+        //buscamos el stock a actualizar
+        await items.forEach( async item =>{
+            const itemStock = await Stock.findOne({
+                where: {
+                   id:  item.stock_id
+                }
+            })
+        //actualizamos tabla de stock
             Stock.update({
-                qty: --item.qty
+                qty: itemStock.qty - item.qty
             }, {
                 where: {
                     id: item.stock_id

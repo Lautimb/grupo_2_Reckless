@@ -2,6 +2,10 @@ insert into sizes (id, title) values (default, 'S');
 insert into sizes (id, title) values (default, 'M');
 insert into sizes (id, title) values (default, 'L');
 
+insert into colors (id, title, hexadecimal) values (default, 'Red', "#ff0000");
+insert into colors (id, title, hexadecimal) values (default, 'Green', "#006600");
+insert into colors (id, title, hexadecimal) values (default, 'Blue', "#0000ff");
+
 insert into types (id, title) values (default, 'Top');
 insert into types (id, title) values (default, 'Bottom');
 insert into types (id, title) values (default, 'Outerwear');

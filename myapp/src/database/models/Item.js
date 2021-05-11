@@ -36,7 +36,7 @@ module.exports = (sequelize, dataTypes)=>{
         },
         stock_id:{
             type: dataTypes.INTEGER,
-            allowNull: false
+            allowNull: true
         },
         user_id:{
             type: dataTypes.INTEGER.UNSIGNED

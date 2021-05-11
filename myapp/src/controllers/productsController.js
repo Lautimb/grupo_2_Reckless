@@ -240,6 +240,14 @@ module.exports = {
         
         const product = await db.Product.findByPk(req.params.id); 
 
+        const stock = await db.Stock.findOne({
+            where: {
+                product_id: req.params.id
+            }
+        })
+
+        await stock.setItems([])
+
         await product.setImages([]);
 
         await product.setSizes([]);
@@ -247,16 +255,21 @@ module.exports = {
         await product.setTypes([]);
 
         await product.setColors([]);
-
-        await product.setStocks([])
-
+        
         await product.setUsers([])
+        
+        await db.Stock.destroy({
+            where:{
+                product_id: req.params.id
+            }
+        })
         
         await db.Product.destroy({
           where: {
             id: req.params.id
           }
         });
+
     
         return res.redirect("/");
     },

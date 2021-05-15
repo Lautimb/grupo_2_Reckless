@@ -6,42 +6,42 @@
         <ul class="first-main">
             <li><svg id="logo-header-responsive" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600.16 239.33"><defs><style>.cls-1{fill:#00e9f8;}.cls-1,.cls-2,.cls-3{opacity:0.3;}.cls-2{fill:#ee3ec9;}.cls-3{fill:#eec73e;}</style></defs><circle class="cls-1" cx="67.03" cy="119.67" r="40.11"/><circle class="cls-2" cx="107.14" cy="119.67" r="40.11"/><circle class="cls-3" cx="147.25" cy="119.67" r="40.11"/><path d="M236.26,136.39H232L222.81,122c-.54,0-1.14,0-1.73,0H205.19v14.31h-3.58V98.44h20c10.89,0,13.88,5.48,13.88,11.82,0,4.77-2.06,9.54-8.79,11.22Zm-4.45-26.13c0-5-2.6-8.24-10.19-8.24H205.19V118.5h16.43C229.26,118.5,231.81,115.3,231.81,110.26Z"/><path d="M279.63,136.39H250.9V98.44h28.19V102H254.53v13.07h23v3.63h-23v14h25.1Z"/><path d="M327.67,122.41h3.79c-2.06,9.81-9.48,14.74-19,14.74-10.85,0-19.79-6.77-19.79-19.73s8.94-19.79,19.79-19.79c9.54,0,17,5,19,14.8h-3.79c-1.79-6.88-6.51-11.28-15.23-11.28-10.41,0-16.11,6.73-16.11,16.27s5.7,16.26,16.11,16.26C321.16,133.68,325.88,129.29,327.67,122.41Z"/><path d="M360.85,116.23l-10.62,9.48v10.68h-3.58V98.44h3.58v22.45l25.21-22.45h5.36l-17.24,15.4,18.06,22.55H377Z"/><path d="M423.37,136.39H395.18V98.44h3.57v34.32h24.62Z"/><path d="M467.29,136.39H438.55V98.44h28.19V102H442.18v13.07h23.05v3.63H442.18v14h25.11Z"/><path d="M515.38,125.88c0,6.72-5.69,11.27-17.08,11.27s-18.22-4-18.54-11.27h3.63c.43,6.56,8.46,7.8,14.91,7.8,7.16,0,13.34-2,13.34-7.53,0-5.21-4.34-5.75-12.47-6.78-12.2-1.52-18.11-2.71-18.11-10.68,0-7.43,7-11.06,15.88-11.06,9.11,0,15.78,2.93,16.27,10.57h-3.63c-.6-5.31-5.59-7-12.64-7-6.83,0-12.19,2-12.19,7.54s5.31,5.91,15,7.16C510.07,117.15,515.38,118.29,515.38,125.88Z"/><path d="M563.47,125.88c0,6.72-5.69,11.27-17.08,11.27s-18.21-4-18.54-11.27h3.63c.44,6.56,8.46,7.8,14.91,7.8,7.16,0,13.34-2,13.34-7.53,0-5.21-4.34-5.75-12.47-6.78-12.2-1.52-18.11-2.71-18.11-10.68,0-7.43,7-11.06,15.89-11.06,9.11,0,15.77,2.93,16.26,10.57h-3.63c-.6-5.31-5.58-7-12.63-7-6.83,0-12.2,2-12.2,7.54s5.31,5.91,15,7.16C558.16,117.15,563.47,118.29,563.47,125.88Z"/></svg></li>
             <li>
-                <div id="btn-main">
+                <div>
                     <i class="fas fa-bars" id="btn-main"></i>
                 </div>
             </li>
         </ul>
 
-        <ul id="nav-bar1">
-            <li class="search"><i class="fas fa-search"></i></li>   
+        <div class="main-responsive">
+
+            <ul id="nav-bar1">
+                <li class="search"><i class="fas fa-search"></i></li>   
             <% if (!userLog) { %>       
-            <li id="my-account"><p class="my-account-tittle">MY ACCOUNT</p>
-                <div class="myaccount-prelog">
-                    <div class="prelog-container">
-                        <h3 class="title-prelog">WELCOME</h3>
-
-
-                        <form action="/users/login" method="POST">
-                            <input type="text" class="input-style" placeholder="E-MAIL" name="email" autocomplete="off">
-                            <input type="password" class="input-style" placeholder="PASSWORD" name="password">
-                            <div>
-                                <label class="label-padding" for="remember">Remember me</label>
-                                <input type="checkbox" name="remember">
-                            </div>
-                            <button type="submit" class="btn-log-in">LOG IN</button>
-                            <p>If you have an account with us, log in using your email address and password. </p>
-                            <a class="forget-pass" href="">Did you forget your password?</a>
-                        </form>
-
-                        <a href="/users/register">
-                            <div class="btn-register">
-                                <p id= "btn-register-now">REGISTER NOW</p>
-                            </div>
-                        </a>
-
-                    </div>        
-                </div>
-            </li>
+                <li id="my-account"><p class="my-account-tittle">MY ACCOUNT</p>
+                    <div class="myaccount-prelog">
+                        <div class="prelog-container">
+                            <h3 class="title-prelog">WELCOME</h3>
+                            <form action="/users/login" method="POST">
+                                <input type="text" class="input-style" placeholder="E-MAIL" name="email" autocomplete="off">
+                                <input type="password" class="input-style" placeholder="PASSWORD" name="password">
+                                <div>
+                                    <label class="label-padding" for="remember">Remember me</label>
+                                    <input type="checkbox" name="remember">
+                                </div>
+                                <button type="submit" class="btn-log-in">LOG IN</button>
+                                <p>If you have an account with us, log in using your email address and password. </p>
+                                <a class="forget-pass" href="">Did you forget your password?</a>
+                            </form>
+                            
+                            <a href="/users/register">
+                                <div class="btn-register">
+                                    <p id= "btn-register-now">REGISTER NOW</p>
+                                </div>
+                            </a>
+                            
+                        </div>        
+                    </div>
+                </li>
             <% } else { %>
                 <li id="my-profile"><p class="my-account-tittle">HI, <%= userLog.first_name.toUpperCase() %>!</p>
                     <div class="logued-container">
@@ -53,37 +53,44 @@
                         </ul>
                     </div>
                 </li>
+                
+                <% } %>
+                <li><a href="/products/wishlist" class="wishlist">WISHLIST</a>
+                    <a href="/products/wishlist" class="inactive wishlistHeart"><i class="fas fa-heart"></i></a>
+                </li>
+                <li>
+                    <a href="/cart">
+                        <span class="material-icons-outlined">
+                            shopping_cart
+                        </span>
+                    </a>
+                </li>
+                <li class="language">EN | ES</li>
+                <li><i class="far fa-flag inactive"></i></li>
 
-            <% } %>
-            <li><a href="/products/wishlist">WISHLIST</a></li>
-            <li>
-                <a href="/cart">
-                    <span class="material-icons-outlined">
-                        shopping_cart
-                    </span>
-                </a>
-            </li>
-            <li>EN | ES</li>
-        </ul>
+            </ul>
         
-        <div class="container-logo">
-            <a href="/" method="GET"><svg id="logo-header" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 464.4 239.33"><defs><style>.cls-1{fill:#00e9f8;}.cls-1,.cls-2,.cls-3{opacity:0.3;}.cls-2{fill:#ee3ec9;}.cls-3{fill:#eec73e;}</style></defs><circle class="cls-1" cx="111.72" cy="119.67" r="95.67"/><circle class="cls-2" cx="232.2" cy="119.67" r="95.67"/><circle class="cls-3" cx="352.68" cy="119.67" r="95.67"/><path d="M108.77,133.55h-3.56l-7.6-11.93a13.48,13.48,0,0,1-1.44,0H83v11.88H80v-31.5H96.62c9,0,11.52,4.54,11.52,9.81,0,4-1.71,7.92-7.29,9.31Zm-3.69-21.69c0-4.19-2.16-6.84-8.46-6.84H83V118.7H96.62C103,118.7,105.08,116,105.08,111.86Z"/><path d="M144.77,133.55H120.92v-31.5h23.4v3H123.93v10.84h19.13v3H123.93v11.65h20.84Z"/><path d="M184.64,121.94h3.15c-1.71,8.14-7.88,12.24-15.8,12.24-9,0-16.42-5.63-16.42-16.38S163,101.37,172,101.37c7.92,0,14.09,4.14,15.8,12.29h-3.15c-1.49-5.71-5.4-9.36-12.65-9.36-8.64,0-13.36,5.58-13.36,13.5s4.72,13.5,13.36,13.5C179.24,131.3,183.15,127.65,184.64,121.94Z"/><path d="M212.18,116.81l-8.82,7.87v8.87h-3v-31.5h3v18.63l20.92-18.63h4.46l-14.31,12.78,15,18.72h-3.82Z"/><path d="M264.06,133.55h-23.4v-31.5h3v28.48h20.43Z"/><path d="M300.51,133.55H276.66v-31.5h23.4v3H279.68v10.84H298.8v3H279.68v11.65h20.83Z"/><path d="M340.43,124.82c0,5.58-4.73,9.36-14.18,9.36s-15.12-3.29-15.39-9.36h3c.36,5.44,7,6.48,12.37,6.48,5.94,0,11.07-1.67,11.07-6.26,0-4.32-3.6-4.77-10.35-5.62-10.12-1.26-15-2.25-15-8.87,0-6.16,5.81-9.18,13.19-9.18,7.56,0,13.09,2.43,13.5,8.78h-3c-.49-4.41-4.63-5.85-10.48-5.85-5.67,0-10.13,1.62-10.13,6.25s4.41,4.91,12.47,5.94C336,117.57,340.43,118.52,340.43,124.82Z"/><path d="M380.34,124.82c0,5.58-4.73,9.36-14.17,9.36s-15.12-3.29-15.39-9.36h3c.36,5.44,7,6.48,12.38,6.48,5.93,0,11.06-1.67,11.06-6.26,0-4.32-3.6-4.77-10.35-5.62-10.12-1.26-15-2.25-15-8.87,0-6.16,5.8-9.18,13.18-9.18,7.56,0,13.09,2.43,13.5,8.78h-3c-.49-4.41-4.63-5.85-10.48-5.85-5.67,0-10.12,1.62-10.12,6.25s4.41,4.91,12.46,5.94C375.93,117.57,380.34,118.52,380.34,124.82Z"/></svg></a>
-        </div>  
-
-        <ul id="nav-bar2">
-            <li class="nav-bar2-li"><a href="/">HOME</a></li>
-            <li id="shop" class="nav-bar2-li"><a href="#">SHOP</a>
-                <ul class="sub-shop">
-                    <li class="sub-shop-list"><a href="/products">NEW ARRIVALS</a></li>
-                    <% for (type of types) {%> 
-                        <li class="sub-shop-list"><a href="/products/type/<%= type.title.toLowerCase() %> "><%= type.title.toUpperCase() %></a></li>
-                    <% } %> 
-                </ul>
-            </li>
-            <li class="nav-bar2-li"><a href="/lookbook">LOOKBOOK</a></li>
-            <li class="nav-bar2-li"><a href="/social">SOCIAL</a></li>
-            <li class="nav-bar2-li"><a href="/contact">CONTACT</a></li>
-        </ul>
-    
-    </nav>
+            <div class="container-logo">
+                <a href="/" method="GET"><svg id="logo-header" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 464.4 239.33"><defs><style>.cls-1{fill:#00e9f8;}.cls-1,.cls-2,.cls-3{opacity:0.3;}.cls-2{fill:#ee3ec9;}.cls-3{fill:#eec73e;}</style></defs><circle class="cls-1" cx="111.72" cy="119.67" r="95.67"/><circle class="cls-2" cx="232.2" cy="119.67" r="95.67"/><circle class="cls-3" cx="352.68" cy="119.67" r="95.67"/><path d="M108.77,133.55h-3.56l-7.6-11.93a13.48,13.48,0,0,1-1.44,0H83v11.88H80v-31.5H96.62c9,0,11.52,4.54,11.52,9.81,0,4-1.71,7.92-7.29,9.31Zm-3.69-21.69c0-4.19-2.16-6.84-8.46-6.84H83V118.7H96.62C103,118.7,105.08,116,105.08,111.86Z"/><path d="M144.77,133.55H120.92v-31.5h23.4v3H123.93v10.84h19.13v3H123.93v11.65h20.84Z"/><path d="M184.64,121.94h3.15c-1.71,8.14-7.88,12.24-15.8,12.24-9,0-16.42-5.63-16.42-16.38S163,101.37,172,101.37c7.92,0,14.09,4.14,15.8,12.29h-3.15c-1.49-5.71-5.4-9.36-12.65-9.36-8.64,0-13.36,5.58-13.36,13.5s4.72,13.5,13.36,13.5C179.24,131.3,183.15,127.65,184.64,121.94Z"/><path d="M212.18,116.81l-8.82,7.87v8.87h-3v-31.5h3v18.63l20.92-18.63h4.46l-14.31,12.78,15,18.72h-3.82Z"/><path d="M264.06,133.55h-23.4v-31.5h3v28.48h20.43Z"/><path d="M300.51,133.55H276.66v-31.5h23.4v3H279.68v10.84H298.8v3H279.68v11.65h20.83Z"/><path d="M340.43,124.82c0,5.58-4.73,9.36-14.18,9.36s-15.12-3.29-15.39-9.36h3c.36,5.44,7,6.48,12.37,6.48,5.94,0,11.07-1.67,11.07-6.26,0-4.32-3.6-4.77-10.35-5.62-10.12-1.26-15-2.25-15-8.87,0-6.16,5.81-9.18,13.19-9.18,7.56,0,13.09,2.43,13.5,8.78h-3c-.49-4.41-4.63-5.85-10.48-5.85-5.67,0-10.13,1.62-10.13,6.25s4.41,4.91,12.47,5.94C336,117.57,340.43,118.52,340.43,124.82Z"/><path d="M380.34,124.82c0,5.58-4.73,9.36-14.17,9.36s-15.12-3.29-15.39-9.36h3c.36,5.44,7,6.48,12.38,6.48,5.93,0,11.06-1.67,11.06-6.26,0-4.32-3.6-4.77-10.35-5.62-10.12-1.26-15-2.25-15-8.87,0-6.16,5.8-9.18,13.18-9.18,7.56,0,13.09,2.43,13.5,8.78h-3c-.49-4.41-4.63-5.85-10.48-5.85-5.67,0-10.12,1.62-10.12,6.25s4.41,4.91,12.46,5.94C375.93,117.57,380.34,118.52,380.34,124.82Z"/></svg></a>
+            </div>  
+        
+            <ul id="nav-bar2">
+                <li class="nav-bar2-li"><a href="/">HOME</a></li>
+                <li id="shop" class="nav-bar2-li"><a href="#">SHOP</a>
+                    <ul class="sub-shop">
+                        <li class="sub-shop-list"><a href="/products">NEW ARRIVALS</a></li>
+                        <% for (type of types) {%> 
+                            <li class="sub-shop-list"><a href="/products/type/<%= type.title.toLowerCase() %> "><%= type.title.toUpperCase() %></a></li>
+                            <% } %> 
+                        </ul>
+                    </li>
+                <li class="nav-bar2-li"><a href="/lookbook">LOOKBOOK</a></li>
+                <li class="nav-bar2-li"><a href="/social">SOCIAL</a></li>
+                <li class="nav-bar2-li"><a href="/contact">CONTACT</a></li>
+            </ul>
+            
+        </div>
+        </nav>
 </header>
+
+<script src="/scripts/btn-main.js"></script>

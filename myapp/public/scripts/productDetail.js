@@ -1,5 +1,6 @@
 const detailButton = document.querySelectorAll('.show-description')
-const colorInput = document.querySelectorAll('.color-circle')
+const colorInputDiv = document.querySelectorAll('.color-circle')
+
 
 detailButton[0].onclick = (e) =>{
     const description = document.querySelector('#detail-description-text')
@@ -16,8 +17,11 @@ detailButton[1].onclick = (e) =>{
  
 }
 
-colorInput.forEach( (input) => {
+colorInputDiv.forEach( (input, i, array) => {
     input.onclick = (e) =>{
-        input.classList.toggle('color-circle-border')
+        array.forEach(otherInputs => {
+            otherInputs.classList.remove('color-circle-border')
+        })
+        input.classList.add('color-circle-border')
     }
 })

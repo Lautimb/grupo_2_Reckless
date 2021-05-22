@@ -30,7 +30,11 @@
 
                             <ul class= "product-detail__name-heart">
                                 <h1><%= product.name %></h1>
-                                <i class="far fa-heart"></i>
+                                <% if(product.dataValues.liked == 'added'){ %> 
+                                    <span><i class="fas fa-heart like added" id="<%= product.id %>"></i></span> 
+                                <% } else { %>
+                                    <span><i class="fas fa-heart like" id="<%= product.id %>"></i></span>   
+                                <% } %>
                             </ul>
                             <% if (product.discount) { %>
                                 <ul class= "product-detail__price-promotions">
@@ -56,13 +60,13 @@
                                 <div >
                     
                                     <div class="product-detail__colors">
-                                        <legend>COLOR: <%= product.colors[0].title %></legend>
+                                        <legend>COLOR: </legend>
                                         <ul>
                                             <% for( color of product.colors ) { %>
                                             <li>
-                                                <input type="radio" name="color" class= "color-circle">
+                                                <input type="radio" name="color" value="color" class= "color-circle">
                                                 <label for="color" id="color-input">
-                                                    <div id="color-circle" style="background-color: <%= color.hexadecimal %>"></div>
+                                                    <span id="color-circle" style= "background-color: <%= color.hexadecimal %>" ></span>
                                                 </label>
                                             </li>
                                             <% } %>
@@ -71,7 +75,7 @@
                                         
                                     <div>
                                         <select name="size" class="product-detail__select">
-                                            <% for (size of product.sizes) { %>}
+                                            <% for (size of product.sizes) { %>
                                             <option value="<%= size.id %>" selected><%= size.title %></option>
                                             <% } %>
                                         </select>
@@ -101,6 +105,7 @@
                                         <div >
                             
                                             <div class="product-detail__colors">
+<<<<<<< HEAD
                                                 <legend>COLOR: <%= product.colors[0].title %></legend>
                                                 <ul>
                                                     <% for( color of product.colors ) { %>
@@ -116,8 +121,9 @@
                                                 
                                             <div>
                                                 <select name="size" class="product-detail__select">
-                                                    <option value="" selected><%= product.sizes[0].title %></option>
-                                                    
+                                                    <% for (size of product.sizes) { %>
+                                                    <option value="<%= size.id %>" selected><%= size.title %></option>
+                                                    <% } %>
                                                 </select>
                                             </div>
                 
@@ -224,7 +230,11 @@
                 </div>
             </section>
 
+            <%- include('../partials/modalRequireLogin')%>
+
+
         </main>
+        <script src="/scripts/wishlist.js"></script>
         <script src="/scripts/productDetail.js"></script>
         <!-- FOOTER -->
 

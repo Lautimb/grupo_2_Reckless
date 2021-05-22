@@ -35,11 +35,18 @@ module.exports = (sequelize, dataTypes)=>{
         })
         Stock.belongsTo(models.Color,{
             as:"colors",
-            foreignKey:"color_id"
+            foreignKey:"color_id",
+            timestamps: true
         })
         Stock.belongsTo(models.Size,{
             as:"sizes",
-            foreignKey:"size_id"
+            foreignKey:"size_id",
+            timestamps: true
+        })
+        Stock.hasMany(models.Item,{
+            as:"items",
+            foreignKey:"stock_id",
+            timestamps: true
         })
     }
     return Stock;

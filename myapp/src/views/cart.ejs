@@ -14,93 +14,89 @@
             <h1>Shopping cart</h1>
         </div>
         <section class="cart">
-            <div class="cart-container">
-                <div class="cart-article">
-                    <% if(items.length != 0){ %> 
-                        <% for(item of items){ %> 
-                    <article class="cart-items">
-                        <div class="cart-items-titles">
-                            <ul class="item-titles">
-                                <li class="item">Item</li>
-                            </ul>    
-                            <ul class="item-titles">
-                                <li>Price</li>
-                                <li>Quantity</li>
-                                <li>Total Price</li>
-                            </ul>  
-                        </div>    
-                        
-
-                        <div class="cart-product">
-                            <div class="list-item">
+            <form action = "/cart/shop" method="POST" name="shopButton">
+                <div class="cart-container">
+                    
+                        <div class="cart-article">
+                            <% if(items.length != 0){ %> 
+                                <% for(item of items){ %> 
+                            <article class="cart-items">
+                                <div class="cart-items-titles">
+                                    <ul class="item-titles">
+                                        <li class="item">Item</li>
+                                    </ul>    
+                                    <ul class="item-titles">
+                                        <li>Price</li>
+                                        <li>Quantity</li>
+                                        <li>Total Price</li>
+                                    </ul>  
+                                </div>    
+                            
+                                <div class="cart-product">
+                                    <div class="list-item">
+                                        <div class="product-img">
+                                            <img src="/imgs/products/<%= item.img[0] %>"  alt="">
+                                        </div>
+                                        <ul class="product-features">
+                                            <li><h2><%= item.name %> </h2></li>
+                                            <li><p>Discount: <%=item.discount %>%  </p></li>
+                                            <li><a href="" id="product-edit">Edit</a></li>
+                                        </ul>
+                                    
+                                    
+                                    </div>
                                 
-                                <div class="product-img">
-                                    <img src="/imgs/products/<%= item.img[0] %>"  alt="">
-                                </div>
-                                
-                                <ul class="product-features">
-                                    <li><h2><%= item.name %> </h2></li>
-                                    <li><p>Discount: <%=item.discount %>%  </p></li>
-                                    <li><a href="" id="product-edit">Edit</a></li>
-                                </ul>
-
-
-                                
-                            </div>
-
-                            <div class="list-item2">
-                                <ul>   
-                                    <li> <%= item.price  %>  </li>
-                                    <li>
-                                        <form action="">
-                                            <input type="number" value='<%= item.qty %>' name="productQuantity" class="input-style">
-                                        </form>
-                                    </li>
-                                    <li>
-                                        <%= item.item_subtotal %> 
-                                    </li>
-                                </ul>
-
-                                <div class="action-container">
-                                    <div>
-                                        <form action="/cart/delete/<%= item.id %>?_method=DELETE" method="POST" name="button" >
-                                            <button type="submit" class="buttons-detail" name="button"><i class="fas fa-times"></i>DEL</button>
-                                        </form>
+                                    <div class="list-item2">
+                                        <ul>   
+                                            <li> <%= item.price  %>  </li>
+                                            <li>
+                                                <form action="">
+                                                    <input type="number" value='<%= item.qty %>' name="productQuantity" class="input-style">
+                                                </form>
+                                            </li>
+                                            <li>
+                                                <%= item.item_subtotal %> 
+                                            </li>
+                                        </ul>
+                                    
+                                        <div class="action-container">
+                                            <div>
+                                                <form action="/cart/delete/<%= item.id %>?_method=DELETE" method="POST" name="button" >
+                                                    <button type="submit" class="buttons-detail" name="button"><i class="fas fa-times"></i>DEL</button>
+                                                </form>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+                            </article>
+                                <% } %>   
+                            <% }else{ %>
+                                <p> There's no items inside your cart yet</p>
+                            <% } %>
+                        </div>
+                    
+                        <div class="order-summary">
+                            <div class="container-checkout">
+                                <div class="data-pre-checkout">
+                                    <p>Subtotal</p>
+                                    <p>Shipping</p>
+                                    <p>Estimated tax</p>
+
+                                        <h4>$<%= total %> </h4>
+                                        <button type="submit" class = "buttons-detail">PROCEED TO CHECKOUT</button></a>
+
+                                </div>
+                                <div class="code-checkout">
+                                    <p>PROMO CODE</p>
+
+                                        <input type="text" class="input-style" name="promo-code">
+
+                                </div>
                             </div>
                         </div>
-                        
-                    </article>
-                        <% } %>   
-                    <% }else{ %>
-                        <p> There's no items inside your cart yet</p>
-                    <% } %>
-                </div>
-
-                
-                <div class="order-summary">
-                    <div class="container-checkout">
-                        <div class="data-pre-checkout">
-                            <p>Subtotal</p>
-                            <p>Shipping</p>
-                            <p>Estimated tax</p>
-                            <form action = "/cart/shop" method="POST" name="shopButton">
-                                <h4>$<%= total %> </h4>
-                                <button type="submit" class = "buttons-detail">PROCEED TO CHECKOUT</button></a>
-                            </form>
-                        </div>
-                        <div class="code-checkout">
-                            <p>PROMO CODE</p>
-                            <form action="" method="GET">
-                                <input type="text" class="input-style" name="promo-code">
-                            </form>
-                        </div>
-                    </div>
-                </div>
                     
-            </div> 
-
+                </div> //aca 
+            </form>
         </section>   
 
         <section class="cart-wishlist">

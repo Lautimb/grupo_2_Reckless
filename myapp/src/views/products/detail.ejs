@@ -101,13 +101,16 @@
                                         <div >
                             
                                             <div class="product-detail__colors">
-                                                <legend>COLORS</legend>
+                                                <legend>COLOR: <%= product.colors[0].title %></legend>
                                                 <ul>
-                                                    <li><input type="radio" name="color" class= "color-circle"></li>
-                                                    <li><input type="radio" name="color" class= "color-circle"></li>
-                                                    <li><input type="radio" name="color" class= "color-circle"></li>
-                                                    <li><input type="radio" name="color" class= "color-circle"></li>
-                                                    <li><input type="radio" name="color" class= "color-circle"></li>
+                                                    <% for( color of product.colors ) { %>
+                                                    <li>
+                                                        <input type="radio" name="color" class= "color-circle-input">
+                                                        <label for="color" id="color-input">
+                                                            <div class="color-circle" style="background-color: <%= color.hexadecimal %>"></div>
+                                                        </label>
+                                                    </li>
+                                                    <% } %>
                                                 </ul>
                                             </div>
                                                 

@@ -590,14 +590,10 @@ a:visited{
     padding: 15px;
 }
 
-.color-circle {
+.color-circle-input {
     margin: 0px;
     padding: 0px;
     opacity: 0;
-}
-
-.color-circle:hover {
-    cursor: pointer;
 }
 
 #color-input {
@@ -784,13 +780,40 @@ a:visited{
     flex-direction: column;  
 }
 
-.form-login-style input:not([type = 'checkbox']){
+.form-login-style{
     width: 100%;
 }
+
+.form-login-style input:not([type="checkbox"]){
+    width: 100%
+}
+
 .form-login-style button{
     align-self: center;
-
 }
+
+.check-option{
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.check-option span{
+    padding-left: 5px;
+    font-size: 15px;
+}
+
+.newsletters{
+    align-items: start;
+}
+.create-account-div{
+    padding-top: 20px;
+}
+
+.create-account-div p{
+    font-size: 15px;
+}
+
 
 /* --------------------- PROFILE STYLES ------------------------*/
 .user-profile-style{
@@ -841,7 +864,10 @@ h3, .required-files{
     margin-top: 20px; 
 }
 
-
+.form-container input:not([type="checkbox"]){
+    width: 100%;
+    margin-top: 10px;
+}
 
 .birthday-container{
     display: flex;
@@ -874,15 +900,6 @@ h3, .required-files{
 .country-city div:nth-child(2){
    
     width: 50%;
-}
-.form-container input{
-    width: 100%;
-    margin-top: 10px;
-}
-.confirm-terms{
-    position: relative;
-   
-
 }
 
 .container-city div{
@@ -1151,7 +1168,7 @@ h3, .required-files{
     cursor: pointer;
 }
 
-#color-circle {
+.color-circle {
     display: inline-block;
     position: absolute;
     width: 20px;
@@ -1159,6 +1176,10 @@ h3, .required-files{
     border-radius: 50%;
     border: 1px solid;
     cursor: pointer;
+}
+
+.color-circle-border{
+    border: 3px outset black !important;
 }
 /*---------------------------- UPLOAD END -----------------------*/
 

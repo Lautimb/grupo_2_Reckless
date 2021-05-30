@@ -19,7 +19,6 @@ window.onload = function () {
             }
         )
 }
-console.log(productStock)
 
 detailButton[0].onclick = (e) =>{
     const description = document.querySelector('#detail-description-text')

@@ -246,23 +246,31 @@ module.exports = {
             }
         })
 
-        await stock.setItems([])
-
-        await product.setImages([]);
-
-        await product.setSizes([]);
 
         await product.setTypes([]);
 
         await product.setColors([]);
         
+        await product.setImages([]);
+
+        await product.setSizes([]);
+        
         await product.setUsers([])
+
+        await db.Item.update({
+            stock_id: null
+        },{
+            where: {
+                stock_id: stock.id
+            }
+        })
         
         await db.Stock.destroy({
             where:{
                 product_id: req.params.id
             }
         })
+
         
         await db.Product.destroy({
           where: {

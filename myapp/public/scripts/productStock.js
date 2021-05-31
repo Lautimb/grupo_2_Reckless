@@ -19,3 +19,5 @@ deleteOptionButton.onclick = (e) => {
         }
     }
 }
+
+// falta hacer que no permanezca el qty del que copia

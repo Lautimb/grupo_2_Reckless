@@ -37,6 +37,7 @@ const cartController = {
                 size_id: req.body.size
             }
         })
+
         await Item.create({
             name: product.name,
             img: product.images[0].filename,
@@ -106,7 +107,8 @@ const cartController = {
         })
         // actualizamos items
         await Item.update({
-            order_id: order.id
+            order_id: order.id,
+            stock_id: null
         }, {
            where: {
                user_id: req.session.user.id,

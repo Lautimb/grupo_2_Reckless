@@ -21,9 +21,11 @@ module.exports = {
                 old: req.body
             });
         }
-        let { firstName, lastName, email, password, year, month, day, managerFirstName, managerLastName, businessName, phoneNumber } = req.body;
+        let { firstName, lastName, email, password, year, month, day, userType } = req.body;
         
         password = bcrypt.hashSync(req.body.password, 10);
+        
+        const user_type = userType ? userType = 4 : userType = 3;
 
         await User.create({
             first_name: firstName,
@@ -31,6 +33,7 @@ module.exports = {
             email: email,
             password: password,
             birthday: moment(year + '-' + month + '-' + day ).format('l'),
+            user_type_id: user_type,
             
             // BUSINESS DATA
 

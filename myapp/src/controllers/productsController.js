@@ -273,7 +273,6 @@ module.exports = {
             }
         })
 
-
         await product.setTypes([]);
 
         await product.setColors([]);
@@ -298,7 +297,6 @@ module.exports = {
             }
         })
 
-        
         await db.Product.destroy({
           where: {
             id: req.params.id

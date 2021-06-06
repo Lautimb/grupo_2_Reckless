@@ -186,21 +186,10 @@
                     
                     <small class="errors-style" style="display:block"><%= typeof errors == 'undefined' ? '': typeof errors.birthday == 'undefined' ? '' : errors.birthday.msg  %> </small>
 
-                    <div>
-                        <label for="wholesale-user" class="check-option">
-                            <input id="wholesale-user" type="checkbox" name="userType">
-                            <span>I am a wholesale customer</span>
-                        </label>
-                    </div>
-                    
-                    <div>
-                        <label for="confirm-terms" class="check-option newsletters">
-                            <input id="confirm-terms" type="checkbox" name="newsletters">
-                            <span>If you prefer to receive our newsletters by e-mail from reckless.com, please tick the box</span>
-                        </label>
-                    </div>
 
-                    <div class="create-account-div">
+                    <div class="confirm-terms">
+                        <input type="checkbox" name="newsletters" value="agree">
+                        If you prefer to receive our newsletters by e-mail from reckless.com, please tick the box
                         <p>By clicking "CREATE ACCOUNT" you´re agreeing to our <a class="terms-policy" href="">terms of service</a> and <a class="terms-policy" href="">privacy policy</a></p>
                         <button type="button" id="button-register">CREATE ACCOUNT</button>
                     </div>

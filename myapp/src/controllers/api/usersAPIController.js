@@ -1,8 +1,11 @@
 const { User } = require('../../database/models');
+
 module.exports = {
     async list (req, res) {
         try{
-            const users = await User.findAll()
+            const users = await User.findAll({
+                attributes: {exclude: ['password','user_type_id']}
+            })
             
             users.forEach( user => {
                 return user.setDataValue('detail',`http://localhost:3300/api/users/${user.id}`)
@@ -10,7 +13,7 @@ module.exports = {
             
             res.json({
                 meta:{
-                    state:'success',
+                    state:'sucess',
                     count: users.length
                 },
                 users
@@ -27,13 +30,14 @@ module.exports = {
 
     async detail (req,res){
         try{
+            console.log('metodo detail')
             const id = req.params.id
             const user = await User.findByPk(id,{
                 attributes: {exclude: ['password','user_type_id']}
             })
             res.json({
                 meta:{
-                    state:'success',
+                    state:'sucess',
                     count: user.length
                 },
                 user
@@ -55,13 +59,14 @@ module.exports = {
             const idProduct = parseInt(req.body.productId)
             const user = await User.findByPk(idUser)
             await user.addProducts(idProduct)
-            
+
             res.json({
                 meta: {
-                    state:'success'
+                    state:'sucess'
                 }              
             })
-                        
+            
+            
         } catch (error){
             res.status(500).json({
                 meta: {
@@ -77,12 +82,13 @@ module.exports = {
             const idProduct = parseInt(req.body.productId)
             const user = await User.findByPk(idUser)
             await user.removeProducts(idProduct)
-            
 
+           
             res.json({
                 meta: {
-                    state:'remove success'
+                    state:'sucess remove'
                 }
+                
             })
             
             
@@ -91,7 +97,7 @@ module.exports = {
                 meta: {
                     status: 'error',
                 },
-                error: 'Error, the product cannot be deleted',
+                error: 'Error, the product cannot be delete',
             })
         }
     },
@@ -101,7 +107,7 @@ module.exports = {
            
             res.json({
                 meta: {
-                    state:'response success'
+                    state:'sucess response'
                 },
                 userLog   
             })
@@ -111,7 +117,27 @@ module.exports = {
                 meta: {
                     status: 'error',
                 },
-                error: 'Error, the product cannot be deleted',
+                error: 'Error, the product cannot be delete',
+            })
+        }
+    },
+    async addedWishlists (req,res){
+        try{     
+
+            
+            res.json({
+                meta: {
+                    state:'sucess response'
+                }                
+                   
+            })
+            
+        } catch (error){
+            res.status(500).json({
+                meta: {
+                    status: 'error',
+                },
+                error: 'Error, wishlists is dead',
             })
         }
     }

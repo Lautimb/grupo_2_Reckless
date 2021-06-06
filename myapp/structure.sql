@@ -175,7 +175,6 @@ CREATE TABLE items (
     item_subtotal DECIMAL(10,2),
     status BOOLEAN,
     
-    stock_id INT UNSIGNED,
     user_id INT UNSIGNED,
     order_id INT UNSIGNED,
     
@@ -216,7 +215,6 @@ ALTER TABLE orders
 ADD FOREIGN KEY (user_id) REFERENCES users(id);
 
 ALTER TABLE items
-ADD FOREIGN KEY (stock_id) REFERENCES stocks(id),
 ADD FOREIGN KEY (user_id) REFERENCES users(id),
 ADD FOREIGN KEY (order_id) REFERENCES orders(id);
 

@@ -20,7 +20,7 @@ module.exports = {
         } catch (error) {
             res.status(500).json({
                 meta: {
-                    status: 'error',
+                    status: 'error',s
                 },
                 error: 'Users not found',
             })
@@ -29,7 +29,6 @@ module.exports = {
 
     async detail (req,res){
         try{
-            console.log('metodo detail')
             const id = req.params.id
             const user = await User.findByPk(id,{
                 attributes: {exclude: ['password','user_type_id']}

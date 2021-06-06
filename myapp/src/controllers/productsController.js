@@ -68,7 +68,7 @@ module.exports = {
     store: async(req, res)=>{
         const errors = validationResult(req);
 
-        const { qty, color , size , name, description, price , wholesaleprice , discount , art} = req.body
+        const { qty, color , size , name, description, price , wholesaleprice , discount , art, type} = req.body
 
         if(!errors.isEmpty()){ 
             const sizes = await db.Size.findAll()
@@ -106,8 +106,8 @@ module.exports = {
         await product.addSizes(eachSize, product.id)
 
         // Types
-        const types = (typeof req.body.type == "string" ? [req.body.type] : req.body.type)
-        await product.addTypes(parseInt(types),product.id)
+        const eachType = parser(type)
+        await product.addTypes(eachType, product.id)
 
         //Colors
         const eachColor = parser(color)
@@ -144,14 +144,24 @@ module.exports = {
         // Traigo la lista de talles y categorias para mandar a los select del form
         const sizes = await db.Size.findAll()
         const types = await db.Type.findAll()
+        const colors = await db.Color.findAll()
 
         const product = await db.Product.findByPk(id,{
-            include:["images","sizes", "types"]
+            include:["images","sizes", "types", "colors", "stocks"]
         })
        
         product.images[0].filename = JSON.parse(product.images[0].filename)
+        
+        product.stocks.forEach( (stock)=> {
+            
+            const productSizesTitle = sizes.find ( size => stock.size_id == size.id)
+            stock.setDataValue( "sizeTitle", productSizesTitle.title)
 
-        res.render('products/edit', { product, sizes, types });
+            const productColorsTitle = colors.find ( color => stock.color_id == color.id)
+            stock.setDataValue( "colorTitle", productColorsTitle.title)
+        })
+
+        res.render('products/edit', { product, sizes, types, colors });
 
     },
     update: async(req,res)=>{
@@ -170,7 +180,7 @@ module.exports = {
             })
         }
         
-        const { name, description, price , wholesaleprice, discount , art } = req.body;
+        const { name, description, price, wholesaleprice, discount, art, qty, color, size, type } = req.body;
     
         await db.Product.update(
         {
@@ -187,8 +197,9 @@ module.exports = {
             }
         }
         );
+
         const product = await db.Product.findByPk(req.params.id,{
-            include:["images","sizes", "types"]
+            include:["images","sizes", "types", "colors"]
         });
         
 
@@ -202,13 +213,29 @@ module.exports = {
             await product.setImages(images);
         }
 
-        const sizes = (typeof req.body.size == "string" ? [req.body.size] : req.body.size)
+        // Sizes
+        const eachSize = parser(size)
+        await product.setSizes(eachSize, product.id)
 
-        await product.setSizes(parseInt(sizes),product.id)
+        // Types
+        const eachType = parser(type)
+        await product.setTypes(eachType, product.id)
 
-        const types = (typeof req.body.type == "string" ? [req.body.type] : req.body.type)
+        //Colors
+        const eachColor = parser(color)
+        await product.setColors(eachColor, product.id)
 
-        await product.setTypes(parseInt(types),product.id)
+        //Qty
+        const eachQty= parser(qty)
+
+        await eachQty.forEach((qty, i ) =>{
+            db.Stock.update({
+                qty: qty,
+                color_id: eachColor[i],
+                size_id: eachSize[i]
+            })
+        })
+        // pensar como resolver lo del update porque no guarda un carajo
 
         return res.redirect('/'); 
     },
@@ -246,24 +273,30 @@ module.exports = {
             }
         })
 
-        await stock.setItems([])
-
-        await product.setImages([]);
-
-        await product.setSizes([]);
-
         await product.setTypes([]);
 
         await product.setColors([]);
         
+        await product.setImages([]);
+
+        await product.setSizes([]);
+        
         await product.setUsers([])
+
+        await db.Item.update({
+            stock_id: null
+        },{
+            where: {
+                stock_id: stock.id
+            }
+        })
         
         await db.Stock.destroy({
             where:{
                 product_id: req.params.id
             }
         })
-        
+
         await db.Product.destroy({
           where: {
             id: req.params.id

@@ -91,7 +91,7 @@ module.exports = {
         try{
 
             const product = await Product.findByPk(req.params.id,{
-                include:["images","types","sizes","colors"]
+                include:["images","types","sizes","colors","stocks"]
             })
             
             const images = JSON.parse(product.images[0].filename)

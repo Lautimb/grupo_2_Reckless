@@ -2,9 +2,7 @@ const { User } = require('../../database/models');
 module.exports = {
     async list (req, res) {
         try{
-            const users = await User.findAll({
-                attributes: {exclude: ['password','user_type_id']}
-            })
+            const users = await User.findAll()
             
             users.forEach( user => {
                 return user.setDataValue('detail',`http://localhost:3300/api/users/${user.id}`)
@@ -20,7 +18,7 @@ module.exports = {
         } catch (error) {
             res.status(500).json({
                 meta: {
-                    status: 'error',s
+                    status: 'error',
                 },
                 error: 'Users not found',
             })
@@ -83,9 +81,8 @@ module.exports = {
 
             res.json({
                 meta: {
-                    state:'success remove'
+                    state:'remove success'
                 }
-                
             })
             
             
@@ -94,7 +91,7 @@ module.exports = {
                 meta: {
                     status: 'error',
                 },
-                error: 'Error, the product cannot be delete',
+                error: 'Error, the product cannot be deleted',
             })
         }
     },
@@ -104,7 +101,7 @@ module.exports = {
            
             res.json({
                 meta: {
-                    state:'success response'
+                    state:'response success'
                 },
                 userLog   
             })
@@ -114,7 +111,7 @@ module.exports = {
                 meta: {
                     status: 'error',
                 },
-                error: 'Error, the product cannot be delete',
+                error: 'Error, the product cannot be deleted',
             })
         }
     }

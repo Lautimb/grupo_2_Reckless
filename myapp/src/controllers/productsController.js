@@ -228,14 +228,26 @@ module.exports = {
         //Qty
         const eachQty= parser(qty)
 
-        await eachQty.forEach((qty, i ) =>{
-            db.Stock.update({
-                qty: qty,
+        const stocks = await db.Stock.findAll({
+            where: {
+                product_id: product.id
+            }
+        })
+
+        stocks.forEach( async (stock, i ) =>{
+            await db.Stock.update({
+                qty: eachQty[i],
                 color_id: eachColor[i],
                 size_id: eachSize[i]
+            },{
+                where:{ 
+                    id:stock.id,   
+                    product_id: stock.product_id,
+                    color_id: stock.color_id,
+                    size_id: stock.size_id
+                }
             })
         })
-        // pensar como resolver lo del update porque no guarda un carajo
 
         return res.redirect('/'); 
     },

@@ -7,6 +7,8 @@
     <%- include('../partials/header')%>
 
     <main>
+        
+
         <section id="new-arrivals">
             <div class="h1-center">
                 <h1><%= type.toUpperCase() %></h1>
@@ -14,40 +16,34 @@
 
             <div class="products-container">
 
-                <% for(product of products){%>
+                <% for(product of products){ %>
                  
                     <article class="product-container">
                         <a href="/products/detail/<%= product.id %>">
                            
-                            <img src="/imgs/products/<%= product.images[0].filename[0] %>" alt=""> 
+                              <img src="/imgs/products/<%= product.images[0].filename[0] %>" alt=""> 
                                   
                             <div class="product-detail">
                                 <div class="name-price-product-container">
-                                    <h3><%= product.name%></h3> 
+                                    <h3><%= product.name %></h3> 
                                     <p>$<%= product.price %></p>
                                 </div>
                             </div>
+                            <div>
+                                <span class="material-icons-outlined">
+                                    favorite_border
+                                </span>
+                            </div>
                         </a>
-                        <div>
-                            <% if(product.dataValues.liked == 'added'){ %> 
-                                <span><i class="fas fa-heart like added" id="<%= product.id %>"></i></span> 
-                            <% } else { %>
-                                <span><i class="fas fa-heart like" id="<%= product.id %>"></i></span>   
-                            <% } %>
-                        </div>
                     </article>
-                <%}%>
-                <%- include('../partials/modalRequireLogin')%>
 
+                    
+                <% } %>
 
             </div>
         </section>
-
-        
     </main>
     
-    <script src="/scripts/wishlist.js"></script>
-
     <!-- FOOTER -->
 
     <%- include('../partials/footer')%>

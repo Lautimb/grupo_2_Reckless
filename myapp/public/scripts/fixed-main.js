@@ -6,7 +6,7 @@ window.addEventListener('scroll',() => {
     let width = window.screen.width;
     navBar2.style.backgroundColor = "transparent";
     navBar2.style.borderBottom = "none";        
-        if(scrollTop > 165 && width > 768){
+        if(scrollTop > 165 || width < 768){
             navBar2.style.position = "fixed";
             navBar2.style.top = "0px";
             navBar2.style.backgroundColor = "white";

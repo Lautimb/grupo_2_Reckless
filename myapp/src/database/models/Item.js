@@ -34,10 +34,6 @@ module.exports = (sequelize, dataTypes)=>{
         item_subtotal:{
             type: dataTypes.DECIMAL(10, 2)
         },
-        stock_id:{
-            type: dataTypes.INTEGER,
-            allowNull: true
-        },
         user_id:{
             type: dataTypes.INTEGER.UNSIGNED
         },
@@ -57,14 +53,8 @@ module.exports = (sequelize, dataTypes)=>{
         });
 
         Item.belongsTo(models.User, {
-            as: "users",
+            as: "userss",
             foreignKey: "user_id",
-            timestamps: true
-        });
-
-        Item.belongsTo(models.Stock, {
-            as: "stocks",
-            foreignKey: "stock_id",
             timestamps: true
         });
     }

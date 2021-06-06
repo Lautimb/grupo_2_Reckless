@@ -2,9 +2,7 @@ const { User } = require('../../database/models');
 module.exports = {
     async list (req, res) {
         try{
-            const users = await User.findAll({
-                attributes: {exclude: ['password','user_type_id']}
-            })
+            const users = await User.findAll()
             
             users.forEach( user => {
                 return user.setDataValue('detail',`http://localhost:3300/api/users/${user.id}`)
@@ -12,7 +10,7 @@ module.exports = {
             
             res.json({
                 meta:{
-                    state:'sucess',
+                    state:'success',
                     count: users.length
                 },
                 users
@@ -29,14 +27,13 @@ module.exports = {
 
     async detail (req,res){
         try{
-            console.log('metodo detail')
             const id = req.params.id
             const user = await User.findByPk(id,{
                 attributes: {exclude: ['password','user_type_id']}
             })
             res.json({
                 meta:{
-                    state:'sucess',
+                    state:'success',
                     count: user.length
                 },
                 user
@@ -61,7 +58,7 @@ module.exports = {
             
             res.json({
                 meta: {
-                    state:'sucess'
+                    state:'success'
                 }              
             })
                         
@@ -84,9 +81,8 @@ module.exports = {
 
             res.json({
                 meta: {
-                    state:'sucess remove'
+                    state:'remove success'
                 }
-                
             })
             
             
@@ -95,7 +91,7 @@ module.exports = {
                 meta: {
                     status: 'error',
                 },
-                error: 'Error, the product cannot be delete',
+                error: 'Error, the product cannot be deleted',
             })
         }
     },
@@ -105,7 +101,7 @@ module.exports = {
            
             res.json({
                 meta: {
-                    state:'sucess response'
+                    state:'response success'
                 },
                 userLog   
             })
@@ -115,7 +111,7 @@ module.exports = {
                 meta: {
                     status: 'error',
                 },
-                error: 'Error, the product cannot be delete',
+                error: 'Error, the product cannot be deleted',
             })
         }
     }

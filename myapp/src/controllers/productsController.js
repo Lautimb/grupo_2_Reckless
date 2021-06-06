@@ -1,24 +1,33 @@
 const { validationResult } = require('express-validator');
 const db = require('../database/models');
-
+const parser = require('../helpers/parser')
 module.exports = {
     index: async (req,res) =>{
         const products = await db.Product.findAll({
-            include: ["images"]
+            include: ["images","users"],
+            order:[["created_at", "ASC"]]
         });
+        if(req.session.user){
+            products.forEach(product => {    
+                product.users.forEach( user => {
+                    if(req.session.user.id == user.wishlists.user_id){
+                        product.setDataValue('liked', 'added') 
+                    }
+                })            
+            });
+        }
         products.forEach( product => {
             product.images[0].filename = JSON.parse(product.images[0].filename)
+            product.setDataValue('users', '')
             return 
         });
         res.render('products/index', { products });
     },
     filter: async (req,res)=>{
         const products = await db.Product.findAll({
-            include:["images","types"]
+            include:["images","types","users"]
         })
-        // recibo por parametro el tipo de producto a mostrar, dato obtenido del submenu del shop en la lista del header
-        const type = req.params.type
-        // filtro el producto a mostrar
+        const { type } = req.params
         products.forEach( product => {
             product.images[0].filename = JSON.parse(product.images[0].filename)
             return 
@@ -26,10 +35,16 @@ module.exports = {
 
         const productsToShow = products.filter( product => product.types[0].title.toLowerCase() == type)
 
+        if(req.session.user){
+            products.forEach(product => {    
+                product.users.forEach( user => {
+                    if(req.session.user.id == user.wishlists.user_id){
+                        product.setDataValue('liked', 'added') 
+                    }
+                })            
+            });
+        }
        
-        // le agrego una propiedad al objeto creado con los productos a mostrar, y guardo en él, el tipo de producto en mayúsculas para poner de titulo en la seccion.
-        
-        // mando la respuesta con los productos a mostrar
 		res.render('products/products-type', {
             products : productsToShow,
             type
@@ -53,6 +68,8 @@ module.exports = {
     store: async(req, res)=>{
         const errors = validationResult(req);
 
+        const { qty, color , size , name, description, price , wholesaleprice , discount , art, type} = req.body
+
         if(!errors.isEmpty()){ 
             const sizes = await db.Size.findAll()
             const types = await db.Type.findAll() 
@@ -65,14 +82,16 @@ module.exports = {
         }
        
         const product = await db.Product.create({
-            name: req.body.name,
-            description: req.body.description,
-            price: req.body.price,
-            wholesale_price: req.body.wholesaleprice,
-            discount: req.body.discount,
-            art: req.body.art
+            name,
+            description,
+            price,
+            wholesale_price: wholesaleprice,
+            discount,
+            art
         })
         
+        // Images
+
         const files = req.files;
         const imagesMapped = files.map( image => image.filename );
         const imageStrings = JSON.stringify(imagesMapped)
@@ -80,32 +99,32 @@ module.exports = {
         const images = await db.Image.create({
             filename: imageStrings
         })
-
         await product.setImages(images.id, product.id)
 
         // Sizes
-        const sizes = (typeof req.body.size == "string" ? [req.body.size] : req.body.size)
-        
-        const eachSize = sizes.map(sizeID=> parseInt(sizeID)) // falta agregar logica para que se guarde 1 sola vez la relacion talle-producto
-
+        const eachSize = parser(size)
         await product.addSizes(eachSize, product.id)
 
         // Types
-        const types = (typeof req.body.type == "string" ? [req.body.type] : req.body.type)
-        
-        await product.addTypes(parseInt(types),product.id)
+        const eachType = parser(type)
+        await product.addTypes(eachType, product.id)
 
         //Colors
-        const colors = (typeof req.body.color == "string" ? [req.body.color] : req.body.color)
-
-        const eachColor = colors.map(colorID=> parseInt(colorID)) // falta agregar logica para que se guarde 1 sola vez la relacion color-producto
-
+        const eachColor = parser(color)
         await product.addColors(eachColor, product.id)
 
-        //const stocks = (typeof req.body.qty == "number" ? [req.body.qty] : req.body.qty)
+        // Qty
+        const eachQty= parser(qty)
 
-        //await product.setQty(parseInt(stocks), product.id)
-       
+        await eachQty.forEach((qty, i ) =>{
+            db.Stock.create({
+                qty: qty,
+                product_id: product.id,
+                color_id: eachColor[i],
+                size_id: eachSize[i]
+            })
+        })
+        
         res.redirect('/products');
     },
     detail: async (req,res) =>{
@@ -125,14 +144,24 @@ module.exports = {
         // Traigo la lista de talles y categorias para mandar a los select del form
         const sizes = await db.Size.findAll()
         const types = await db.Type.findAll()
+        const colors = await db.Color.findAll()
 
         const product = await db.Product.findByPk(id,{
-            include:["images","sizes", "types"]
+            include:["images","sizes", "types", "colors", "stocks"]
         })
        
         product.images[0].filename = JSON.parse(product.images[0].filename)
+        
+        product.stocks.forEach( (stock)=> {
+            
+            const productSizesTitle = sizes.find ( size => stock.size_id == size.id)
+            stock.setDataValue( "sizeTitle", productSizesTitle.title)
 
-        res.render('products/edit', { product, sizes, types });
+            const productColorsTitle = colors.find ( color => stock.color_id == color.id)
+            stock.setDataValue( "colorTitle", productColorsTitle.title)
+        })
+
+        res.render('products/edit', { product, sizes, types, colors });
 
     },
     update: async(req,res)=>{
@@ -151,7 +180,7 @@ module.exports = {
             })
         }
         
-        const { name, description, price , wholesaleprice, discount , art } = req.body;
+        const { name, description, price, wholesaleprice, discount, art, qty, color, size, type } = req.body;
     
         await db.Product.update(
         {
@@ -168,8 +197,9 @@ module.exports = {
             }
         }
         );
+
         const product = await db.Product.findByPk(req.params.id,{
-            include:["images","sizes", "types"]
+            include:["images","sizes", "types", "colors"]
         });
         
 
@@ -183,36 +213,108 @@ module.exports = {
             await product.setImages(images);
         }
 
-        const sizes = (typeof req.body.size == "string" ? [req.body.size] : req.body.size)
+        // Sizes
+        const eachSize = parser(size)
+        await product.setSizes(eachSize, product.id)
 
-        await product.setSizes(parseInt(sizes),product.id)
+        // Types
+        const eachType = parser(type)
+        await product.setTypes(eachType, product.id)
 
-        const types = (typeof req.body.type == "string" ? [req.body.type] : req.body.type)
+        //Colors
+        const eachColor = parser(color)
+        await product.setColors(eachColor, product.id)
 
-        await product.setTypes(parseInt(types),product.id)
+        //Qty
+        const eachQty= parser(qty)
+
+        const stocks = await db.Stock.findAll({
+            where: {
+                product_id: product.id
+            }
+        })
+
+        stocks.forEach( async (stock, i ) =>{
+            await db.Stock.update({
+                qty: eachQty[i],
+                color_id: eachColor[i],
+                size_id: eachSize[i]
+            },{
+                where:{ 
+                    id:stock.id,   
+                    product_id: stock.product_id,
+                    color_id: stock.color_id,
+                    size_id: stock.size_id
+                }
+            })
+        })
 
         return res.redirect('/'); 
     },
 
-    wishlist: (req,res) =>{
-        res.render('products/wishlist');
+    wishlist: async (req,res) =>{
+
+        const products = await db.Product.findAll({
+            include: ["images","users"],
+            order:[["created_at", "ASC"]],
+        });
+        const productsWished = []
+
+        products.forEach(product => {    
+            product.images[0].filename = JSON.parse(product.images[0].filename)
+            product.users.forEach( user => {
+                if(req.session.user.id == user.wishlists.user_id){
+                    product.setDataValue('liked', 'added') 
+                    productsWished.push(product)
+                }
+            })            
+        });
+        
+        res.render('products/wishlist',{
+            productsWished
+        });
     },
 
     delete: async (req, res) => {
         
         const product = await db.Product.findByPk(req.params.id); 
 
+        const stock = await db.Stock.findOne({
+            where: {
+                product_id: req.params.id
+            }
+        })
+
+        await product.setTypes([]);
+
+        await product.setColors([]);
+        
         await product.setImages([]);
 
         await product.setSizes([]);
-
-        await product.setTypes([]);
         
+        await product.setUsers([])
+
+        await db.Item.update({
+            stock_id: null
+        },{
+            where: {
+                stock_id: stock.id
+            }
+        })
+        
+        await db.Stock.destroy({
+            where:{
+                product_id: req.params.id
+            }
+        })
+
         await db.Product.destroy({
           where: {
             id: req.params.id
           }
         });
+
     
         return res.redirect("/");
     },

@@ -12,7 +12,7 @@ module.exports = {
             
             res.json({
                 meta:{
-                    state:'sucess',
+                    state:'success',
                     count: users.length
                 },
                 users
@@ -35,7 +35,7 @@ module.exports = {
             })
             res.json({
                 meta:{
-                    state:'sucess',
+                    state:'success',
                     count: user.length
                 },
                 user
@@ -60,7 +60,7 @@ module.exports = {
             
             res.json({
                 meta: {
-                    state:'sucess'
+                    state:'success'
                 }              
             })
                         
@@ -83,7 +83,7 @@ module.exports = {
 
             res.json({
                 meta: {
-                    state:'sucess remove'
+                    state:'success remove'
                 }
                 
             })
@@ -104,7 +104,7 @@ module.exports = {
            
             res.json({
                 meta: {
-                    state:'sucess response'
+                    state:'success response'
                 },
                 userLog   
             })

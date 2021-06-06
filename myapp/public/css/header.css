@@ -279,14 +279,42 @@ header a{
 /* ------------ HEADER RESPONSIVE -----------------*/
 
 @media (max-width: 768px) {
-
-    header #nav-bar1,#nav-bar2,.logo{
+    
+    .main-responsive{
+        position: fixed;
+        top: 0;
+        left: -100vw;
+        z-index: 10000;
+        width: 80%;
+        height: 100vh;    
+        flex-direction: column;
+        background-color: white;
+        border-bottom: 1px solid black;
+        border-right: 1px solid black;
+        transition: all .3s;
+    }
+    .main-active{
+        left: 0px;
+        transition: all .3s;
+    }
+    #nav-bar1{
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+    #nav-bar2 li{
+        margin-left: 0px;
+    }
+    #nav-bar2{
+        padding-top:20px;
+        flex-direction: column;
+    }
+    .fa-search, .fa-flag, .wishlistHeart{
+        font-size:20px
+    }
+    #promotions{
         display: none;
     }
-
-    header #promotions{
-        display:none;
-    }   
     
     header .first-main{
         display: flex;
@@ -305,9 +333,13 @@ header a{
         padding: auto 10px;
     }
 
-    .fa-bars{
+    .fa-bars , .fa-times{
         padding: 5px 15px;
         font-size:25px;
+    }
+    
+    .my-account-tittle{
+        font-size: 18px;
     }
     #logo-header-responsive{
         top: -8px;
@@ -321,7 +353,7 @@ header a{
 }
 
 @media (max-width: 425px){
-    .fa-bars{
+    .fa-bars, .fa-times{
         padding: 5px;
     }
 }

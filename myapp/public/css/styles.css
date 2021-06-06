@@ -359,7 +359,6 @@ a:visited{
 
 .like{
     position: relative;
-    z-index: 1000;
 }
 .like:hover{
     cursor: pointer;

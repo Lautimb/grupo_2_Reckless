@@ -38,7 +38,6 @@ likes.forEach( like =>{
 
                     } else {
                         const modalRequireLogin = document.querySelector('#modalRequireLogin')
-                        const formLogin = document.querySelector('.require-login-container')
                         modalRequireLogin.classList.remove('inactive')
                         modalRequireLogin.classList.add('modal-login')
                         

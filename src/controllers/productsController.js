@@ -241,7 +241,7 @@ module.exports = {
                 size_id: eachSize[i]
             },{
                 where:{ 
-                    id:stock.id,   
+                    id: stock.id,   
                     product_id: stock.product_id,
                     color_id: stock.color_id,
                     size_id: stock.size_id

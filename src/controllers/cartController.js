@@ -1,14 +1,12 @@
-const {Product, Item, User, Order, Image} = require('../database/models') 
-
-
+const {Product, Item, User, Order, Stock} = require('../database/models') 
 
 const cartController = {
     async cart (req,res) {
+
        const items = await Item.findAll({
             where: {
                 user_id: req.session.user.id,
                 order_id: null
-
             }
         })
         items.forEach( item => {
@@ -32,6 +30,14 @@ const cartController = {
             }]
         })
 
+        const stock = await Stock.findOne({
+            where: {
+                product_id: product.id,
+                color_id: req.body.color,
+                size_id: req.body.size
+            }
+        })
+
         await Item.create({
             name: product.name,
             img: product.images[0].filename,
@@ -39,12 +45,11 @@ const cartController = {
             wholesale_price: product.wholesale_price,
             discount: product.discount,
             qty: req.body.qty,
+            stock_id: stock.id,
             item_subtotal: (product.price - (product.discount * product.price / 100)) * req.body.qty,
             user_id: req.session.user.id 
         })
-
-        
-
+    
         res.redirect("/cart")
     },
     async delete (req, res) {
@@ -82,11 +87,28 @@ const cartController = {
             total_qty: totalQty,
             user_id: req.session.user.id,
             total: totalAmount
+        })
 
+        //buscamos el stock a actualizar
+        await items.forEach( async item =>{
+            const itemStock = await Stock.findOne({
+                where: {
+                   id:  item.stock_id
+                }
+            })
+        //actualizamos tabla de stock
+            Stock.update({
+                qty: itemStock.qty - item.qty
+            }, {
+                where: {
+                    id: item.stock_id
+                }
+            })
         })
         // actualizamos items
         await Item.update({
-            order_id: order.id
+            order_id: order.id,
+            stock_id: null
         }, {
            where: {
                user_id: req.session.user.id,

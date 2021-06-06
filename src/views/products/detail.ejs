@@ -30,7 +30,11 @@
 
                             <ul class= "product-detail__name-heart">
                                 <h1><%= product.name %></h1>
-                                <i class="far fa-heart"></i>
+                                <% if(product.dataValues.liked == 'added'){ %> 
+                                    <span><i class="fas fa-heart like added" id="<%= product.id %>"></i></span> 
+                                <% } else { %>
+                                    <span><i class="fas fa-heart like" id="<%= product.id %>"></i></span>   
+                                <% } %>
                             </ul>
                             <% if (product.discount) { %>
                                 <ul class= "product-detail__price-promotions">
@@ -50,28 +54,33 @@
                         </div>
 
                         
-                        <% if (userLog.user_type_id == 1 || userLog.user_type_id == 2) { %> 
-                            <div class="product-detail-selector">
-                                
+                        
+                        
+                        <div class="product-detail-selector">
+                            <form action="/cart/addToCart/<%= product.id%>" method="POST" name="addToCartButton" >
                                 <div >
                     
                                     <div class="product-detail__colors">
-                                        <legend>COLOR: <%= product.colors[0].title %></legend>
+                                        <legend>COLOR: </legend>
                                         <ul>
                                             <% for( color of product.colors ) { %>
+
                                             <li>
-                                                <input type="radio" name="color" class= "color-circle">
-                                                <label for="color" id="color-input">
-                                                    <div id="color-circle" style="background-color: <%= color.hexadecimal %>"></div>
-                                                </label>
+                                                <span id="color-input">
+                                                    <div id=<%= color.title %> class="color-circle" style="background-color: <%= color.hexadecimal %>">
+                                                        <input type="radio" name="color" value="<%=color.id%>" class= "color-circle-input">
+                                                    </div>
+                                                </span>
                                             </li>
-                                            <% } %>
+                                            <% } %> 
                                         </ul>
+
+
                                     </div>
                                         
                                     <div>
                                         <select name="size" class="product-detail__select">
-                                            <% for (size of product.sizes) { %>}
+                                            <% for (size of product.sizes) { %>
                                             <option value="<%= size.id %>" selected><%= size.title %></option>
                                             <% } %>
                                         </select>
@@ -81,52 +90,26 @@
                                         <label for="qty" style ="font-size: 14px"> QUANTITY</label>
                                         <input class="product-detail__select" type="number" value="1" name="qty" id="qty">
                                     </div>
-                                    <div class="edit-delete-product">
-                                        <div>
-                                            <a href="/products/edit/<%= product.id%>" >
-                                                <button type="button" class="buttons-detail"><i class="fas fa-times"></i>EDIT</button>
-                                            </a>
-                                        </div>
-                                        <div>
-                                            <form action="/products/delete/<%= product.id %>?_method=DELETE" method="POST" name="button" >
-                                                <button type="submit" class="buttons-detail" name="button"><i class="fas fa-times"></i>DEL</button>
-                                            </form>
-                                        </div>
-                                    </div> 
-                                
-                            </div>
-                        <% }else{ %> 
-                            <div class="product-detail-selector">
-                                    <form action="/cart/addToCart/<%= product.id%>" method="POST" name="addToCartButton" >
-                                        <div >
-                            
-                                            <div class="product-detail__colors">
-                                                <legend>COLORS</legend>
-                                                <ul>
-                                                    <li><input type="radio" name="color" class= "color-circle"></li>
-                                                    <li><input type="radio" name="color" class= "color-circle"></li>
-                                                    <li><input type="radio" name="color" class= "color-circle"></li>
-                                                    <li><input type="radio" name="color" class= "color-circle"></li>
-                                                    <li><input type="radio" name="color" class= "color-circle"></li>
-                                                </ul>
-                                            </div>
-                                                
-                                            <div>
-                                                <select name="size" class="product-detail__select">
-                                                    <option value="" selected><%= product.sizes[0].title %></option>
-                                                    
-                                                </select>
-                                            </div>
-                
-                                            <div class="product-detail-selector">
-                                               <label for="qty" style ="font-size: 14px"> QUANTITY</label>
-                                               <input class="product-detail__select" type="number" value="1" name="qty" id="qty">
-                                            </div>
-                                            <button type="submit" class="buttons-detail" name="button"><i class="fas fa-sho
-                                            pping-cart"></i>ADD TO CART</button>
-                                    </form>
-                            </div>
-                        <% } %> 
+                            </form>
+                            <% if (userLog.user_type_id == 1 || userLog.user_type_id == 2) { %> 
+                                <div class="edit-delete-product">
+                                    <div>
+                                        <a href="/products/edit/<%= product.id%>" >
+                                            <button type="button" class="buttons-detail"><i class="fas fa-edit"></i>EDIT</button>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <form action="/products/delete/<%= product.id %>?_method=DELETE" method="POST" name="delete" >
+                                            <button type="submit" class="buttons-detail" name="delete"><i class="fas fa-times"></i>DEL</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            <% }else{ %>  
+                                    <button type="submit" class="buttons-detail" name="addToCartButton"><i class="fas fa-sho
+                                        pping-cart"></i>ADD TO CART</button>
+                            <% } %> 
+                        </div>
+                        
                         
                         <div class="product-detail__details">
                             <ul>
@@ -221,7 +204,11 @@
                 </div>
             </section>
 
+            <%- include('../partials/modalRequireLogin')%>
+
+
         </main>
+        <script src="/scripts/wishlist.js"></script>
         <script src="/scripts/productDetail.js"></script>
         <!-- FOOTER -->
 

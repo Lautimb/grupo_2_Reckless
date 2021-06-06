@@ -9,10 +9,7 @@ module.exports = {
             const page = Number(req.query.page) || 1
             
             const paginatedProducts = await Product.findAndCountAll({
-                include: [{
-                    all: true,
-                    nested: true
-                }],
+                include: ['images'],
                 order: ["id"],
                 limit: 4,
                 offset: 4 * (page - 1),
@@ -44,10 +41,7 @@ module.exports = {
             // COUNT BY CATEGORIES
 
             const types = await Type.findAll({
-                include:[{
-                    all: true,
-                    nested: true
-                }]
+                include:['products']
             })
 
             const type = types.map(cat =>{

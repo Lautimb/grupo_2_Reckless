@@ -1,5 +1,6 @@
 const { Product } = require('../../database/models');
 const { Type } = require('../../database/models')
+const { Stock } = require('../../database/models')
 
 
 module.exports = {
@@ -9,10 +10,7 @@ module.exports = {
             const page = Number(req.query.page) || 1
             
             const paginatedProducts = await Product.findAndCountAll({
-                include: [{
-                    all: true,
-                    nested: true
-                }],
+                include: ['images'],
                 order: ["id"],
                 limit: 4,
                 offset: 4 * (page - 1),
@@ -30,7 +28,9 @@ module.exports = {
             paginatedProducts.page = page
 
             // ALL PRODUCTS NO LIMIT
-            const allProducts = await Product.findAll({include:{all:true,nested:true}})
+            const allProducts = await Product.findAll({
+                include: ['images']
+            })
 
             // LAST PRODUCT
             const lastProduct = allProducts[allProducts.length - 1]
@@ -44,10 +44,7 @@ module.exports = {
             // COUNT BY CATEGORIES
 
             const types = await Type.findAll({
-                include:[{
-                    all: true,
-                    nested: true
-                }]
+                include:['products']
             })
 
             const type = types.map(cat =>{
@@ -87,7 +84,6 @@ module.exports = {
     },
 
     async detail (req,res) {
-
         try{
 
             const product = await Product.findByPk(req.params.id,{
@@ -115,6 +111,60 @@ module.exports = {
                 error: 'Product not found',
             })
         }
+    },
+
+    async stocksList (req,res){
+        try{
+            const stocks = await Stock.findAll()
+
+            return res.json({
+                meta: {
+                    status: 'success',
+                },
+                data: {
+                    stocks
+                }
+            })
+        }catch (error){
+            res.status(500).json({
+                meta: {
+                    status: 'error',
+                },
+                error: 'Stock roto rey',
+            })
+        }
+    },
+
+    async addStock (req,res){
+        try{
+            const stockId = req.body.stockId
+            const stock = await Stock.findByPk(stockId)
+            if(stock.id == stockId){
+                db.Stock.update({
+                    qty: eachQty[i],
+                    color_id: eachColor[i],
+                    size_id: eachSize[i]
+                },{
+                    where:{ 
+                        id: stock.id,
+                        color_id: stock.color_id,
+                        size_id: stock.size_id
+                    }
+                })
+            }
+        }
+        catch (error){
+            res.status(500).json({
+                meta: {
+                    status: 'error',
+                },
+                error: 'Error, the stock cannot be added',
+            })
+        }
     }
+
+
     
+
+
 };

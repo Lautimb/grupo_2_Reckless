@@ -152,7 +152,7 @@ module.exports = {
        
         product.images[0].filename = JSON.parse(product.images[0].filename)
         
-        product.stocks.forEach(stock => {
+        product.stocks.forEach( (stock)=> {
             
             const productSizesTitle = sizes.find ( size => stock.size_id == size.id)
             stock.setDataValue( "sizeTitle", productSizesTitle.title)
@@ -228,37 +228,14 @@ module.exports = {
         //Qty
         const eachQty= parser(qty)
 
-        // Buscamos el stock a actualizar
-
-        const stocks = await db.Stock.findAll({
-            where:{
-                product_id: product.id
-            }
-        })
-        
-        await stocks.forEach((stock,i) =>{
+        await eachQty.forEach((qty, i ) =>{
             db.Stock.update({
-                qty: eachQty[i],
+                qty: qty,
                 color_id: eachColor[i],
                 size_id: eachSize[i]
-            },{
-                where:{ 
-                    id: stock.id,
-                    color_id: stock.color_id,
-                    size_id: stock.size_id
-                }
             })
-            
-            // if(eachQty.length > stocks.length){
-            //     // esto deberia funcionar cuando arreglemos el script productStock y el addmore agregue hacia abajo y en orden
-            // }
-            // if(eachQty.length < stocks.length){
-            //     // esto deberia funcionar cuando quitemos el boton "delete selected" y empecemos a usar el save y x por cada linea
-            // }     
-            
-            
-            
         })
+        // pensar como resolver lo del update porque no guarda un carajo
 
         return res.redirect('/'); 
     },

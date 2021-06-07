@@ -1,8 +1,8 @@
 const likes = document.querySelectorAll('.like')
 
-const urlAdd = 'http://my-app-recklesss.herokuapp.com/api/users/addWishlist'
-const urlRemove = 'http://my-app-recklesss.herokuapp.com/api/users/removeWishlist'
-const reqLogged = 'http://my-app-recklesss.herokuapp.com/api/users/log'
+const urlAdd = 'https://my-app-recklesss.herokuapp.com/api/users/addWishlist'
+const urlRemove = 'https://my-app-recklesss.herokuapp.com/api/users/removeWishlist'
+const reqLogged = 'https://my-app-recklesss.herokuapp.com/api/users/log'
 likes.forEach( like =>{ 
     like.onclick = () =>{
         fetch(reqLogged,{method: 'POST'})

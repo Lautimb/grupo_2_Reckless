@@ -1,9 +1,9 @@
 const likes = document.querySelectorAll('.like')
-const URL_SV = location.href.split('/').pop();
+const URL_SV = location.origin
 
-const urlAdd = `${URL_SV}api/users/addWishlist`
-const urlRemove = `${URL_SV}api/users/removeWishlist`
-const reqLogged = `${URL_SV}api/users/log`
+const urlAdd = `${URL_SV}/api/users/addWishlist`
+const urlRemove = `${URL_SV}/api/users/removeWishlist`
+const reqLogged = `${URL_SV}/api/users/log`
 
 likes.forEach( like =>{ 
     like.onclick = () =>{

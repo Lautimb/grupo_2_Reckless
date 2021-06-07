@@ -1,8 +1,8 @@
 const likes = document.querySelectorAll('.like')
 
-const urlAdd = process.env.SV_URL ? `http://${process.env.SV_URL}/api/users/addWishlist` : `http://localhost:3300/api/users/addWishlist`
-const urlRemove = process.env.SV_URL ? `http://${process.env.SV_URL}/api/users/removeWishlist` : `http://localhost:3300/api/users/removeWishlist`
-const reqLogged = process.env.SV_URL ? `http://${process.env.SV_URL}/api/users/log` : `http://${process.env.SV_URL}/api/users/log`
+const urlAdd = 'http://my-app-recklesss.herokuapp.com/api/users/addWishlist'
+const urlRemove = 'http://my-app-recklesss.herokuapp.com/api/users/removeWishlist'
+const reqLogged = 'http://my-app-recklesss.herokuapp.com/api/users/log'
 likes.forEach( like =>{ 
     like.onclick = () =>{
         fetch(reqLogged,{method: 'POST'})

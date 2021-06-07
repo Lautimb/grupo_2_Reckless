@@ -5,7 +5,7 @@ const productId = window.location.pathname.split('/').pop();
 const productStock= [];
 
 window.onload = function () {
-    fetch( process.env.SV_URL ? `http://${process.env.SV_URL}/api/products/${productId}`: `http://localhost:3300/api/products/${productId}` ,{
+    fetch(`http://localhost:3300/api/products/${productId}`,{
         method: 'GET',
         body: JSON.stringify(),
         headers:{

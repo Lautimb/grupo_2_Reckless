@@ -86,7 +86,7 @@ module.exports = {
             description,
             price,
             wholesale_price: wholesaleprice,
-            discount,
+            discount: discount == '' ? 0 : discount ,
             art
         })
         

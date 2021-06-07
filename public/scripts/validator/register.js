@@ -3,9 +3,10 @@ const registerButton = document.querySelector("#button-register");
 const errorElement = document.querySelector(".errors");
 const usersList = [];
 
+const URL_SV = location.href
 
 window.onload = function () {
-    fetch('http://localhost:3300/api/users',{
+    fetch(`${URL_SV}/api/users`,{
         method: 'POST',
         body: JSON.stringify(),
         headers:{

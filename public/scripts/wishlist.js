@@ -1,8 +1,10 @@
 const likes = document.querySelectorAll('.like')
+const URL_SV = location.href
 
-const urlAdd = 'https://my-app-recklesss.herokuapp.com/api/users/addWishlist'
-const urlRemove = 'https://my-app-recklesss.herokuapp.com/api/users/removeWishlist'
-const reqLogged = 'https://my-app-recklesss.herokuapp.com/api/users/log'
+const urlAdd = `${URL_SV}/api/users/addWishlist`
+const urlRemove = `${URL_SV}/api/users/removeWishlist`
+const reqLogged = `${URL_SV}/api/users/log`
+
 likes.forEach( like =>{ 
     like.onclick = () =>{
         fetch(reqLogged,{method: 'POST'})

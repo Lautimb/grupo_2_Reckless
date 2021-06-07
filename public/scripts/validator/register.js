@@ -6,7 +6,7 @@ const usersList = [];
 const URL_SV = location.href
 
 window.onload = function () {
-    fetch(`${URL_SV}/api/users`,{
+    fetch(`${URL_SV}api/users`,{
         method: 'POST',
         body: JSON.stringify(),
         headers:{

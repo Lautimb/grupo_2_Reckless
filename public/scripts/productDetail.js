@@ -6,7 +6,7 @@ const productStock= [];
 const URL_SV = location.href
 
 window.onload = function () {
-    fetch(`${URL_SV}/api/products/${productId}`,{
+    fetch(`${URL_SV}api/products/${productId}`,{
         method: 'GET',
         body: JSON.stringify(),
         headers:{

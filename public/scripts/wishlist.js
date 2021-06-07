@@ -1,5 +1,5 @@
 const likes = document.querySelectorAll('.like')
-const URL_SV = location.href
+const URL_SV = location.href.split('/').pop();
 
 const urlAdd = `${URL_SV}api/users/addWishlist`
 const urlRemove = `${URL_SV}api/users/removeWishlist`

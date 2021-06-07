@@ -3,7 +3,7 @@ const colorInputDiv = document.querySelectorAll('.color-circle')
 const colorTitle = document.querySelector('legend')
 const productId = window.location.pathname.split('/').pop();
 const productStock= [];
-const URL_SV = location.href
+const URL_SV = location.href.split('/').pop();
 
 window.onload = function () {
     fetch(`${URL_SV}api/products/${productId}`,{

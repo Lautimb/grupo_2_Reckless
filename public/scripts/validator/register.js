@@ -3,7 +3,7 @@ const registerButton = document.querySelector("#button-register");
 const errorElement = document.querySelector(".errors");
 const usersList = [];
 
-const URL_SV = location.href
+const URL_SV = location.href.split('/').pop();
 
 window.onload = function () {
     fetch(`${URL_SV}api/users`,{

@@ -22,4 +22,5 @@ values (1, 'Super', 'Admin', 'superadmin@reckless.com', '$2a$10$9/7fHDsyzHZ2Moge
 insert into users (id, first_name, last_name, email, password, birthday, user_type_id, company, phone_number) 
 values (2, 'Usuario', 'Minorista', 'usuariominorista@mail.com', '$2a$10$1Vozkho7PJP2HorXf.vrGuTKcoh3tcA5eYqy67eMbUG8omYVKVZGa', '2005-10-17', 3 , NULL, NULL);
 
--- CONTRASEÑA ADMINSTRADOR: Superadmin1 
+-- CONTRASEÑA ADMINISTRADOR: Superadmin1 
+-- CONTRASEÑA ADMINISTRADOR: Hola1234

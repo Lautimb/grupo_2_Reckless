@@ -1,8 +1,10 @@
 const likes = document.querySelectorAll('.like')
+const URL_SV = location.origin
 
-const urlAdd = 'http://localhost:3300/api/users/addWishlist'
-const urlRemove = 'http://localhost:3300/api/users/removeWishlist'
-const reqLogged = 'http://localhost:3300/api/users/log'
+const urlAdd = `${URL_SV}/api/users/addWishlist`
+const urlRemove = `${URL_SV}/api/users/removeWishlist`
+const reqLogged = `${URL_SV}/api/users/log`
+
 likes.forEach( like =>{ 
     like.onclick = () =>{
         fetch(reqLogged,{method: 'POST'})
@@ -40,7 +42,17 @@ likes.forEach( like =>{
                         const modalRequireLogin = document.querySelector('#modalRequireLogin')
                         modalRequireLogin.classList.remove('inactive')
                         modalRequireLogin.classList.add('modal-login')
-                        
+                        const closeModal = document.querySelector('.close-modal')
+                        document.onkeydown = (e) => {
+                            if(e.key == "Escape"){
+                                modalRequireLogin.classList.add('inactive')
+                                modalRequireLogin.classList.remove('modal-login')
+                            }
+                        }
+                        closeModal.onclick = () => {
+                            modalRequireLogin.classList.add('inactive')
+                            modalRequireLogin.classList.remove('modal-login')
+                        }
                     }                
                 })        
     }

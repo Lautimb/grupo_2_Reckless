@@ -5,7 +5,7 @@ const productId = window.location.pathname.split('/').pop();
 const productStock= [];
 
 window.onload = function () {
-    fetch(`http://localhost:3300/api/products/${productId}`,{
+    fetch(`${URL_SV}/api/products/${productId}`,{
         method: 'GET',
         body: JSON.stringify(),
         headers:{

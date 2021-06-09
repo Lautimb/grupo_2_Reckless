@@ -71,14 +71,23 @@ module.exports = {
         const { qty, color , size , name, description, price , wholesaleprice , discount , art, type} = req.body
 
         if(!errors.isEmpty()){ 
-            const sizes = await db.Size.findAll()
-            const types = await db.Type.findAll() 
-            return res.render('products/create', {
-                errors: errors.mapped(),
-                old: req.body,
-                sizes,
-                types
-            })
+            
+            const product = await db.Product.findByPk(req.params.id,{
+                include:["images","sizes", "types", "colors", "stocks"]
+                })
+    
+                const sizes = await db.Size.findAll()
+                const types = await db.Type.findAll()
+                const colors = await db.Color.findAll()
+    
+                return res.render('products/create', {
+                    errors: errors.mapped(),
+                    old: req.body,
+                    product,
+                    colors,
+                    sizes,
+                    types
+                })
         }
        
         const product = await db.Product.create({
@@ -86,7 +95,7 @@ module.exports = {
             description,
             price,
             wholesale_price: wholesaleprice,
-            discount,
+            discount: discount == '' ? 0 : discount ,
             art
         })
         
@@ -169,16 +178,26 @@ module.exports = {
         const errors = validationResult(req);
         
         if(!errors.isEmpty()){
+
+            const product = await db.Product.findByPk(req.params.id,{
+            include:["images","sizes", "types", "colors", "stocks"]
+            })
+
             const sizes = await db.Size.findAll()
             const types = await db.Type.findAll()
-            
+            const colors = await db.Color.findAll()
+
             return res.render('products/edit', {
                 errors: errors.mapped(),
                 old: req.body,
+                product,
+                colors,
                 sizes,
                 types
             })
         }
+
+        
         
         const { name, description, price, wholesaleprice, discount, art, qty, color, size, type } = req.body;
     
@@ -188,7 +207,7 @@ module.exports = {
             price,
             description,
             wholesale_price: wholesaleprice,
-            discount,
+            discount: discount == '' ? 0 : discount,
             art
         },
         {

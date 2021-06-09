@@ -24,30 +24,25 @@ const cartController = {
 
     async addToCart (req, res) {
         const product = await Product.findByPk(req.params.id,{
-            include:[{
-                all: true,
-                nested: true
-            }]
+            include:['images']
         })
+        const {qty} = req.body
 
         const stock = await Stock.findOne({
             where: {
-                product_id: product.id,
-                color_id: req.body.color,
-                size_id: req.body.size
+                product_id: product.id
             }
         })
-
         await Item.create({
             name: product.name,
             img: product.images[0].filename,
             price: product.price,
             wholesale_price: product.wholesale_price,
             discount: product.discount,
-            qty: req.body.qty,
+            qty: qty,
             stock_id: stock.id,
-            item_subtotal: (product.price - (product.discount * product.price / 100)) * req.body.qty,
-            user_id: req.session.user.id 
+            item_subtotal: (product.price - (product.discount * product.price / 100)) * qty,
+            user_id: req.session.user.id
         })
     
         res.redirect("/cart")

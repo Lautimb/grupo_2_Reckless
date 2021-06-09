@@ -42,7 +42,17 @@ likes.forEach( like =>{
                         const modalRequireLogin = document.querySelector('#modalRequireLogin')
                         modalRequireLogin.classList.remove('inactive')
                         modalRequireLogin.classList.add('modal-login')
-                        
+                        const closeModal = document.querySelector('.close-modal')
+                        document.onkeydown = (e) => {
+                            if(e.key == "Escape"){
+                                modalRequireLogin.classList.add('inactive')
+                                modalRequireLogin.classList.remove('modal-login')
+                            }
+                        }
+                        closeModal.onclick = () => {
+                            modalRequireLogin.classList.add('inactive')
+                            modalRequireLogin.classList.remove('modal-login')
+                        }
                     }                
                 })        
     }

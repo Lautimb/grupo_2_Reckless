@@ -18,6 +18,7 @@ const cartController = {
             return acum += parseInt(curr.item_subtotal)
         }, 0)
         
+        console.log("hola")
        
         res.render("cart", {items, total})
     },

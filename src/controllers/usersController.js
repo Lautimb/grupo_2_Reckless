@@ -1,126 +1,112 @@
-const bcrypt = require('bcryptjs');
-const { validationResult } = require('express-validator');
-const moment = require('moment');
-const { User } = require('../database/models');
+const bcrypt = require("bcryptjs");
+const { validationResult } = require("express-validator");
+const moment = require("moment");
+const { User } = require("../database/models");
 
 module.exports = {
-    index (req, res) {
-        res.render('users/index');
-    },
+  index(req, res) {
+    res.render("users/index");
+  },
 
-    register (req,res) {
-        res.render('users/register');
-    },
+  register(req, res) {
+    res.render("users/register");
+  },
 
-    async createUser (req, res) {
-        const errors = validationResult(req);
+  async createUser(req, res) {
+    const errors = validationResult(req);
 
-        if(!errors.isEmpty()){
-            return res.render('users/register', {
-                errors: errors.mapped(),
-                old: req.body
-            });
-        }
-        let { firstName, lastName, email, password, year, month, day, userType } = req.body;
-        
-        password = bcrypt.hashSync(req.body.password, 10);
-        
-        const user_type = userType ? userType = 4 : userType = 3;
+    if (!errors.isEmpty()) {
+      return res.render("users/register", {
+        errors: errors.mapped(),
+        old: req.body,
+      });
+    }
+    let { firstName, lastName, email, password, year, month, day, userType } =
+      req.body;
 
-        await User.create({
-            first_name: firstName,
-            last_name: lastName,
-            email: email,
-            password: password,
-            birthday: moment(year + '-' + month + '-' + day ).format('l'),
-            user_type_id: user_type,
-            
-            // BUSINESS DATA
+    password = bcrypt.hashSync(password, 10);
 
-            // company: businessName,
-            // phone_number: phoneNumber,
+    const user_type = userType ? (userType = 4) : (userType = 3);
 
-        });
+    await User.create({
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      password: password,
+      birthday: moment(year + "-" + month + "-" + day).format("l"),
+      user_type_id: user_type,
+    });
 
-        res.redirect('/users/login');
-    },
+    res.redirect("/users/login");
+  },
 
-    requireLogin (req, res) {
-        res.render('users/requireLogin');
-    },
+  requireLogin(req, res) {
+    res.render("users/requireLogin");
+  },
 
-    async processLogin (req, res) {
-        const errors = validationResult(req);
-        let { email } = req.body;
+  async processLogin(req, res) {
+    const errors = validationResult(req);
+    let { email } = req.body;
 
-        if(!errors.isEmpty()){
-            return res.render('users/requireLogin', {
-                errors: errors.mapped(),
-                email: email
-            });
-        }
+    if (!errors.isEmpty()) {
+      return res.render("users/requireLogin", {
+        errors: errors.mapped(),
+        email: email,
+      });
+    }
 
-        const userFound = await User.findOne({
-            where: {
-                email: email
-            }
-        });
+    const userFound = await User.findOne({
+      where: {
+        email: email,
+      },
+    });
 
-        req.session.user = userFound;
-      
-        if (req.body.remember){
-            res.cookie('user', userFound.id, {maxAge: 1000 * 60 * 60 * 24 * 365})
-        } 
-    
-        return res.redirect ('/');
-    },
+    req.session.user = userFound;
 
-    async edit (req, res) {
-        const id = req.params.id;
-        const user = await User.findByPk(id)
-        const birthday = moment(user.birthday);
-        
-        res.render('users/edit', { 
-            user,
-            birthday
-        });
-    },
+    if (req.body.remember) {
+      res.cookie("user", userFound.id, { maxAge: 1000 * 60 * 60 * 24 * 365 });
+    }
 
-    async update (req, res) {
+    return res.redirect("/");
+  },
 
-        let { firstName, lastName, email, password, year, month, day, managerFirstName, managerLastName, businessName, phoneNumber } = req.body;
+  async edit(req, res) {
+    const id = req.params.id;
+    const user = await User.findByPk(id);
+    const birthday = moment(user.birthday);
 
-        password = bcrypt.hashSync(password, 10);
+    res.render("users/edit", {
+      user,
+      birthday,
+    });
+  },
 
-        await db.User.update(
-            {
-                first_name: firstName,
-                last_name: lastName,
-                email: email,
-                password: password,
-                birthday: moment(year + '-' + month + '-' + day).format('L')
+  async update(req, res) {
+    let { firstName, lastName, email, password, year, month, day } = req.body;
 
-                // BUSINESS DATA
+    password = bcrypt.hashSync(password, 10);
 
-                // manager_first_name: managerFirstName,
-                // manager_last_name: managerLastName,
-                // company: businessName,
-                // phone_number: phoneNumber,
-            },
-            {
-                where: { id: req.params.id}
-            }
-        );
+    await db.User.update(
+      {
+        first_name: firstName,
+        last_name: lastName,
+        email: email,
+        password: password,
+        birthday: moment(year + "-" + month + "-" + day).format("L"),
+      },
+      {
+        where: { id: req.params.id },
+      }
+    );
 
-        res.redirect('/users/profile')
-    },
+    res.redirect("/users/profile");
+  },
 
-    logout (req, res) {
-        req.session.destroy(()=> {
-            req.session = null
-            res.cookie('user', null, {maxAge: -1})
-            return res.redirect('/')
-        })
-    },
-    
+  logout(req, res) {
+    req.session.destroy(() => {
+      req.session = null;
+      res.cookie("user", null, { maxAge: -1 });
+      return res.redirect("/");
+    });
+  },
 };
